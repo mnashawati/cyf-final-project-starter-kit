@@ -3,6 +3,13 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 
+import * as dotenv from "dotenv";
+dotenv.config();
+
+// require("dotenv").config();
+console.log(process.env);
+
+
 import router from "./api";
 import { httpsOnly, logErrors, pushStateRouting } from "./middleware";
 
@@ -25,5 +32,6 @@ app.use(apiRoot, router);
 
 app.use(express.static(staticDir));
 app.use(pushStateRouting(apiRoot, staticDir));
+
 
 export default app;
