@@ -10,17 +10,3 @@
     background-color: yellow;
 }
 
-.app{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.student-card{
-    border: 2px solid black;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    width: 15%;
-    margin: 20px;
-    padding: 10px;
-}
