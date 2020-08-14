@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { getMessage } from "./service";
 import logo from "./logo.svg";
+import StudentsGrid from "./components/StudentsGrid";
+
 
 export function App() {
 	const [message, setMessage] = useState("Loading...");
@@ -12,12 +14,25 @@ export function App() {
 	}, []);
 
 	return (
-		<main role="main">
+		<div >
 			<div>
-				<img className="logo" data-qa="logo" src={logo} alt="Just the React logo" />
-				<h1 className="message" data-qa="message">{message}</h1>
+				<main role="main">
+					<div>
+						<img
+							className="logo"
+							data-qa="logo"
+							src={logo}
+							alt="Just the React logo"
+						/>
+						<h1 className="message" data-qa="message">
+							{message}
+						</h1>
+					</div>
+				</main>
 			</div>
-		</main>
+			<StudentsGrid />
+		</div>
+
 	);
 }
 

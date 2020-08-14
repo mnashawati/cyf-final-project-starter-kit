@@ -1,0 +1,15 @@
+.students-cards-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.student-card{
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    margin: 20px;
+    padding: 10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75)
+}
