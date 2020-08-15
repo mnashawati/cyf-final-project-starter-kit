@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 import "./App.css";
 import StudentsGrid from "./components/StudentsGrid";
 import StudentProfile from "./components/StudentProfile";
@@ -13,8 +14,8 @@ export function App() {
 
 	return (
 		<Router>
-			<Route exact path="/students" component={StudentsGrid} />
-			<Route exact path="/students/:name" component={StudentProfile} />
+			<Route exact path="/students" component={()=> <StudentsGrid />} />
+			<Route exact path="/students/:name" component={()=> <StudentProfile />} />
 		</Router>
 	);
 }
