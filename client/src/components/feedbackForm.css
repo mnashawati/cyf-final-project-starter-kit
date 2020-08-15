@@ -1,0 +1,35 @@
+.feedback-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.feedback-message {
+    width: 700px;
+    height: 350px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.feedback-label {
+    width: 700px;
+    margin: auto;
+}
+
+.send-button-div {
+    width: 700px;
+    margin: auto;
+    text-align: end;
+}
+
+.given-feedback-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.felx-container {
+    display: flex;
+    flex-wrap: wrap;
+}
