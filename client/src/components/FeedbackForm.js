@@ -8,7 +8,7 @@ const FeedbackForm = ({ student }) => {
 	const [givenFeedback, setGivenFeedback] = useState([]);
 	const [feedbackList, setFeedbackList] = useState([]);
 
-	const handlerSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		setGivenFeedback(feedbackMessage);
 		setFeedbackList([feedbackMessage, ...feedbackList]);
@@ -19,7 +19,7 @@ const FeedbackForm = ({ student }) => {
 		setFeedbackMessage(e.target.value);
 	};
 	return (
-		<div className="flex-container">
+		<div className="feedback-section-container">
 			<div className="given-feedback-section">
 				{feedbackList.map((feedback, index) => (
 					<div key={index}>{feedback}</div>
@@ -29,7 +29,7 @@ const FeedbackForm = ({ student }) => {
 			<form
 				action=""
 				className="feedback-form"
-				onSubmit={handlerSubmit}
+				onSubmit={handleSubmit}
 			>
 				<label
 					className="feedback-label"
@@ -43,7 +43,7 @@ const FeedbackForm = ({ student }) => {
 					className="feedback-message"
 					onChange={(e) => handleChange(e)}
 				></textarea>
-				<div className="send-button-div">
+				<div className="send-feedback-button-div">
 					<button>Send Feedback</button>
 				</div>
 			</form>
