@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import students from "../db/students.json";
 import "./studentsGrid.css";
 import FeedbackForm from "./FeedbackForm";
 const StudentProfile = () => {
@@ -8,13 +7,26 @@ const StudentProfile = () => {
 	const params = useParams();
 	console.log(params);
 
-	const student = students.find((student) => student.name === params.name.replace("-", " "));
+	const [student, setStudent] = useState({});
+
+	useEffect(() => {
+		fetch("http://localhost:3000/api")
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setStudent(data.find((student) => student.username === params.username));
+			})
+			.catch((err) => console.log(err));
+	}
+	, []);
+
+
 
 	return (
 		<div>
 			<div className="profile-info">
 				<div>
-					<p><b>Name:</b> {student.name} </p>
+					<p><b>Name:</b> {student.username} </p>
 					<p><b>Email:</b> {student.email}</p>
 					<p><b>City:</b> {student.city}</p>
 				</div>
