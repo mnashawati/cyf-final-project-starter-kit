@@ -6,8 +6,6 @@ import path from "path";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-console.log(process.env);
-
 import router from "./api";
 import { httpsOnly, logErrors, pushStateRouting } from "./middleware";
 

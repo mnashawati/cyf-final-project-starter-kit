@@ -9,14 +9,14 @@ const StudentCard = ({ student }) => {
 		<Link
 			className="student-card"
 			to={{
-				pathname:`/students/${student.name.replace(" ","-")}`,
+				pathname:`/students/${student.username}`,
 			}}>
 			<div >
 				<div>
 					<img className="profile-picture" src={student.image} alt="student" />
 				</div>
 				<div>
-					<p><b>Name:</b> {student.name}</p>
+					<p><b>Name:</b> {student.username}</p>
 					<p><b>Email:</b> {student.email}</p>
 					<p><b>City:</b> {student.city}</p>
 				</div>
