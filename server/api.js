@@ -37,27 +37,8 @@ router.get("/", (_, res, next) => {
 	});
 });
 
-// router.get("/:id", (req, res, next) => {
-// 	const client = getClient();
-// 	client.connect((err) => {
-// 		if (err) {
-// 			return next(err);
-// 		}
-// 		const db = client.db("feedback-tracker");
-// 		const collection = db.collection("students");
 
-// 		const id = new mongodb.ObjectID(req.params.id);
-// 		const queryObject = { _id: id };
-
-// 		collection
-// 			.findOne(queryObject , function(error, result) {
-// 				res.send(error || result);
-// 				// client.close();
-// 			});
-// 	});
-// });
-
-router.post("/", (req, res, next) => {
+router.get("/:id", (req, res, next) => {
 	const client = getClient();
 	client.connect((err) => {
 		if (err) {
@@ -65,7 +46,28 @@ router.post("/", (req, res, next) => {
 		}
 		const db = client.db("feedback-tracker");
 		const collection = db.collection("students");
+		let id;
+		const searchedId = req.params.id;
 
+		if (mongodb.ObjectID.isValid(searchedId)) {
+			id = new mongodb.ObjectID(searchedId);
+		} else {
+			client.close();
+			return res.send(400);
+		}
+		const searchObject = { _id: id };
+
+		collection.findOne(searchObject, function (
+			error,
+			student
+		) {
+			res.send(error || student);
+			client.close();
+		});
+	});
+});
+
+router.post("/", (req, res, next) => {
 		const data = req.body;
 
 		collection
