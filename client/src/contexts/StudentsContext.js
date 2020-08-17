@@ -11,7 +11,7 @@ const StudentsContextProvider = (props) => {
 	console.log("context students---->", students);
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api")
+		fetch("/api")
 			.then((res) => res.json())
 			.then((data) => {
 				setStudents(data);
