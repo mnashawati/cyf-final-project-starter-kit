@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-
-
+import React from "react";
 import "./App.css";
+import StudentsContextProvider from "./contexts/StudentsContext";
 import StudentsGrid from "./components/StudentsGrid";
 import StudentProfile from "./components/StudentProfile";
 import {
@@ -13,10 +12,12 @@ import {
 export function App() {
 
 	return (
-		<Router>
-			<Route exact path="/students" component={()=> <StudentsGrid />} />
-			<Route exact path="/students/:username" component={()=> <StudentProfile />} />
-		</Router>
+		<StudentsContextProvider>
+			<Router>
+				<Route exact path="/students" component={()=> <StudentsGrid />} />
+				<Route exact path="/students/:username" component={()=> <StudentProfile />} />
+			</Router>
+		</StudentsContextProvider>
 	);
 }
 
