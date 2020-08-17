@@ -3,6 +3,8 @@ import { Router } from "express";
 
 import { getClient } from "./db";
 
+
+const mongodb = require("mongodb");
 const router = new Router();
 
 // router.get("/", (_, res, next) => {
@@ -35,7 +37,7 @@ router.get("/", (_, res, next) => {
 	});
 });
 
-router.get("/:id", (_, res, next) => {
+router.get("/:id", (req, res, next) => {
 	const client = getClient();
 	client.connect((err) => {
 		if (err) {
@@ -43,12 +45,22 @@ router.get("/:id", (_, res, next) => {
 		}
 		const db = client.db("feedback-tracker");
 		const collection = db.collection("students");
+		let id;
+		const searchedId = req.params.id;
+
+		if (mongodb.ObjectID.isValid(searchedId)){
+			id = new mongodb.ObjectID(searchedId);
+		} else {
+			client.close(); return res.send(400);
+		}
+		const searchObject = { _id: id };
+
 		collection
-			.find()
-			.toArray(function(error, students) {
-				res.send(error || students);
-				client.close();
-			});
+			.findOne(searchObject,
+				function(error, student) {
+					res.send(error || student);
+					client.close();
+				});
 	});
 });
 
