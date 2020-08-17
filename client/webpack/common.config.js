@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const path = require("path");
 module.exports = {
 	entry: "./client/src/index.js",
 	module: {
@@ -19,7 +19,13 @@ module.exports = {
 			},
 		],
 	},
+
 	devServer: {
+		contentBase: path.resolve("src"),
+		hot: true,
+		open: true,
+		port: 8000,
+		watchContentBase: true,
 		historyApiFallback: true,
 	},
 	plugins: [
