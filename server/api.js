@@ -68,11 +68,18 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
+	const client = getClient();
+	client.connect((err) => {
+		if (err) {
+			return next(err);
+		}
+		const db = client.db("feedback-tracker");
+		const collection = db.collection("students");
 		const data = req.body;
 
 		collection
 			.insertOne(data, (error, result) => {
-				// if everything is not ok -> send error response (500)
+			// if everything is not ok -> send error response (500)
 				if (error) {
 					console.log(error);
 					return res.sendStatus(500);
@@ -80,7 +87,8 @@ router.post("/", (req, res, next) => {
 				// if everything is ok -> send returned record (a bit tricky to find it...)
 				return res.status(201).send(result.ops[0]);
 			});
-		// client.close();
+	// client.close();
 	});
 });
+
 export default router;
