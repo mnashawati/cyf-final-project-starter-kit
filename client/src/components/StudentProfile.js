@@ -10,7 +10,7 @@ const StudentProfile = () => {
 	const [student, setStudent] = useState({});
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api")
+		fetch("/api")
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
