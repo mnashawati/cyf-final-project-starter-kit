@@ -4,9 +4,12 @@ import React, { useState, useEffect, createContext } from "react";
 
 export const StudentsContext = createContext();
 
+// we taking a props automaticaly in StudentsContextProvider function
+
 const StudentsContextProvider = (props) => {
 	const [students, setStudents] = useState();
 	console.log("context students---->", students);
+
 	useEffect(() => {
 		fetch("http://localhost:3000/api")
 			.then((res) => res.json())
