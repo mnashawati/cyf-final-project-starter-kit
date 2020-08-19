@@ -74,8 +74,9 @@ router.post("/", (req, res, next) => {
 			return next(err);
 		}
 		const db = client.db("feedback-tracker");
-		const collection = db.collection("students");
+		const collection = db.collection("feedback");
 		const data = req.body;
+		console.log(data);
 
 		collection
 			.insertOne(data, (error, result) => {
