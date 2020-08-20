@@ -76,7 +76,6 @@ router.post("/", (req, res, next) => {
 		const db = client.db("feedback-tracker");
 		const collection = db.collection("feedback");
 		const data = req.body;
-		console.log(data);
 
 		collection
 			.insertOne(data, (error, result) => {
@@ -88,7 +87,6 @@ router.post("/", (req, res, next) => {
 				// if everything is ok -> send returned record (a bit tricky to find it...)
 				return res.status(201).send(result.ops[0]);
 			});
-	// client.close();
 	});
 });
 
