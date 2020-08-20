@@ -19,15 +19,6 @@ module.exports = {
 			},
 		],
 	},
-
-	devServer: {
-		contentBase: path.resolve("src"),
-		hot: true,
-		open: true,
-		port: 8000,
-		watchContentBase: true,
-		historyApiFallback: true,
-	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			favicon: "./client/src/favicon.ico",
