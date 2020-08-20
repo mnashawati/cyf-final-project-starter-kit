@@ -37,7 +37,7 @@ const StudentProfile = () => {
 					{student.previousFeedback}</p>
 			</div>
 
-			<FeedbackForm student={student} />
+			<FeedbackForm />
 		</div>
 	);
 };
