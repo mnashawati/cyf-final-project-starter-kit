@@ -2,29 +2,35 @@
 import React, { useState } from "react";
 import "./feedbackForm.css";
 
-const FeedbackForm = ({ student }) => {
-	console.log("student",student);
-	const [feedbackMessage, setFeedbackMessage] = useState("");
-	const [givenFeedback, setGivenFeedback] = useState([]);
-	const [feedbackList, setFeedbackList] = useState([]);
+const FeedbackForm = () => {
+	const [feedback, setFeedback] = useState({
+		message: "",
+		name: "",
+	});
+
+	const postFeedback =() => {
+		fetch("/api", {
+			method: "POST",
+			headers: { "Content-type": "application/json",
+			},
+			body:JSON.stringify(
+				feedback,
+			),
+		})
+			.then((res) => {
+				res.json();
+			})
+			.catch((error) => console.log(error));
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setGivenFeedback(feedbackMessage);
-		setFeedbackList([feedbackMessage, ...feedbackList]);
-		setFeedbackMessage("");
+		e.target.reset();
+		postFeedback();
 	};
 
-	const handleChange = (e) => {
-		setFeedbackMessage(e.target.value);
-	};
 	return (
 		<div className="feedback-section-container">
-			<div className="given-feedback-section">
-				{feedbackList.map((feedback, index) => (
-					<div key={index}>{feedback}</div>
-				))}
-			</div>
 
 			<form
 				action=""
@@ -39,10 +45,19 @@ const FeedbackForm = ({ student }) => {
                     Write feedback for the student.
 				</label>
 				<textarea
-					name="message"
 					className="feedback-message"
-					onChange={(e) => handleChange(e)}
+					name="message"
+					onChange={(e) => setFeedback({ ...feedback, message: e.target.value })}
+					placeholder="Your message here..."
 				></textarea>
+				<div>
+					<input
+						className="input-name"
+						name="name"
+						onChange={(e) => setFeedback({ ...feedback, name: e.target.value })}
+						placeholder="Your name here..."
+					/>
+				</div>
 				<div className="send-feedback-button-div">
 					<button>Send Feedback</button>
 				</div>

@@ -74,7 +74,7 @@ router.post("/", (req, res, next) => {
 			return next(err);
 		}
 		const db = client.db("feedback-tracker");
-		const collection = db.collection("students");
+		const collection = db.collection("feedback");
 		const data = req.body;
 
 		collection
@@ -87,7 +87,6 @@ router.post("/", (req, res, next) => {
 				// if everything is ok -> send returned record (a bit tricky to find it...)
 				return res.status(201).send(result.ops[0]);
 			});
-	// client.close();
 	});
 });
 
