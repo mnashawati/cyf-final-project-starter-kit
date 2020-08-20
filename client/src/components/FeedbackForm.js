@@ -3,44 +3,34 @@ import React, { useState } from "react";
 import "./feedbackForm.css";
 
 const FeedbackForm = () => {
-	const [feedbackMessage, setFeedbackMessage] = useState({
-		feedback: "",
+	const [feedback, setFeedback] = useState({
+		message: "",
 		name: "",
 	});
-	const [givenFeedback, setGivenFeedback] = useState([]);
-	const [feedbackList, setFeedbackList] = useState([]);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setGivenFeedback(feedbackMessage);
-		setFeedbackList([feedbackMessage.feedback, ...feedbackList]);
-		setFeedbackMessage("");
+	const postFeedback =() => {
 		fetch("/api", {
 			method: "POST",
-			mode: "cors",
 			headers: { "Content-type": "application/json",
 			},
 			body:JSON.stringify(
-				feedbackMessage,
+				feedback,
 			),
 		})
 			.then((res) => {
-				res.json(); console.log(res);
+				res.json();
 			})
 			.catch((error) => console.log(error));
 	};
 
-	const handleChange = (name) => (e) => {
-		setFeedbackMessage({ ...feedbackMessage, [name]: e.target.value });
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		e.target.reset();
+		postFeedback();
 	};
 
 	return (
 		<div className="feedback-section-container">
-			<div className="given-feedback-section">
-				{feedbackList.map((feedback, index) => (
-					<div key={index}>{feedback}</div>
-				))}
-			</div>
 
 			<form
 				action=""
@@ -55,15 +45,16 @@ const FeedbackForm = () => {
                     Write feedback for the student.
 				</label>
 				<textarea
-					name="feedback"
 					className="feedback-message"
-					onChange={handleChange("feedback")}
+					name="message"
+					onChange={(e) => setFeedback({ ...feedback, message: e.target.value })}
+					placeholder="Your message here..."
 				></textarea>
 				<div>
 					<input
-						className="input-message"
-						type="name"
-						onChange={handleChange("name")}
+						className="input-name"
+						name="name"
+						onChange={(e) => setFeedback({ ...feedback, name: e.target.value })}
 						placeholder="Your name here..."
 					/>
 				</div>

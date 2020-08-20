@@ -13,13 +13,11 @@ const StudentProfile = () => {
 		fetch("/api")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				setStudent(data.find((student) => student.username === params.username));
 			})
 			.catch((err) => console.log(err));
 	}
 	, []);
-
 
 
 	return (
