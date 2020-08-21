@@ -5,7 +5,6 @@ import FeedbackForm from "./FeedbackForm";
 const StudentProfile = () => {
 
 	const params = useParams();
-	console.log(params);
 
 	const [student, setStudent] = useState({});
 
