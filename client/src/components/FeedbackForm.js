@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from "react";
 import "./feedbackForm.css";
+import ModuleSelector from "./ModuleSelector";
+
 
 const FeedbackForm = () => {
 	const [feedback, setFeedback] = useState({
+		module: "",
 		message: "",
 		name: "",
 	});
@@ -29,6 +32,11 @@ const FeedbackForm = () => {
 		postFeedback();
 	};
 
+	// re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
+	const handleChange = (e) => {
+		setFeedback(...feedback, { [e.target.name]: e.target.value });
+	};
+
 	return (
 		<div className="feedback-section-container">
 
@@ -44,17 +52,18 @@ const FeedbackForm = () => {
 				>
                     Write feedback for the student.
 				</label>
+				<ModuleSelector name="module" onChange={handleChange} />
 				<textarea
 					className="feedback-message"
 					name="message"
-					onChange={(e) => setFeedback({ ...feedback, message: e.target.value })}
+					onChange={handleChange}
 					placeholder="Your message here..."
 				></textarea>
 				<div>
 					<input
 						className="input-name"
 						name="name"
-						onChange={(e) => setFeedback({ ...feedback, name: e.target.value })}
+						onChange={handleChange}
 						placeholder="Your name here..."
 					/>
 				</div>

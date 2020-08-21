@@ -8,7 +8,7 @@ export const StudentsContext = createContext();
 
 const StudentsContextProvider = (props) => {
 	const [students, setStudents] = useState();
-	console.log("context students---->", students);
+
 
 	useEffect(() => {
 		fetch("/api")
