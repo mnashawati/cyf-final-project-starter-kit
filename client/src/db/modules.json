@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Intro To Coding"
+    },
+    {
+        "name": "Fundamentals"
+    },
+    {
+        "name": "HTML"
+    },
+    {
+        "name": "CSS"
+    },
+    {
+        "name": "JavaScript Core 1"
+    },
+    {
+        "name": "JavaScript Core 2"
+    },
+    {
+        "name": "JavaScript Core 3"
+    },
+    {
+        "name": "React"
+    },
+    {
+        "name": "Node"
+    },
+    {
+        "name": "SQL"
+    },
+    {
+        "name": "MongoDB"
+    },
+    {
+        "name": "Final Projects"
+    },
+    {
+        "name": "Other"
+    }
+]

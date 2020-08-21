@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from "react";
 import "./feedbackForm.css";
+import ModuleSelector from "./ModuleSelector";
+
 
 const FeedbackForm = () => {
 	const [feedback, setFeedback] = useState({
@@ -37,6 +39,7 @@ const FeedbackForm = () => {
 				className="feedback-form"
 				onSubmit={handleSubmit}
 			>
+				<ModuleSelector />
 				<label
 					className="feedback-label"
 					htmlFor="feedback"
