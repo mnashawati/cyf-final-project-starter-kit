@@ -1,12 +1,8 @@
-.logo {
-    width: 100px;
-}
+@import url('https://fonts.googleapis.com/css2?family&display=swap');
 
-.message {
-    color: blue;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Raleway',
+    sans-serif;
 }
-
-.message:hover {
-    background-color: yellow;
-}
-
