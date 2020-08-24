@@ -23,16 +23,6 @@
     border-radius: 50%;
 }
 
-.profile-info {
-    display: flex;
-    justify-content: space-around;
-}
-
-.full-profile-picture {
-    width: 300px;
-    height: 300px;
-}
-
 .previous-feedback {
     text-align: center;
     margin: 20px auto;
