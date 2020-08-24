@@ -38,43 +38,6 @@
     flex:2;
 }
 
-.area-of-focus-section {
-    border: 0.5px solid red;
-    height: 65vh;
-}
-
-.area-of-focus-title {
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.area-text-section-red{
-     border-top: 1.5px solid red;
-}
-.area-text-section-yellow{
-    border-top: 1.5px solid rgb(255, 204, 0);
-}
-
-.area-text-section-green {
-     border-top: 1.5px solid rgb(19, 91, 5);
-}
-
-.dummy-button {
-    background-color: red;
-    border-radius: 10px;
-    width: 60px;
-    height: 23px;
-    border: none;
-    margin: 10px;
-}
-
-.subtitle-text{
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 15px;
-}
-
 @media (min-width:300px) and (max-width:757px){
 
     .studen-profile-container{

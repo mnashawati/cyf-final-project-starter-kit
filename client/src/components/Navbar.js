@@ -8,7 +8,7 @@ const Navbar = () => {
 		<Link
 			className="navbar-route-link"
 			to={{ pathname: "/students" }}
-		><h3>Feedbak Tracker</h3></Link>
+		><h3>Feedback Tracker</h3></Link>
 	</div>;
 };
 
