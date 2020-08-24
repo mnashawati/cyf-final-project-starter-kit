@@ -1,0 +1,95 @@
+.studen-profile-container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 170px;
+    margin-left:170px;
+}
+
+.student-profile-section-left{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    border: 0.5px solid grey;
+    flex: 1;
+    height: 65vh;
+    margin: 15px;
+}
+
+.full-profile-picture {
+    width: 250px;
+    height: 250px;
+    border: 2px solid grey;
+    border-radius: 50%;
+}
+
+.studen-profile-container-right {
+    border: 0.5px solid grey;
+    flex: 2;
+    margin: 15px;
+}
+
+.student-image-section{
+    flex:1;
+}
+
+.student-info-section {
+    flex:2;
+}
+
+.area-of-focus-section {
+    border: 0.5px solid red;
+    height: 65vh;
+}
+
+.area-of-focus-title {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.area-text-section-red{
+     border-top: 1.5px solid red;
+}
+.area-text-section-yellow{
+    border-top: 1.5px solid rgb(255, 204, 0);
+}
+
+.area-text-section-green {
+     border-top: 1.5px solid rgb(19, 91, 5);
+}
+
+.dummy-button {
+    background-color: red;
+    border-radius: 10px;
+    width: 60px;
+    height: 23px;
+    border: none;
+    margin: 10px;
+}
+
+.subtitle-text{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+@media (min-width:300px) and (max-width:757px){
+
+    .studen-profile-container{
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 20px;
+}
+
+.full-profile-picture {
+    width: 150px;
+    height: 150px;
+    margin-top: -50px;
+}
+
+.student-profile-section-left {
+    margin-top: 50px;
+}
+}
