@@ -1,0 +1,16 @@
+.navbar-container {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color:rgb(237, 67, 67);
+  
+
+}
+
+.navbar-route-link {
+    text-decoration: none;
+     font-size: 40px;
+     color: black;
+}
