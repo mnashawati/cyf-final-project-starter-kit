@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from "react";
-import "./feedbackForm.css";
+import "./css/feedbackForm.css";
 import ModuleSelector from "./ModuleSelector";
 
 

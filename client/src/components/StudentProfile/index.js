@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "./studentProfile.css";
-import Navbar from "./Navbar.js";
-import AreasOfFocus from "./AreasOfFocus.js";
+import "./styles.css";
+import Navbar from "../Navbar/index.js";
+import AreasOfFocus from "../AreasOfFocus/index.js";
 // import FeedbackForm from "./FeedbackForm";
 
 const StudentProfile = () => {
@@ -24,7 +24,7 @@ const StudentProfile = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="studen-profile-container">
+			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
 						<img className="full-profile-picture" src={student.image} />

@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-for */
 import React from "react";
-import "./areasOfFocus.css";
+import "./styles.css";
+import FormAreasOfFocus from "../FormAreasOfFocus/index.js";
+
 const AreasOfFocus = () => {
+
 	return (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">
@@ -27,39 +30,7 @@ const AreasOfFocus = () => {
 					<button className="dummy-button">CSS</button>
 				</div>
 			</div>
-			<form>
-				<label className="areas-input-label">
-          Add area of focus:
-					<div>
-						<input
-							className="areas-input"
-							type="text"
-							name="area"
-							placeholder="eg. CSS, useEffect Hook, for loop..."
-						/>
-					</div>
-				</label>
-				<div>
-					<input
-						className="send-input-red"
-						name="red"
-						type="button"
-					/>
-					<input
-						className="send-input-yellow"
-						type="button"
-						name="yellow"
-					/>
-					<input
-						className="send-input-green"
-						type="button"
-						name="green"
-					/>
-				</div>
-				<div className="add-area-button-section">
-					<button className="add-area-button">Add area</button>
-				</div>
-			</form>
+			<FormAreasOfFocus />
 		</div>
 	);
 };
