@@ -1,31 +1,58 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from "react";
 
 const FormAreasOfFocus = () => {
 
-	const [areasOfFocus, setAreasOfFocus] = useState([
+	const [areasOfFocus, setAreasOfFocus] = useState(
 		{
-			toWorkOn: [""],
-			okayAt: [""],
-			goodAt: [""],
+			toWorkOn: [],
+			okayAt: [],
+			goodAt: [],
 		},
-	]);
+	);
 
-	const [areaForm, setAreaForm] = useState({
+	const [area, setArea] = useState({
 		message: "",
-		light: "",
+		level: "",
 	});
+
+	const addTheLevelToAreas = () => {
+		area.level === "To work on"
+			? setAreasOfFocus({
+				...areasOfFocus,
+				toWorkOn: [
+					...areasOfFocus.toWorkOn,
+					area.message,
+				],
+			})
+			: area.level === "Okay at"
+				? setAreasOfFocus({
+					...areasOfFocus,
+					okayAt: [
+						...areasOfFocus.okayAt, area.message,
+					],
+				})
+				: area.level === "Good at"
+					? setAreasOfFocus({
+						...areasOfFocus,
+						goodAt: [
+							...areasOfFocus.goodAt, area.message,
+						],
+					})
+					: null;
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		addTheLevelToAreas();
 		e.target.reset();
 	};
-
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
 				<p className="areas-input-label">
-            Add area of focus:
+          Add area of focus:
 				</p>
 			</div>
 			<div className="input-lights-add-button-container">
@@ -36,8 +63,8 @@ const FormAreasOfFocus = () => {
 						name="area"
 						placeholder="eg. CSS, useEffect Hook, for loop..."
 						onChange={(e) =>
-							setAreaForm({
-								...areaForm,
+							setArea({
+								...area,
 								message: e.target.value,
 							})
 						}
@@ -49,11 +76,11 @@ const FormAreasOfFocus = () => {
 						type="radio"
 						id="male"
 						name="area"
-						value="red"
+						value="To work on"
 						onChange={(e) =>
-							setAreaForm({
-								...areaForm,
-								light: e.target.value,
+							setArea({
+								...area,
+								level: e.target.value,
 							})
 						}
 					></input>
@@ -62,11 +89,11 @@ const FormAreasOfFocus = () => {
 						type="radio"
 						id="male"
 						name="area"
-						value="yellow"
+						value="Okay at"
 						onChange={(e) =>
-							setAreaForm({
-								...areaForm,
-								light: e.target.value,
+							setArea({
+								...area,
+								level: e.target.value,
 							})
 						}
 					></input>
@@ -75,20 +102,20 @@ const FormAreasOfFocus = () => {
 						type="radio"
 						id="male"
 						name="area"
-						value="green"
+						value="Good at"
 						onChange={(e) =>
-							setAreaForm({
-								...areaForm,
-								light: e.target.value,
+							setArea({
+								...area,
+								level: e.target.value,
 							})
 						}
 					></input>
 				</div>
 				<div className="add-area-button-section">
-					<div>Good at..</div>
+					<div>{area.level}</div>
 					<div>
 						<button className="add-area-button">
-                Add area
+              Add area
 						</button>
 					</div>
 				</div>

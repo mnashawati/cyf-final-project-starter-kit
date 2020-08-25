@@ -24,7 +24,7 @@ const StudentProfile = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="studen-profile-container">
+			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
 						<img className="full-profile-picture" src={student.image} />

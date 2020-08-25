@@ -2,6 +2,7 @@
 import React from "react";
 import "./styles.css";
 import FormAreasOfFocus from "../FormAreasOfFocus/index.js";
+
 const AreasOfFocus = () => {
 
 	return (
