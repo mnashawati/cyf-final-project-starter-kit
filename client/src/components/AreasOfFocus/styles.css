@@ -69,6 +69,19 @@
     border-radius: 50%;
 }
 
-.add-area-button {
-    
+.input-lights-add-button-container {
+    display: flex;
+}
+
+.area-input-sectio{
+    flex:1;
+}
+
+.lights-section{
+    flex:1;
+}
+
+.add-area-button-section{
+    display: flex;
+    flex:1;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import StudentsContextProvider from "./contexts/StudentsContext";
-import StudentsGrid from "./components/StudentsGrid";
+import StudentsGrid from "./components/StudentsGrid/index.js";
 import StudentProfile from "./components/StudentProfile";
 import {
 	BrowserRouter as Router,

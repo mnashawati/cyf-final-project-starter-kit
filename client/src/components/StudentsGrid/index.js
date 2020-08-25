@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import StudentCard from "./StudentCard";
-import "./studentsGrid.css";
-import { StudentsContext } from "../contexts/StudentsContext";
+import StudentCard from "../StudentCard/index.js";
+import "./styles.css";
+import { StudentsContext } from "../../contexts/StudentsContext";
 
 const StudentsGrid = () => {
 

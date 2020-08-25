@@ -1,10 +1,7 @@
 .studen-profile-container {
     min-height: calc(100vh - 100px);
     display: flex;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-right: 170px;
-    margin-left:170px;
+    margin: 50px auto;
 }
 
 .student-profile-section-left{
