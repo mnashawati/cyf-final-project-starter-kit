@@ -15,7 +15,7 @@ const StudentCard = ({ student }) => {
 					<img className="profile-picture" src={student.image} alt="student" />
 				</div>
 				<div>
-					<p><b>Name:</b> {student.username}</p>
+					<p><b>Name:</b> {student.name}</p>
 					<p><b>Email:</b> {student.email}</p>
 					<p><b>City:</b> {student.city}</p>
 				</div>

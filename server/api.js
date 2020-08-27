@@ -1,8 +1,5 @@
-
 import { Router } from "express";
-
 import { getClient } from "./db";
-
 import mongodb from "mongodb";
 
 const router = new Router();
@@ -19,74 +16,129 @@ const router = new Router();
 // 	});
 // });
 
-router.get("/", (_, res, next) => {
-	const client = getClient();
-	client.connect((err) => {
-		if (err) {
-			return next(err);
-		}
-		const db = client.db("feedback-tracker");
-		const collection = db.collection("students");
-		// const searchObject = {};
+const client = getClient();
+
+client.connect(function () {
+
+	const db = client.db("feedback-tracker");
+
+	router.get("/students", (_, res) => {
+		const collection = db.collection("StudentDenormalizedData");
+		console.log("collection", collection);
+
 		collection
 			.find()
-			.toArray(function(error, students) {
-				res.send(error || students);
-				// client.close();
+			.toArray(function(error, result) {
+				res.send(error || result);
 			});
 	});
-});
 
+	router.get("/students/:id", (req, res) => {
+		const collection = db.collection("StudentDenormalizedData");
 
-router.get("/:id", (req, res, next) => {
-	const client = getClient();
-	client.connect((err) => {
-		if (err) {
-			return next(err);
+		// check if the id is valid if not -> 404
+		if (!mongodb.ObjectID.isValid(req.params.id)) {
+			return res.send(404);
 		}
-		const db = client.db("feedback-tracker");
-		const collection = db.collection("students");
-		let id;
-		const searchedId = req.params.id;
 
-		if (mongodb.ObjectID.isValid(searchedId)) {
-			id = new mongodb.ObjectID(searchedId);
-		} else {
-			client.close();
-			return res.send(400);
-		}
-		const searchObject = { _id: id };
+		// define id (mongodb.ObjectID)
+		const id = new mongodb.ObjectID(req.params.id);
 
-		collection.findOne(searchObject, function (
-			error,
-			student
-		) {
-			res.send(error || student);
-			client.close();
+		const queryObject = { _id: id };
+
+		collection.findOne(queryObject, (error, result) => {
+			if (error) {
+				return res.status(500).send(error);
+			}
+
+			// if no record ->
+			if (!result) {
+				return res.sendStatus(404);
+			}
+
+			// if record -> send the data (200 default)
+			return res.send(result);
 		});
+
 	});
-});
 
-router.post("/", (req, res, next) => {
-	const client = getClient();
-	client.connect((err) => {
-		if (err) {
-			return next(err);
+	// To post new feedback or area of focus
+	router.put("/students/:id", (req, res) => {
+		const collection = db.collection("StudentDenormalizedData");
+
+		const data =  req.body ;
+		// validation should happen here
+
+		// check if the id is valid if not -> 404
+		if (!mongodb.ObjectID.isValid(req.params.id)) {
+			return res.send(404);
 		}
-		const db = client.db("feedback-tracker");
-		const collection = db.collection("feedback");
-		const data = req.body;
 
-		collection
-			.insertOne(data, (error, result) => {
-			// if everything is not ok -> send error response (500)
-				if (error) {
-					console.log(error);
-					return res.sendStatus(500);
-				}
-				// if everything is ok -> send returned record (a bit tricky to find it...)
-				return res.status(201).send(result.ops[0]);
-			});
+		// define id (mongodb.ObjectID)
+		const id = new mongodb.ObjectID(req.params.id);
+		const queryObject = { _id: id };
+		// DON'T send back the original record, send back the UPDATED record
+		const options = { returnOriginal: false };
+		const sendErrorOrResult = (error, result) => {
+			if (error) {
+				return res.status(500).send(error);
+			}
+			return res.send(result.value); // result.value === result.ops[0]
+		};
+
+		if (data.hasOwnProperty("level")) {
+			const level = data.level;
+			const message = data.message;
+
+			level === "toWorkOn"
+				? collection.update(
+					queryObject,
+					{ $push:
+					{ "areasOfFocus.toWorkOn": message } },
+					options,
+					sendErrorOrResult
+				) : level === "okayAt"
+					? collection.update(
+						queryObject,
+						{ $push:
+					{ "areasOfFocus.okayAt": message } },
+						options,
+						sendErrorOrResult
+					) : level === "goodAt"
+						? collection.update(
+							queryObject,
+							{ $push:
+					{ "areasOfFocus.goodAt": message } },
+							options,
+							sendErrorOrResult
+						)
+						: null;
+			return 1;
+		}
+
+		// if there are missing mandatory properties then return an error message to the API user and stop
+		function findMissingFields(data, mandatoryFields) {
+			return mandatoryFields.filter((field) => !data.hasOwnProperty(field));
+		}
+
+		const missingFields = findMissingFields(data, ["feedback_title", "feedback_module", "feedback_mentor", "feedback_text"]);
+
+		if (missingFields.length > 0) {
+			const errorInfo = {
+				error: {
+					description: "Missing Fields",
+					missingFields: missingFields,
+				},
+			};
+			return res.status(400).send(errorInfo);
+		}
+
+		collection.update(
+			queryObject,
+			{ $push : { "allFeedback" : data } },
+			options,
+			sendErrorOrResult
+		);
 	});
 });
 
