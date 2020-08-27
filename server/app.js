@@ -3,9 +3,6 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 
-import * as dotenv from "dotenv";
-dotenv.config();
-
 import router from "./api";
 import { httpsOnly, logErrors, pushStateRouting } from "./middleware";
 

@@ -4,14 +4,14 @@ import React, { useState, useEffect, createContext } from "react";
 
 export const StudentsContext = createContext();
 
-// we taking a props automatically in StudentsContextProvider function
+// we are taking props automatically in StudentsContextProvider function
 
 const StudentsContextProvider = (props) => {
 	const [students, setStudents] = useState();
 
 
 	useEffect(() => {
-		fetch("/api")
+		fetch("/api/students")
 			.then((res) => res.json())
 			.then((data) => {
 				setStudents(data);
