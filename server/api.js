@@ -137,12 +137,7 @@ client.connect(function () {
 			queryObject,
 			{ $push : { "allFeedback" : data } },
 			options,
-			(error, result) => {
-				if (error) {
-					return res.status(500).send(error);
-				}
-				return res.send(result.value); // result.value === result.ops[0]
-			}
+			sendErrorOrResult
 		);
 	});
 });
