@@ -1,22 +1,35 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
-import { StudentsContext } from "../../contexts/StudentsContext";
+// import { StudentsContext } from "../../contexts/StudentsContext";
 // import FeedbackForm from "./FeedbackForm";
 
 const StudentProfile = () => {
 	const params = useParams();
 
-	const { students } = useContext(StudentsContext);
+	const [student, setStudent] = useState({});
 
-	function isStudent(student) {
-		return student.name === params.name;
+	useEffect(() => {
+		fetch("/api/students")
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setStudent(data.find((student) => student.name === params.name));
+			})
+			.catch((err) => console.log(err));
 	}
+	, []);
 
-	const student = students.find(isStudent);
+	// const { students } = useContext(StudentsContext);
+
+	// function isStudent(student) {
+	// 	return student.name === params.name;
+	// }
+
+	// const student = students.find(isStudent);
 
 	return (
 		<>
