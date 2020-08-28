@@ -1,40 +1,45 @@
-/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from "react";
-import "./css/feedbackForm.css";
-import ModuleSelector from "./ModuleSelector";
+import modules from "../../db/modules.json";
+import "../FeedbackForm/styles.css";
 
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ student }) => {
 	const [feedback, setFeedback] = useState({
 		module: "",
-		message: "",
-		name: "",
+		title: "",
+		text: "",
+		mentor: "",
 	});
 
+	const options = {
+		method: "PUT",
+		headers: { "Content-type": "application/json",
+		},
+		body: JSON.stringify(
+			feedback,
+		),
+	};
+
 	const postFeedback =() => {
-		fetch("/api", {
-			method: "POST",
-			headers: { "Content-type": "application/json",
-			},
-			body:JSON.stringify(
-				feedback,
-			),
-		})
-			.then((res) => {
+		fetch(`/api/${student._id}`, options)
+			.then( (res) => {
 				res.json();
+				console.log(res.json());
 			})
 			.catch((error) => console.log(error));
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		e.target.reset();
 		postFeedback();
+		e.target.reset();
 	};
 
 	// re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
 	const handleChange = (e) => {
-		setFeedback(...feedback, { [e.target.name]: e.target.value });
+		console.log("student id:", student._id);
+
+		setFeedback({ ...feedback, [e.target.name]: e.target.value });
 	};
 
 	return (
@@ -45,30 +50,57 @@ const FeedbackForm = () => {
 				className="feedback-form"
 				onSubmit={handleSubmit}
 			>
-				<label
-					className="feedback-label"
-					htmlFor="feedback"
-					id="feedback"
-				>
+				<div>
+					<label
+						className="feedback-label"
+						htmlFor="feedback"
+						id="feedback"
+					>
                     Write feedback for the student.
-				</label>
-				<ModuleSelector name="module" onChange={handleChange} />
-				<textarea
-					className="feedback-message"
-					name="message"
-					onChange={handleChange}
-					placeholder="Your message here..."
-				></textarea>
+					</label>
+				</div>
+
+				<div>
+					<select
+						value={feedback.module}
+						name="module"
+						onChange={handleChange}
+					>
+						<option value="" selected disabled hidden>Select a module</option>
+						{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
+					</select>
+				</div>
+
+				<div>
+					<input className="input feedback-title"
+						type="text"
+						name="title"
+						value={feedback.title}
+						onChange={handleChange}
+						placeholder="Feedback title...">
+					</input>
+				</div>
+				<div>
+					<textarea
+						className="feedback-message"
+						name="text"
+						value={feedback.text}
+						onChange={handleChange}
+						placeholder="Your message here..."
+					></textarea>
+				</div>
 				<div>
 					<input
 						className="input-name"
-						name="name"
+						type="text"
+						name="mentor"
+						value={feedback.mentor}
 						onChange={handleChange}
 						placeholder="Your name here..."
 					/>
 				</div>
 				<div className="send-feedback-button-div">
-					<button>Send Feedback</button>
+					<input type="submit" value="Post feedback" />
 				</div>
 			</form>
 		</div>

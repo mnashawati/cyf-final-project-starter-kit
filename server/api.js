@@ -22,7 +22,7 @@ client.connect(function () {
 
 	const db = client.db("feedback-tracker");
 
-	router.get("/students", (_, res) => {
+	router.get("/", (_, res) => {
 		const collection = db.collection("StudentDenormalizedData");
 		console.log("collection", collection);
 
@@ -33,7 +33,7 @@ client.connect(function () {
 			});
 	});
 
-	router.get("/students/:id", (req, res) => {
+	router.get("/:id", (req, res) => {
 		const collection = db.collection("StudentDenormalizedData");
 
 		// check if the id is valid if not -> 404
@@ -43,19 +43,16 @@ client.connect(function () {
 
 		// define id (mongodb.ObjectID)
 		const id = new mongodb.ObjectID(req.params.id);
-
 		const queryObject = { _id: id };
 
 		collection.findOne(queryObject, (error, result) => {
 			if (error) {
 				return res.status(500).send(error);
 			}
-
 			// if no record ->
 			if (!result) {
 				return res.sendStatus(404);
 			}
-
 			// if record -> send the data (200 default)
 			return res.send(result);
 		});
@@ -63,10 +60,11 @@ client.connect(function () {
 	});
 
 	// To post new feedback or area of focus
-	router.put("/students/:id", (req, res) => {
+	router.put("/:id", (req, res) => {
+
 		const collection = db.collection("StudentDenormalizedData");
 
-		const data =  req.body ;
+		const data = req.body;
 		// validation should happen here
 
 		// check if the id is valid if not -> 404
@@ -77,13 +75,14 @@ client.connect(function () {
 		// define id (mongodb.ObjectID)
 		const id = new mongodb.ObjectID(req.params.id);
 		const queryObject = { _id: id };
-		// DON'T send back the original record, send back the UPDATED record
-		const options = { returnOriginal: false };
+
+		const options = { returnOriginal: false }; // send back the UPDATED record
+
 		const sendErrorOrResult = (error, result) => {
 			if (error) {
 				return res.status(500).send(error);
 			}
-			return res.send(result.value); // result.value === result.ops[0]
+			return res.send(result.ops[0]); // result.value === result.ops[0]
 		};
 
 		if (data.hasOwnProperty("level")) {
@@ -121,7 +120,7 @@ client.connect(function () {
 			return mandatoryFields.filter((field) => !data.hasOwnProperty(field));
 		}
 
-		const missingFields = findMissingFields(data, ["feedback_title", "feedback_module", "feedback_mentor", "feedback_text"]);
+		const missingFields = findMissingFields(data, ["title", "module", "mentor", "text"]);
 
 		if (missingFields.length > 0) {
 			const errorInfo = {
@@ -139,6 +138,8 @@ client.connect(function () {
 			options,
 			sendErrorOrResult
 		);
+
+		res.json({ status: "success", feedbackAdded: req.body });
 	});
 });
 
