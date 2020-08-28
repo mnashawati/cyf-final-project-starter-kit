@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
-// import { StudentsContext } from "../../contexts/StudentsContext";
 // import FeedbackForm from "./FeedbackForm";
 
 const StudentProfile = () => {
@@ -31,22 +30,31 @@ const StudentProfile = () => {
 
 	// const student = students.find(isStudent);
 
-	return (
+	return  (
 		<>
 			<Navbar />
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
-						<img className="full-profile-picture" src={student.profile_pic_url} />
+						<img
+							className="full-profile-picture"
+							src={student.profile_pic_url}
+						/>
 					</div>
 					<div className="student-info-section">
-						<p><b>Name:</b> {student.name} </p>
-						<p><b>Email:</b> {student.email}</p>
-						<p><b>City:</b> {student.city}</p>
+						<p>
+							<b>Name:</b> {student.name}{" "}
+						</p>
+						<p>
+							<b>Email:</b> {student.email}
+						</p>
+						<p>
+							<b>City:</b> {student.city}
+						</p>
 					</div>
 				</div>
 				<div className="studen-profile-container-right">
-					<AreasOfFocus />
+					<AreasOfFocus student={student} />
 				</div>
 
 				{/* <div className="feedback-section">

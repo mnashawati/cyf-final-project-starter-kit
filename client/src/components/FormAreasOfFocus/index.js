@@ -1,6 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from "react";
 
+import "./styles.css";
+
 const FormAreasOfFocus = () => {
 
 	const [areasOfFocus, setAreasOfFocus] = useState(
@@ -61,7 +63,7 @@ const FormAreasOfFocus = () => {
 						className="areas-input"
 						type="text"
 						name="area"
-						placeholder="eg. CSS, useEffect Hook, for loop..."
+						placeholder="eg. CSS, useEffect Hook..."
 						onChange={(e) =>
 							setArea({
 								...area,
@@ -112,8 +114,8 @@ const FormAreasOfFocus = () => {
 					></input>
 				</div>
 				<div className="add-area-button-section">
-					<div>{area.level}</div>
-					<div>
+					<div className="area-display">{area.level}</div>
+					<div className="buton-wrapper">
 						<button className="add-area-button">
               Add area
 						</button>
