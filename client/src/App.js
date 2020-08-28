@@ -15,7 +15,7 @@ export function App() {
 		<StudentsContextProvider>
 			<Router>
 				<Route exact path="/students" component={()=> <StudentsGrid />} />
-				<Route exact path="/students/:username" component={()=> <StudentProfile />} />
+				<Route exact path="/students/:name" component={()=> <StudentProfile />} />
 			</Router>
 		</StudentsContextProvider>
 	);
