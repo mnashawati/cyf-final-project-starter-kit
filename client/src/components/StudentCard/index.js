@@ -8,11 +8,11 @@ const StudentCard = ({ student }) => {
 		<Link
 			className="student-card"
 			to={{
-				pathname:`/students/${student.username}`,
+				pathname:`/students/${student.name}`,
 			}}>
 			<div >
 				<div>
-					<img className="profile-picture" src={student.image} alt="student" />
+					<img className="profile-picture" src={student.profile_pic_url} alt="student" />
 				</div>
 				<div>
 					<p><b>Name:</b> {student.name}</p>
