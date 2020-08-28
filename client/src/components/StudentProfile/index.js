@@ -18,8 +18,6 @@ const StudentProfile = () => {
 
 	const student = students.find(isStudent);
 
-	console.log(student);
-
 	return (
 		<>
 			<Navbar />
