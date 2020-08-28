@@ -3,9 +3,10 @@ import React from "react";
 import "./styles.css";
 import FormAreasOfFocus from "../FormAreasOfFocus/index.js";
 
-const AreasOfFocus = () => {
 
-	return (
+const AreasOfFocus = ({ student }) => {
+
+	return student ? (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">
         Areas of focus
@@ -32,7 +33,7 @@ const AreasOfFocus = () => {
 			</div>
 			<FormAreasOfFocus />
 		</div>
-	);
+	) : null;
 };
 
 export default AreasOfFocus;
