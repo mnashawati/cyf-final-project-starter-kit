@@ -26,8 +26,9 @@ const StudentProfile = () => {
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
-						<img className="full-profile-picture" src={student.profile_pic_url
-						} />
+						<img className="full-profile-picture"
+							src={student.profile_pic_url}
+						/>
 					</div>
 					<div className="student-info-section">
 						<p><b>Name:</b> {student.name} </p>

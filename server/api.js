@@ -24,7 +24,6 @@ client.connect(function () {
 
 	router.get("/", (_, res) => {
 		const collection = db.collection("StudentDenormalizedData");
-		console.log("collection", collection);
 
 		collection
 			.find()

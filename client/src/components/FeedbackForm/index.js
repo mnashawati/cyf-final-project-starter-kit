@@ -37,8 +37,6 @@ const FeedbackForm = ({ student }) => {
 
 	// re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
 	const handleChange = (e) => {
-		console.log("student id:", student._id);
-
 		setFeedback({ ...feedback, [e.target.name]: e.target.value });
 	};
 
