@@ -1,17 +1,13 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from "react";
 
 import "./styles.css";
 
 const FormAreasOfFocus = () => {
-
-	const [areasOfFocus, setAreasOfFocus] = useState(
-		{
-			toWorkOn: [],
-			okayAt: [],
-			goodAt: [],
-		},
-	);
+	const [areasOfFocus, setAreasOfFocus] = useState({
+		toWorkOn: [],
+		okayAt: [],
+		goodAt: [],
+	});
 
 	const [area, setArea] = useState({
 		message: "",
@@ -22,24 +18,17 @@ const FormAreasOfFocus = () => {
 		area.level === "To work on"
 			? setAreasOfFocus({
 				...areasOfFocus,
-				toWorkOn: [
-					...areasOfFocus.toWorkOn,
-					area.message,
-				],
+				toWorkOn: [...areasOfFocus.toWorkOn, area.message],
 			})
 			: area.level === "Okay at"
 				? setAreasOfFocus({
 					...areasOfFocus,
-					okayAt: [
-						...areasOfFocus.okayAt, area.message,
-					],
+					okayAt: [...areasOfFocus.okayAt, area.message],
 				})
 				: area.level === "Good at"
 					? setAreasOfFocus({
 						...areasOfFocus,
-						goodAt: [
-							...areasOfFocus.goodAt, area.message,
-						],
+						goodAt: [...areasOfFocus.goodAt, area.message],
 					})
 					: null;
 	};
@@ -53,9 +42,7 @@ const FormAreasOfFocus = () => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<p className="areas-input-label">
-          Add area of focus:
-				</p>
+				<p className="areas-input-label">Add area of focus:</p>
 			</div>
 			<div className="input-lights-add-button-container">
 				<div className="area-input-section">
@@ -116,9 +103,7 @@ const FormAreasOfFocus = () => {
 				<div className="add-area-button-section">
 					<div className="area-display">{area.level}</div>
 					<div className="buton-wrapper">
-						<button className="add-area-button">
-              Add area
-						</button>
+						<button className="add-area-button">Add area</button>
 					</div>
 				</div>
 			</div>
