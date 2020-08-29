@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
@@ -15,7 +14,6 @@ const StudentProfile = () => {
 		fetch("/api/students")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				setStudent(data.find((student) => student.name === params.name));
 			})
 			.catch((err) => console.log(err));
