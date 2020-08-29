@@ -5,6 +5,7 @@ import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
 import FeedbackForm from "../FeedbackForm/index.js";
 
+
 const StudentProfile = () => {
 	const params = useParams();
 	const [student, setStudent] = useState({});
@@ -20,20 +21,27 @@ const StudentProfile = () => {
 	, []);
 
 
-	return (
+	return  (
 		<>
 			<Navbar />
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
-						<img className="full-profile-picture"
+						<img
+							className="full-profile-picture"
 							src={student.profile_pic_url}
 						/>
 					</div>
 					<div className="student-info-section">
-						<p><b>Name:</b> {student.name} </p>
-						<p><b>Email:</b> {student.email}</p>
-						<p><b>City:</b> {student.city}</p>
+						<p>
+							<b>Name:</b> {student.name}{" "}
+						</p>
+						<p>
+							<b>Email:</b> {student.email}
+						</p>
+						<p>
+							<b>City:</b> {student.city}
+						</p>
 					</div>
 				</div>
 				<div className="student-profile-container-right">

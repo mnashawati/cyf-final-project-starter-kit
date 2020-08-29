@@ -1,0 +1,26 @@
+.add-area-button-section {
+    display: flex;
+    flex: 1;
+}
+
+.add-area-button {
+    background-color: rgb(237, 67, 67);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 16px;
+    color: white;
+}
+
+.buton-wrapper {
+    flex: 1;
+}
+
+.area-display {
+    flex: 1;
+}
+
+.lights-section {
+    text-align: center;
+}

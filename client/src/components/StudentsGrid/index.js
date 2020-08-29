@@ -1,20 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import StudentCard from "../StudentCard/index.js";
 import "./styles.css";
-import { StudentsContext } from "../../contexts/StudentsContext";
 
-const StudentsGrid = () => {
+const StudentsGrid = ({ students } ) => {
 
-	const { students } = useContext(StudentsContext);
-
-	return students ? (
+	return  (
 		<div className="students-cards-container">
 			{students.map((student, index) => (
 				<StudentCard student={student} key={index} />
 			))}
 		</div>
 
-	): null;
+	);
 
 };
 

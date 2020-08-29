@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import StudentsContextProvider from "./contexts/StudentsContext";
 import StudentsGrid from "./components/StudentsGrid/index.js";
 import StudentProfile from "./components/StudentProfile";
 import {
@@ -11,14 +10,26 @@ import {
 
 export function App() {
 
-	return (
-		<StudentsContextProvider>
-			<Router>
-				<Route exact path="/students" component={()=> <StudentsGrid />} />
-				<Route exact path="/students/:name" component={()=> <StudentProfile />} />
-			</Router>
-		</StudentsContextProvider>
-	);
+	const [students, setStudents] = useState([]);
+
+	useEffect(() => {
+		fetch("/api/students")
+			.then((res) => res.json())
+			.then((data) => {
+				setStudents(data);
+			})
+			.catch((err) => console.log(err));
+	}
+	, []);
+
+
+	return students ?(
+		<Router>
+			<Route exact path="/students" component={() => <StudentsGrid students={students} />} />
+			<Route exact path="/students/:name" component={() => <StudentProfile students={students} />} />
+		</Router>
+
+	): null;
 }
 
 export default App;

@@ -1,15 +1,13 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState } from "react";
 
-const FormAreasOfFocus = () => {
+import "./styles.css";
 
-	const [areasOfFocus, setAreasOfFocus] = useState(
-		{
-			toWorkOn: [],
-			okayAt: [],
-			goodAt: [],
-		},
-	);
+const FormAreasOfFocus = () => {
+	const [areasOfFocus, setAreasOfFocus] = useState({
+		toWorkOn: [],
+		okayAt: [],
+		goodAt: [],
+	});
 
 	const [area, setArea] = useState({
 		message: "",
@@ -20,24 +18,17 @@ const FormAreasOfFocus = () => {
 		area.level === "To work on"
 			? setAreasOfFocus({
 				...areasOfFocus,
-				toWorkOn: [
-					...areasOfFocus.toWorkOn,
-					area.message,
-				],
+				toWorkOn: [...areasOfFocus.toWorkOn, area.message],
 			})
 			: area.level === "Okay at"
 				? setAreasOfFocus({
 					...areasOfFocus,
-					okayAt: [
-						...areasOfFocus.okayAt, area.message,
-					],
+					okayAt: [...areasOfFocus.okayAt, area.message],
 				})
 				: area.level === "Good at"
 					? setAreasOfFocus({
 						...areasOfFocus,
-						goodAt: [
-							...areasOfFocus.goodAt, area.message,
-						],
+						goodAt: [...areasOfFocus.goodAt, area.message],
 					})
 					: null;
 	};
@@ -51,9 +42,7 @@ const FormAreasOfFocus = () => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<p className="areas-input-label">
-          Add area of focus:
-				</p>
+				<p className="areas-input-label">Add area of focus:</p>
 			</div>
 			<div className="input-lights-add-button-container">
 				<div className="area-input-section">
@@ -61,7 +50,7 @@ const FormAreasOfFocus = () => {
 						className="areas-input"
 						type="text"
 						name="area"
-						placeholder="eg. CSS, useEffect Hook, for loop..."
+						placeholder="eg. CSS, useEffect Hook..."
 						onChange={(e) =>
 							setArea({
 								...area,
@@ -112,11 +101,9 @@ const FormAreasOfFocus = () => {
 					></input>
 				</div>
 				<div className="add-area-button-section">
-					<div>{area.level}</div>
-					<div>
-						<button className="add-area-button">
-              Add area
-						</button>
+					<div className="area-display">{area.level}</div>
+					<div className="buton-wrapper">
+						<button className="add-area-button">Add area</button>
 					</div>
 				</div>
 			</div>
