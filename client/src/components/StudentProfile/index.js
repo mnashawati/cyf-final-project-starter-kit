@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
-// import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "../FeedbackForm/index.js";
+
 
 const StudentProfile = () => {
 	const params = useParams();
-
 	const [student, setStudent] = useState({});
 
 	useEffect(() => {
-		fetch("/api/students")
+		fetch("/api")
 			.then((res) => res.json())
 			.then((data) => {
 				setStudent(data.find((student) => student.name === params.name));
@@ -20,13 +20,6 @@ const StudentProfile = () => {
 	}
 	, []);
 
-	// const { students } = useContext(StudentsContext);
-
-	// function isStudent(student) {
-	// 	return student.name === params.name;
-	// }
-
-	// const student = students.find(isStudent);
 
 	return  (
 		<>
@@ -51,16 +44,14 @@ const StudentProfile = () => {
 						</p>
 					</div>
 				</div>
-				<div className="studen-profile-container-right">
-					<AreasOfFocus student={student} />
-				</div>
-
-				{/* <div className="feedback-section">
+				<div className="student-profile-container-right">
+					<AreasOfFocus />
+					<FeedbackForm student={student} />
+					{/* <div className="feedback-section">
 				<p className="previous-feedback"><b>Previous feedback:</b> <br></br>
 					{student.previousFeedback}</p>
-			</div>
-
-			<FeedbackForm /> */}
+			</div>*/}
+				</div>
 			</div>
 		</>
 	);
