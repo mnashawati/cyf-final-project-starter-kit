@@ -1,6 +1,5 @@
 .areas-of-focus-section {
-    border: 0.5px solid red;
-    height: 65vh;
+    min-height: 80vh;
 }
 
 .area-of-focus-title {
@@ -10,30 +9,95 @@
 }
 
 .area-text-section-red {
-    border-top: 1.5px solid red;
+    border: 1.5px solid red;
+    margin-bottom: 10px;
+    min-height: 100px;
 }
 
 .area-text-section-yellow {
-    border-top: 1.5px solid rgb(255, 204, 0);
+    border: 1.5px solid rgb(255, 204, 0);
+    margin-bottom: 10px;
+    min-height: 100px;
 }
 
 .area-text-section-green {
-    border-top: 1.5px solid rgb(19, 91, 5);
+    border: 1.5px solid rgb(19, 91, 5);
+    margin-bottom: 10px;
+    min-height: 100px;
 }
 
-.dummy-button {
+.areas-button-red {
     background-color: rgb(237, 67, 67);
-    border-radius: 10px;
-    width: 60px;
-    height: 23px;
     border: none;
-    margin: 10px;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 14px;
+    color: white;
+    margin: 5px;
+}
+.min-length-button-red {
+    background-color: rgb(237, 67, 67);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+}
+.areas-button-yellow {
+    background-color: rgb(255, 204, 0);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 14px;
+    color: white;
+    margin: 5px;
+}
+
+.min-length-button-yellow {
+    background-color: rgb(255, 204, 0);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+}
+
+.areas-button-green {
+    background-color: rgb(19, 91, 5);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 14px;
+    color: white;
+    margin: 5px;
+}
+
+.min-length-button-green {
+    background-color: rgb(19, 91, 5);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    width: 108px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+}
+
+.min-length-button {
+    font-size: 10px;
 }
 
 .subtitle-text {
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .areas-input{

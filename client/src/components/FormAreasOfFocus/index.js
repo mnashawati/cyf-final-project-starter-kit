@@ -51,6 +51,7 @@ const FormAreasOfFocus = () => {
 						type="text"
 						name="area"
 						placeholder="eg. CSS, useEffect Hook..."
+						maxLength={15}
 						onChange={(e) =>
 							setArea({
 								...area,

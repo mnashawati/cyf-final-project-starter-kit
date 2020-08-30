@@ -6,7 +6,9 @@ import FormAreasOfFocus from "../FormAreasOfFocus/index.js";
 
 const AreasOfFocus = ({ student }) => {
 
-	return student.areasOfFocus ? (
+	const { areasOfFocus } = student;
+
+	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">
         Areas of focus
@@ -16,19 +18,19 @@ const AreasOfFocus = ({ student }) => {
           Need to work on...
 				</h3>
 				<div className="area-text-section-red">
-					{student.areasOfFocus.toWorkOn.map((item, index)=> <button className="dummy-button" key={index}>{item}</button>)}
+					{areasOfFocus.toWorkOn.map((item, index) => <button className={item.length <= 7 ? "areas-button-red" : "min-length-button-red" } key={index}>{item}</button>)}
 				</div>
 			</div>
 			<div className="okay-at-section">
 				<h3 className="subtitle-text">Okay at...</h3>
 				<div className="area-text-section-yellow">
-					{student.areasOfFocus.okayAt.map((item, index)=> <button className="dummy-button" key={index}>{item}</button>)}
+					{areasOfFocus.okayAt.map((item, index) => <button className={item.length <= 7 ? "areas-button-yellow" : "min-length-button-yellow"} key={index}>{item}</button>)}
 				</div>
 			</div>
 			<div className="good-at-section">
 				<h3 className="subtitle-text">Good at...</h3>
 				<div className="area-text-section-green">
-					{student.areasOfFocus.goodAt.map((item, index)=> <button className="dummy-button" key={index}>{item}</button>)}
+					{areasOfFocus.goodAt.map((item, index)=> <button className={item.length <= 7 ? "areas-button-green" : "min-length-button-green"} key={index}>{item}</button>)}
 				</div>
 			</div>
 			<FormAreasOfFocus />

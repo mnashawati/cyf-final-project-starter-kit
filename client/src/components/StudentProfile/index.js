@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
@@ -34,15 +35,20 @@ const StudentProfile = () => {
 						/>
 					</div>
 					<div className="student-info-section">
-						<p>
-							<b>Name:</b> {student.name}{" "}
+						<p className="student-profile-name">
+							{student.name}
 						</p>
-						<p>
-							<b>Email:</b> {student.email}
+						<p className="student-profile-city">
+							{student.city}
 						</p>
-						<p>
-							<b>City:</b> {student.city}
-						</p>
+						<div className="email-github-section">
+							<p className="student-profile-email">
+							 {student.email}
+							</p>
+							<p className="student-profile-github">
+								{student.gitHub_username}
+							</p>
+						</div>
 					</div>
 				</div>
 				<div className="student-profile-container-right">
