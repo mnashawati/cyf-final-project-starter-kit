@@ -13,7 +13,7 @@ export function App() {
 	const [students, setStudents] = useState([]);
 
 	useEffect(() => {
-		fetch("/api/students")
+		fetch("/api")
 			.then((res) => res.json())
 			.then((data) => {
 				setStudents(data);
@@ -22,11 +22,10 @@ export function App() {
 	}
 	, []);
 
-
-	return students ?(
+	return students ? (
 		<Router>
 			<Route exact path="/students" component={() => <StudentsGrid students={students} />} />
-			<Route exact path="/students/:name" component={() => <StudentProfile students={students} />} />
+			<Route exact path="/students/:name" component={() => <StudentProfile />} />
 		</Router>
 
 	): null;
