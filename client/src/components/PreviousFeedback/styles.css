@@ -1,0 +1,56 @@
+.previous-feedback-section{
+    height: 600px;
+    overflow-y : auto;
+    border: 1px solid rgb(87, 82, 82);
+    border-radius: 1px;
+}
+
+.previous-feedback-list{
+    margin-top: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border: 1px solid rgb(131, 126, 126);
+    border-radius: 3px;
+    background-color: #ebecf1;
+}
+
+.feedback-module{
+    margin: 10px 3px;
+}
+
+.feedback-title{
+    font-size: 18px;
+    color: rgb(2, 2, 31);
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 15px;
+}
+.date-mentor{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.line{
+    border: 1px dashed rgb(75, 72, 72); 
+    width: 80%; 
+    margin: auto; 
+    margin-top: 5%; 
+    margin-bottom: 5%; 
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 20px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.previous-feedback-edit, .previous-feedback-delete{
+color:black;
+margin-left: 15px;
+}

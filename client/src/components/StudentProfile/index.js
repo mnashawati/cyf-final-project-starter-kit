@@ -4,6 +4,7 @@ import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
 import FeedbackForm from "../FeedbackForm/index.js";
+import PreviousFeedback from "../PreviousFeedback";
 
 
 const StudentProfile = () => {
@@ -45,12 +46,9 @@ const StudentProfile = () => {
 					</div>
 				</div>
 				<div className="student-profile-container-right">
-					<AreasOfFocus />
+					<AreasOfFocus student={student} />
 					<FeedbackForm student={student} />
-					{/* <div className="feedback-section">
-				<p className="previous-feedback"><b>Previous feedback:</b> <br></br>
-					{student.previousFeedback}</p>
-			</div>*/}
+					<PreviousFeedback student={student} />
 				</div>
 			</div>
 		</>
