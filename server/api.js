@@ -4,17 +4,17 @@ import mongodb from "mongodb";
 
 const router = new Router();
 
-// router.get("/", (_, res, next) => {
-// 	const client = getClient();
+router.get("/", (_, res, next) => {
+	const client = getClient();
 
-// 	client.connect((err) => {
-// 		if (err) {
-// 			return next(err);
-// 		}
-// 		res.json({ message: "Hello, world!" });
-// 		client.close();
-// 	});
-// });
+	client.connect((err) => {
+		if (err) {
+			return next(err);
+		}
+		res.json({ message: "Hello, world!" });
+		client.close();
+	});
+});
 
 const client = getClient();
 
@@ -22,7 +22,7 @@ client.connect(function () {
 
 	const db = client.db("feedback-tracker");
 
-	router.get("/", (_, res) => {
+	router.get("/students", (_, res) => {
 		const collection = db.collection("StudentDenormalizedData");
 
 		collection
@@ -32,7 +32,7 @@ client.connect(function () {
 			});
 	});
 
-	router.get("/:id", (req, res) => {
+	router.get("/students/:id", (req, res) => {
 		const collection = db.collection("StudentDenormalizedData");
 
 		// check if the id is valid if not -> 404
@@ -59,7 +59,7 @@ client.connect(function () {
 	});
 
 	// To post new feedback or area of focus
-	router.put("/:id", (req, res) => {
+	router.put("/students/:id", (req, res) => {
 
 		const collection = db.collection("StudentDenormalizedData");
 
@@ -82,6 +82,7 @@ client.connect(function () {
 				return res.status(500).send(error);
 			}
 			return res.send(result.ops[0]); // result.value === result.ops[0]
+
 		};
 
 		if (data.hasOwnProperty("level")) {
@@ -119,7 +120,7 @@ client.connect(function () {
 			return mandatoryFields.filter((field) => !data.hasOwnProperty(field));
 		}
 
-		const missingFields = findMissingFields(data, ["title", "module", "mentor", "text"]);
+		const missingFields = findMissingFields(data, ["id", "title", "module", "mentor", "text"]);
 
 		if (missingFields.length > 0) {
 			const errorInfo = {
@@ -134,11 +135,10 @@ client.connect(function () {
 		collection.update(
 			queryObject,
 			{ $push : { "allFeedback" : data } },
-			options,
-			sendErrorOrResult
+			options
 		);
 
-		res.json({ status: "success", feedbackAdded: req.body });
+		return res.json({ status: "success", feedbackAdded: req.body });
 	});
 });
 

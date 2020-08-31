@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import modules from "../../db/modules.json";
 import "../FeedbackForm/styles.css";
 
+const { v4: uuidv4 } = require("uuid");
 
-const FeedbackForm = ({ student }) => {
+const FeedbackForm = ({ student, updateFeedback }) => {
 	const [feedback, setFeedback] = useState({
+		id: uuidv4(),
 		module: "",
 		title: "",
 		text: "",
@@ -21,10 +23,9 @@ const FeedbackForm = ({ student }) => {
 	};
 
 	const postFeedback =() => {
-		fetch(`/api/${student._id}`, options)
+		fetch(`/api/students/${student._id}`, options)
 			.then( (res) => {
 				res.json();
-				console.log(res.json());
 			})
 			.catch((error) => console.log(error));
 	};
@@ -32,6 +33,7 @@ const FeedbackForm = ({ student }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		postFeedback();
+		updateFeedback(feedback);
 		e.target.reset();
 	};
 

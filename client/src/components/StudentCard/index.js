@@ -6,7 +6,7 @@ const StudentCard = ({ student }) => {
 		<Link
 			className="student-card"
 			to={{
-				pathname:`/students/${student.name}`,
+				pathname:`/students/${student._id}`,
 			}}>
 			<div >
 				<div>

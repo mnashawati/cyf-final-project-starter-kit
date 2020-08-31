@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
+// import { useParams } from "react-router-dom";
 
-const PreviousFeedback = ({ student }) => {
 
-	const { allFeedback } = student;
+const PreviousFeedback = ({ student, givenFeedback }) => {
 
-	return allFeedback ? (
+	//For eventHandlers
+	const editFeedback = () => {
+		console.log(student);
+	};
+	//For eventHandlers
+	const deleteFeedback = () => {
+		console.log("Delete Feedback");
+	};
+
+	//Calling data after feedback submitted
+	const [allFeedback, setAllFeedback] = useState([]);
+
+	useEffect(() => {
+		fetch(`/api/students/${student._id}`)
+			.then((res) => res.json())
+			.then((student) => {
+				setAllFeedback(student.allFeedback);
+			})
+			.catch((err) => console.log(err));
+	}
+	, [givenFeedback]);
+
+	return (
 		<>
 			<p><b>Previous Feedback</b></p>
 			<div className="previous-feedback-section">
 
 				{allFeedback.map((item, index)=>{
-					const { title, module, mentor, text, date  } = item;
+					const { id, title, module, mentor, text, date } = item;
 					return (
 						<div key={index} className="previous-feedback-container">
 							<div className="previous-feedback-list">
@@ -25,15 +47,15 @@ const PreviousFeedback = ({ student }) => {
 							</div>
 
 							<div className="buttons">
-								<button className="previous-feedback-edit">EDIT</button>
-								<button className="previous-feedback-delete">DELETE</button>
+								<button className="previous-feedback-edit" onClick={editFeedback}>EDIT</button>
+								<button className="previous-feedback-delete" onClick={() => deleteFeedback(id)}>DELETE</button>
 							</div>
 						</div>
 					);
 				})}
 			 </div>
 		</>
-	) : null ;
+	) ;
 } ;
 
 export default PreviousFeedback;

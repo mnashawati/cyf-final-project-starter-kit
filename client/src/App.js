@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import StudentsGrid from "./components/StudentsGrid/index.js";
 import StudentProfile from "./components/StudentProfile";
@@ -10,25 +10,12 @@ import {
 
 export function App() {
 
-	const [students, setStudents] = useState([]);
-
-	useEffect(() => {
-		fetch("/api")
-			.then((res) => res.json())
-			.then((data) => {
-				setStudents(data);
-			})
-			.catch((err) => console.log(err));
-	}
-	, []);
-
-	return students ? (
+	return (
 		<Router>
-			<Route exact path="/students" component={() => <StudentsGrid students={students} />} />
-			<Route exact path="/students/:name" component={() => <StudentProfile />} />
+			<Route exact path="/students" component={() => <StudentsGrid />} />
+			<Route exact path="/students/:id" component={() => <StudentProfile />} />
 		</Router>
-
-	): null;
+	);
 }
 
 export default App;
