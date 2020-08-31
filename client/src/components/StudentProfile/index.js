@@ -4,16 +4,16 @@ import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
-import FeedbackForm from "../FeedbackForm/index.js";
-import PreviousFeedback from "../PreviousFeedback";
+import AllFeedback from "../AllFeedback/index.js";
 
 
 const StudentProfile = () => {
-	const params = useParams();
-	const [student, setStudent] = useState({});
 
+	const params = useParams();
+	console.log(params);
+	const [student, setStudent] = useState({});
 	useEffect(() => {
-		fetch("/api")
+		fetch("/api/students")
 			.then((res) => res.json())
 			.then((data) => {
 				setStudent(data.find((student) => student.name === params.name));
@@ -22,8 +22,7 @@ const StudentProfile = () => {
 	}
 	, []);
 
-
-	return  (
+	return  Object.keys(student).length ? (
 		<>
 			<Navbar />
 			<div className="student-profile-container">
@@ -32,6 +31,7 @@ const StudentProfile = () => {
 						<img
 							className="full-profile-picture"
 							src={student.profile_pic_url}
+							alt="Student-profile"
 						/>
 					</div>
 					<div className="student-info-section">
@@ -53,12 +53,11 @@ const StudentProfile = () => {
 				</div>
 				<div className="student-profile-container-right">
 					<AreasOfFocus student={student} />
-					<FeedbackForm student={student} />
-					<PreviousFeedback student={student} />
+					<AllFeedback student={student} />
 				</div>
 			</div>
 		</>
-	);
+	) : null;
 };
 
 export default StudentProfile;

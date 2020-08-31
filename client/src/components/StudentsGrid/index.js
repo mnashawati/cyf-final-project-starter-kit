@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StudentCard from "../StudentCard/index.js";
 import "./styles.css";
 
-const StudentsGrid = ({ students } ) => {
+const StudentsGrid = ( ) => {
 
+	const [students, setStudents] = useState([]);
+
+	useEffect(() => {
+		fetch("/api/students")
+			.then((res) => res.json())
+			.then((data) => {
+				setStudents(data);
+			})
+			.catch((err) => console.log(err));
+	}
+	, []);
+
+	console.log(students);
 	return  (
 		<div className="students-cards-container">
-			{students.map((student, index) => (
+			{ students && students.map((student, index) => (
 				<StudentCard student={student} key={index} />
 			))}
 		</div>

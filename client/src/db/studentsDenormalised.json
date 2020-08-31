@@ -6,7 +6,7 @@
   "city": "London",
   "email": "tayfunaydogan55@gmail.com",
   "gitHub_username": "tayfuntayfun",
-  "profile_pic_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7tfoVxmCFGnG0nuyv--idwNNl1UNg0CID8g&usqp=CAU",
+  "profile_pic_url": "https://ca.slack-edge.com/T2H71EFLK-USG291RV2-f61238c00452-512",
   "areasOfFocus": {
     "toWorkOn": [
       "react",
@@ -25,25 +25,25 @@
   },
   "allFeedback": [
     {
-      "feedback_title": "Tayfun is fine with error handling",
-      "feedback_module": "String",
-      "feedback_mentor": "Guy",
-      "feedback_text": "Tayfun was comfortable when approaching the server errors",
-      "published_date": "11 days ago"
+      "title": "Tayfun is fine with error handling",
+      "module": "MongoDb",
+      "mentor": "Guy",
+      "text": "Tayfun was comfortable when approaching the server errors",
+      "date": "11 days ago"
     },
     {
-      "feedback_title": "Tayfun is OK with creating react app",
-      "feedback_module": "String",
-      "feedback_mentor": "Eddie",
-      "feedback_text": "Tayfun was able to create a react app easily and connect it with API",
-      "published_date": "12 days ago"
+      "title": "Tayfun is OK with creating react app",
+      "module": "React",
+      "mentor": "Eddie",
+      "text": "Tayfun was able to create a react app easily and connect it with API",
+      "date": "12 days ago"
     },
     {
-      "feedback_title": "Tayfun needs help with HTTP requests",
-      "feedback_module": "String",
-      "feedback_mentor": "Jon",
-      "feedback_text": "Tayfun needs to take another look at HTTP POST request",
-      "published_date": "9 days ago"
+      "title": "Tayfun needs help with HTTP requests",
+      "module": "Express.js",
+      "mentor": "Jon",
+      "text": "Tayfun needs to take another look at HTTP POST request",
+      "date": "9 days ago"
     }
   ]
 },{
@@ -54,7 +54,7 @@
   "city": "London",
   "email": "mo.nashawati@gmail.com",
   "gitHub_username": "mnashawati",
-  "profile_pic_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7tfoVxmCFGnG0nuyv--idwNNl1UNg0CID8g&usqp=CAU",
+  "profile_pic_url": "https://ca.slack-edge.com/T2H71EFLK-USGS47J3G-0a780b936c98-512",
   "areasOfFocus": {
     "toWorkOn": [
       "HTML",
@@ -73,25 +73,39 @@
   },
   "allFeedback": [
     {
-      "feedback_title": "Mo is great at error handling",
-      "feedback_module": "Backend Express",
-      "feedback_mentor": "Neill",
-      "feedback_text": "Mo was comfortable when approaching the 504 error",
-      "published_date": "10 days ago"
+      "title": "Mo is great at error handling",
+      "module": "Backend Express",
+      "mentor": "Neill",
+      "text": "Mo was comfortable when approaching the 504 error",
+      "date": "10 days ago"
     },
     {
-      "feedback_title": "Mo is comfortable with React app",
-      "feedback_module": "React",
-      "feedback_mentor": "Chris",
-      "feedback_text": "Ola was able to create a react app easily and connect it with API",
-      "published_date": "13 days ago"
+      "title": "Mo is comfortable with React app",
+      "module": "React",
+      "mentor": "Chris",
+      "text": "Mo was able to create a react app easily and connect it with API",
+      "date": "13 days ago"
     },
     {
-      "feedback_title": "Mo is required to work a bit on HTTP requests",
-      "feedback_module": "String",
-      "feedback_mentor": "Lucy",
-      "feedback_text": "Mo needs to take another look at HTTP DELETE request",
-      "published_date": "8 days ago"
+      "title": "Mo is required to work a bit on HTTP requests",
+      "module": "String",
+      "mentor": "Lucy",
+      "text": "Mo needs to take another look at HTTP DELETE request",
+      "date": "8 days ago"
+    },
+    {
+      "module": "JavaScript Core 1",
+      "title": "testing put",
+      "text": "Mo needs to take another look at HTTP DELETE request-2",
+      "mentor": "Mo himself",
+      "date": "testdate"
+    },
+    {
+      "module": "testmodule",
+      "title": "no module",
+      "text": "Mo needs to take another look at HTTP DELETE request",
+      "mentor": "testmentor",
+      "date": "testdate"
     }
   ]
 },{
@@ -102,7 +116,7 @@
   "city": "London",
   "email": "ola.skoczylas.is@gmail.com",
   "gitHub_username": "leealex88",
-  "profile_pic_url": "https://previews.123rf.com/images/tuktukdesign/tuktukdesign1712/tuktukdesign171200022/91433746-user-icon-vector-female-person-symbol-profile-avatar-sign-in-flat-color-glyph-pictogram-illustration.jpg",
+  "profile_pic_url": "https://ca.slack-edge.com/T2H71EFLK-USDN4AECU-76d76812fad7-512",
   "areasOfFocus": {
     "toWorkOn": [
       "hooks",
@@ -126,37 +140,39 @@
   },
   "allFeedback": [
     {
-      "feedback_title": "Great at debugging error status codes",
-      "feedback_module": "NodeJs",
-      "feedback_mentor": "Guy",
-      "feedback_text": "Ola was comfortable when approaching the 404 error",
-      "published_date": "9 days ago"
+      "title": "Great at debugging error status codes",
+      "module": "NodeJs",
+      "mentor": "Guy",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date": "9 days ago"
     },
     {
-      "feedback_title": "She is strong at react",
-      "feedback_module": "React",
-      "feedback_mentor": "Aichi",
-      "feedback_text": "Ola was able to create a react app easily and connect it with API",
-      "published_date": "11 days ago"
+      "title": "She is strong at react",
+      "module": "React",
+      "mentor": "Aichi",
+      "text": "2-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date": "11 days ago"
     },
     {
-      "feedback_title": "You are almost there, just need a bit more!",
-      "feedback_module": "MongoDB",
-      "feedback_mentor": "Jon",
-      "feedback_text": "Ola needs to take another look at HTTP POST request",
-      "published_date": "7 days ago"
+      "title": "You are almost there, just need a bit more!",
+      "module": "MongoDB",
+      "mentor": "Jon",
+      "text": "3-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date": "7 days ago"
     },
     {
-      "feedback_title": "second test for adding a new feedback",
-      "feedback_module": "mongodb",
-      "feedback_mentor": "mo",
-      "feedback_text": "this is important for the post feedback functionality"
+      "title": "second test for adding a new feedback",
+      "module": "mongodb",
+      "mentor": "mo",
+      "text": "4-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date": ""
     },
     {
-      "feedback_title": "new feedback for ola",
-      "feedback_module": "react",
-      "feedback_mentor": "mo",
-      "feedback_text": "your react skills are pretty good!!"
+      "title": "new feedback for ola",
+      "module": "react",
+      "mentor": "mo",
+      "text": "5-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date": ""
     }
   ]
 }]
