@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-// import { useParams } from "react-router-dom";
 
 
-const PreviousFeedback = ({ student, givenFeedback }) => {
-
-	//For eventHandlers
-	const editFeedback = () => {
-		console.log(student);
-	};
-	//For eventHandlers
-	const deleteFeedback = () => {
-		console.log("Delete Feedback");
-	};
+const PreviousFeedback = ({ student, toggleNewFeedback }) => {
 
 	//Calling data after feedback submitted
 	const [allFeedback, setAllFeedback] = useState([]);
@@ -25,37 +15,38 @@ const PreviousFeedback = ({ student, givenFeedback }) => {
 			})
 			.catch((err) => console.log(err));
 	}
-	, [givenFeedback]);
+	, [toggleNewFeedback]);
 
-	return (
+	return  allFeedback ? (
 		<>
 			<p><b>Previous Feedback</b></p>
 			<div className="previous-feedback-section">
 
 				{allFeedback.map((item, index)=>{
-					const { id, title, module, mentor, text, date } = item;
+
 					return (
 						<div key={index} className="previous-feedback-container">
+
 							<div className="previous-feedback-list">
-								<p className="feedback-module"><b>MODULE:</b> {module}</p>
-								<p className="feedback-title">{title}</p>
-								<p className="feedback-text">{text}</p>
+								<p className="feedback-module"><b>MODULE:</b> {item.module}</p>
+								<p className="feedback-title">{item.title}</p>
+								<p className="feedback-text">{item.text}</p>
 								<div className="date-mentor">
-									<p className="feedback-date">{date}</p>
-									<p className="feedback-mentor">Given by: {mentor}</p>
+									<p className="feedback-date">{item.date}</p>
+									<p className="feedback-mentor">Given by: {item.mentor}</p>
 								</div>
 							</div>
 
 							<div className="buttons">
-								<button className="previous-feedback-edit" onClick={editFeedback}>EDIT</button>
-								<button className="previous-feedback-delete" onClick={() => deleteFeedback(id)}>DELETE</button>
+								<button className="previous-feedback-edit" >EDIT</button>
+								<button className="previous-feedback-delete" onClick={() => deleteFeedback(item.id)}>DELETE</button>
 							</div>
 						</div>
 					);
 				})}
 			 </div>
 		</>
-	) ;
+	) : null ;
 } ;
 
 export default PreviousFeedback;

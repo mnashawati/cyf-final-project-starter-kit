@@ -3,25 +3,23 @@ import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
-import FeedbackFormContainer from "../FeedbackFormContainer/index.js";
+import AllFeedback from "../AllFeedback/index.js";
 
 
 const StudentProfile = () => {
 
 	const params = useParams();
-	const [student, setStudent] = useState({});
 	console.log(params);
+	const [student, setStudent] = useState({});
 	useEffect(() => {
-		fetch(`/api/students/${params.id}`)
+		fetch("/api/students")
 			.then((res) => res.json())
 			.then((data) => {
-				setStudent(data);
+				setStudent(data.find((student) => student.name === params.name));
 			})
 			.catch((err) => console.log(err));
 	}
 	, []);
-
-	console.log({ student });
 
 	return  Object.keys(student).length ? (
 		<>
@@ -49,7 +47,7 @@ const StudentProfile = () => {
 				</div>
 				<div className="student-profile-container-right">
 					<AreasOfFocus student={student} />
-					<FeedbackFormContainer student={student} />
+					<AllFeedback student={student} />
 				</div>
 			</div>
 		</>

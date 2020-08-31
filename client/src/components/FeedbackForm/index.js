@@ -33,7 +33,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		postFeedback();
-		updateFeedback(feedback);
+		updateFeedback();
 		e.target.reset();
 	};
 

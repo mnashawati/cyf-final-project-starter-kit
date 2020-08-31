@@ -13,7 +13,7 @@ export function App() {
 	return (
 		<Router>
 			<Route exact path="/students" component={() => <StudentsGrid />} />
-			<Route exact path="/students/:id" component={() => <StudentProfile />} />
+			<Route exact path="/students/:name" component={() => <StudentProfile />} />
 		</Router>
 	);
 }
