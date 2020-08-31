@@ -15,18 +15,13 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 
 	const options = {
 		method: "PUT",
-		headers: { "Content-type": "application/json",
-		},
-		body: JSON.stringify(
-			feedback,
-		),
+		headers: { "Content-type": "application/json" },
+		body: JSON.stringify(feedback),
 	};
 
 	const postFeedback =() => {
 		fetch(`/api/students/${student._id}`, options)
-			.then( (res) => {
-				res.json();
-			})
+			.then( (res) => res.json())
 			.catch((error) => console.log(error));
 	};
 
