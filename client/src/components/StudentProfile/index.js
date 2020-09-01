@@ -28,26 +28,20 @@ const StudentProfile = () => {
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">
-						<img
-							className="full-profile-picture"
-							src={student.profile_pic_url}
-							alt="Student-profile"
-						/>
+						<img className="full-profile-picture" src={student.profile_pic_url} alt="Student-profile" />
 					</div>
 					<div className="student-info-section">
-						<p className="student-profile-name">
-							{student.name}
-						</p>
-						<p className="student-profile-city">
-							{student.city}
-						</p>
+						<p className="student-profile-name">{student.name}</p>
+						<p className="student-profile-city">{student.city}</p>
 						<div className="email-github-section">
-							<p className="student-profile-email">
-							 {student.email}
-							</p>
-							<p className="student-profile-github">
-								{student.gitHub_username}
-							</p>
+							<div className="email-icon-section">
+								<img src="https://img.icons8.com/material-rounded/24/000000/important-mail.png" />
+								<p className="student-profile-email"> {student.email}</p>
+							</div>
+							<div className="github-icon-section">
+								<img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+								<p className="student-profile-github">{student.gitHub_username}</p>
+							</div>
 						</div>
 					</div>
 				</div>
