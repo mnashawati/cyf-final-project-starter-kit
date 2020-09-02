@@ -64,6 +64,7 @@ client.connect(function () {
 		const collection = db.collection("StudentDenormalizedData");
 
 		const data = req.body;
+		console.log = (req.body, req.params.id);
 		// validation should happen here
 
 		// check if the id is valid if not -> 404
@@ -139,6 +140,19 @@ client.connect(function () {
 		);
 
 		return res.json({ status: "success", feedbackAdded: req.body });
+	});
+
+	router.put("/students/:studentId/:feedbackId/delete", function(req, res) {
+
+		const collection = db.collection("StudentDenormalizedData");
+
+		const feedbackId = req.params.feedbackId;
+
+		collection.update(
+			{},
+			{ $pull: { allFeedback: { id: feedbackId } } },
+		);
+		res.send({ status:"success" });
 	});
 });
 
