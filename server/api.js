@@ -147,10 +147,12 @@ client.connect(function () {
 		const collection = db.collection("StudentDenormalizedData");
 
 		const feedbackId = req.params.feedbackId;
+		// const studentId = req.params.studentId;
+		// const queryObject = { _id: req.params.studentId };
 
 		collection.update(
-			{},
-			{ $pull: { allFeedback: { id: feedbackId } } },
+			{} ,
+			{ $pull: { allFeedback: { id: feedbackId } } }, { multi:true }
 		);
 		res.send({ status:"success" });
 	});
