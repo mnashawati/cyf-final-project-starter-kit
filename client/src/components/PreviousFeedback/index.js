@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.css";
 
-
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	//DELETE selected feedback PUT updates the DB
@@ -16,8 +15,8 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			.then( (res) => res.json())
 			.then((data) => console.log(data))
 			.catch((error) => console.log(error));
-		alert("Feedback Deleted Successfully");
 		updateFeedback();
+		alert("Feedback Deleted Successfully");
 	};
 
 	return  allFeedback ? (
