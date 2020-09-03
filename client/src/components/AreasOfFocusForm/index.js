@@ -1,44 +1,9 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 
 import "./styles.css";
 
-const FormAreasOfFocus = () => {
-	const [areasOfFocus, setAreasOfFocus] = useState({
-		toWorkOn: [],
-		okayAt: [],
-		goodAt: [],
-	});
-
-	const [area, setArea] = useState({
-		message: "",
-		level: "",
-	});
-
-	const addTheLevelToAreas = () => {
-		area.level === "To work on"
-			? setAreasOfFocus({
-				...areasOfFocus,
-				toWorkOn: [...areasOfFocus.toWorkOn, area.message],
-			})
-			: area.level === "Okay at"
-				? setAreasOfFocus({
-					...areasOfFocus,
-					okayAt: [...areasOfFocus.okayAt, area.message],
-				})
-				: area.level === "Good at"
-					? setAreasOfFocus({
-						...areasOfFocus,
-						goodAt: [...areasOfFocus.goodAt, area.message],
-					})
-					: null;
-	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		addTheLevelToAreas();
-		e.target.reset();
-	};
-
+const AreasOfFocusForm = ({ area, setArea, handleSubmit }) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
@@ -112,4 +77,4 @@ const FormAreasOfFocus = () => {
 	);
 };
 
-export default FormAreasOfFocus;
+export default AreasOfFocusForm;
