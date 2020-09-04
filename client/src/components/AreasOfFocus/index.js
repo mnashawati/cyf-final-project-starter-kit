@@ -4,16 +4,14 @@
 import React, { useState } from "react";
 import "./styles.css";
 import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
-
+import uuid from "uuid/v4";
 
 const AreasOfFocus = ({ student }) => {
 
-	const [areasOfFocus, updateAreaOfFocus] = useState(student.areasOfFocus);
+	const [areasOfFocus, setAreaOfFocus] = useState(student.areasOfFocus);
 
-	const [area, setArea] = useState({
-		message: "",
-		level: "",
-	});
+	const [area, setArea] = useState(
+		{ id: uuid(), message: "", level: "" });
 
 	const options = {
 		method: "PUT",
@@ -27,21 +25,27 @@ const AreasOfFocus = ({ student }) => {
 			.catch((error) => console.log(error));
 	};
 
+	const deleteAreaOfFocus = () => {
+		fetch(`/api/students/${student._id}/delete`, options)
+			.then((res) => res.json())
+			.catch((error) => console.log(error));
+	};
+
 	const addTheLevelToAreas = () => {
 		area.level === "To work on"
-			? updateAreaOfFocus({
+			? setAreaOfFocus({
 				...areasOfFocus,
-				toWorkOn: [...areasOfFocus.toWorkOn, area.message],
+				toWorkOn: [...areasOfFocus.toWorkOn, { message: area.message, id: uuid() }],
 			})
 			: area.level === "Okay at"
-				? updateAreaOfFocus({
+				? setAreaOfFocus({
 					...areasOfFocus,
-					okayAt: [...areasOfFocus.okayAt, area.message],
+					okayAt: [...areasOfFocus.okayAt, { message: area.message, id: uuid() }],
 				})
 				: area.level === "Good at"
-					? updateAreaOfFocus({
+					? setAreaOfFocus({
 						...areasOfFocus,
-						goodAt: [...areasOfFocus.goodAt, area.message],
+						goodAt: [...areasOfFocus.goodAt, { message: area.message, id: uuid() }],
 					})
 					: null;
 	};
@@ -53,6 +57,22 @@ const AreasOfFocus = ({ student }) => {
 		e.target.reset();
 	};
 
+	const removeAreaToWorkOn = (areaId) => {
+		const updatedAreas = areasOfFocus.toWorkOn.filter((area) => area.id !== areaId);
+		setAreaOfFocus({ ...areasOfFocus, toWorkOn: updatedAreas });
+	};
+
+	const removeAreaOkayAt = (areaId) => {
+		const updatedAreas = areasOfFocus.okayAt.filter((area) => area.id !== areaId);
+		setAreaOfFocus({ ...areasOfFocus, okayAt: updatedAreas });
+	};
+
+	const removeAreaGoodAt = (areaId) => {
+		const updatedAreas = areasOfFocus.goodAt.filter((area) => area.id !== areaId);
+		setAreaOfFocus({ ...areasOfFocus, goodAt: updatedAreas });
+	};
+
+
 	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">
@@ -63,17 +83,18 @@ const AreasOfFocus = ({ student }) => {
           Need to work on...
 				</h3>
 				<div className="area-text-section-red">
-					{areasOfFocus.toWorkOn.map((item, index) => (
+					{ areasOfFocus.toWorkOn.map((item, index) => (
 						<div key={index}>
 							<button
 								className={ "areas-button-red key-button"}
 							>
-								{item}
+								{item.message}
 							</button>
 							<button
 								className="x-button-red"
 								onClick={() => {
-									console.log("removed");
+									removeAreaToWorkOn(item.id);
+									deleteAreaOfFocus();
 								}}
 							>
 								X
@@ -90,12 +111,13 @@ const AreasOfFocus = ({ student }) => {
 							<button
 								className={"areas-button-yellow key-button"}
 							>
-								{item}
+								{item.message}
 							</button>
 							<button
 								className="x-button-yellow"
 								onClick={() => {
-									console.log("removed");
+									removeAreaOkayAt(item.id);
+									deleteAreaOfFocus();
 								}}
 							>
 								X
@@ -113,12 +135,13 @@ const AreasOfFocus = ({ student }) => {
 								className={"areas-button-green key-button" }
 								key={index}
 							>
-								{item}
+								{item.message}
 							</button>
 							<button
 								className="x-button-green"
 								onClick={() => {
-									console.log("removed");
+									removeAreaGoodAt(item.id);
+									deleteAreaOfFocus();
 								}}
 							>
 								X
