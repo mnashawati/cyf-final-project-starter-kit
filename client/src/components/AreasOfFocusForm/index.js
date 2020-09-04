@@ -69,7 +69,7 @@ const AreasOfFocusForm = ({ area, setArea, handleSubmit }) => {
 				<div className="add-area-button-section">
 					<div className="area-display">{area.level}</div>
 					<div className="buton-wrapper">
-						<button className="add-area-button">Add area</button>
+						<button className="add-area-button">Add</button>
 					</div>
 				</div>
 			</div>
