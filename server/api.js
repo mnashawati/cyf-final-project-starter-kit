@@ -66,7 +66,7 @@ client.connect(function () {
 		const data = req.body;
 		console.log = (req.body, req.params.id);
 		// validation should happen here
-
+		console.log("backend data",data);
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
 			return res.send(404);
@@ -82,7 +82,7 @@ client.connect(function () {
 			if (error) {
 				return res.status(500).send(error);
 			}
-			return res.send(result.ops[0]); // result.value === result.ops[0]
+			return res.send(result.value); // result.value === result.ops[0]
 
 		};
 
@@ -90,21 +90,21 @@ client.connect(function () {
 			const level = data.level;
 			const message = data.message;
 
-			level === "toWorkOn"
+			level === "To work on"
 				? collection.update(
 					queryObject,
 					{ $push:
 					{ "areasOfFocus.toWorkOn": message } },
 					options,
 					sendErrorOrResult
-				) : level === "okayAt"
+				) : level === "Okay at"
 					? collection.update(
 						queryObject,
 						{ $push:
 					{ "areasOfFocus.okayAt": message } },
 						options,
 						sendErrorOrResult
-					) : level === "goodAt"
+					) : level === "Good at"
 						? collection.update(
 							queryObject,
 							{ $push:
