@@ -17,7 +17,7 @@ const AreasOfFocus = ({ student }) => {
 			.catch((error) => console.log(error));
 	});
 
-	const addAnAreaToState = (area) => {
+	const addNewArea = (area) => {
 		area.level === "To work on"
 			? setAreaOfFocus({
 				...areasOfFocus,
@@ -36,7 +36,7 @@ const AreasOfFocus = ({ student }) => {
 					: null;
 	};
 
-	const removeAnAreaFromState = (areaId, level) => {
+	const removeAnArea = (areaId, level) => {
 		const updatedAreas = areasOfFocus[level].filter((area) => area.id !== areaId);
 		setAreaOfFocus({ ...areasOfFocus, [level]: updatedAreas });
 	};
@@ -60,7 +60,7 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-red"
-								onClick={() => removeAnAreaFromState(item.id, "toWorkOn")}
+								onClick={() => removeAnArea(item.id, "toWorkOn")}
 							>
                 				X
 							</button>
@@ -80,7 +80,7 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-yellow"
-								onClick={() => removeAnAreaFromState(item.id, "okayAt")}
+								onClick={() => removeAnArea(item.id, "okayAt")}
 							>
                					X
 							</button>
@@ -101,7 +101,7 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-green"
-								onClick={() => removeAnAreaFromState(item.id, "goodAt")}
+								onClick={() => removeAnArea(item.id, "goodAt")}
 							>
                 				X
 							</button>
@@ -109,7 +109,7 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm addTheLevelToAreas={addAnAreaToState} />
+			<AreasOfFocusForm addTheLevelToAreas={addNewArea} />
 		</div>
 	) : null;
 };
