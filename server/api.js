@@ -88,26 +88,26 @@ client.connect(function () {
 		if (data.hasOwnProperty("level")) {
 			const level = data.level;
 			const message = data.message;
-
-			level === "toWorkOn"
+			const areaId = data.id;
+			level === "To work on"
 				? collection.update(
 					queryObject,
 					{ $push:
-					{ "areasOfFocus.toWorkOn": message } },
+					{ "areasOfFocus.toWorkOn":  { message: message, id: areaId } } },
 					options,
 					sendErrorOrResult
-				) : level === "okayAt"
+				) : level === "Okay at"
 					? collection.update(
 						queryObject,
 						{ $push:
-					{ "areasOfFocus.okayAt": message } },
+							{ "areasOfFocus.okayAt": { message: message, id: areaId }  } },
 						options,
 						sendErrorOrResult
-					) : level === "goodAt"
+					) : level === "Good at"
 						? collection.update(
 							queryObject,
 							{ $push:
-					{ "areasOfFocus.goodAt": message } },
+								{ "areasOfFocus.goodAt": { message: message, id: areaId } } },
 							options,
 							sendErrorOrResult
 						)
