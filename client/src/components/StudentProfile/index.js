@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
@@ -6,11 +5,9 @@ import Navbar from "../Navbar/index.js";
 import AreasOfFocus from "../AreasOfFocus/index.js";
 import AllFeedback from "../AllFeedback/index.js";
 
-
 const StudentProfile = () => {
 
 	const params = useParams();
-
 	const [student, setStudent] = useState({});
 	useEffect(() => {
 		fetch("/api/students")

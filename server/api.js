@@ -64,6 +64,7 @@ client.connect(function () {
 		const collection = db.collection("StudentDenormalizedData");
 
 		const data = req.body;
+		console.log = (req.body, req.params.id);
 		// validation should happen here
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
@@ -141,32 +142,19 @@ client.connect(function () {
 		return res.json({ status: "success", feedbackAdded: req.body });
 	});
 
-	// To post new feedback or area of focus
+
+
 	// router.put("/students/:id/delete", (req, res) => {
 
 	// 	const collection = db.collection("StudentDenormalizedData");
 
 	// 	const data = req.body;
 	// validation should happen here
-	// check if the id is valid if not -> 404
-	// if (!mongodb.ObjectID.isValid(req.params.id)) {
-	// 	return res.send(404);
-	// }
 
-	// define id (mongodb.ObjectID)
-	// const id = new mongodb.ObjectID(req.params.id);
 	// const queryObject = { _id: id };
 	// const areaId = data.id;
-	// console.log("areaId", areaId);
+
 	// const options = { returnOriginal: false }; // send back the UPDATED record
-
-	// const sendErrorOrResult = (error, result) => {
-	// 	if (error) {
-	// 		return res.status(500).send(error);
-	// 	}
-	// 	return res.send(result.value); // result.value === result.ops[0]
-
-	// };
 
 	// collection.update(
 	// 	{},
@@ -175,6 +163,21 @@ client.connect(function () {
 	// res.send({ status: "success" });
 
 	// });
+
+	router.put("/students/:studentId/:feedbackId/delete", function(req, res) {
+
+		const collection = db.collection("StudentDenormalizedData");
+
+		const feedbackId = req.params.feedbackId;
+		// const studentId = req.params.studentId;
+		// const queryObject = { _id: req.params.studentId };
+
+		collection.update(
+			{} ,
+			{ $pull: { allFeedback: { id: feedbackId } } }, { multi:true }
+		);
+		res.send({ status:"success" });
+	});
 
 });
 
