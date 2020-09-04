@@ -4,16 +4,27 @@ import PreviousFeedback from "../PreviousFeedback";
 
 const AllFeedback = ({ student }) => {
 
-	const [toggleNewFeedback, setToggleNewFeedback] = useState(true);
+	const [allFeedback, setAllFeedback] = useState([]);
 
+	//Call data after feedback submitted
 	const updateFeedback = () => {
-		setToggleNewFeedback(!toggleNewFeedback);
+		fetch(`/api/students/${student._id}`)
+			.then((res) => res.json())
+			.then((student) => {
+				setAllFeedback(student.allFeedback.reverse());
+			})
+			.catch((err) => console.log(err));
 	};
+
+	//Render the page on first load
+	useEffect(()=>{
+		updateFeedback();
+	}, []);
 
 	return (
 		<div>
 			<FeedbackForm updateFeedback={updateFeedback} student={student} />
-			<PreviousFeedback toggleNewFeedback={toggleNewFeedback} student={student} />
+			<PreviousFeedback  student={student} allFeedback={allFeedback} updateFeedback={updateFeedback} />
 		</div>
 	);
 };
