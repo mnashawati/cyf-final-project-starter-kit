@@ -10,7 +10,7 @@ import AllFeedback from "../AllFeedback/index.js";
 const StudentProfile = () => {
 
 	const params = useParams();
-	console.log(params);
+
 	const [student, setStudent] = useState({});
 	useEffect(() => {
 		fetch("/api/students")

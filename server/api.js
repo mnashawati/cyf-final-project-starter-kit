@@ -65,7 +65,6 @@ client.connect(function () {
 
 		const data = req.body;
 		// validation should happen here
-		console.log("backend data",data);
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
 			return res.send(404);
@@ -88,26 +87,27 @@ client.connect(function () {
 		if (data.hasOwnProperty("level")) {
 			const level = data.level;
 			const message = data.message;
+			const areaId = data.id;
 
 			level === "To work on"
 				? collection.update(
 					queryObject,
 					{ $push:
-					{ "areasOfFocus.toWorkOn": message } },
+					{ "areasOfFocus.toWorkOn":  { message: message, id: areaId } } },
 					options,
 					sendErrorOrResult
 				) : level === "Okay at"
 					? collection.update(
 						queryObject,
 						{ $push:
-					{ "areasOfFocus.okayAt": message } },
+							{ "areasOfFocus.okayAt": { message: message, id: areaId }  } },
 						options,
 						sendErrorOrResult
 					) : level === "Good at"
 						? collection.update(
 							queryObject,
 							{ $push:
-					{ "areasOfFocus.goodAt": message } },
+								{ "areasOfFocus.goodAt": { message: message, id: areaId } } },
 							options,
 							sendErrorOrResult
 						)
@@ -140,6 +140,42 @@ client.connect(function () {
 
 		return res.json({ status: "success", feedbackAdded: req.body });
 	});
+
+	// To post new feedback or area of focus
+	// router.put("/students/:id/delete", (req, res) => {
+
+	// 	const collection = db.collection("StudentDenormalizedData");
+
+	// 	const data = req.body;
+	// validation should happen here
+	// check if the id is valid if not -> 404
+	// if (!mongodb.ObjectID.isValid(req.params.id)) {
+	// 	return res.send(404);
+	// }
+
+	// define id (mongodb.ObjectID)
+	// const id = new mongodb.ObjectID(req.params.id);
+	// const queryObject = { _id: id };
+	// const areaId = data.id;
+	// console.log("areaId", areaId);
+	// const options = { returnOriginal: false }; // send back the UPDATED record
+
+	// const sendErrorOrResult = (error, result) => {
+	// 	if (error) {
+	// 		return res.status(500).send(error);
+	// 	}
+	// 	return res.send(result.value); // result.value === result.ops[0]
+
+	// };
+
+	// collection.update(
+	// 	{},
+	// 	{ $pull: { areasOfFocus: { goodAt : { $elemMatch : { id: areaId } } } } }, { multi: true }
+	// );
+	// res.send({ status: "success" });
+
+	// });
+
 });
 
 export default router;
