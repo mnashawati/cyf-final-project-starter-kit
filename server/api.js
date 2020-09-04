@@ -64,8 +64,6 @@ client.connect(function () {
 		const collection = db.collection("StudentDenormalizedData");
 
 		const data = req.body;
-		console.log("AREAS OF FOCUS", data);
-
 		// validation should happen here
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
