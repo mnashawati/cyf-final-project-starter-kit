@@ -1,13 +1,25 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { useState } from "react";
 
 import "./styles.css";
 
-const AreasOfFocusForm = ({ area, setArea, handleSubmit }) => {
+const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
+	const [area, setArea] = useState({
+		message: "",
+		level: "",
+	}); // { message: "" level: "" id: "" }
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		addTheLevelToAreas(area);
+		e.target.reset();
+	};
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<p className="areas-input-label">Add area of focus:</p>
+				<p className="areas-input-label">
+          Add area of focus:
+				</p>
 			</div>
 			<div className="input-lights-add-button-container">
 				<div className="area-input-section">

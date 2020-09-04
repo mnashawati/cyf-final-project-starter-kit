@@ -1,37 +1,26 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable jsx-a11y/label-has-for */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
-import uuid from "uuid/v4";
+import uuid from "react-uuid";
 
 const AreasOfFocus = ({ student }) => {
 
 	const [areasOfFocus, setAreaOfFocus] = useState(student.areasOfFocus);
 
-	const [area, setArea] = useState(
-		{ id: uuid(), message: "", level: "" });
-
-	const options = {
-		method: "PUT",
-		headers: { "Content-type": "application/json" },
-		body: JSON.stringify(area),
-	};
-
-	const postAreaOfFocus = () => {
-		fetch(`/api/students/${student._id}`, options)
+	useEffect(() => {
+		fetch(`/api/students/${student._id}/areas-of-focus`, {
+			method: "PUT",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(areasOfFocus),
+		})
 			.then((res) => res.json())
 			.catch((error) => console.log(error));
-	};
+	});
 
-	const deleteAreaOfFocus = () => {
-		fetch(`/api/students/${student._id}/delete`, options)
-			.then((res) => res.json())
-			.catch((error) => console.log(error));
-	};
-
-	const addTheLevelToAreas = () => {
+	const addTheLevelToAreas = (area) => {
 		area.level === "To work on"
 			? setAreaOfFocus({
 				...areasOfFocus,
@@ -50,12 +39,6 @@ const AreasOfFocus = ({ student }) => {
 					: null;
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		addTheLevelToAreas();
-		postAreaOfFocus();
-		e.target.reset();
-	};
 
 	const removeAreaToWorkOn = (areaId) => {
 		const updatedAreas = areasOfFocus.toWorkOn.filter((area) => area.id !== areaId);
@@ -83,10 +66,10 @@ const AreasOfFocus = ({ student }) => {
           Need to work on...
 				</h3>
 				<div className="area-text-section-red">
-					{ areasOfFocus.toWorkOn.map((item, index) => (
+					{areasOfFocus.toWorkOn.map((item, index) => (
 						<div key={index}>
 							<button
-								className={ "areas-button-red key-button"}
+								className={"areas-button-red key-button"}
 							>
 								{item.message}
 							</button>
@@ -94,10 +77,9 @@ const AreasOfFocus = ({ student }) => {
 								className="x-button-red"
 								onClick={() => {
 									removeAreaToWorkOn(item.id);
-									deleteAreaOfFocus();
 								}}
 							>
-								X
+                X
 							</button>
 						</div>
 					))}
@@ -117,10 +99,9 @@ const AreasOfFocus = ({ student }) => {
 								className="x-button-yellow"
 								onClick={() => {
 									removeAreaOkayAt(item.id);
-									deleteAreaOfFocus();
 								}}
 							>
-								X
+                X
 							</button>
 						</div>
 					))}
@@ -129,10 +110,10 @@ const AreasOfFocus = ({ student }) => {
 			<div className="good-at-section">
 				<h3 className="subtitle-text">Good at...</h3>
 				<div className="area-text-section-green">
-					{areasOfFocus.goodAt.map((item, index)=> (
+					{areasOfFocus.goodAt.map((item, index) => (
 						<div key={index}>
 							<button
-								className={"areas-button-green key-button" }
+								className={"areas-button-green key-button"}
 								key={index}
 							>
 								{item.message}
@@ -141,16 +122,17 @@ const AreasOfFocus = ({ student }) => {
 								className="x-button-green"
 								onClick={() => {
 									removeAreaGoodAt(item.id);
-									deleteAreaOfFocus();
 								}}
 							>
-								X
+                X
 							</button>
 						</div>
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm student={student} area={area} setArea={setArea} handleSubmit={handleSubmit} />
+			<AreasOfFocusForm
+				addTheLevelToAreas={addTheLevelToAreas}
+			/>
 		</div>
 	) : null;
 };
