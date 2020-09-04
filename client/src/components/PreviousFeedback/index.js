@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles.css";
 
+const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
-const PreviousFeedback = ({ student, toggleNewFeedback }) => {
+	//DELETE selected feedback PUT updates the DB
+	const options = {
+		method: "PUT",
+		headers: { "Content-type": "application/json",
+		},
+	};
 
-	//Calling data after feedback submitted
-	const [allFeedback, setAllFeedback] = useState([]);
-
-	useEffect(() => {
-		fetch(`/api/students/${student._id}`)
-			.then((res) => res.json())
-			.then((student) => {
-				setAllFeedback(student.allFeedback);
-			})
-			.catch((err) => console.log(err));
-	}
-	, [toggleNewFeedback]);
+	const deleteFeedback =(feedbackId) => {
+		fetch(`/api/students/${student._id}/${feedbackId}/delete`, options)
+			.then( (res) => res.json())
+			.then((data) => console.log(data))
+			.catch((error) => console.log(error));
+		updateFeedback();
+		alert("Feedback Deleted Successfully");
+	};
 
 	return  allFeedback ? (
 		<>

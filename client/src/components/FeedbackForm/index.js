@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import modules from "../../db/modules.json";
 import "../FeedbackForm/styles.css";
-
-const { v4: uuidv4 } = require("uuid");
+import uuid from "react-uuid";
 
 const FeedbackForm = ({ student, updateFeedback }) => {
 	const [feedback, setFeedback] = useState({
-		id: uuidv4(),
+		id: "",
 		module: "",
 		title: "",
 		text: "",
 		mentor: "",
 	});
+
+	feedback.id = uuid();
 
 	const options = {
 		method: "PUT",

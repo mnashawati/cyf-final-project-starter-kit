@@ -83,17 +83,27 @@
     font-weight: 600;
 }
 .student-profile-github {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 500;
+    margin-left: 5px;
 }
 
 .student-profile-email {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 500;
+    margin-left: 5px;
 }
 
 .email-github-section {
     margin-top: 20px;
+}
+
+.email-icon-section{
+    display:flex;
+}
+
+.github-icon-section{
+    display:flex;
 }
 @media (min-width:300px) and (max-width:757px) {
 
