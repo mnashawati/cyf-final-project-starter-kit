@@ -65,6 +65,7 @@ client.connect(function () {
 
 		const data = req.body;
 		// validation should happen here
+
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
 			return res.send(404);
@@ -74,23 +75,22 @@ client.connect(function () {
 		const id = new mongodb.ObjectID(req.params.id);
 		const queryObject = { _id: id };
 		const options = { returnOriginal: false }; // send back the UPDATED record
+		const sendErrorOrResult = (error, result) => {
+			if (error) {
+				return res.status(500).send(error);
+			}
+			return res.send(result.value); // result.value === result.ops[0]
 
-		// const sendErrorOrResult = (error, result) => {
-		// 	if (error) {
-		// 		return res.status(500).send(error);
-		// 	}
-		// 	return res.send(result.value); // result.value === result.ops[0]
-
-		// };
-		console.log("areas", queryObject);
+		};
 
 		collection.updateOne(
 			queryObject,
 			{ $set : { "areasOfFocus" : data } },
-			options
+			options,
+			sendErrorOrResult
 		);
 
-		return res.json({ status: "success", feedbackAdded: req.body });
+		return res.json({ status: "success", areasOfFocusUpdated: req.body });
 	});
 
 
@@ -100,8 +100,8 @@ client.connect(function () {
 		const collection = db.collection("StudentDenormalizedData");
 
 		const data = req.body;
-
 		// validation should happen here
+
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
 			return res.send(404);
@@ -141,35 +141,14 @@ client.connect(function () {
 		collection.updateOne(
 			queryObject,
 			{ $push : { "allFeedback" : data } },
-			options
+			options,
+			sendErrorOrResult
 		);
 
 		return res.json({ status: "success", feedbackAdded: req.body });
 	});
 
-
-
-
-	// router.delete("/students/:studentId/areas-of-focus/:areaId", (req, res) => {
-
-	// 	const collection = db.collection("StudentDenormalizedData");
-
-	// 	const data = req.body;
-	// 	// validation should happen here
-
-	// 	// const queryObject = { _id: id };
-	// 	const areaId = req.params.areaId;
-
-	// 	// const options = { returnOriginal: false }; // send back the UPDATED record
-
-	// 	collection.update(
-	// 		{},
-	// 		{ $pull: {  }, { multi: true }
-	// 	);
-	// 	res.send({ status: "success" });
-
-	// });
-
+	// deleting a previous feedback
 	router.put("/students/:studentId/:feedbackId/delete", function(req, res) {
 
 		const collection = db.collection("StudentDenormalizedData");
