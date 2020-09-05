@@ -13,6 +13,8 @@
     flex: 1;
     height: 65vh;
     margin-right: 15px;
+    position: sticky;
+    top: 40px;
 }
 
 .full-profile-picture {
