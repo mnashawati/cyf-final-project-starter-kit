@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
 	//DELETE selected feedback PUT updates the DB
 	const options = {
@@ -17,6 +17,10 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			.catch((error) => console.log(error));
 		updateFeedback();
 		alert("Feedback Deleted Successfully");
+	};
+
+	const editFeedback = (feedback) => {
+		feedbackToEdit(feedback);
 	};
 
 	return  allFeedback ? (
@@ -35,7 +39,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 							</div>
 						</div>
 						<div className="buttons">
-							<button className="previous-feedback-edit" >EDIT</button>
+							<button className="previous-feedback-edit" onClick={() => editFeedback(item)}>EDIT</button>
 							<button className="previous-feedback-delete" onClick={() => deleteFeedback(item.id)}>DELETE</button>
 						</div>
 					</div>
