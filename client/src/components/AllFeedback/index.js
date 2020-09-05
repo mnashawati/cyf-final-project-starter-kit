@@ -6,7 +6,7 @@ import EditFeedback from "../EditFeedback";
 const AllFeedback = ({ student }) => {
 
 	const [allFeedback, setAllFeedback] = useState([]);
-	const [feedbackEdited, setFeedbackEdited] = useState ({});
+	const [feedbackToBeEdited, setFeedbackToBeEdited] = useState ({});
 	const [showComponent, setShowComponent] = useState(false);
 
 	//Call data after feedback submitted
@@ -23,8 +23,8 @@ const AllFeedback = ({ student }) => {
 	}, []);
 
 	const feedbackToEdit = (feedback) => {
-		setFeedbackEdited(feedback);
 		setShowComponent(true);
+		setFeedbackToBeEdited(feedback);
 	};
 
 	const noShowPage = () => {
@@ -34,8 +34,15 @@ const AllFeedback = ({ student }) => {
 	return (
 		<div>
 			<FeedbackForm updateFeedback={updateFeedback} student={student} />
-			{ showComponent ? <EditFeedback feedbackEdited={feedbackEdited} noShowPage = {noShowPage} /> : null}
-			<PreviousFeedback student={student} allFeedback={allFeedback}
+			{ showComponent ? <EditFeedback
+				feedbackToBeEdited={feedbackToBeEdited}
+				noShowPage = {noShowPage}
+				updateFeedback={updateFeedback}
+				student={student}
+			/> : null}
+			<PreviousFeedback
+				student={student}
+				allFeedback={allFeedback}
 				updateFeedback={updateFeedback}
 				feedbackToEdit={feedbackToEdit} />
 		</div>

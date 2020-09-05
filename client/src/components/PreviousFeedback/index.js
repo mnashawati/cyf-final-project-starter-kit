@@ -34,7 +34,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 							<p className="feedback-title">{item.title}</p>
 							<p className="feedback-text">{item.text}</p>
 							<div className="date-mentor">
-								<p className="feedback-date">{item.date}</p>
+								<p className="feedback-date">{item.time}</p>
 								<p className="feedback-mentor">Given by: {item.mentor}</p>
 							</div>
 						</div>
