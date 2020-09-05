@@ -1,35 +1,70 @@
-/* .feedback-form {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+.feedback-form-container {
+    border: 1px solid black;
+    height: 440px;
+    margin: 20px auto;
+    padding: 20px auto;
 }
 
-.feedback-message {
-    width: 700px;
-    height: 350px;
-    margin: auto;
-    margin-top: 15px;
+.feedback-form {
+    margin: 12px;
+}
+
+.feedback-label-container {
+    font-weight: bold;
+    margin: 10px 0 10px -10px;
+}
+
+.feedback-label-container label {
+    text-underline-position: below;
+}
+
+.feedback-input-heading {
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feedback-input-heading b {
+    color: rgb(160, 20, 20);
+}
+
+.select-module, 
+.feedback-title-input, 
+.mentor-name-input {
+    width: 50%;
+    height: 30px;
+}
+
+.feedback-message-input {
+    width: 100%;
+    min-height: 150px;
+}
+
+.select-module, 
+.feedback-title-input, 
+.feedback-message-input, 
+.mentor-name-input, 
+.post-feedback-button-div {
+    padding: 5px;
     margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
-.feedback-label {
-    width: 700px;
-    margin: auto;
-}
-
-.send-feedback-button-div {
-    width: 700px;
-    margin: auto;
-    text-align: end;
-}
-
-.given-feedback-section {
+.feedback-form-bottom-section {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    justify-content: space-between;
 }
 
-.feedback-section-container {
-    display: flex;
-    flex-wrap: wrap;
-} */
+.post-feedback-button-div {
+    padding: auto;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(223, 54, 54);
+}
+
+.post-feedback-button-div:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
