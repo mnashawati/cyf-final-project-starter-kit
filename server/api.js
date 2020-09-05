@@ -84,7 +84,7 @@ client.connect(function () {
 		// };
 		console.log("areas", queryObject);
 
-		collection.update(
+		collection.updateOne(
 			queryObject,
 			{ $set : { "areasOfFocus" : data } },
 			options
@@ -138,7 +138,7 @@ client.connect(function () {
 			return res.status(400).send(errorInfo);
 		}
 
-		collection.update(
+		collection.updateOne(
 			queryObject,
 			{ $push : { "allFeedback" : data } },
 			options
@@ -178,7 +178,7 @@ client.connect(function () {
 		// const studentId = req.params.studentId;
 		// const queryObject = { _id: req.params.studentId };
 
-		collection.update(
+		collection.updateOne(
 			{} ,
 			{ $pull: { allFeedback: { id: feedbackId } } }, { multi:true }
 		);
