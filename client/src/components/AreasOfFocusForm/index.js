@@ -3,17 +3,24 @@ import React, { useState } from "react";
 
 import "./styles.css";
 
-const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
+const AreasOfFocusForm = ({ addTheLevelToAreas: addNewArea }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",
 	}); // { message: "" level: "" id: "" }
 
 	const handleSubmit = (e) => {
+		if (!area.message) {
+			return alert("Please add an area");
+		} else if (!area.level) {
+			return alert("Please select a level");
+		}
 		e.preventDefault();
-		addTheLevelToAreas(area);
+		addNewArea(area);
 		e.target.reset();
+		setArea({});
 	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
