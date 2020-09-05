@@ -1,9 +1,6 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
-/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
+import AreasOfFocusInput from "../AreasOfFocusInput/index.js";
 import uuid from "react-uuid";
 
 const AreasOfFocus = ({ student }) => {
@@ -20,7 +17,7 @@ const AreasOfFocus = ({ student }) => {
 			.catch((error) => console.log(error));
 	});
 
-	const addTheLevelToAreas = (area) => {
+	const addNewArea = (area) => {
 		area.level === "To work on"
 			? setAreaOfFocus({
 				...areasOfFocus,
@@ -39,22 +36,10 @@ const AreasOfFocus = ({ student }) => {
 					: null;
 	};
 
-
-	const removeAreaToWorkOn = (areaId) => {
-		const updatedAreas = areasOfFocus.toWorkOn.filter((area) => area.id !== areaId);
-		setAreaOfFocus({ ...areasOfFocus, toWorkOn: updatedAreas });
+	const removeAnArea = (areaId, level) => {
+		const updatedAreas = areasOfFocus[level].filter((area) => area.id !== areaId);
+		setAreaOfFocus({ ...areasOfFocus, [level]: updatedAreas });
 	};
-
-	const removeAreaOkayAt = (areaId) => {
-		const updatedAreas = areasOfFocus.okayAt.filter((area) => area.id !== areaId);
-		setAreaOfFocus({ ...areasOfFocus, okayAt: updatedAreas });
-	};
-
-	const removeAreaGoodAt = (areaId) => {
-		const updatedAreas = areasOfFocus.goodAt.filter((area) => area.id !== areaId);
-		setAreaOfFocus({ ...areasOfFocus, goodAt: updatedAreas });
-	};
-
 
 	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
@@ -75,11 +60,9 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-red"
-								onClick={() => {
-									removeAreaToWorkOn(item.id);
-								}}
+								onClick={() => removeAnArea(item.id, "toWorkOn")}
 							>
-                X
+                				X
 							</button>
 						</div>
 					))}
@@ -97,11 +80,9 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-yellow"
-								onClick={() => {
-									removeAreaOkayAt(item.id);
-								}}
+								onClick={() => removeAnArea(item.id, "okayAt")}
 							>
-                X
+               					X
 							</button>
 						</div>
 					))}
@@ -120,19 +101,15 @@ const AreasOfFocus = ({ student }) => {
 							</button>
 							<button
 								className="x-button-green"
-								onClick={() => {
-									removeAreaGoodAt(item.id);
-								}}
+								onClick={() => removeAnArea(item.id, "goodAt")}
 							>
-                X
+                				X
 							</button>
 						</div>
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm
-				addTheLevelToAreas={addTheLevelToAreas}
-			/>
+			<AreasOfFocusInput addNewArea={addNewArea} />
 		</div>
 	) : null;
 };

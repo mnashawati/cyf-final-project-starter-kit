@@ -10,9 +10,7 @@ const AllFeedback = ({ student }) => {
 	const updateFeedback = () => {
 		fetch(`/api/students/${student._id}`)
 			.then((res) => res.json())
-			.then((student) => {
-				setAllFeedback(student.allFeedback.reverse());
-			})
+			.then((student) => setAllFeedback(student.allFeedback.reverse()))
 			.catch((err) => console.log(err));
 	};
 

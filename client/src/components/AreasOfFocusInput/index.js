@@ -1,19 +1,29 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import "./styles.css";
 
-const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
+const AreasOfFocusInput = ({ addNewArea }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",
 	}); // { message: "" level: "" id: "" }
 
 	const handleSubmit = (e) => {
+		if (!area.message) {
+			return alert("Please add an area");
+		} else if (!area.level) {
+			return alert("Please select a level");
+		}
 		e.preventDefault();
-		addTheLevelToAreas(area);
+		addNewArea(area);
 		e.target.reset();
+		setArea({});
 	};
+
+	const handleChange = (e) => {
+		setArea({ ...area, [e.target.name] : e.target.value });
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
@@ -26,15 +36,10 @@ const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
 					<input
 						className="areas-input"
 						type="text"
-						name="area"
+						name="message"
 						placeholder="eg. CSS, useEffect Hook..."
 						maxLength={15}
-						onChange={(e) =>
-							setArea({
-								...area,
-								message: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					/>
 				</div>
 				<div className="lights-section">
@@ -42,48 +47,31 @@ const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="To work on"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 					<input
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="Okay at"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 					<input
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="Good at"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 				</div>
 				<div className="add-area-button-section">
 					<div className="area-display">{area.level}</div>
 					<div className="buton-wrapper">
-						<button className="add-area-button">
-              Add area
-						</button>
+						<button className="add-area-button">Add</button>
 					</div>
 				</div>
 			</div>
@@ -91,4 +79,4 @@ const AreasOfFocusForm = ({ addTheLevelToAreas }) => {
 	);
 };
 
-export default AreasOfFocusForm;
+export default AreasOfFocusInput;
