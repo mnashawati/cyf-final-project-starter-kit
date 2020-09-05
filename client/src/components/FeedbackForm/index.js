@@ -13,6 +13,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	});
 
 	feedback.id = uuid();
+	feedback.time = Date.now();
 
 	const options = {
 		method: "PUT",
@@ -27,10 +28,24 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	};
 
 	const handleSubmit = (e) => {
+		if (!feedback.module) {
+			return alert("Please select a module");
+		} else if (!feedback.title) {
+			return alert("Please add a title");
+		} else if (!feedback.text) {
+			return alert("Please add your feedback in the box");
+		}
 		e.preventDefault();
 		postFeedback();
 		updateFeedback();
 		e.target.reset();
+		setFeedback({
+			id: "",
+			module: "",
+			title: "",
+			text: "",
+			mentor: "",
+		});
 	};
 
 	// re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
@@ -64,7 +79,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 					>
 						<option value="" defaultValue disabled hidden>Select a module</option>
 						{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
-					</select>
+					</select> *
 				</div>
 
 				<div>
@@ -74,7 +89,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						value={feedback.title}
 						onChange={handleChange}
 						placeholder="Feedback title...">
-					</input>
+					</input> *
 				</div>
 				<div>
 					<textarea
@@ -83,7 +98,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						value={feedback.text}
 						onChange={handleChange}
 						placeholder="Your message here..."
-					></textarea>
+					></textarea> *
 				</div>
 				<div>
 					<input
