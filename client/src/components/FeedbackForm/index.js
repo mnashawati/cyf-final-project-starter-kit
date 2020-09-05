@@ -62,7 +62,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						name="module"
 						onChange={handleChange}
 					>
-						<option value="" selected disabled hidden>Select a module</option>
+						<option value="" defaultValue disabled hidden>Select a module</option>
 						{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
 					</select>
 				</div>
