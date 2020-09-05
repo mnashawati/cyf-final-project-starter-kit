@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import "./styles.css";
 
-const AreasOfFocusForm = ({ addNewArea }) => {
+const AreasOfFocusInput = ({ addNewArea }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",
@@ -21,6 +20,10 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 		setArea({});
 	};
 
+	const handleChange = (e) => {
+		setArea({ ...area, [e.target.name] : e.target.value });
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
@@ -33,15 +36,10 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 					<input
 						className="areas-input"
 						type="text"
-						name="area"
+						name="message"
 						placeholder="eg. CSS, useEffect Hook..."
 						maxLength={15}
-						onChange={(e) =>
-							setArea({
-								...area,
-								message: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					/>
 				</div>
 				<div className="lights-section">
@@ -49,40 +47,25 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="To work on"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 					<input
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="Okay at"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 					<input
 						className="send-input-red"
 						type="radio"
 						id="male"
-						name="area"
+						name="level"
 						value="Good at"
-						onChange={(e) =>
-							setArea({
-								...area,
-								level: e.target.value,
-							})
-						}
+						onChange={handleChange}
 					></input>
 				</div>
 				<div className="add-area-button-section">
@@ -96,4 +79,4 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 	);
 };
 
-export default AreasOfFocusForm;
+export default AreasOfFocusInput;

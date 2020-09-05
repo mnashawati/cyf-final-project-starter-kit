@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
+import AreasOfFocusInput from "../AreasOfFocusInput/index.js";
 import uuid from "react-uuid";
 
 const AreasOfFocus = ({ student }) => {
@@ -109,7 +109,7 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm addNewArea={addNewArea} />
+			<AreasOfFocusInput addNewArea={addNewArea} />
 		</div>
 	) : null;
 };
