@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import "./styles.css";
 
-const AreasOfFocusForm = ({ addTheLevelToAreas: addNewArea }) => {
+const AreasOfFocusForm = ({ addNewArea }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",

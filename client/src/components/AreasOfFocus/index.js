@@ -109,7 +109,7 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm addTheLevelToAreas={addNewArea} />
+			<AreasOfFocusForm addNewArea={addNewArea} />
 		</div>
 	) : null;
 };
