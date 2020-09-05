@@ -149,17 +149,21 @@ client.connect(function () {
 	});
 
 	// deleting a previous feedback
-	router.put("/students/:studentId/:feedbackId/delete", function(req, res) {
+	router.put("/students/:id/:feedbackId/delete", function(req, res) {
 
 		const collection = db.collection("StudentDenormalizedData");
 
+		const id = new mongodb.ObjectID(req.params.id);
+		const queryObject = { _id: id };
+
 		const feedbackId = req.params.feedbackId;
-		// const studentId = req.params.studentId;
-		// const queryObject = { _id: req.params.studentId };
+
+		const options = { multi:true };
 
 		collection.updateOne(
-			{} ,
-			{ $pull: { allFeedback: { id: feedbackId } } }, { multi:true }
+			queryObject,
+			{ $pull: { "allFeedback" : { id: feedbackId } } },
+			options
 		);
 		res.send({ status:"success" });
 	});
