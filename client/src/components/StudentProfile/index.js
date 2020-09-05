@@ -12,9 +12,7 @@ const StudentProfile = () => {
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
-			.then((data) => {
-				setStudent(data.find((student) => student.name === params.name));
-			})
+			.then((data) => setStudent(data.find((student) => student.name === params.name)))
 			.catch((err) => console.log(err));
 	}
 	, []);
