@@ -5,13 +5,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	//DELETE selected feedback PUT updates the DB
 	const options = {
-		method: "PUT",
+		method: "DELETE",
 		headers: { "Content-type": "application/json",
 		},
 	};
 
 	const deleteFeedback =(feedbackId) => {
-		fetch(`/api/students/${student._id}/${feedbackId}/delete`, options)
+		fetch(`/api/students/${student._id}/${feedbackId}`, options)
 			.then( (res) => res.json())
 			.then((data) => console.log(data))
 			.catch((error) => console.log(error));

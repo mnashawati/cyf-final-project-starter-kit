@@ -149,7 +149,7 @@ client.connect(function () {
 	});
 
 	// deleting a previous feedback
-	router.put("/students/:id/:feedbackId/delete", function(req, res) {
+	router.delete("/students/:id/:feedbackId", function(req, res) {
 
 		const collection = db.collection("StudentDenormalizedData");
 
