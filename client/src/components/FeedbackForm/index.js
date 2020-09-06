@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import modules from "../../db/modules.json";
 import "../FeedbackForm/styles.css";
 import uuid from "react-uuid";
+import PropTypes from "prop-types";
 
 const FeedbackForm = ({ student, updateFeedback }) => {
 
@@ -28,6 +29,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	};
 
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		if (!feedback.module) {
 			return alert("Please select a module");
 		} else if (!feedback.title) {
@@ -35,7 +37,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 		} else if (!feedback.text) {
 			return alert("Please add your feedback in the box");
 		}
-		e.preventDefault();
 		postFeedback();
 		updateFeedback();
 		e.target.reset();
@@ -60,13 +61,8 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 				className="feedback-form"
 				onSubmit={handleSubmit}
 			>
-				<div className="feedback-label-container">
-					<label
-						htmlFor="feedback"
-						id="feedback"
-					>
-						Add Feedback
-					</label>
+				<div className="add-feedback-heading-container">
+					<h3>Add Feedback</h3>
 				</div>
 
 				<div>
@@ -92,6 +88,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						placeholder="">
 					</input>
 				</div>
+
 				<div>
 					<h3 className="feedback-input-heading">Add some feedback <b>*</b></h3>
 					<textarea
@@ -102,22 +99,30 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						placeholder=""
 					></textarea>
 				</div>
-				<h3 className="feedback-input-heading">Your name:</h3>
-				<div className="feedback-form-bottom-section">
-					<input
-						className="mentor-name-input"
-						type="text"
-						name="mentor"
-						value={feedback.mentor}
-						onChange={handleChange}
-						placeholder=""
-					/>
-					<input className="post-feedback-button-div"
-						type="submit" value="POST FEEDBACK" />
+
+				<div>
+					<h3 className="feedback-input-heading">Your name:</h3>
+					<div className="feedback-form-bottom-section">
+						<input
+							className="mentor-name-input"
+							type="text"
+							name="mentor"
+							value={feedback.mentor}
+							onChange={handleChange}
+							placeholder=""
+						/>
+						<input className="post-feedback-button-div"
+							type="submit" value="POST FEEDBACK" />
+					</div>
 				</div>
 			</form>
 		</div>
 	);
+};
+
+FeedbackForm.propTypes = {
+	student: PropTypes.object.isRequired,
+	updateFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackForm;

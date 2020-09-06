@@ -9,13 +9,9 @@
     margin: 12px;
 }
 
-.feedback-label-container {
+.add-feedback-heading-container {
     font-weight: bold;
     margin: 10px 0 10px -10px;
-}
-
-.feedback-label-container label {
-    text-underline-position: below;
 }
 
 .feedback-input-heading {

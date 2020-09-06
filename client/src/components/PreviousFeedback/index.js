@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import PropTypes from "prop-types";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
@@ -17,7 +18,6 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 		updateFeedback();
 		alert("Feedback Deleted Successfully");
 	};
-
 
 	const editFeedback = (feedback) => {
 		feedbackToEdit(feedback);
@@ -51,7 +51,6 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 	};
 
 	return allFeedback ? (
-
 		<>
 			<p><b>Previous Feedback</b></p>
 			<div className="previous-feedback-section">
@@ -76,6 +75,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 			</div>
 		</>
 	) : null;
+};
+
+PreviousFeedback.propTypes = {
+	student: PropTypes.object.isRequired,
+	allFeedback: PropTypes.object.isRequired,
+	updateFeedback: PropTypes.func.isRequired,
+	feedbackToEdit: PropTypes.func.isRequired,
 };
 
 export default PreviousFeedback;

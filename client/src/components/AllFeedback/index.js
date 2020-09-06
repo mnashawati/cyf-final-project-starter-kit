@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FeedbackForm from "../FeedbackForm";
 import PreviousFeedback from "../PreviousFeedback";
 import EditFeedback from "../EditFeedback";
+import PropTypes from "prop-types";
 
 const AllFeedback = ({ student }) => {
 
@@ -20,7 +21,7 @@ const AllFeedback = ({ student }) => {
 	//Render the page on first load
 	useEffect(()=>{
 		updateFeedback();
-	}, []);
+	});
 
 	const feedbackToEdit = (feedback) => {
 		setShowComponent(true);
@@ -47,6 +48,10 @@ const AllFeedback = ({ student }) => {
 				feedbackToEdit={feedbackToEdit} />
 		</div>
 	);
+};
+
+AllFeedback.propTypes = {
+	student: PropTypes.object.isRequired,
 };
 
 export default AllFeedback;

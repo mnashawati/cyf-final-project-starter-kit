@@ -15,8 +15,7 @@ const StudentProfile = () => {
 			.then((res) => res.json())
 			.then((data) => setStudent(data.find((student) => student.name == params.studentName)))
 			.catch((err) => console.log(err));
-	}
-	, []);
+	});
 
 	return  Object.keys(student).length ? (
 		<>
@@ -31,11 +30,11 @@ const StudentProfile = () => {
 						<p className="student-profile-city">{student.city}</p>
 						<div className="email-github-section">
 							<div className="email-icon-section">
-								<img src="https://img.icons8.com/material-rounded/24/000000/important-mail.png" />
+								<img src="https://img.icons8.com/material-rounded/24/000000/important-mail.png" alt="email-icon" />
 								<p className="student-profile-email"> {student.email}</p>
 							</div>
 							<div className="github-icon-section">
-								<img src="https://img.icons8.com/material-outlined/24/000000/github.png" />
+								<img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="github-icon" />
 								<p className="student-profile-github">{student.gitHub_username}</p>
 							</div>
 						</div>
