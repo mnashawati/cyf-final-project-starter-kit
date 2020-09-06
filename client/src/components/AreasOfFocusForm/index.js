@@ -14,7 +14,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 		if (!area.message) {
 			return alert("Please add an area");
 		} else if (!area.level) {
-			return  alert("Please select a level");
+			return alert("Please select a level");
 		}
 		addNewArea(area);
 		e.target.reset();
