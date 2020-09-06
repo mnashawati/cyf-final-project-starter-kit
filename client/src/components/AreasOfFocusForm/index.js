@@ -1,21 +1,21 @@
-/* eslint-disable jsx-a11y/label-has-for */
 import React, { useState } from "react";
-
 import "./styles.css";
+import PropTypes from "prop-types";
 
-const AreasOfFocusInput = ({ addNewArea }) => {
+
+const AreasOfFocusForm = ({ addNewArea }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",
 	});
 
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		if (!area.message) {
 			return alert("Please add an area");
 		} else if (!area.level) {
-			return  alert("Please select a level");
+			return alert("Please select a level");
 		}
-		e.preventDefault();
 		addNewArea(area);
 		e.target.reset();
 		setArea({});
@@ -27,7 +27,7 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 
 	return (
 		<div className="area-form-section">
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} id="add-area-of-focus">
 				<div>
 					<p className="areas-input-label">
           Add area of focus:
@@ -45,11 +45,11 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 					</div>
 					<div className="lights-section">
 						<div>
-							<label className="radio-circle-section-red">
+							<label className="radio-circle-section-red" htmlFor="red-radio-button" >
 								<input
 									className="send-input-red"
 									type="radio"
-									id="male"
+									id="red-radio-button"
 									name="level"
 									value="To work on"
 									onChange={handleChange}
@@ -58,11 +58,11 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 							</label>
 						</div>
 						<div>
-							<label className="radio-circle-section-yellow">
+							<label className="radio-circle-section-yellow" htmlFor="yellow-radio-button">
 								<input
 									className="send-input-red"
 									type="radio"
-									id="male"
+									id="yellow-radio-button"
 									name="level"
 									value="Okay at"
 									onChange={handleChange}
@@ -71,11 +71,11 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 							</label>
 						</div>
 						<div>
-							<label className="radio-circle-section-green">
+							<label className="radio-circle-section-green" htmlFor="green-radio-button">
 								<input
 									className="send-input-green"
 									type="radio"
-									id="male"
+									id="green-radio-button"
 									name="level"
 									value="Good at"
 									onChange={handleChange}
@@ -86,7 +86,7 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 					</div>
 					<div className="add-area-button-section">
 						<div className="area-display">{area.level}</div>
-						<div className="buton-wrapper">
+						<div className="add-area-button-wrapper">
 							<button className="add-area-button">Post area</button>
 						</div>
 					</div>
@@ -96,4 +96,8 @@ const AreasOfFocusInput = ({ addNewArea }) => {
 	);
 };
 
-export default AreasOfFocusInput;
+AreasOfFocusForm.propTypes = {
+	addNewArea: PropTypes.func.isRequired,
+};
+
+export default AreasOfFocusForm;
