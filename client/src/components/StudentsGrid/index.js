@@ -16,7 +16,6 @@ const StudentsGrid = ( ) => {
 	}
 	, []);
 
-	console.log(students);
 	return  (
 		<div className="students-cards-container">
 			{ students && students.map((student, index) => (

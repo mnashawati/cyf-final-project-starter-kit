@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
 	//DELETE selected feedback PUT updates the DB
 	const options = {
@@ -16,6 +16,11 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			.catch((error) => console.log(error));
 		updateFeedback();
 		alert("Feedback Deleted Successfully");
+	};
+
+
+	const editFeedback = (feedback) => {
+		feedbackToEdit(feedback);
 	};
 
 	const timeDifference = (current, previous) => {
@@ -46,6 +51,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	};
 
 	return allFeedback ? (
+
 		<>
 			<p><b>Previous Feedback</b></p>
 			<div className="previous-feedback-section">
@@ -56,12 +62,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 							<p className="feedback-title">{item.title}</p>
 							<p className="feedback-text">{item.text}</p>
 							<div className="date-mentor">
+
 								<p className="feedback-date">{timeDifference(Date.now(), item.time)}</p>
 								<p className="feedback-mentor">Given by: {item.mentor}</p>
 							</div>
 						</div>
 						<div className="buttons">
-							<button className="previous-feedback-edit" >EDIT</button>
+							<button className="previous-feedback-edit" onClick={() => editFeedback(item)}>EDIT</button>
 							<button className="previous-feedback-delete" onClick={() => deleteFeedback(item.id)}>DELETE</button>
 						</div>
 					</div>

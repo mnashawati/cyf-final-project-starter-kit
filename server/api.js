@@ -168,6 +168,28 @@ client.connect(function () {
 		res.send({ status:"success" });
 	});
 
+	router.put("/students/:id/feedback/:feedbackId", function(req, res) {
+
+
+		// const collection = db.collection("StudentDenormalizedData");
+		const data = req.body;
+		console.log({ data });
+
+		// const id = new mongodb.ObjectID(req.params.id);
+		// const queryObject = { _id: id };
+
+		// const feedbackId = req.params.feedbackId;
+
+		// const options = { multi:true };
+
+		// collection.updateOne(
+		// 	queryObject,
+		// 	{ $pull: { "allFeedback" : { id: feedbackId } } },
+		// 	options
+		// );
+		res.send({ status:"success" });
+	});
+
 });
 
 export default router;
