@@ -8,11 +8,12 @@ import AllFeedback from "../AllFeedback/index.js";
 const StudentProfile = () => {
 
 	const params = useParams();
+
 	const [student, setStudent] = useState({});
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
-			.then((data) => setStudent(data.find((student) => student.name === params.name)))
+			.then((data) => setStudent(data.find((student) => student.name == params.studentName)))
 			.catch((err) => console.log(err));
 	}
 	, []);
