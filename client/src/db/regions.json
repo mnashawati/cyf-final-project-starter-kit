@@ -1,0 +1,27 @@
+[
+    {
+        "name": "West Midlands",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/02/bir-400x400-1.jpg"
+    },
+    {
+        "name": "Scotland",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/02/gla-400x400-1.jpg"
+
+    },
+    {
+        "name": "London",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/02/ldn-400x400-1.jpg"
+    },
+    {
+        "name": "North West",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/02/man-400x400-1.jpg"
+    },
+    {
+        "name": "Rome",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/02/roma-400x400-1.jpg"
+    },
+    {
+        "name": "Cape Town",
+        "image_url": "https://codeyourfuture.io/wp-content/uploads/2020/08/CapeTown.png"
+    }
+]
