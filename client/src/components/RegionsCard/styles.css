@@ -1,0 +1,19 @@
+.card-container{
+    text-align:center ;
+}
+
+.regions-card {
+    text-decoration: none;   
+    border: 1px solid black;
+    margin: 15px;
+}
+
+.region-name {
+    font-size: 1.5rem;
+    color: black;
+}
+
+.region-image {
+    max-height: 200px;
+    width: 240px;
+}
