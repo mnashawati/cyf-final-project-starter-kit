@@ -4,6 +4,7 @@ import "../FeedbackForm/styles.css";
 import uuid from "react-uuid";
 
 const FeedbackForm = ({ student, updateFeedback }) => {
+
 	const [feedback, setFeedback] = useState({
 		id: "",
 		module: "",
@@ -11,7 +12,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 		text: "",
 		mentor: "",
 	});
-
 	feedback.id = uuid();
 	feedback.time = Date.now();
 
@@ -54,64 +54,66 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	};
 
 	return (
-		<div className="feedback-section-container">
-
+		<div className="feedback-form-container">
 			<form
 				action=""
 				className="feedback-form"
 				onSubmit={handleSubmit}
 			>
-				<div>
+				<div className="feedback-label-container">
 					<label
-						className="feedback-label"
 						htmlFor="feedback"
 						id="feedback"
 					>
-                    Write feedback for the student.
+						Add Feedback
 					</label>
 				</div>
 
 				<div>
+					<h3 className="feedback-input-heading">Module <b>*</b></h3>
 					<select
+						className="select-module"
 						value={feedback.module}
 						name="module"
 						onChange={handleChange}
 					>
 						<option value="" defaultValue disabled hidden>Select a module</option>
 						{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
-					</select> *
+					</select>
 				</div>
 
 				<div>
-					<input className="input feedback-title"
+					<h3 className="feedback-input-heading">Feedback title <b>*</b></h3>
+					<input className="feedback-title-input"
 						type="text"
 						name="title"
 						value={feedback.title}
 						onChange={handleChange}
-						placeholder="Feedback title...">
-					</input> *
+						placeholder="">
+					</input>
 				</div>
 				<div>
+					<h3 className="feedback-input-heading">Add some feedback <b>*</b></h3>
 					<textarea
-						className="feedback-message"
+						className="feedback-message-input"
 						name="text"
 						value={feedback.text}
 						onChange={handleChange}
-						placeholder="Your message here..."
-					></textarea> *
+						placeholder=""
+					></textarea>
 				</div>
-				<div>
+				<h3 className="feedback-input-heading">Your name:</h3>
+				<div className="feedback-form-bottom-section">
 					<input
-						className="input-name"
+						className="mentor-name-input"
 						type="text"
 						name="mentor"
 						value={feedback.mentor}
 						onChange={handleChange}
-						placeholder="Your name here..."
+						placeholder=""
 					/>
-				</div>
-				<div className="send-feedback-button-div">
-					<input type="submit" value="Post feedback" />
+					<input className="post-feedback-button-div"
+						type="submit" value="POST FEEDBACK" />
 				</div>
 			</form>
 		</div>
