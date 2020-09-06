@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import AreasOfFocusInput from "../AreasOfFocusInput/index.js";
@@ -53,17 +54,17 @@ const AreasOfFocus = ({ student }) => {
 				<div className="area-text-section-red">
 					{areasOfFocus.toWorkOn.map((item, index) => (
 						<div key={index}>
-							<button
-								className={"areas-button-red key-button"}
+							<li
+								className="areas-button-red"
 							>
 								{item.message}
-							</button>
-							<button
-								className="x-button-red"
-								onClick={() => removeAnArea(item.id, "toWorkOn")}
-							>
-                				X
-							</button>
+								<button
+									className="x-button-red"
+									onClick={() => removeAnArea(item.id, "toWorkOn")}
+								>
+									X
+								</button>
+							</li>
 						</div>
 					))}
 				</div>
@@ -73,17 +74,17 @@ const AreasOfFocus = ({ student }) => {
 				<div className="area-text-section-yellow">
 					{areasOfFocus.okayAt.map((item, index) => (
 						<div key={index}>
-							<button
-								className={"areas-button-yellow key-button"}
+							<li
+								className="areas-button-yellow"
 							>
 								{item.message}
-							</button>
-							<button
-								className="x-button-yellow"
-								onClick={() => removeAnArea(item.id, "okayAt")}
-							>
+								<button
+									className="x-button-yellow"
+									onClick={() => removeAnArea(item.id, "okayAt")}
+								>
                					X
-							</button>
+								</button>
+							</li>
 						</div>
 					))}
 				</div>
@@ -93,18 +94,18 @@ const AreasOfFocus = ({ student }) => {
 				<div className="area-text-section-green">
 					{areasOfFocus.goodAt.map((item, index) => (
 						<div key={index}>
-							<button
-								className={"areas-button-green key-button"}
+							<li
+								className="areas-button-green"
 								key={index}
 							>
 								{item.message}
-							</button>
-							<button
-								className="x-button-green"
-								onClick={() => removeAnArea(item.id, "goodAt")}
-							>
+								<button
+									className="x-button-green"
+									onClick={() => removeAnArea(item.id, "goodAt")}
+								>
                 				X
-							</button>
+								</button>
+							</li>
 						</div>
 					))}
 				</div>
