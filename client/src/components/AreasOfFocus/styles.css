@@ -12,93 +12,97 @@
     border: 1.5px solid red;
     margin-bottom: 10px;
     min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .area-text-section-yellow {
     border: 1.5px solid rgb(255, 204, 0);
     margin-bottom: 10px;
     min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .area-text-section-green {
     border: 1.5px solid rgb(19, 91, 5);
     margin-bottom: 10px;
     min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
 }
 
 .areas-button-red {
+    list-style: none;
     background-color: rgb(237, 67, 67);
-    border: none;
+    margin: 2px; 
+    min-width: 140px;
+    max-width: 140px;
+    padding: 5px;
     border-radius: 15px;
+    text-align: center;
     height: 29px;
-    min-width: 95px;
-    font-size: 12px;
+    font-size: 14px;
     color: white;
-    margin: 5px;
+  
 }
 
 .areas-button-yellow {
-    background-color: rgb(255, 204, 0);
-    border: none;
-    border-radius: 15px;
-    height: 29px;
-    min-width: 95px;
-    font-size: 12px;
-    color: white;
-    margin: 5px;
+     list-style: none;
+     background-color: rgb(255, 204, 0);
+     margin: 2px;
+     min-width: 140px;
+     max-width: 140px;
+     padding: 5px;
+     border-radius: 15px;
+     text-align: center;
+     height: 29px;
+     font-size: 14px;
+     color: white;
 }
 
 
 .areas-button-green {
-    background-color: rgb(19, 91, 5);
-   border: none;
+   list-style: none;
+   background-color: rgb(19, 91, 5);
+   margin: 2px;
+   min-width: 140px;
+   max-width: 140px;
+   padding: 5px;
    border-radius: 15px;
-   height: 29px;
-   min-width: 95px;
-   font-size: 12px;
-   color: white;
-   margin: 5px;
+    text-align: center;
+    height: 29px;
+    font-size: 14px;
+    color: white;
+
 }
 
 .x-button-red {
+    float: right;
+    float: right;
     background-color: rgb(237, 67, 67);
-    border-radius: 15px;
     border: none;
     color: white;
-    font-size: 12px;
-    margin-right: 5px;
-    height: 29px;
-    margin-left: 0;
-    border-radius: 0 15px 15px 0;
-    min-width: 25px;
-
 }
 
 .x-button-yellow {
-    background-color: rgb(255, 204, 0);
-    border-radius: 15px;
-    border: none;
+     float: right;
+     float: right;
+     background-color: rgb(255, 204, 0);
+     border: none;
     color: white;
-    font-size: 12px;
-    margin-right: 5px;
-    height: 29px;
-    margin-left: 0;
-    border-radius: 0 15px 15px 0;
-    min-width: 25px;
 
 }
 
 .x-button-green {
+    float: right;
+    float: right;
     background-color: rgb(19, 91, 5);
-    border-radius: 15px;
     border: none;
     color: white;
-    font-size: 12px;
-    margin-right: 5px;
-    height: 29px;
-    margin-left: 0;
-    border-radius: 0 15px 15px 0;
-    min-width: 25px;
 
 }
 

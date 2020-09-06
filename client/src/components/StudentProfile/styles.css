@@ -13,6 +13,7 @@
     flex: 1;
     height: 65vh;
     margin-right: 15px;
+    top: 5px;
 }
 
 .full-profile-picture {
@@ -129,4 +130,14 @@
     .student-image-section {
         margin-bottom: -50px;
     }
+}
+
+@media (min-width:758px) and (max-width:1200px) {
+
+    .student-profile-section-left {
+   
+        position: sticky;
+
+    }
+
 }

@@ -1,26 +1,125 @@
+/* circle red */
+.radio-circle-section-red {
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 22px;
+    user-select: none;
+}
+
+.radio-circle-section-red input {
+    display: none;
+}
+
+.radio-circle-section-red .circle-red {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(237, 67, 67);
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+/* circle yellow  */
+
+.radio-circle-section-yellow {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 22px;
+    user-select: none;
+} 
+
+.radio-circle-section-yellow input {
+    display: none;
+}
+
+ .radio-circle-section-yellow .circle-yellow {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(255, 204, 0);
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+
+/* circle grren */
+
+ .radio-circle-section-green {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 22px;
+    user-select: none;
+} 
+
+ .radio-circle-section-green input {
+    display: none;
+}
+
+.radio-circle-section-green .circle-green {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(19, 91, 5);
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+} 
+
 .add-area-button-section {
     display: flex;
     flex: 1;
+    padding: 5px;
+    margin-bottom: 15px;
 }
 
 .add-area-button {
-    background-color: rgb(237, 67, 67);
-    border: none;
-    border-radius: 15px;
-    height: 29px;
-    width: 108px;
-    font-size: 16px;
+    padding: auto;
     color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(223, 54, 54);
+    text-transform: uppercase;
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.add-area-button:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .buton-wrapper {
     flex: 1;
+    text-align: end;
 }
 
 .area-display {
     flex: 1;
+    text-align: center;
 }
 
 .lights-section {
-    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.areas-input {
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.area-form-section{
+    padding: 5px;
+
 }
