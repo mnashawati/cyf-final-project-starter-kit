@@ -23,7 +23,7 @@ const StudentCard = ({ student }) => {
 };
 
 StudentCard.propTypes = {
-	student: PropTypes.object,
+	student: PropTypes.object.isRequired,
 };
 
 export default StudentCard;

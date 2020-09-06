@@ -19,7 +19,7 @@ const RegionsCard = ({ region }) => {
 };
 
 RegionsCard.propTypes = {
-	region: PropTypes.object,
+	region: PropTypes.object.isRequired,
 };
 
 export default RegionsCard;
