@@ -168,28 +168,45 @@ client.connect(function () {
 		res.send({ status:"success" });
 	});
 
-	router.put("/students/:id/feedback/:feedbackId", function(req, res) {
-
-
-		// const collection = db.collection("StudentDenormalizedData");
+	router.put("/students/:studentId/feedback/:feedbackId", (req, res) => {
+		const collection = db.collection("StudentDenormalizedData");
+		// check if the id is valid if not -> 404
 		const data = req.body;
-		console.log({ data });
+		if (!mongodb.ObjectID.isValid(req.params.studentId)) {
+			return res.send(404);
+		}
+		//define id (mongodb.ObjectID)
+		const studentId = new mongodb.ObjectID(req.params.studentId);
+		const queryObject = { _id: studentId };
+		const options = { returnOriginal: false }; // send back the UPDATED record
 
-		// const id = new mongodb.ObjectID(req.params.id);
-		// const queryObject = { _id: id };
+		collection.findOne(queryObject, (error, result) => {
+			if (error) {
+				return res.status(500).send(error);
+			}
+			// if no record ->
+			if (!result) {
+				return res.sendStatus(404);
+			}
+			// if record -> send the data (200 default)
+			const updatedFeedback = result.allFeedback;
+			updatedFeedback.forEach((feedback) => {
+				if(feedback.id === req.params.feedbackId){
+					feedback.module = data.module;
+					feedback.title = data.title;
+					feedback.text = data.text;
+				}
+			});
 
-		// const feedbackId = req.params.feedbackId;
-
-		// const options = { multi:true };
-
-		// collection.updateOne(
-		// 	queryObject,
-		// 	{ $pull: { "allFeedback" : { id: feedbackId } } },
-		// 	options
-		// );
-		res.send({ status:"success" });
+			collection.findOneAndUpdate(queryObject, { $set : { "allFeedback" : updatedFeedback } }, options, (err, result) => {
+				if(result.value){
+					return res.send(err || result.value);
+				} else {
+					return res.sendStatus(404);
+				}
+			});
+		});
 	});
-
 });
 
 export default router;

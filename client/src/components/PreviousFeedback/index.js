@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import FeedbackButtons from "../FeedbackButtons";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
@@ -9,7 +10,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 		headers: { "Content-type": "application/json" },
 	};
 
-	const deleteFeedback = (feedbackId) => {
+	const handleDelete = (feedbackId) => {
 		fetch(`/api/students/${student._id}/${feedbackId}`, options)
 			.then((res) => res.json())
 			.then((data) => console.log(data))
@@ -18,8 +19,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 		alert("Feedback Deleted Successfully");
 	};
 
-
-	const editFeedback = (feedback) => {
+	const handleEdit = (feedback) => {
 		feedbackToEdit(feedback);
 	};
 
@@ -51,9 +51,9 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 	};
 
 	return allFeedback ? (
-
 		<>
-			<p><b>Previous Feedback</b></p>
+			<p className="previous-feedback-title"><b>Previous Feedback</b></p>
+			<hr style={{ margin:"10px auto", width:"70%"  }}></hr>
 			<div className="previous-feedback-section">
 				{allFeedback.map((item, index) => (
 					<div key={index} className="previous-feedback-container">
@@ -62,14 +62,12 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 							<p className="feedback-title">{item.title}</p>
 							<p className="feedback-text">{item.text}</p>
 							<div className="date-mentor">
-
 								<p className="feedback-date">{timeDifference(Date.now(), item.time)}</p>
 								<p className="feedback-mentor">Given by: {item.mentor}</p>
 							</div>
 						</div>
 						<div className="buttons">
-							<button className="previous-feedback-edit" onClick={() => editFeedback(item)}>EDIT</button>
-							<button className="previous-feedback-delete" onClick={() => deleteFeedback(item.id)}>DELETE</button>
+							<FeedbackButtons handleEdit={handleEdit} handleDelete={handleDelete} item={item} />
 						</div>
 					</div>
 				))}

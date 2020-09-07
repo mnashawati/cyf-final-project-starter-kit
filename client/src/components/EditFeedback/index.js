@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import modules from "../../db/modules.json";
 
-const EditFeedback = ({ feedbackToBeEdited, noShowPage, updatePreviousFeedback, updateFeedback, student }) => {
+const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student }) => {
 	console.log(feedbackToBeEdited);
 
 	const [editedFeedback, setEditedFeedback] = useState({
@@ -23,13 +23,15 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updatePreviousFeedback, 
 	};
 
 	const saveFeedback =() => {
-		console.log(editedFeedback);
 		fetch(`/api/students/${student._id}/feedback/${feedbackToBeEdited.id}`, options)
 			.then( (res) => res.json())
-			.then((data) => console.log(data))
+			.then((data) => {
+				console.log(data);updateFeedback();
+			})
 			.catch((error) => console.log(error));
-		// updateFeedback();
+
 		alert("Feedback Updated Successfully");
+		noShowPage();
 	};
 
 	const handleValueChange = (e) => {
@@ -40,15 +42,11 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updatePreviousFeedback, 
 		noShowPage();
 	};
 
-	const handleSubmit = () => {
-		return 1;
-	};
-
 	return feedbackToBeEdited ? (
 		<>
 			<div className="edit-previous-feedback-section">
 				<form
-					action="" className="feedback-form" onSubmit={handleSubmit} >
+					action="" className="edit-feedback-form" >
 					<div><p className="edit-feedback-label" style={{ textAlign:"center", fontSize:"16px" }}>Update Your Feedback</p>
 						<hr style={{ width:"40%", margin:"auto", marginBottom:"8px" }}></hr>
 					</div>
@@ -82,14 +80,7 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updatePreviousFeedback, 
 							placeholder={feedbackToBeEdited.text}
 						></textarea>
 					</div>
-					<div>
-						<input
-							className="feedback-time"
-							type="text"
-							name="time"
-							value={feedbackToBeEdited.time}
-						/>
-					</div>
+
 					<div>
 						<input
 							className="input-name"
@@ -102,8 +93,8 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updatePreviousFeedback, 
 					</div>
 				</form>
 				<div className="buttons">
-					<button className="save-edited-feedback" onClick={()=> saveFeedback()}>SAVE</button>
-					<button className="cancel-edit-feedback" onClick={() => cancelEditFeedback()}>CANCEL</button>
+					<button className="save-edited-feedback" onClick={()=>saveFeedback()}>SAVE</button>
+					<button className="cancel-edit-feedback" onClick={()=>cancelEditFeedback()}>CANCEL</button>
 				</div>
 			</div>
 		</>

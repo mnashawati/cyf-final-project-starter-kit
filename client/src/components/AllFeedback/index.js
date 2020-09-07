@@ -7,7 +7,7 @@ const AllFeedback = ({ student }) => {
 
 	const [allFeedback, setAllFeedback] = useState([]);
 	const [feedbackToBeEdited, setFeedbackToBeEdited] = useState ({});
-	const [showComponent, setShowComponent] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 
 	//Call data after feedback submitted
 	const updateFeedback = () => {
@@ -20,21 +20,21 @@ const AllFeedback = ({ student }) => {
 	//Render the page on first load
 	useEffect(()=>{
 		updateFeedback();
-	}, []);
+	});
 
 	const feedbackToEdit = (feedback) => {
-		setShowComponent(true);
+		setIsEditing(true);
 		setFeedbackToBeEdited(feedback);
 	};
 
 	const noShowPage = () => {
-		setShowComponent(false);
+		setIsEditing(false);
 	};
 
 	return (
 		<div>
 			<FeedbackForm updateFeedback={updateFeedback} student={student} />
-			{ showComponent ? <EditFeedback
+			{ isEditing ? <EditFeedback
 				feedbackToBeEdited={feedbackToBeEdited}
 				noShowPage = {noShowPage}
 				updateFeedback={updateFeedback}
