@@ -52,8 +52,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 
 	return allFeedback ? (
 		<>
-			<p className="previous-feedback-title"><b>Previous Feedback</b></p>
-			<hr style={{ margin:"10px auto", width:"70%"  }}></hr>
+			<h3 className="previous-feedback-title">Previous Feedback</h3>
 			<div className="previous-feedback-section">
 				{allFeedback.map((item, index) => (
 					<div key={index} className="previous-feedback-container">
