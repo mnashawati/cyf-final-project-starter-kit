@@ -29,7 +29,6 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 				console.log(data);updateFeedback();
 			})
 			.catch((error) => console.log(error));
-
 		alert("Feedback Updated Successfully");
 		noShowPage();
 	};
