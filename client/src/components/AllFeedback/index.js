@@ -21,7 +21,7 @@ const AllFeedback = ({ student }) => {
 	//Render the page on first load
 	useEffect(()=>{
 		updateFeedback();
-	});
+	}, []);
 
 	const feedbackToEdit = (feedback) => {
 		setIsEditing(true);

@@ -15,7 +15,7 @@ const StudentProfile = () => {
 			.then((res) => res.json())
 			.then((data) => setStudent(data.find((student) => student.name == params.studentName)))
 			.catch((err) => console.log(err));
-	});
+	},[]);
 
 	return  Object.keys(student).length ? (
 		<>
