@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import modules from "../../db/modules.json";
+import PropTypes from "prop-types";
 
 const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student }) => {
 	console.log(feedbackToBeEdited);
@@ -98,6 +99,13 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 			</div>
 		</>
 	) : null;
+};
+
+EditFeedback.propTypes = {
+	feedbackToBeEdited: PropTypes.object.isRequired,
+	noShowPage: PropTypes.func.isRequired,
+	updateFeedback: PropTypes.func.isRequired,
+	student: PropTypes.object.isRequired,
 };
 
 export default EditFeedback;

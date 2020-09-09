@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import AreasOfFocusInput from "../AreasOfFocusInput/index.js";
+import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
 import uuid from "react-uuid";
+import PropTypes from "prop-types";
 
 const AreasOfFocus = ({ student }) => {
 
@@ -110,9 +111,13 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			<AreasOfFocusInput addNewArea={addNewArea} />
+			<AreasOfFocusForm addNewArea={addNewArea} />
 		</div>
 	) : null;
+};
+
+AreasOfFocus.propTypes = {
+	student: PropTypes.object.isRequired,
 };
 
 export default AreasOfFocus;

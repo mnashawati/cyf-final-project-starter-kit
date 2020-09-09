@@ -7,7 +7,6 @@ import Navbar from "../Navbar/index.js";
 const StudentsGrid = ( ) => {
 
 	const params = useParams();
-
 	const [students, setStudents] = useState([]);
 
 	useEffect(() => {
@@ -15,8 +14,7 @@ const StudentsGrid = ( ) => {
 			.then((res) => res.json())
 			.then((data) => setStudents(data.filter((student) => student.city == params.regionName)))
 			.catch((err) => console.log(err));
-	}
-	, []);
+	});
 
 	return  (
 		<>
@@ -27,9 +25,7 @@ const StudentsGrid = ( ) => {
 				))}
 			</div>
 		</>
-
 	);
-
 };
 
 export default StudentsGrid;
