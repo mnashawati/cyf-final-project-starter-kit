@@ -23,7 +23,7 @@ client.connect(function () {
 	const db = client.db("feedback-tracker");
 
 	router.get("/students", (_, res) => {
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 
 		collection
 			.find()
@@ -33,7 +33,7 @@ client.connect(function () {
 	});
 
 	router.get("/students/:id", (req, res) => {
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 
 		// check if the id is valid if not -> 404
 		if (!mongodb.ObjectID.isValid(req.params.id)) {
@@ -61,7 +61,7 @@ client.connect(function () {
 	// request body is the whole areasOfFocus object/state
 	router.put("/students/:id/areas-of-focus", (req, res) => {
 
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 
 		const data = req.body;
 		// validation should happen here
@@ -97,7 +97,7 @@ client.connect(function () {
 	// To post new feedback or area of focus
 	router.put("/students/:id", (req, res) => {
 
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 
 		const data = req.body;
 		// validation should happen here
@@ -151,7 +151,7 @@ client.connect(function () {
 	// deleting a previous feedback
 	router.delete("/students/:id/:feedbackId", function(req, res) {
 
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 
 		const id = new mongodb.ObjectID(req.params.id);
 		const queryObject = { _id: id };
@@ -169,7 +169,7 @@ client.connect(function () {
 	});
 
 	router.put("/students/:studentId/feedback/:feedbackId", (req, res) => {
-		const collection = db.collection("StudentData");
+		const collection = db.collection("students");
 		// check if the id is valid if not -> 404
 		const data = req.body;
 		if (!mongodb.ObjectID.isValid(req.params.studentId)) {
