@@ -6,20 +6,21 @@ import modules from "../../db/modules.json";
 const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All-modules");
-	const [selectedMentor, setSelectedMentor] = useState ([]);
+	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
 
-	// Collect mentor data from allFeedback array
+	// Collect mentor data from allFeedback array and assing to array of object (llmentors)
 	function getMentors(array, field) {
-		const allMentors = [];
+		const getArray = [];
 		for (let i=0; i < array.length ; ++i) {
-			allMentors.push(array[i][field]);
+			const found = getArray.some((el) => el.name === array[i][field]);
+			if (!found) {
+				getArray.push({ "name" :array[i][field] });
+			}
 		}
-		return allMentors;
+		return getArray;
 	}
-
+	// All mentors assigned to mentors
 	const mentors = getMentors(allFeedback, "mentor");
-	console.log(selectedMentor);
-
 
 	//DELETE selected feedback PUT updates the DB
 	const options = {
@@ -39,6 +40,18 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 	const handleEdit = (feedback) => {
 		feedbackToEdit(feedback);
 	};
+
+	const filteredFeedback = [...allFeedback].filter((item) => {
+		if (selectedModule === "All-modules" && selectedMentor === "All-mentors"){
+			return true;
+		}  else if ((selectedModule !== "All-modules" && selectedMentor === "All-mentors") ) {
+			return  item.module.includes(selectedModule);
+		} else if (selectedModule === "All-modules" && selectedMentor !== "All-mentors"){
+			return  item.mentor.includes(selectedMentor);
+		} else {
+			return  item.module.includes(selectedModule) && item.mentor.includes(selectedMentor);
+		}
+	});
 
 	const timeDifference = (current, previous) => {
 		const ms_Min = 60 * 1000; // milliseconds in a Minute
@@ -67,14 +80,6 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 							: `Posted ${Math.round(diff / ms_Week)} weeks ago`;
 	};
 
-	const filteredFeedback = [...allFeedback].filter((item) => {
-		if (selectedModule === "All-modules"){
-			return true;
-		}  else {
-			return  item.module.includes(selectedModule);
-		}
-	});
-
 	return filteredFeedback ? (
 		<>
 			<h3 className="previous-feedback-title">Previous Feedback</h3>
@@ -92,13 +97,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 			</select>
 			<select className="select-mentor"
 				name="filter-by-mentor"
-				value={mentors}
+				value={mentors.name}
 				onChange={(e) => setSelectedMentor(e.target.value)}>
 				<option>All-mentors</option>
 				{mentors.map((mentor,index) =>
-					<option key={index} value={mentor}
+					<option key={index} value={mentor.name}
 					>
-						{mentor}
+						{mentor.name}
 					</option>
 				)}
 			</select>
