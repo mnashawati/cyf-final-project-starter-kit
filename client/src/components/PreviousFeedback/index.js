@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import FeedbackButtons from "../FeedbackButtons";
 import modules from "../../db/modules.json";
+import PropTypes from "prop-types";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
 
@@ -123,6 +124,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 			</div>
 		</>
 	) : null;
+};
+
+PreviousFeedback.propTypes = {
+	student: PropTypes.object.isRequired,
+	allFeedback: PropTypes.object.isRequired,
+	updateFeedback: PropTypes.func.isRequired,
+	feedbackToEdit: PropTypes.func.isRequired,
 };
 
 export default PreviousFeedback;
