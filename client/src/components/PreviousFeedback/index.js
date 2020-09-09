@@ -71,7 +71,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 		if (selectedModule === "All-modules"){
 			return true;
 		}  else {
-			return  item.module.includes(selectedModule) && item.mentor.includes(selectedMentor);
+			return  item.module.includes(selectedModule);
 		}
 	});
 
