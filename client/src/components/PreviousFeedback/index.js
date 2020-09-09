@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import FeedbackButtons from "../FeedbackButtons";
+import modules from "../../db/modules.json";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit }) => {
+
+	const [selectedModule, setSelectedModule] = useState ("All-modules");
+	const [selectedMentor, setSelectedMentor] = useState ([]);
+
+	// Collect mentor data from allFeedback array
+	function getMentors(array, field) {
+		const allMentors = [];
+		for (let i=0; i < array.length ; ++i) {
+			allMentors.push(array[i][field]);
+		}
+		return allMentors;
+	}
+
+	const mentors = getMentors(allFeedback, "mentor");
+	console.log(selectedMentor);
+
 
 	//DELETE selected feedback PUT updates the DB
 	const options = {
@@ -50,11 +67,43 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 							: `Posted ${Math.round(diff / ms_Week)} weeks ago`;
 	};
 
-	return allFeedback ? (
+	const filteredFeedback = [...allFeedback].filter((item) => {
+		if (selectedModule === "All-modules"){
+			return true;
+		}  else {
+			return  item.module.includes(selectedModule) && item.mentor.includes(selectedMentor);
+		}
+	});
+
+	return filteredFeedback ? (
 		<>
 			<h3 className="previous-feedback-title">Previous Feedback</h3>
+			<select className="select-module"
+				name="filter-by-module"
+				value={module.name}
+				onChange={(e) => setSelectedModule(e.target.value)}>
+				<option>All-modules</option>
+				{modules.map((module,index) =>
+					<option key={index} value={module.name}
+					>
+						{module.name}
+					</option>
+				)}
+			</select>
+			<select className="select-mentor"
+				name="filter-by-mentor"
+				value={mentors}
+				onChange={(e) => setSelectedMentor(e.target.value)}>
+				<option>All-mentors</option>
+				{mentors.map((mentor,index) =>
+					<option key={index} value={mentor}
+					>
+						{mentor}
+					</option>
+				)}
+			</select>
 			<div className="previous-feedback-section">
-				{allFeedback.map((item, index) => (
+				{filteredFeedback.map((item, index) => (
 					<div key={index} className="previous-feedback-container">
 						<div className="previous-feedback-list">
 							<p className="feedback-module"><b>MODULE:</b> {item.module}</p>
@@ -70,6 +119,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 						</div>
 					</div>
 				))}
+				{filteredFeedback.length === 0 && <span>No feedback found to display!</span>}
 			</div>
 		</>
 	) : null;

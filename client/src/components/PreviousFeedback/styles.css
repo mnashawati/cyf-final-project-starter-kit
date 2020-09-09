@@ -3,6 +3,7 @@
     overflow-y : auto;
     border: 1px solid rgb(87, 82, 82);
     border-radius: 1px;
+    margin: 5px 5px;
 }
 
 .previous-feedback-title{
@@ -10,6 +11,27 @@
     font-weight: 500;
     margin-bottom: 10px;
     text-align: center;
+}
+
+.select-module, .select-mentor{
+    width: 200px;
+    margin: 3px 10px;
+    padding: 5px;
+    line-height: 15px;
+}
+
+.feedback-filter-heading {
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feedback-filter-heading b {
+    color: rgb(160, 20, 20);
+}
+
+span{
+    color: red;
 }
 
 .previous-feedback-list{
