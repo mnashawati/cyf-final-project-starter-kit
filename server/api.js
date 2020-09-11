@@ -195,6 +195,7 @@ client.connect(function () {
 					feedback.module = data.module;
 					feedback.title = data.title;
 					feedback.text = data.text;
+					feedback.mentor = data.mentor;
 				}
 			});
 

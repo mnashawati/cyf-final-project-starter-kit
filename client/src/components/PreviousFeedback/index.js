@@ -113,7 +113,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback, feedbackToEdit
 					<div key={index} className="previous-feedback-container">
 						<div className="previous-feedback-list">
 							<p className="feedback-module"><b>MODULE:</b> {item.module}</p>
-							<p className="feedback-title">{item.title}</p>
+							<p className="feedback-title"><b>TITLE:</b> {item.title}</p>
 							<p className="feedback-text">{item.text}</p>
 							<div className="date-mentor">
 								<p className="feedback-date">{timeDifference(Date.now(), item.time)}</p>

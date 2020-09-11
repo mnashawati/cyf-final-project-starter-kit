@@ -6,16 +6,10 @@ import PropTypes from "prop-types";
 const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student }) => {
 	console.log(feedbackToBeEdited);
 
-	const [editedFeedback, setEditedFeedback] = useState({
-		id:feedbackToBeEdited.id,
-		module:"",
-		title:"",
-		text:"",
-		mentor:"",
-		time:feedbackToBeEdited.time,
-	});
+	const [editedFeedback, setEditedFeedback] = useState(
+		feedbackToBeEdited
+	);
 
-	console.log(editedFeedback);
 	//POST updated feedback to the API-DB
 	const options = {
 		method: "PUT",
@@ -23,7 +17,8 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 		body: JSON.stringify(editedFeedback),
 	};
 
-	const saveFeedback =() => {
+	//When clicked SAVE; UPDATE the data and No Show Edit feedback
+	const getUpdatedData = () => {
 		fetch(`/api/students/${student._id}/feedback/${feedbackToBeEdited.id}`, options)
 			.then( (res) => res.json())
 			.then((data) => {
@@ -34,7 +29,21 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 		noShowPage();
 	};
 
-	const handleValueChange = (e) => {
+	//When clicked SAVE, CHECK if field is empty
+	const saveFeedback =() => {
+		if (!editedFeedback.module) {
+			return alert("Please add a module");
+		} else if (!editedFeedback.title) {
+			return alert("Please add a title");
+		} else if (!editedFeedback.text) {
+			return alert("Please add your feedback");
+		} else if (!editedFeedback.mentor) {
+			return alert("Please add mentor name");
+		}
+		getUpdatedData();
+	};
+	// Populate new object with edited data
+	const handleChange = (e) => {
 		setEditedFeedback({ ...editedFeedback, [e.target.name] : e.target.value });
 	};
 
@@ -51,44 +60,45 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 						<hr style={{ width:"40%", margin:"auto", marginBottom:"8px" }}></hr>
 					</div>
 					<div>
+						<h3 className="feedback-input-heading">Update Module <b>*</b></h3>
 						<select
 							value={editedFeedback.module}
-							name="module"
-							onChange={handleValueChange}
-						>
+							name="module">
 							<option value="" defaultValue disabled hidden>{feedbackToBeEdited.module}</option>
 							{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
 						</select>
 					</div>
 
 					<div>
-						<input className="feedback-title"
+						<h3 className="feedback-input-heading">Feedback title <b>*</b></h3>
+						<input
+							className="feedback-title"
 							type="text"
 							name="title"
 							value={editedFeedback.title}
-							onChange={handleValueChange}
-							placeholder={feedbackToBeEdited.title}
-						>
-						</input>
+							onChange={handleChange}
+							placeholder={editedFeedback.title.length ? null : "some text..." }
+						/>
 					</div>
-					<div>
-						<textarea
+					<div className="feedback-text-container">
+						<h3 className="feedback-input-heading">Update your feedback <b>*</b></h3>
+						<input
 							className="feedback-message"
 							name="text"
 							value={editedFeedback.text}
-							onChange={handleValueChange}
-							placeholder={feedbackToBeEdited.text}
-						></textarea>
+							onChange={handleChange}
+							placeholder={editedFeedback.title.length ? null : "some text..." }
+						/>
 					</div>
-
 					<div>
+						<h3 className="feedback-input-heading">Update your name</h3>
 						<input
-							className="input-name"
+							className="feedback-mentor"
 							type="text"
 							name="mentor"
 							value={editedFeedback.mentor}
-							onChange={handleValueChange}
-							placeholder={feedbackToBeEdited.mentor}
+							onChange={handleChange}
+							placeholder={editedFeedback.title.length ? null : "some text..." }
 						/>
 					</div>
 				</form>
