@@ -1,10 +1,10 @@
 .edit-previous-feedback-section {
 	display: flex;
 	flex-direction: column;
-	position: fixed;
-    border: 1px solid #90CAF9;
+	/* position: fixed; */
+    border: 1px solid #f00404;
     height: auto;
-	width: 50%;
+	width: auto;
 	padding: 10px;
 	top:100px;
 	background-color: #f1f4f5;
@@ -15,11 +15,8 @@
 .feedback-input-heading {
     margin: 10px 1px 3px;
     font-size: 0.7rem;
-    font-weight: 500;
-}
-
-.feedback-input-heading b {
-    color: rgb(160, 20, 20);
+	font-weight: 500;
+	font-weight: bolder;
 }
 
 .select-module, 
@@ -29,24 +26,24 @@
     height: 30px;
 }
 
-.feedback-message-input {
-    width: 100%;
-	min-height: 150px;
-	height: auto;
-	word-wrap: break-word
-}
-
 .select-module, 
 .feedback-title-input, 
 .feedback-message-input, 
 .mentor-name-input, 
 {
-    padding: 5px;
-    margin-bottom: 15px;
-    border: 1px solid black;
+	padding: 5px;
+	margin-bottom: 15px;
+	border: 1px solid black;
 	border-radius: 5px;
 	border:none
 }
+
+.feedback-message-input {
+    width: 100%;
+	min-height: 150px;
+	height: auto;
+}
+
 
 .buttons {
       display: flex;
@@ -57,13 +54,16 @@
 border:none;
 margin: 1px ;
 width: 98%;
+padding: 7px
 } 
 
 .feedback-message{
     border:none;
     margin: 1px;
-	min-height: 3rem;
+	min-height: 5rem;
 	width: 98%;
+	word-wrap: break-word;
+	padding: 7px
 } 
 
 .feedback-mentor{
@@ -75,7 +75,7 @@ width: 98%;
 	margin: 1px;
 }
 
-  .save-edited-feedback {
+.save-edited-feedback {
 	box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
 	background-color:#007dc1;
@@ -99,7 +99,7 @@ width: 98%;
 	top:1px;
 }
 
-  .cancel-edit-feedback {
+.cancel-edit-feedback {
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
 	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
 	background-color:#d0451b;
@@ -115,14 +115,22 @@ width: 98%;
     text-shadow:0px 1px 0px #854629;
     margin-left: 10px;
 }
+
 .cancel-edit-feedback:hover {
 	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
 	background-color:#bc3315;
 }
+
 .cancel-edit-feedback:active {
 	position:relative;
 	top:1px;
 }
 
-
+textarea {
+	resize:none;
+	overflow:hidden;
+	font-size:18px;
+	height:1.1em;
+	padding:2px;
+}
  

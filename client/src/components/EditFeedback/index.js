@@ -63,7 +63,8 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 						<h3 className="feedback-input-heading">Module</h3>
 						<select
 							value={editedFeedback.module}
-							name="module">
+							name="module"
+							onBlur={handleChange}>
 							<option value="" defaultValue disabled hidden>{feedbackToBeEdited.module}</option>
 							{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
 						</select>
@@ -82,12 +83,14 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 					</div>
 					<div className="feedback-text-container">
 						<h3 className="feedback-input-heading">Your feedback</h3>
-						<input
+						<textarea
 							className="feedback-message"
 							name="text"
+							// size={editedFeedback.text.length}
 							value={editedFeedback.text}
 							onChange={handleChange}
 							placeholder={editedFeedback.title.length ? null : "some text..." }
+
 						/>
 					</div>
 					<div>
