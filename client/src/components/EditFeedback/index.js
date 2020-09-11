@@ -60,7 +60,7 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 						<hr style={{ width:"40%", margin:"auto", marginBottom:"8px" }}></hr>
 					</div>
 					<div>
-						<h3 className="feedback-input-heading">Update Module <b>*</b></h3>
+						<h3 className="feedback-input-heading">Module</h3>
 						<select
 							value={editedFeedback.module}
 							name="module">
@@ -70,7 +70,7 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 					</div>
 
 					<div>
-						<h3 className="feedback-input-heading">Feedback title <b>*</b></h3>
+						<h3 className="feedback-input-heading">Feedback title</h3>
 						<input
 							className="feedback-title"
 							type="text"
@@ -81,7 +81,7 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 						/>
 					</div>
 					<div className="feedback-text-container">
-						<h3 className="feedback-input-heading">Update your feedback <b>*</b></h3>
+						<h3 className="feedback-input-heading">Your feedback</h3>
 						<input
 							className="feedback-message"
 							name="text"
@@ -91,7 +91,7 @@ const EditFeedback = ({ feedbackToBeEdited, noShowPage, updateFeedback, student 
 						/>
 					</div>
 					<div>
-						<h3 className="feedback-input-heading">Update your name</h3>
+						<h3 className="feedback-input-heading">Your name</h3>
 						<input
 							className="feedback-mentor"
 							type="text"

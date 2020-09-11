@@ -7,8 +7,9 @@
 	width: 50%;
 	padding: 10px;
 	top:100px;
-	background-color: #f0f5f8;
+	background-color: #f1f4f5;
 	box-shadow: 0 0 10px;
+	font-weight: bold;
 }
 
 .feedback-input-heading {
