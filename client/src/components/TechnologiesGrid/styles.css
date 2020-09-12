@@ -4,10 +4,10 @@
     justify-content: center;
 }
 
-.technologies-container > div {
-    width: 320px;
-    height: 320px;
-    margin: 20px;
+.html-card, .css-card, .js-card, .react-card, .nodejs-card, .mongodb-card {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center;
