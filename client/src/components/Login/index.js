@@ -12,7 +12,7 @@ const LoginForm = () => {
 				<div>
 					<h4>Email</h4>
 					<input name="email"
-						value={values.semail}
+						value={values.email}
 						onChange={handleChange} />
 				</div>
 				<div>
