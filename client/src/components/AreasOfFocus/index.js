@@ -17,7 +17,7 @@ const AreasOfFocus = ({ student }) => {
 		})
 			.then((res) => res.json())
 			.catch((error) => console.log(error));
-	});
+	}, []);
 
 	const addNewArea = (area) => {
 		area.level === "To work on"
