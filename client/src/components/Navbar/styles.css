@@ -1,16 +1,68 @@
 .navbar-container {
-    height: 100px;
+    height: 80px;
+    margin-bottom: 40px;
+    position: sticky;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     text-align: center;
-    flex-direction: column;
-    background-color:rgb(237, 67, 67);
-  
-
+    background-color: #efefef;
 }
 
-.navbar-route-link {
+.homepage-route-link {
     text-decoration: none;
-     font-size: 40px;
-     color: black;
+    font-size: 40px;
+    color: black;
+    margin: 20px auto;
 }
+
+.CYF-logo {
+    width: 180px;
+    height: 57px;
+    margin: 20px;
+}
+
+.syllabus-link > a:link, .syllabus-link > a:visited, 
+.regions-route-link:link, .regions-route-link:visited {
+    text-decoration: none;
+    color: black;
+}
+  
+.syllabus-link > a:hover, .syllabus-link > a:active,
+.regions-route-link:hover, .regions-route-link:active {
+    text-decoration: underline;
+}
+
+.syllabus-link > a,
+.regions-route-link,
+.login-route-link, 
+.register-route-link
+{
+    margin: 20px;
+    font-size: 24px;
+}
+
+.login-route-link:link, .login-route-link:visited, 
+.register-route-link:link, .register-route-link:visited { 
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .login-route-link:link, .login-route-link:visited {
+    background-color: #ed4343;
+  }
+
+.login-route-link:hover, .login-route-link:active {
+    background-color: rgb(255,0,0);
+  }
+
+  .register-route-link:link, .register-route-link:visited {
+    background-color: rgb(145,145,145);
+  }
+  
+.register-route-link:hover, .register-route-link:active {
+    background-color: rgb(107,107,107);
+  }
