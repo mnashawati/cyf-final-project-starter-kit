@@ -1,0 +1,41 @@
+.technologies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.technologies-container > div {
+    width: 320px;
+    height: 320px;
+    margin: 20px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.75;
+}
+
+.html-card {
+    background-image: url("../../db/logos/html5.png"); 
+}
+
+.css-card {
+    background-image: url("../../db/logos/css3.png");
+}
+
+.js-card {
+    background-image: url("../../db/logos/js.png");
+}
+
+.react-card {
+    background-image: url("../../db/logos/react.png");
+}
+
+.nodejs-card {
+        background-image: url("../../db/logos/nodejs.png");
+}
+
+.mongodb-card {
+    background-image: url("../../db/logos/mongoDB.png");
+}
+
