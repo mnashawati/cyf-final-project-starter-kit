@@ -8,7 +8,7 @@
 	padding: 10px;
 	top:100px;
 	background-color: #f1f4f5;
-	box-shadow: 0 0 10px;
+	/* box-shadow: 0 0 10px; */
 	font-weight: bold;
 }
 
@@ -41,9 +41,8 @@
 .feedback-message-input {
     width: 100%;
 	min-height: 150px;
-	height: auto;
+	height: 5em;
 }
-
 
 .buttons {
       display: flex;
@@ -63,7 +62,8 @@ padding: 7px
 	min-height: 5rem;
 	width: 98%;
 	word-wrap: break-word;
-	padding: 7px
+	padding: 7px;
+	font-size: 0.8rem;
 } 
 
 .feedback-mentor{
