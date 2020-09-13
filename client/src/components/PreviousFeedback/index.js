@@ -4,7 +4,7 @@ import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+remoceconst PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All-modules");
 	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
@@ -121,10 +121,8 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 			headers: { "Content-type": "application/json" },
 			body: JSON.stringify(editedFeedback) })
 			.then( (res) => res.json())
-			.then((data) => {
-				console.log(data);
+			.then(() => {
 				updateFeedback();
-				console.log("test here");
 			})
 			.catch((error) => console.log(error));
 	};
@@ -137,13 +135,11 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 			headers: { "Content-type": "application/json" },
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data))
 			.catch((error) => console.log(error));
 		updateFeedback();
-		alert("Feedback Deleted Successfully");
 	};
 
-	//When clicked SAVE, CHECK if field is emptys
+	//When clicked SAVE, CHECK if field is empty
 	const saveFeedback = (id) => {
 		if (!editedFeedback.title) {
 			return alert("Please add a title");
