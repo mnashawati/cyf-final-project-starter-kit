@@ -46,7 +46,7 @@ const AreasOfFocus = ({ student }) => {
 	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">
-        Areas of focus
+        Highlights
 			</h3>
 			<div className="need-to-work-on-section">
 				<h3 className="subtitle-text">

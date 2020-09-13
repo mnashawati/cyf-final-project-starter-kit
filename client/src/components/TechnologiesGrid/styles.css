@@ -2,40 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 20px;
 }
 
-.html-card, .css-card, .js-card, .react-card, .nodejs-card, .mongodb-card {
-    width: 300px;
-    height: 300px;
-    margin: 20px auto;
-    padding: 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.75;
+.html-card, .css-card, .js-card, .react-card, .nodejs-card, .mongo-card {
+ width: 16.6%;
 }
 
-.html-card {
-    background-image: url("../../db/logos/html5.png"); 
+.tech-logo {
+    max-width: 100%;
+    margin: 0px;
 }
-
-.css-card {
-    background-image: url("../../db/logos/css3.png");
-}
-
-.js-card {
-    background-image: url("../../db/logos/js.png");
-}
-
-.react-card {
-    background-image: url("../../db/logos/react.png");
-}
-
-.nodejs-card {
-        background-image: url("../../db/logos/nodejs.png");
-}
-
-.mongodb-card {
-    background-image: url("../../db/logos/mongoDB.png");
-}
-

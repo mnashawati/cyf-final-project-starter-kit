@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../Navbar";
-import TechnologiesGrid from "../TechnologiesGrid";
+import HomepageHeroSection from "../HomepageHeroSection";
 
 const HomePage = () => {
 	return (
 		<div>
 			<Navbar />
-			<TechnologiesGrid />
+			<HomepageHeroSection />
 		</div>
 	);
 };
