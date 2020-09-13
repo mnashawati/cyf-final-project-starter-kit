@@ -16,7 +16,7 @@
 }
 
 .student-card:hover {
-    background-color: rgba(237,67,67, 0.8);
+    background-color: rgba(237,67,67, 1);
 }
 
 .profile-picture {
