@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import FeedbackForm from "../FeedbackForm";
 import PreviousFeedback from "../PreviousFeedback";
-import EditFeedback from "../EditFeedback";
 import PropTypes from "prop-types";
 
 const AllFeedback = ({ student }) => {
 
 	const [allFeedback, setAllFeedback] = useState([]);
-	const [feedbackToBeEdited, setFeedbackToBeEdited] = useState ({});
-	const [isEditing, setIsEditing] = useState(false);
 
 	//Call data after feedback submitted
 	const updateFeedback = () => {
@@ -23,29 +20,14 @@ const AllFeedback = ({ student }) => {
 		updateFeedback();
 	}, []);
 
-	const feedbackToEdit = (feedback) => {
-		setIsEditing(true);
-		setFeedbackToBeEdited(feedback);
-	};
-
-	const noShowPage = () => {
-		setIsEditing(false);
-	};
-
 	return (
 		<div>
 			<FeedbackForm updateFeedback={updateFeedback} student={student} />
-			{ isEditing ? <EditFeedback
-				feedbackToBeEdited={feedbackToBeEdited}
-				noShowPage = {noShowPage}
-				updateFeedback={updateFeedback}
-				student={student}
-			/> : null}
 			<PreviousFeedback
 				student={student}
 				allFeedback={allFeedback}
 				updateFeedback={updateFeedback}
-				feedbackToEdit={feedbackToEdit} />
+			/>
 		</div>
 	);
 };

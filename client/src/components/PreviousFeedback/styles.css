@@ -1,16 +1,8 @@
 .previous-feedback-section{
-    height: 600px;
-    overflow-y : auto;
-    border: 1px solid rgb(87, 82, 82);
-    border-radius: 1px;
+    overflow-y: auto;
+    max-height: 500px;
     margin: 5px 5px;
-}
-
-.previous-feedback-title{
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    text-align: center;
+    background-color: whitesmoke;
 }
 
 .select-module, .select-mentor{
@@ -18,6 +10,72 @@
     margin: 3px 10px;
     padding: 5px;
     line-height: 15px;
+}
+
+.previous-feedback-list{
+    margin-top: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border: 0.5px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    box-shadow: 0 0 3px;
+    overflow-y: auto;
+}
+
+.previous-feedback-module,
+.previous-feedback-title
+{
+    display: flex;
+    width: 300px;
+    margin: 0px 5px 5px;
+    padding: 5px;
+    border:none
+}
+
+.feedback-title-input{
+    width: 250px;
+}
+
+
+.previous-feedback-text
+{
+    margin: 0px 5px;
+    padding: 5px;
+    border:none
+}
+
+.previous-feedback-text-input{
+    border:none;
+    margin: 1px;
+	width: 98%;
+	word-wrap: break-word;
+	padding: 7px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    height: 6em;
+}
+
+.previous-feedback-mentor,
+.previous-feedback-time{
+    display: flex;
+}
+
+.previous-feedback-mentor-input,
+.previous-feedback-time-input{
+    padding: 5px;
+    font-size: small;
+}
+
+.feedback-input-head {
+    margin: 0px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 5px;
+}
+
+input{
+    border: none;
+    width: 200px
 }
 
 .feedback-filter-heading {
@@ -34,40 +92,10 @@ span{
     color: red;
 }
 
-.previous-feedback-list{
-    margin-top: 15px;
-    margin-left: 6px;
-    margin-right: 6px;
-    border: 0.5px solid rgb(134, 134, 134);
-    background-color: #ffffff;
-    box-shadow: 0 0 3px;
-    
-}
-
-.feedback-module-title-text{
+.edit-delete-buttons {
     display: flex;
-    flex-direction: column;
-}
-
-.feedback-module{
-    font-size: 14px;
-    margin: 10px 5px;
-    width: 250px;
-}
-
-.feedback-title{
-    font-size: 14px;
-    color: rgb(2, 2, 31);
     margin: 10px;
-}
-
-.feedback-text{
-    font-size: 14px;
-    color: rgb(2, 2, 31);
-    margin: 20px 5px ;
-    font-weight: bolder;
-    border: none;
-    word-break: break-all;
+    justify-content: flex-end;
 }
 
 .date-mentor{
@@ -84,6 +112,17 @@ span{
     margin: auto; 
     margin-top: 5%; 
     margin-bottom: 5%; 
+}
+
+.edit-button{
+background-color: rgb(7, 5, 48);
+color:white;
+margin-right: 15px;
+}
+
+.delete-button{
+background-color: red;
+color:white
 }
 
 .buttons{
