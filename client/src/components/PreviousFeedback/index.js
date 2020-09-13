@@ -4,7 +4,7 @@ import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 
 
-remoceconst PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All-modules");
 	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
