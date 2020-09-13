@@ -3,8 +3,9 @@
 }
 
 .area-of-focus-title {
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .area-text-section-red {
