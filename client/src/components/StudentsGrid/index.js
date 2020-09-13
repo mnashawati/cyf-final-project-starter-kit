@@ -19,7 +19,7 @@ const StudentsGrid = ( ) => {
 	return  (
 		<>
 			<Navbar />
-			<div className="students-cards-container">
+			<div className="students-cards-container row">
 				{ students && students.map((student, index) => (
 					<StudentCard student={student} key={index} />
 				))}

@@ -1,9 +1,8 @@
 .areas-of-focus-section {
-    min-height: 80vh;
+    /* min-height: 80vh; */
 }
 
 .area-of-focus-title {
-    font-size: 36px;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -18,7 +17,7 @@
 }
 
 .area-text-section-yellow {
-    border: 1.5px solid rgb(255, 204, 0);
+    border: 1.5px solid rgb(245, 190, 8);
     margin-bottom: 10px;
     min-height: 100px;
     display: flex;
@@ -47,12 +46,11 @@
     height: 29px;
     font-size: 14px;
     color: white;
-  
 }
 
 .areas-button-yellow {
      list-style: none;
-     background-color: rgb(255, 204, 0);
+     background-color: rgb(255, 183, 0);
      margin: 2px;
      min-width: 140px;
      max-width: 140px;
@@ -64,15 +62,14 @@
      color: white;
 }
 
-
 .areas-button-green {
-   list-style: none;
-   background-color: rgb(19, 91, 5);
-   margin: 2px;
-   min-width: 140px;
-   max-width: 140px;
-   padding: 5px;
-   border-radius: 15px;
+    list-style: none;
+    background-color: rgb(19, 91, 5);
+    margin: 2px;
+    min-width: 140px;
+    max-width: 140px;
+    padding: 5px;
+    border-radius: 15px;
     text-align: center;
     height: 29px;
     font-size: 14px;
@@ -89,12 +86,11 @@
 }
 
 .x-button-yellow {
-     float: right;
-     float: right;
-     background-color: rgb(255, 204, 0);
-     border: none;
+    float: right;
+    float: right;
+    background-color: rgb(255, 183, 0);
+    border: none;
     color: white;
-
 }
 
 .x-button-green {
@@ -103,7 +99,6 @@
     background-color: rgb(19, 91, 5);
     border: none;
     color: white;
-
 }
 
 .key-button {
@@ -141,7 +136,7 @@
 
 .send-input-yellow {
     border: none;
-    background-color: rgb(255, 204, 0);
+    background-color: rgb(255, 183, 0);
     height: 30px;
     width: 30px;
     border-radius: 50%;
