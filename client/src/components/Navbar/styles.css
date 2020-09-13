@@ -59,6 +59,10 @@
   border-bottom: 5px solid red;
 }
 
+.navbar-buttons {
+  display: flex;
+}
+
 .syllabus-link,
 .regions-route-link,
 .login-route-link, 
