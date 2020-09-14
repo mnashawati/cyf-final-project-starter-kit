@@ -5,28 +5,30 @@ import PropTypes from "prop-types";
 
 const AllFeedback = ({ student }) => {
 
-	const [allFeedback, setAllFeedback] = useState([]);
+	const [allFeedback, setAllFeedback] = useState(student.allFeedback);
 
 	//Call data after feedback submitted
-	const updateFeedback = () => {
-		fetch(`/api/students/${student._id}`)
-			.then((res) => res.json())
-			.then((student) => setAllFeedback(student.allFeedback.reverse()))
-			.catch((err) => console.log(err));
-	};
+	// const updateFeedback = () => {
+	// 	fetch(`/api/students/${student._id}`)
+	// 		.then((res) => res.json())
+	// 		.then((student) => setAllFeedback(student.allFeedback.reverse()))
+	// 		.catch((err) => console.log(err));
+	// };
 
 	//Render the page on first load
 	useEffect(()=>{
-		updateFeedback();
-	}, []);
+		setAllFeedback(student.allFeedback);
+	}, [student]);
 
 	return (
 		<div>
-			<FeedbackForm updateFeedback={updateFeedback} student={student} />
+			<FeedbackForm
+			// updateFeedback={updateFeedback}
+				student={student} />
 			<PreviousFeedback
 				student={student}
 				allFeedback={allFeedback}
-				updateFeedback={updateFeedback}
+				// updateFeedback={updateFeedback}
 			/>
 		</div>
 	);

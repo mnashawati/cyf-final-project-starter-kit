@@ -4,7 +4,9 @@ import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, allFeedback,
+	// updateFeedback
+}) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All-modules");
 	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
@@ -69,8 +71,11 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			<hr />
 			<div className="previous-feedback-section">
 				{filteredFeedback.length && filteredFeedback.map((feedback, index) => (
-					<div className="previous-feedback-section">
-						<FeedbackList feedback={feedback} student={student} index={index} updateFeedback={updateFeedback} />
+					<div className="previous-feedback-section"
+						key={index}>
+						<FeedbackList feedbackToShow={feedback} student={student}
+						// updateFeedback={updateFeedback}
+						/>
 					</div>
 				))}
 			</div>
@@ -78,13 +83,15 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	) : null;
 };
 
-const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
+const FeedbackList = ({ feedbackToShow, student, allFeedback,
+	// updateFeedback
+}) => {
 	const [editedFeedback, setEditFeedback] = useState({});
-	const [editable, setEditable] = useState(true);
+	const [notEditable, setEditable] = useState(true);
 
 	useEffect(() => {
-		setEditFeedback(feedback);
-	}, [feedback]);
+		setEditFeedback(feedbackToShow);
+	}, [feedbackToShow, allFeedback]);
 
 	const timeDifference = (current, previous) => {
 		const ms_Min = 60 * 1000; // milliseconds in a Minute
@@ -121,22 +128,11 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 			headers: { "Content-type": "application/json" },
 			body: JSON.stringify(editedFeedback) })
 			.then( (res) => res.json())
-			.then(() => {
-				updateFeedback();
+			.then((data) => {
+				console.log(data);
+				// updateFeedback();
 			})
 			.catch((error) => console.log(error));
-	};
-
-	//DELETE selected feedback and update data
-
-	const handleDelete = (feedbackId) => {
-		fetch(`/api/students/${student._id}/${feedbackId}`, {
-			method: "DELETE",
-			headers: { "Content-type": "application/json" },
-		})
-			.then((res) => res.json())
-			.catch((error) => console.log(error));
-		updateFeedback();
 	};
 
 	//When clicked SAVE, CHECK if field is empty
@@ -151,6 +147,18 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 		updateData(id);
 	};
 
+	//DELETE selected feedback and update data
+	const handleDelete = (feedbackId) => {
+		fetch(`/api/students/${student._id}/${feedbackId}`, {
+			method: "DELETE",
+			headers: { "Content-type": "application/json" },
+		})
+			.then((res) => res.json())
+			.catch((error) => console.log(error));
+		// updateFeedback();
+	};
+
+
 	// Populate new object with edited data editable
 	const handleEdit = (e) => {
 		setEditFeedback({ ...editedFeedback, [e.target.name]: e.target.value });
@@ -158,25 +166,24 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 
 	return (
 		<div
-			className="previous-feedback-list"
-			key={index}>
+			className="previous-feedback-list">
 			{Object.keys(editedFeedback).length
         && Object.keys(editedFeedback).map((property, index) => {
 
-        	if (property === "module" && editable ) {
+        	if (property === "module" && notEditable ) {
         		return (
         			<div className="previous-feedback-module" key={index}>
         				<p className="feedback-input-head">Feedback module: </p>
         				<p>{editedFeedback[property]}</p>
         			</div> );
         	}
-        	if (property === "module" && !editable ) {
+        	if (property === "module" && !notEditable ) {
         		return (
         			<div className="previous-feedback-module" key={index}>
         				<p className="feedback-input-head">Feedback module: </p>
         				<select
         					name="module"
-        					disabled={editable}
+        					disabled={notEditable}
         					value={editedFeedback[property]}
         					onChange={handleEdit}>
         					{modules.map((module,index) => <option key={index} value={module.name}
@@ -195,7 +202,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 						 onChange={handleEdit}
 						 name="title"
 						 value={editedFeedback[property]}
-						 disabled={editable}
+						 disabled={notEditable}
 						 />
         			</div> );
         	}
@@ -208,7 +215,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
         				onChange={handleEdit}
         				name="text"
         				value={editedFeedback[property]}
-					 	disabled={editable}
+					 	disabled={notEditable}
         				/>
         			</div> );
         	}
@@ -234,7 +241,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
         					onChange={handleEdit}
         					name={property}
         					value={editedFeedback[property]}
-        					disabled={editable}
+        					disabled
         				/>
         			</div>
         		);
@@ -244,21 +251,20 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 				<Button
 					className="edit-button"
 					handleClick={() => {
-						if (editable) {
+						if (notEditable) {
 							setEditable(false);
 						} else {
 							saveFeedback(editedFeedback.id);
 							setEditable(true);
 						}
 					}}
-					content={editable ? "EDIT" : "SAVE"}
+					content={notEditable ? "EDIT" : "SAVE"}
 				/>
 				<div>
 					<Button
 						className="delete-button"
 						handleClick={() => {
 							alert("DELETE"); handleDelete(editedFeedback.id);
-							console.log(editedFeedback.id);
 						}} content="DELETE" />
 				</div>
 			</div>
@@ -285,8 +291,8 @@ Button.propTypes = {
 FeedbackList.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedback: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func.isRequired,
-	index: PropTypes.number.isRequired,
+	// updateFeedback: PropTypes.func.isRequired,
+	// index: PropTypes.number.isRequired,
 };
 
 export default PreviousFeedback;

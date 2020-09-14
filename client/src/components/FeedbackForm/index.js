@@ -4,7 +4,7 @@ import "../FeedbackForm/styles.css";
 import uuid from "react-uuid";
 import PropTypes from "prop-types";
 
-const FeedbackForm = ({ student, updateFeedback }) => {
+const FeedbackForm = ({ student }) => {
 
 	const [feedback, setFeedback] = useState({
 		id: "",
@@ -38,7 +38,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			return alert("Please add your feedback in the box");
 		}
 		postFeedback();
-		updateFeedback();
+		// updateFeedback();
 		e.target.reset();
 		setFeedback({
 			id: "",
