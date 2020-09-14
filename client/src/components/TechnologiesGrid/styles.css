@@ -1,0 +1,15 @@
+.technologies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.html-card, .css-card, .js-card, .react-card, .nodejs-card, .mongo-card {
+ width: 16.6%;
+}
+
+.tech-logo {
+    max-width: 100%;
+    margin: 0px;
+}

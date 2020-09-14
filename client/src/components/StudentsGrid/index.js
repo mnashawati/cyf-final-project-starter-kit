@@ -16,12 +16,12 @@ const StudentsGrid = ( ) => {
 				console.log(data);setStudents(data.filter((student) => student.city == params.regionName));
 			})
 			.catch((err) => console.log(err));
-	}, []);
+}, []);
 
 	return  (
 		<>
 			<Navbar />
-			<div className="students-cards-container">
+			<div className="students-cards-container row">
 				{ students && students.map((student, index) => (
 					<StudentCard student={student} key={index} />
 				))}

@@ -17,7 +17,7 @@ const AllFeedback = ({ student }) => {
 
 	//Render the page on first load
 	useEffect(()=>{
-		updateFeedback();
+		updateFeedback()
 	}, []);
 
 	return (

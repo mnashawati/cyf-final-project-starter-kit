@@ -30,7 +30,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 			<form onSubmit={handleSubmit} id="add-area-of-focus">
 				<div>
 					<p className="areas-input-label">
-          Add area of focus:
+          Type a topic to highligh..
 					</p>
 				</div>
 				<div className="input-lights-add-button-container">
@@ -87,7 +87,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 					<div className="add-area-button-section">
 						<div className="area-display">{area.level}</div>
 						<div className="add-area-button-wrapper">
-							<button className="add-area-button">Post area</button>
+							<button className="add-area-button">Add</button>
 						</div>
 					</div>
 				</div>

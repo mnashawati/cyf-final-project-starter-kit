@@ -20,8 +20,8 @@
     top: 0;
     border-radius: 50%;
 }
-/* circle yellow  */
 
+/* circle yellow  */
 .radio-circle-section-yellow {
     display: inline-block;
     position: relative;
@@ -46,8 +46,7 @@
     border-radius: 50%;
 }
 
-/* circle grren */
-
+/* circle green */
  .radio-circle-section-green {
     display: inline-block;
     position: relative;
