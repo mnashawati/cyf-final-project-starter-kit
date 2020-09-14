@@ -167,12 +167,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
         		return (
         			<div className="previous-feedback-module" key={index}>
         				<p className="feedback-input-head">Feedback module: </p>
-							 <input
-							 onChange={handleEdit}
-							 name={property}
-							 value={editedFeedback[property]}
-							 disabled={editable}
-							 />
+        				<p>{editedFeedback[property]}</p>
         			</div> );
         	}
         	if (property === "module" && !editable ) {
@@ -180,10 +175,11 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
         			<div className="previous-feedback-module" key={index}>
         				<p className="feedback-input-head">Feedback module: </p>
         				<select
-        					name="filter-by-module"
+        					name="module"
         					disabled={editable}
+        					value={editedFeedback[property]}
         					onChange={handleEdit}>
-        					{modules.map((module,index) => <option key={index} value={editedFeedback[property]}
+        					{modules.map((module,index) => <option key={index} value={module.name}
         					> {module.name}</option>
         					)}
         				</select>
@@ -197,7 +193,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 						 <input
 						 className="feedback-title-input"
 						 onChange={handleEdit}
-						 name={property}
+						 name="title"
 						 value={editedFeedback[property]}
 						 disabled={editable}
 						 />
@@ -210,7 +206,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
 					 	<textarea
         				className="previous-feedback-text-input"
         				onChange={handleEdit}
-        				name={property}
+        				name="text"
         				value={editedFeedback[property]}
 					 	disabled={editable}
         				/>
@@ -222,7 +218,7 @@ const FeedbackList = ({ feedback, student, updateFeedback, index }) => {
         				<input
         					className="previous-feedback-time-input"
         					onChange={handleEdit}
-        					name={property}
+        					name="time"
         					value={timeDifference(Date.now(), editedFeedback[property])}
         					disabled
         				/>

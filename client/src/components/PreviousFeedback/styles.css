@@ -2,7 +2,7 @@
     overflow-y: auto;
     max-height: 500px;
     margin: 5px 5px;
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .select-module, .select-mentor{
@@ -53,6 +53,7 @@
     font-size: 0.8rem;
     font-weight: bold;
     height: 6em;
+    max-height: 8em;
 }
 
 .previous-feedback-mentor,
