@@ -4,16 +4,23 @@
 
 .regions-card {
     text-decoration: none;   
-    border: 1px solid black;
     margin: 15px;
+}
+
+.regions-card:hover {
+    background-color: rgba(237,67,67, 1);
 }
 
 .region-name {
     font-size: 1.5rem;
     color: black;
+    font-weight: bold;
 }
 
 .region-image {
-    max-height: 200px;
     width: 240px;
+    height: 280px;
+    margin: 20px;
+    padding: 0;
+    margin-top: 0;
 }
