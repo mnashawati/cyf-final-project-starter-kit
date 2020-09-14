@@ -17,13 +17,9 @@ const AllFeedback = ({ student }) => {
 
 	//Render the page on first load
 	useEffect(()=>{
-<<<<<<< HEAD
+
 		setAllFeedback(student.allFeedback);
 	}, [student]);
-=======
-		updateFeedback()
-	}, []);
->>>>>>> 968f90a69e23cab29bd365f51848565a7d9154a6
 
 	return (
 		<div>
