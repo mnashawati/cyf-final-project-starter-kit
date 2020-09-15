@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./styles.css";
 
-const Pagination = ({ totalStudents, studentsPerPage, paginate }) => {
+const Pagination = ({ totalStudents, studentsPerPage, setCurrentPage }) => {
 	const pageNumbers = [];
 
 	const numberOfPages = totalStudents / studentsPerPage;
@@ -17,7 +17,7 @@ const Pagination = ({ totalStudents, studentsPerPage, paginate }) => {
 				<li  key={number} className="page-item">
 					<a onClick={(e) => {
 						e.preventDefault(),
-						paginate(number);
+						setCurrentPage(number);
 					}}
 					href='!#'
 					className="page-link">
@@ -33,7 +33,7 @@ const Pagination = ({ totalStudents, studentsPerPage, paginate }) => {
 Pagination.propTypes = {
 	totalStudents: PropTypes.number.isRequired,
 	studentsPerPage: PropTypes.number.isRequired,
-	paginate: PropTypes.func.isRequired,
+	setCurrentPage: PropTypes.func.isRequired,
 };
 
 export default Pagination;

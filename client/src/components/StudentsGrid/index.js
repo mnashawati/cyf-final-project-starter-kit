@@ -25,9 +25,6 @@ const StudentsGrid = ( ) => {
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
 	const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
 
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
 	return (
 		<>
 			<Navbar />
@@ -38,7 +35,7 @@ const StudentsGrid = ( ) => {
 					))}
 				</div>
 			</div>
-			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} paginate={paginate} />
+			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} setCurrentPage={setCurrentPage} />
 		</>
 	);
 };
