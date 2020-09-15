@@ -12,11 +12,9 @@ const StudentsGrid = ( ) => {
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);setStudents(data.filter((student) => student.city == params.regionName));
-			})
+			.then((data) => setStudents(data.filter((student) => student.city == params.regionName)))
 			.catch((err) => console.log(err));
-}, []);
+	}, []);
 
 	return  (
 		<>
