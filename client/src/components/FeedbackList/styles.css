@@ -1,0 +1,122 @@
+.previous-feedback-list{
+    margin-top: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border: 0.5px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    box-shadow: 0 0 3px;
+    overflow-y: auto;
+}
+
+.previous-feedback-module,
+.previous-feedback-title
+{
+    display: flex;
+    width: 300px;
+    margin: 0px 5px 5px;
+    padding: 5px;
+    border:none
+}
+
+.feedback-title-input{
+    width: 250px;
+}
+
+
+.previous-feedback-text
+{
+    margin: 0px 5px;
+    padding: 5px;
+    border:none
+}
+
+.previous-feedback-text-input{
+    border:none;
+    margin: 1px;
+	width: 98%;
+	word-wrap: break-word;
+	padding: 7px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    height: 6em;
+    max-height: 8em;
+}
+
+.previous-feedback-mentor,
+.previous-feedback-time{
+    display: flex;
+}
+
+.previous-feedback-mentor-input,
+.previous-feedback-time-input{
+    padding: 5px;
+    font-size: small;
+}
+
+.feedback-input-head {
+    margin: 0px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 5px;
+}
+
+input{
+    border: none;
+    width: 200px
+}
+
+.feedback-filter-heading {
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.feedback-filter-heading b {
+    color: rgb(160, 20, 20);
+}
+
+span{
+    color: red;
+}
+
+.edit-delete-buttons {
+    display: flex;
+    margin: 10px;
+    justify-content: flex-end;
+}
+
+.date-mentor{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 3px;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.line{
+    border: 1px dashed rgb(75, 72, 72); 
+    width: 80%; 
+    margin: auto; 
+    margin-top: 5%; 
+    margin-bottom: 5%; 
+}
+
+.edit-button{
+background-color: rgb(7, 5, 48);
+color:white;
+margin-right: 15px;
+}
+
+.delete-button{
+background-color: red;
+color:white
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 5px ;
+    border-radius: 5px;
+    padding: 5px 0px 5px 10px ;
+    font-size: 12px;
+}
