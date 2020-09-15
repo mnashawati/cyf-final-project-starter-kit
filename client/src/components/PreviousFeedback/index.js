@@ -5,9 +5,7 @@ import PropTypes from "prop-types";
 import FeedbackList from "../FeedbackList";
 
 
-const PreviousFeedback = ({ student, updateFeedback }) => {
-
-	const allFeedback = student.allFeedback;
+const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All modules");
 	const [selectedMentor, setSelectedMentor] = useState ("All mentors");
@@ -40,31 +38,38 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 	return filteredFeedback ? (
 		<>
 			<h3 className="previous-feedback-title">Previous Feedback</h3>
-			<h5>Filter by Module :</h5>
-			<select className="select-module"
-				name="filter-by-module"
-				value={module.name}
-				onChange={(e) => setSelectedModule(e.target.value)}>
-				<option>All modules</option>
-				{modules.map((module,index) =>
-					<option key={index} value={module.name}
-					>
-						{module.name}
-					</option>
-				)}
-			</select>
-			<select className="select-mentor"
-				name="filter-by-mentor"
-				value={mentors.name}
-				onChange={(e) => setSelectedMentor(e.target.value)}>
-				<option>All mentors</option>
-				{mentors.map((mentor,index) =>
-					<option key={index} value={mentor.name}
-					>
-						{mentor.name}
-					</option>
-				)}
-			</select>
+			<div className="filters">
+				<div className="filter-by-module">
+					<h5>Filter by Module:</h5>
+					<select className="select-module"
+						name="filter-by-module"
+						value={module.name}
+						onChange={(e) => setSelectedModule(e.target.value)}>
+						<option>All modules</option>
+						{modules.map((module,index) =>
+							<option key={index} value={module.name}
+							>
+								{module.name}
+							</option>
+						)}
+					</select>
+				</div>
+				<div className="filter-by-mentor">
+					<h5>Filter by Mentor:</h5>
+					<select className="select-mentor"
+						name="filter-by-mentor"
+						value={mentors.name}
+						onChange={(e) => setSelectedMentor(e.target.value)}>
+						<option>All mentors</option>
+						{mentors.map((mentor,index) =>
+							<option key={index} value={mentor.name}
+							>
+								{mentor.name}
+							</option>
+						)}
+					</select>
+				</div>
+			</div>
 			<br />
 			<hr />
 			<div className="previous-feedback-section">
