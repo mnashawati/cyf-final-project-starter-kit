@@ -5,35 +5,32 @@ import PropTypes from "prop-types";
 import FeedbackList from "../FeedbackList";
 
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, updateFeedback }) => {
 
-	const [selectedModule, setSelectedModule] = useState ("All-modules");
-	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
+	const allFeedback = student.allFeedback;
+
+	const [selectedModule, setSelectedModule] = useState ("All modules");
+	const [selectedMentor, setSelectedMentor] = useState ("All mentors");
 
 	function getMentors(array, field) {
-		const getArray = [];
-		for (let i=0; i < array.length ; ++i) {
-			const found = getArray.some((el) => el.name === array[i][field]);
-			if (!found) {
-				getArray.push({ "name" :array[i][field] });
-			}
-		}
-		return getArray;
+		const existingMentorNames = [];
+
+		array.forEach((fb) => !existingMentorNames.includes(fb[field]) ? existingMentorNames.push({ "name" : fb[field] }) : null);
+
+		return existingMentorNames;
 	}
 
-	// All mentors assigned to mentors
-	const mentors = getMentors(allFeedback, "mentor");
+	// All mentors assigned to mentors and sorted alphabetically
+	const mentors = getMentors(allFeedback, "mentor").sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
 
-	allFeedback = allFeedback.reverse();
-
-	const filteredFeedback = [...allFeedback].filter((feedback) => {
-		if (selectedModule === "All-modules") {
+	const filteredFeedback = [...allFeedback.reverse()].filter((feedback) => {
+		if (selectedModule === "All modules") {
 			return true;
 		} else {
 			return selectedModule === feedback.module;
 		}
 	}).filter((feedback) => {
-		if (selectedMentor === "All-mentors") {
+		if (selectedMentor === "All mentors") {
 			return true;
 		} else {
 			return selectedMentor === feedback.mentor;
@@ -48,7 +45,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				name="filter-by-module"
 				value={module.name}
 				onChange={(e) => setSelectedModule(e.target.value)}>
-				<option>All-modules</option>
+				<option>All modules</option>
 				{modules.map((module,index) =>
 					<option key={index} value={module.name}
 					>
@@ -60,7 +57,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				name="filter-by-mentor"
 				value={mentors.name}
 				onChange={(e) => setSelectedMentor(e.target.value)}>
-				<option>All-mentors</option>
+				<option>All mentors</option>
 				{mentors.map((mentor,index) =>
 					<option key={index} value={mentor.name}
 					>
