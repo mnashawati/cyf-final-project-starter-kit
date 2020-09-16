@@ -3,7 +3,6 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import FeedbackList from "../FeedbackList";
 
-
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	const [selectedModule, setSelectedModule] = useState ("All modules");
@@ -11,31 +10,17 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	function getFilteringData(array, field) {
 		const existingFieldNames = [];
-
 		array.forEach((fb) => !existingFieldNames.includes(fb[field]) && existingFieldNames.push(fb[field]));
-
 		return existingFieldNames;
 	}
 
+	const modules = getFilteringData(allFeedback, "module");
 	// All mentors assigned to mentors and sorted alphabetically
 	const mentors = getFilteringData(allFeedback, "mentor").sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
 
-	const filteredFeedback = [...allFeedback.reverse()].filter((feedback) => {
-		if (selectedModule === "All modules") {
-			return true;
-		} else {
-			return selectedModule === feedback.module;
-		}
-	}).filter((feedback) => {
-		if (selectedMentor === "All mentors") {
-			return true;
-		} else {
-			return selectedMentor === feedback.mentor;
-		}
-	});
-
-	const modules = getFilteringData(allFeedback, "module");
-	console.log("modules", modules, "mentors", mentors);
+	const filteredFeedback = [...allFeedback.reverse()]
+		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
+		.filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
 
 	return filteredFeedback ? (
 		<>
