@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./styles.css";
-// import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 import FeedbackList from "../FeedbackList";
 
