@@ -25,31 +25,32 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	return filteredFeedback ? (
 		<>
 			<h3 className="previous-feedback-title">Previous Feedback</h3>
-			<h5>Filter by Module and/or mentor:</h5>
-			<select className="select-module"
-				name="filter-by-module"
-				value={module.name}
-				onChange={(e) => setSelectedModule(e.target.value)}>
-				<option>All-modules</option>
-				{modules.map((module,index) =>
-					<option key={index} value={module}
-					>
-						{module}
-					</option>
-				)}
-			</select>
-			<select className="select-mentor"
-				name="filter-by-mentor"
-				value={selectedMentor}
-				onChange={(e) => setSelectedMentor(e.target.value)}>
-				<option>All-mentors</option>
-				{mentors.map((mentor,index) =>
-					<option key={index} value={mentor}
-					>
-						{mentor}
-					</option>
-				)}
-			</select>
+			<div className="filters">
+				<div className="filter-by-module">
+					<h5>Filter by Module:</h5>
+					<select className="select-module"
+						name="filter-by-module"
+						value={module.name}
+						onChange={(e) => setSelectedModule(e.target.value)}>
+						<option>All modules</option>
+						{modules.map((module, index) =>
+							<option key={index} value={module}>{module}</option>
+						)}
+					</select>
+				</div>
+				<div className="filter-by-module">
+					<h5>Filter by Mentor:</h5>
+					<select className="select-mentor"
+						name="filter-by-mentor"
+						value={selectedMentor}
+						onChange={(e) => setSelectedMentor(e.target.value)}>
+						<option>All mentors</option>
+						{mentors.map((mentor, index) =>
+							<option key={index} value={mentor}>{mentor}</option>
+						)}
+					</select>
+				</div>
+			</div>
 			<br />
 			<hr />
 			<div className="previous-feedback-section">
