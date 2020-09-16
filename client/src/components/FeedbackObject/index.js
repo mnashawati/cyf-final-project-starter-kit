@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import timeDifference from "../../helperFunctions/timeDifference";
 
-const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
+const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 
 	const [isEditing, setIsEditing] = useState(false);
 	const [currentFeedback, setCurrentFeedback] = useState({});
@@ -156,10 +156,10 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 	);
 };
 
-FeedbackList.propTypes = {
+FeedbackObject.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedbackToShow: PropTypes.object.isRequired,
 	updateFeedback: PropTypes.func.isRequired,
 };
 
-export default FeedbackList;
+export default FeedbackObject;
