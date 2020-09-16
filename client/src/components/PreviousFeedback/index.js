@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import PropTypes from "prop-types";
-import FeedbackObject from "../FeedbackObject";
+import FeedbackList from "../FeedbackList";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
@@ -59,7 +59,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			<div className="previous-feedback-section">
 				{filteredFeedback.map((feedback, index) => (
 					<div className="previous-feedback-section" key={index}>
-						<FeedbackObject feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
+						<FeedbackList feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
 					</div>
 				))}
 			</div>
