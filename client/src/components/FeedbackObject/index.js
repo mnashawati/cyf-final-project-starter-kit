@@ -63,7 +63,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					if (property === "module") {
 						return (
 							<div className="previous-feedback-module" key={index}>
-								<p className="feedback-input-head">Feedback module:</p>
+								<p className="feedback-input-head">Module:</p>
 								{!isEditing
 									? <p>{currentFeedback[property]}</p>
 									: <select
@@ -80,8 +80,8 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					if (property === "title") {
 						return (
 							<div className="previous-feedback-title" key={index}>
-								<p className="feedback-input-head">Feedback title:</p>
-								<input
+								<p className="feedback-input-head">Title:</p>
+								<texta
 									className="feedback-title-input"
 									name={property}
 									value={currentFeedback[property]}
