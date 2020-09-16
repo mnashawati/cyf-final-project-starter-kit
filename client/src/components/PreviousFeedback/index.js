@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState } from "react";
 import "./styles.css";
 import PropTypes from "prop-types";
@@ -14,13 +15,15 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 		return existingFieldNames;
 	}
 
-	const modules = getFilteringData(allFeedback, "module");
-	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(allFeedback, "mentor").sort();
-
 	const filteredFeedback = [...allFeedback.reverse()]
 		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
 		.filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
+
+	const modules = getFilteringData(filteredFeedback, "module").sort();
+	// All mentors assigned to mentors and sorted alphabetically
+	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (a, b) {
+		return a.toLowerCase().localeCompare(b.toLowerCase());
+	});
 
 	return filteredFeedback ? (
 		<>
@@ -30,7 +33,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 					<h5>Filter by Module:</h5>
 					<select className="select-module"
 						name="filter-by-module"
-						value={module.name}
+						value={selectedModule}
 						onChange={(e) => setSelectedModule(e.target.value)}>
 						<option>All modules</option>
 						{modules.map((module, index) =>
@@ -61,8 +64,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				))}
 			</div>
 		</>
-	) : <p className="no-feedback-found-warning"> No feedback found! </p>
-	;
+	) : <p className="no-feedback-found-warning"> No feedback found! </p>;
 };
 
 PreviousFeedback.propTypes = {
