@@ -60,7 +60,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 										name={property}
 										value={feedbackToShow[property]}>
 										{modules.map((module, index) =>
-											<option key={index} value={module.name}> {module.name}</option>
+											<option key={index} value={module.name}>{module.name}</option>
 										)}
 									</select>}
 							</div>
