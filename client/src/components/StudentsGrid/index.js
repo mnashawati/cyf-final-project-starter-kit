@@ -18,7 +18,6 @@ const StudentsGrid = ( ) => {
 			.then((res) => res.json())
 			.then((data) => setStudents(data.filter((student) => student.city == params.regionName)))
 			.catch((err) => console.log(err));
-
 	}, []);
 
 	const indexOfLastStudent = currentPage * studentsPerPage; // 6
