@@ -11,22 +11,14 @@ const AllFeedback = ({ student }) => {
 	const updateFeedback = () => {
 		fetch(`/api/students/${student._id}`)
 			.then((res) => res.json())
-			.then((student) => {
-				setAllFeedback(student.allFeedback);
-			})
+			.then((student) => setAllFeedback(student.allFeedback))
 			.catch((err) => console.log(err));
 	};
 
 	return (
 		<div>
-			<FeedbackForm
-				updateFeedback={updateFeedback}
-				student={student} />
-			<PreviousFeedback
-				student={student}
-				allFeedback={allFeedback}
-				updateFeedback={updateFeedback}
-			/>
+			<FeedbackForm student={student} updateFeedback={updateFeedback} />
+			<PreviousFeedback student={student} allFeedback={allFeedback} updateFeedback={updateFeedback} />
 		</div>
 	);
 };

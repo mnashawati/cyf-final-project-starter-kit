@@ -95,7 +95,7 @@ client.connect(function () {
 
 
 	// To post new feedback or area of focus
-	router.put("/students/:id", (req, res) => {
+	router.post("/students/:id", (req, res) => {
 
 		const collection = db.collection("students");
 

@@ -1,44 +1,26 @@
 import React, { useState } from "react";
 import "./styles.css";
-import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 import FeedbackList from "../FeedbackList";
 
-
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
-	const [selectedModule, setSelectedModule] = useState ("All-modules");
-	const [selectedMentor, setSelectedMentor] = useState ("All-mentors");
+	const [selectedModule, setSelectedModule] = useState ("All modules");
+	const [selectedMentor, setSelectedMentor] = useState ("All mentors");
 
-	function getMentors(array, field) {
-		const getArray = [];
-		for (let i=0; i < array.length ; ++i) {
-			const found = getArray.some((el) => el.name === array[i][field]);
-			if (!found) {
-				getArray.push({ "name" :array[i][field] });
-			}
-		}
-		return getArray;
+	function getFilteringData(array, field) {
+		const existingFieldNames = [];
+		array.forEach((fb) => !existingFieldNames.includes(fb[field]) && existingFieldNames.push(fb[field]));
+		return existingFieldNames;
 	}
 
-	// All mentors assigned to mentors
-	const mentors = getMentors(allFeedback, "mentor");
+	const modules = getFilteringData(allFeedback, "module");
+	// All mentors assigned to mentors and sorted alphabetically
+	const mentors = getFilteringData(allFeedback, "mentor").sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
 
-	allFeedback = allFeedback.reverse();
-
-	const filteredFeedback = [...allFeedback].filter((feedback) => {
-		if (selectedModule === "All-modules") {
-			return true;
-		} else {
-			return selectedModule === feedback.module;
-		}
-	}).filter((feedback) => {
-		if (selectedMentor === "All-mentors") {
-			return true;
-		} else {
-			return selectedMentor === feedback.mentor;
-		}
-	});
+	const filteredFeedback = [...allFeedback.reverse()]
+		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
+		.filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
 
 	return filteredFeedback ? (
 		<>
@@ -71,18 +53,15 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 			<br />
 			<hr />
 			<div className="previous-feedback-section">
-				{filteredFeedback.length == false
-					? <p className="no-feedback-found-warning"> No feedback found! </p>
-					: filteredFeedback.length && filteredFeedback.map((feedback, index) => (
-						<div className="previous-feedback-section"
-							key={index}>
-							<FeedbackList feedbackToShow={feedback} student={student} updateFeedback={updateFeedback}
-							/>
-						</div>
-					))}
+				{filteredFeedback.map((feedback, index) => (
+					<div className="previous-feedback-section" key={index}>
+						<FeedbackList feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
+					</div>
+				))}
 			</div>
 		</>
-	) : null;
+	) : <p className="no-feedback-found-warning"> No feedback found! </p>
+	;
 };
 
 PreviousFeedback.propTypes = {
