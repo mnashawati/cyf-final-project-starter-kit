@@ -17,7 +17,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	feedback.time = Date.now();
 
 	const options = {
-		method: "PUT",
+		method: "POST",
 		headers: { "Content-type": "application/json" },
 		body: JSON.stringify(feedback),
 	};
