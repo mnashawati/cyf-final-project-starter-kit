@@ -32,9 +32,9 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				onChange={(e) => setSelectedModule(e.target.value)}>
 				<option>All-modules</option>
 				{modules.map((module,index) =>
-					<option key={index} value={module.name}
+					<option key={index} value={module}
 					>
-						{module.name}
+						{module}
 					</option>
 				)}
 			</select>
@@ -44,9 +44,9 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				onChange={(e) => setSelectedMentor(e.target.value)}>
 				<option>All-mentors</option>
 				{mentors.map((mentor,index) =>
-					<option key={index} value={mentor.name}
+					<option key={index} value={mentor}
 					>
-						{mentor.name}
+						{mentor}
 					</option>
 				)}
 			</select>
