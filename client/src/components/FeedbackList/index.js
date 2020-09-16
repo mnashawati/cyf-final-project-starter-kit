@@ -160,7 +160,7 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 			})}
 			<div className="edit-delete-buttons">
 				<Button
-					className="edit-button"
+					content={notEditable ? "Edit" : "Save"}
 					handleClick={() => {
 						if (notEditable) {
 							setNotEditable(false);
@@ -169,36 +169,26 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 							setNotEditable(true);
 						}
 					}}
-					content={notEditable ? "EDIT" : "SAVE"}
 				/>
 				<div>
 					<Button
-						className="delete-button"
+						content="Delete"
 						handleClick={() => {
 							alert("DELETE");
 							handleDelete(editedFeedback.id);
 							updateFeedback();
-						}} content="DELETE" />
+						}}
+					/>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-const Button = ({ content, handleClick }) => (
-	<button className={ content==="DELETE" ? "delete-button" : "edit-button" }
-		onClick={handleClick}>{content}</button>
-);
-
 FeedbackList.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedbackToShow: PropTypes.object.isRequired,
 	updateFeedback: PropTypes.func.isRequired,
-};
-
-Button.propTypes = {
-	content: PropTypes.string.isRequired,
-	handleClick: PropTypes.func.isRequired,
 };
 
 export default FeedbackList;
