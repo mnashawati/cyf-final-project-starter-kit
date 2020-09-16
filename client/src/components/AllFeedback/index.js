@@ -24,7 +24,7 @@ const AllFeedback = ({ student }) => {
 };
 
 AllFeedback.propTypes = {
-	student: PropTypes.array.isRequired,
+	student: PropTypes.object.isRequired,
 };
 
 export default AllFeedback;
