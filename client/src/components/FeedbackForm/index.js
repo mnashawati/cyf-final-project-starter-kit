@@ -22,9 +22,13 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 		body: JSON.stringify(feedback),
 	};
 
-	const postFeedback =() => {
+	const postFeedback = () => {
 		fetch(`/api/students/${student._id}`, options)
 			.then( (res) => res.json())
+			.then((data) => {
+				console.log(data);
+				updateFeedback();
+			})
 			.catch((error) => console.log(error));
 	};
 
@@ -38,7 +42,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			return alert("Please add your feedback in the box");
 		}
 		postFeedback();
-		updateFeedback();
 		e.target.reset();
 		setFeedback({
 			id: "",
@@ -49,7 +52,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 		});
 	};
 
-	// re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
+	// Re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
 	const handleChange = (e) => {
 		setFeedback({ ...feedback, [e.target.name]: e.target.value });
 	};
