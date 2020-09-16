@@ -47,7 +47,6 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 			headers: { "Content-type": "application/json" },
 			body: JSON.stringify(editedFeedback) })
 			.then( (res) => res.json())
-			.then((data) => console.log(data))
 			.catch((error) => console.log(error));
 	};
 
