@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState } from "react";
 import modules from "../../db/modules.json";
 import "../FeedbackForm/styles.css";
