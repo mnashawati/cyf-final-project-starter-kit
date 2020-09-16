@@ -16,7 +16,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 	const modules = getFilteringData(allFeedback, "module");
 	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(allFeedback, "mentor").sort((a, b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0);
+	const mentors = getFilteringData(allFeedback, "mentor").sort();
 
 	const filteredFeedback = [...allFeedback.reverse()]
 		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
