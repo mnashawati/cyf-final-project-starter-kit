@@ -47,10 +47,7 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 			headers: { "Content-type": "application/json" },
 			body: JSON.stringify(editedFeedback) })
 			.then( (res) => res.json())
-			.then((data) => {
-				console.log(data);
-				// updateFeedback();
-			})
+			.then((data) => console.log(data))
 			.catch((error) => console.log(error));
 	};
 
@@ -73,9 +70,7 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 			headers: { "Content-type": "application/json" },
 		})
 			.then((res) => res.json())
-			// .then(()=> updateFeedback())
 			.catch((error) => console.log(error));
-		updateFeedback();
 	};
 
 	// Populate new object with edited data editable
@@ -84,88 +79,86 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 	};
 
 	return (
-		<div
-			className="previous-feedback-list">
+		<div className="previous-feedback-list">
 			{Object.keys(editedFeedback).length
-        && Object.keys(editedFeedback).map((property, index) => {
-
-        	if (property === "module" && notEditable ) {
-        		return (
-        			<div className="previous-feedback-module" key={index}>
-        				<p className="feedback-input-head">Feedback module: </p>
-        				<p>{editedFeedback[property]}</p>
-        			</div> );
-        	}
-        	if (property === "module" && !notEditable ) {
-        		return (
-        			<div className="previous-feedback-module" key={index}>
-        				<p className="feedback-input-head">Feedback module: </p>
-        				<select
-        					name="module"
-        					disabled={notEditable}
-        					value={editedFeedback[property]}
-        					onChange={handleEdit}>
-        					{modules.map((module,index) => <option key={index} value={module.name}
-        					> {module.name}</option>
-        					)}
-        				</select>
-        			</div>
-        		);
-        	}
-        	if (property === "title") {
-        		return (
-        			<div className="previous-feedback-title" key={index}>
-        				<p className="feedback-input-head">Feedback title</p>
-						 <input
-						 className="feedback-title-input"
-						 onChange={handleEdit}
-						 name="title"
-						 value={editedFeedback[property]}
-						 disabled={notEditable}
-						 />
-        			</div> );
-        	}
-        	if (property === "text") {
-        		return (
-        			<div className="previous-feedback-text" key={index}>
-        				<p className="feedback-input-head">Feedback</p>
-					 	<textarea
-        				className="previous-feedback-text-input"
-        				onChange={handleEdit}
-        				name="text"
-        				value={editedFeedback[property]}
-					 	disabled={notEditable}
-        				/>
-        			</div> );
-        	}
-        	if (property === "time") {
-        		return (
-        			<div className="previous-feedback-time" key={index}>
-        				<input
-        					className="previous-feedback-time-input"
-        					onChange={handleEdit}
-        					name="time"
-        					value={timeDifference(Date.now(), editedFeedback[property])}
-        					disabled
-        				/>
-        			</div>
-        		);
-        	}
-        	if (property === "mentor") {
-        		return (
-        			<div className="previous-feedback-mentor" key={index}>
-        				<p className="feedback-input-head">Given by: </p>
-        				<input
-        					className="previous-feedback-mentor-input"
-        					onChange={handleEdit}
-        					name={property}
-        					value={editedFeedback[property]}
-        					disabled
-        				/>
-        			</div>
-        		);
-        	}
-        })}
+			&& Object.keys(editedFeedback).map((property, index) => {
+				if (property === "module" && notEditable ) {
+					return (
+						<div className="previous-feedback-module" key={index}>
+							<p className="feedback-input-head">Feedback module: </p>
+							<p>{editedFeedback[property]}</p>
+						</div> );
+				}
+				if (property === "module" && !notEditable ) {
+					return (
+						<div className="previous-feedback-module" key={index}>
+							<p className="feedback-input-head">Feedback module: </p>
+							<select
+								name="module"
+								disabled={notEditable}
+								value={editedFeedback[property]}
+								onChange={handleEdit}>
+								{modules.map((module,index) =>
+									<option key={index} value={module.name}> {module.name}</option>
+								)}
+							</select>
+						</div>
+					);
+				}
+				if (property === "title") {
+					return (
+						<div className="previous-feedback-title" key={index}>
+							<p className="feedback-input-head">Feedback title</p>
+							<input
+								className="feedback-title-input"
+								onChange={handleEdit}
+								name="title"
+								value={editedFeedback[property]}
+								disabled={notEditable}
+							/>
+						</div> );
+				}
+				if (property === "text") {
+					return (
+						<div className="previous-feedback-text" key={index}>
+							<p className="feedback-input-head">Feedback</p>
+							<textarea
+								className="previous-feedback-text-input"
+								onChange={handleEdit}
+								name="text"
+								value={editedFeedback[property]}
+								disabled={notEditable}
+							/>
+						</div> );
+				}
+				if (property === "time") {
+					return (
+						<div className="previous-feedback-time" key={index}>
+							<input
+								className="previous-feedback-time-input"
+								onChange={handleEdit}
+								name="time"
+								value={timeDifference(Date.now(), editedFeedback[property])}
+								disabled
+							/>
+						</div>
+					);
+				}
+				if (property === "mentor") {
+					return (
+						<div className="previous-feedback-mentor" key={index}>
+							<p className="feedback-input-head">Given by: </p>
+							<input
+								className="previous-feedback-mentor-input"
+								onChange={handleEdit}
+								name={property}
+								value={editedFeedback[property]}
+								disabled
+							/>
+						</div>
+					);
+				}
+			})}
 			<div className="edit-delete-buttons">
 				<Button
 					className="edit-button"
@@ -183,7 +176,9 @@ const FeedbackList = ({ feedbackToShow, student, updateFeedback }) => {
 					<Button
 						className="delete-button"
 						handleClick={() => {
-							alert("DELETE"); handleDelete(editedFeedback.id);
+							alert("DELETE");
+							handleDelete(editedFeedback.id);
+							updateFeedback();
 						}} content="DELETE" />
 				</div>
 			</div>
@@ -199,10 +194,7 @@ const Button = ({ content, handleClick }) => (
 FeedbackList.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedbackToShow: PropTypes.object.isRequired,
-	// allFeedback: PropTypes.object.isRequired,
-
 	updateFeedback: PropTypes.func.isRequired,
-	// index: PropTypes.number.isRequired,
 };
 
 Button.propTypes = {
