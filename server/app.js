@@ -26,5 +26,4 @@ app.use(apiRoot, router);
 app.use(express.static(staticDir));
 app.use(pushStateRouting(apiRoot, staticDir));
 
-
 export default app;
