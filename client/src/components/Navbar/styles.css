@@ -1,12 +1,15 @@
 .navbar-container {
-  height: 100px;
-  margin-bottom: 40px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
   background-color: #efefef;
-  position: sticky;
+  font-family: "Raleway",sans-serif;
+  color: #ececec;
+  font-weight: 300;
+  font-size: .85rem;
+  height: 80px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .navbar-container > div {
@@ -20,15 +23,21 @@
   margin-top: 20px;
 }
 
+.sign-out-btn-div {
+  margin-right: 10px;
+}
+
 .homepage-route-link {
   text-decoration: none;
   color: black;
+  font-size: 700;
   justify-self: flex-start;
+  margin: 10px;
 }
 
 .CYF-logo {
-  width: 180px;
-  height: 57px;
+  width: 120px;
+  height: 38px;
   margin-bottom: 0;
 }
 

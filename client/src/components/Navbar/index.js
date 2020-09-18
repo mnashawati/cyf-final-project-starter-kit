@@ -17,13 +17,8 @@ const Navbar = () => {
 				>
 					<img src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
 						alt="Code Your Future's logo" className="CYF-logo" />
-					<h3>Feedback Tracker</h3>
+					<p>Feedback Tracker</p>
 				</Link>
-				<div className="syllabus-link">
-					<a href="https://syllabus.codeyourfuture.io/" rel="noreferrer" target="_blank">
-					Syllabus
-					</a>
-				</div>
 				<Link
 					className="regions-route-link"
 					to={{ pathname: "/regions" }}
@@ -31,7 +26,9 @@ const Navbar = () => {
 					<p>Regions</p>
 				</Link>
 			</div>
-			{currentUser && <SignOut />}
+			<div className="sign-out-btn-div">
+				{currentUser && <SignOut />}
+			</div>
 		</div>
 	);
 };
