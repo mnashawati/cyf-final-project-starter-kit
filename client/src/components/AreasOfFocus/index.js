@@ -46,7 +46,6 @@ const AreasOfFocus = ({ student }) => {
 	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
 			<h3 className="area-of-focus-title">Highlights:</h3>
-			<AreasOfFocusForm addNewArea={addNewArea} />
 			<div className="need-to-work-on-section">
 				<h6 className="subtitle-text">
           Need to work on...
@@ -57,7 +56,7 @@ const AreasOfFocus = ({ student }) => {
 							<button className="btn-danger high-button">
 								{item.message}
 								<span
-									className="btn-danger x-button"
+									className="x-button"
 									onClick={() =>
 										removeAnArea(item.id, "toWorkOn")
 									}
@@ -77,7 +76,7 @@ const AreasOfFocus = ({ student }) => {
 							<button className="btn-warning high-button">
 								{item.message}
 								<span
-									className="btn-warning x-button"
+									className="x-button"
 									onClick={() =>
 										removeAnArea(item.id, "okayAt")
 									}
@@ -100,7 +99,7 @@ const AreasOfFocus = ({ student }) => {
 							>
 								{item.message}
 								<span
-									className="btn-success x-button"
+									className="x-button"
 									onClick={() =>
 										removeAnArea(item.id, "goodAt")
 									}
@@ -112,7 +111,7 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			{/* <AreasOfFocusForm addNewArea={addNewArea} /> */}
+			<AreasOfFocusForm addNewArea={addNewArea} />
 		</div>
 	) : null;
 };

@@ -51,9 +51,10 @@
 
 .x-button {
     margin:0px 5px;
-    float: right;
+    /* float: right; */
     border: none;
-    }
+}
+
 
 .key-button {
     margin-right: 0;
