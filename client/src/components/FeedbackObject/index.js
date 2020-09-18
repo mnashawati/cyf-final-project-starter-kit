@@ -63,7 +63,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					if (property === "module") {
 						return (
 							<div className="previous-feedback-module" key={index}>
-								<p className="feedback-input-head">Feedback module:</p>
+								<p className="feedback-input-head">Module:</p>
 								{!isEditing
 									? <p>{currentFeedback[property]}</p>
 									: <select
@@ -80,8 +80,8 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					if (property === "title") {
 						return (
 							<div className="previous-feedback-title" key={index}>
-								<p className="feedback-input-head">Feedback title:</p>
-								<input
+								<p className="feedback-input-head">Title:</p>
+								<textarea
 									className="feedback-title-input"
 									name={property}
 									value={currentFeedback[property]}
@@ -105,19 +105,6 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 							</div>
 						);
 					}
-					if (property === "time") {
-						return (
-							<div className="previous-feedback-time" key={index}>
-								<input
-									className="previous-feedback-time-input"
-									name={property}
-									value={timeDifference(Date.now(), currentFeedback[property])}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
-					}
 					if (property === "mentor") {
 						return (
 							<div className="previous-feedback-mentor" key={index}>
@@ -126,6 +113,19 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 									className="previous-feedback-mentor-input"
 									name={property}
 									value={currentFeedback[property]}
+									onChange={handleEdit}
+									disabled
+								/>
+							</div>
+						);
+					}
+					if (property === "time") {
+						return (
+							<div className="previous-feedback-time" key={index}>
+								<input
+									className="previous-feedback-time-input"
+									name={property}
+									value={timeDifference(Date.now(), currentFeedback[property])}
 									onChange={handleEdit}
 									disabled
 								/>

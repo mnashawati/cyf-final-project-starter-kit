@@ -12,7 +12,9 @@ const RegionsCard = ({ region }) => {
 		>
 			<div className="card-container">
 				<p className="region-name">{region.name}</p>
-				<img className="region-image" src={region.image_url} alt={region.name + "'s image"} />
+				<div className="image-container">
+					<img className="region-image" src={region.image_url} alt={region.name + "'s image"} />
+				</div>
 			</div>
 		</Link>
 	);

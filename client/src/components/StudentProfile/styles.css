@@ -5,6 +5,17 @@
     margin: 50px auto;
 }
 
+.students-route-link{
+    /* align-self: flex-start; */
+    position: sticky;
+    top: 5px;
+}
+
+.back-to-students{
+    margin: 5px 20px;
+    color: rgb(58, 57, 57);
+}
+
 .student-profile-section-left {
     display: flex;
     justify-content: space-around;
@@ -113,7 +124,6 @@
 
     .student-profile-container {
         flex-direction: column;
-        flex-wrap: wrap;
         margin: 20px;
     }
 
