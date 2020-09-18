@@ -27,10 +27,15 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 	return (
 		<div className="area-form-section">
 			<form onSubmit={handleSubmit} id="add-area-of-focus">
-				<div>
+				<div className="add-buton-title-section">
 					<p className="areas-input-label">
             Type a topic to highlight:
 					</p>
+					<div className="add-area-button-wrapper">
+						<button className="btn-danger add-button">
+              Add
+						</button>
+					</div>
 				</div>
 				<div className="input-lights-add-button-container">
 					<div className="area-input-section">
@@ -42,6 +47,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 							onChange={handleChange}
 						/>
 					</div>
+
 					<div className="lights-section">
 						<div>
 							<label
@@ -116,11 +122,6 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 					<div className="add-area-button-section">
 						<div className="area-display">{area.level}</div>
 					</div>
-				</div>
-				<div className="add-area-button-wrapper">
-					<button className="btn-danger add-button">
-            Add
-					</button>
 				</div>
 			</form>
 		</div>

@@ -1,15 +1,15 @@
 /* circle red */
 .add-button {
- text-transform: uppercase;
- padding: 5px;
- margin-bottom: 15px;
-   min-width: 140px;
-   max-width: 140px;
-   border: none;
-   margin: 8px 5px;
-   font-size: 14px;
-   border-radius: 5px 5px 5px 5px;
-   height: 29px;
+    text-transform: uppercase;
+    padding: 5px;
+    margin-bottom: 15px;
+    min-width: 140px;
+    max-width: 140px;
+    border: none;
+    margin: 8px 5px;
+    font-size: 14px;
+    border-radius: 5px 5px 5px 5px;
+    height: 29px;
 
 }
 .circle-border {
@@ -175,4 +175,8 @@
 .area-form-section{
     padding: 5px;
     border: 1px solid black;
+}
+
+.add-buton-title-section{
+    display: flex;
 }

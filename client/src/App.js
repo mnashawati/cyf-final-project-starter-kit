@@ -7,6 +7,7 @@ import RegionsGrid from "./components/RegionsGrid";
 import StudentsGrid from "./components/StudentsGrid/index.js";
 import StudentProfile from "./components/StudentProfile";
 
+
 export function App() {
 
 	return (

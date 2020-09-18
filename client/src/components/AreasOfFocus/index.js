@@ -48,9 +48,9 @@ const AreasOfFocus = ({ student }) => {
 			<h3 className="area-of-focus-title">Highlights:</h3>
 			<AreasOfFocusForm addNewArea={addNewArea} />
 			<div className="need-to-work-on-section">
-				<h3 className="subtitle-text">
+				<h6 className="subtitle-text">
           Need to work on...
-				</h3>
+				</h6>
 				<div className="area-text-section-red">
 					{areasOfFocus.toWorkOn.map((item, index) => (
 						<div key={index}>
@@ -70,7 +70,7 @@ const AreasOfFocus = ({ student }) => {
 				</div>
 			</div>
 			<div className="okay-at-section">
-				<h3 className="subtitle-text">Okay at...</h3>
+				<h6 className="subtitle-text">Okay at...</h6>
 				<div className="area-text-section-yellow">
 					{areasOfFocus.okayAt.map((item, index) => (
 						<div key={index}>
@@ -90,7 +90,7 @@ const AreasOfFocus = ({ student }) => {
 				</div>
 			</div>
 			<div className="good-at-section">
-				<h3 className="subtitle-text">Good at...</h3>
+				<h6 className="subtitle-text">Good at...</h6>
 				<div className="area-text-section-green">
 					{areasOfFocus.goodAt.map((item, index) => (
 						<div key={index}>
