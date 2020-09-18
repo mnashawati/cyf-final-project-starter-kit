@@ -14,7 +14,9 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
 
 	return (
 		<ul className="pagination">
+			<a>&laquo;</a>
 			{pageNumbers.map((number) => (
+				<div className="page-numbers">
 				<li  key={number} className="page-item">
 					<a onClick={(e) => {
 						e.preventDefault(),
@@ -24,11 +26,13 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
 					href='!#'
 					className="page-link"
 					style={{ fontWeight: currentNumber == number ? "bolder" : "normal", 
-							 color: currentNumber == number ? "red" : "black"  }}>
+							 color: currentNumber == number ? "red" : "black" }}>
 						{number}
 					</a>
 				</li>
+				</div>
 			))}
+			 <a>&raquo;</a>
 		</ul>
 
 	);

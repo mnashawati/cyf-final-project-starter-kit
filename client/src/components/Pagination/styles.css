@@ -1,15 +1,23 @@
-.pagination {
+.pagination{
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
 
 .page-item > a {
    color: black;
    float: left;
    padding: 8px 16px;
-   text-decoration: none;
+   text-decoration: none
 }
 
 .page-item {
-     list-style-type: none;
+     list-style-type: none
+}
+
+.pagination a:hover:not(.active) {
+    background-color: rgb(224, 219, 219)
+}
+
+a{
+    padding-top: 8px;
 }
