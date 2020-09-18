@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState } from "react";
-import "./styles.css";
-import PropTypes from "prop-types";
 import FeedbackObject from "../FeedbackObject";
+import PropTypes from "prop-types";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
@@ -26,44 +25,46 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	});
 
 	return filteredFeedback ? (
-		<>
-			<h3 className="previous-feedback-title">Previous Feedback</h3>
-			<div className="filters">
-				<div className="filter-by-module">
-					<h5>Filter by Module:</h5>
-					<select className="select-module"
-						name="filter-by-module"
-						value={selectedModule}
-						onChange={(e) => setSelectedModule(e.target.value)}>
-						<option>All modules</option>
-						{modules.map((module, index) =>
-							<option key={index} value={module}>{module}</option>
-						)}
-					</select>
-				</div>
-				<div className="filter-by-module">
-					<h5>Filter by Mentor:</h5>
-					<select className="select-mentor"
-						name="filter-by-mentor"
-						value={selectedMentor}
-						onChange={(e) => setSelectedMentor(e.target.value)}>
-						<option>All mentors</option>
-						{mentors.map((mentor, index) =>
-							<option key={index} value={mentor}>{mentor}</option>
-						)}
-					</select>
-				</div>
-			</div>
-			<br />
-			<hr />
+		<div className="previous-feedback-section-container">
 			<div className="previous-feedback-section">
-				{filteredFeedback.map((feedback, index) => (
-					<div className="previous-feedback-section" key={index}>
-						<FeedbackObject feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
+				<h3>Previous Feedback</h3>
+				<div className="module-mentor-filters-container">
+					<div className="filter-by-module-container">
+						<h6>Filter by Module:</h6>
+						<select className="select-module"
+							name="filter-by-module"
+							value={selectedModule}
+							onChange={(e) => setSelectedModule(e.target.value)}>
+							<option>All modules</option>
+							{modules.map((module, index) =>
+								<option key={index} value={module}>{module}</option>
+							)}
+						</select>
 					</div>
-				))}
+					<div className="filter-by-mentor-container">
+						<h6>Filter by Mentor:</h6>
+						<select className="select-mentor"
+							name="filter-by-mentor"
+							value={selectedMentor}
+							onChange={(e) => setSelectedMentor(e.target.value)}>
+							<option>All mentors</option>
+							{mentors.map((mentor, index) =>
+								<option key={index} value={mentor}>{mentor}</option>
+							)}
+						</select>
+					</div>
+				</div>
+				<br />
+				<hr />
+				<div className="feedback-pages-section">
+					{filteredFeedback.map((feedback, index) => (
+						<div className="feedback-object-section" key={index}>
+							<FeedbackObject feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
+						</div>
+					))}
+				</div>
 			</div>
-		</>
+		</div>
 	) : <p className="no-feedback-found-warning"> No feedback found! </p>;
 };
 

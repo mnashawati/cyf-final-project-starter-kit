@@ -1,58 +1,20 @@
-.feedback-form-container {
+.feedback-form-container, .previous-feedback-section-container {
     border: 1px solid black;
     margin: 20px auto;
     padding: 20px auto;
 }
 
-.feedback-form {
+.feedback-form, .previous-feedback-section {
     margin: 12px;
+}
+
+.previous-feedback-section > h3 {
+    margin: 10px 0 10px -10px;
 }
 
 .add-feedback-heading-container {
     font-weight: bold;
     margin: 10px 0 10px -10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.feedback-input-heading {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-top: 5px;
-    margin-bottom: 0;
-}
-
-.feedback-input-heading b {
-    color: rgb(160, 20, 20);
-}
-
-.feedback-module-title-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-}
-
-.select-module, 
-.feedback-title-input {
-    width: 50%;
-    height: 30px;
-}
-
-.feedback-message-input {
-    width: 100%;
-    height: 70px;
-}
-
-.select-module, 
-.feedback-title-input, 
-.feedback-message-input,
-.post-feedback-button-div {
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.feedback-form-bottom-section {
     display: flex;
     justify-content: space-between;
 }
@@ -69,4 +31,59 @@
 .post-feedback-button-div:hover{
     cursor: pointer;
     opacity: 0.5;
+}
+
+.feedback-input-heading {
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.feedback-input-heading b {
+    color: rgb(160, 20, 20);
+}
+
+.feedback-module-title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.select-module, .select-mentor,
+.feedback-title-input {
+    height: 30px;
+}
+
+.feedback-message-input {
+    width: 100%;
+    height: 70px;
+}
+
+.select-module, .select-mentor,
+.feedback-title-input, 
+.feedback-message-input,
+.post-feedback-button-div {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.select-module, .select-mentor {
+    width: 200px;
+}
+
+.module-mentor-filters-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedback-pages-section, .feedback-object-section {
+    overflow-y: auto;
+} 
+
+.no-feedback-found-warning{
+    display: flex;
+    color: red;
+    margin: 20px auto;
+    text-align: center;
 }
