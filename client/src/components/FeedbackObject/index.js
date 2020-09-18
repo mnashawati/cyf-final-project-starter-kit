@@ -65,7 +65,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 							<div className="feedback-title-module">
 							<div className="previous-feedback-title" key={index}>
 								<div>
-									<h5>Title</h5>
+									<h5 className="title-module-title">Title</h5>
 									<textarea
 										className="feedback-title-input"
 										name="title"
@@ -77,7 +77,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 							</div>
 							<div className="previous-feedback-module" key={index}>
 								<div>
-									<h5>Module</h5>
+									<h5 className="title-module-title">Module</h5>
 									{!isEditing
 										? <p className="modules-dropdown">{currentFeedback.module}</p>
 										: <select

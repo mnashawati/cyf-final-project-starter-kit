@@ -14,10 +14,10 @@
     justify-content: space-between;
 }
 
-h5 {
+.title-module-title {
     text-decoration: underline;
     font-weight: 700;
-  }
+}
 
 .feedback-title-module{
     height: 3rem;
@@ -32,14 +32,13 @@ h5 {
 .previous-feedback-title
 {
     display: flex;
-    width: 300px;
-    margin: 0px 5px 5px;
+    margin: 5px 10px 5px;
     padding: 5px;
     border:none
 }
 
 .feedback-title-input{
-    width: 250px;
+    max-width: 250px;
     padding-left: 0px;
     font-weight: 900; 
     background-color: white;
@@ -60,11 +59,14 @@ h5 {
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
+    background-color: white;
 }
 
 .previous-feedback-mentor,
 .previous-feedback-time{
     display: flex;
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 .previous-feedback-mentor-input,
@@ -72,11 +74,8 @@ h5 {
 .previous-feedback-time-input{
     padding: 5px;
     font-size: small;
-}
-
-input{
-    border: none;
-    width: 200px
+    background-color: white;
+    font-weight: bolder;
 }
 
 .feedback-filter-heading {
@@ -87,10 +86,6 @@ input{
 
 .feedback-filter-heading b {
     color: rgb(160, 20, 20);
-}
-
-span{
-    color: red;
 }
 
 .edit-delete-buttons {
