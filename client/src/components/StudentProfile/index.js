@@ -5,6 +5,7 @@ import Navbar from "../Navbar/index.js";
 import { Link } from "react-router-dom";
 import AreasOfFocus from "../AreasOfFocus/index.js";
 import AllFeedback from "../AllFeedback/index.js";
+import Footer from "../Footer/index";
 
 const StudentProfile = () => {
 
@@ -52,6 +53,7 @@ const StudentProfile = () => {
 					<AllFeedback student={student} />
 				</div>
 			</div>
+			<Footer />
 		</>
 	) : null;
 };

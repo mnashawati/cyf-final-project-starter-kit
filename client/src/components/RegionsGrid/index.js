@@ -4,6 +4,7 @@ import "./styles.css";
 import "./grid.css";
 import regions from "../../db/regions.json";
 import Navbar from "../Navbar/index.js";
+import Footer from "../Footer/index";
 
 const RegionsGrid = ( ) => {
 
@@ -17,6 +18,7 @@ const RegionsGrid = ( ) => {
 					))}
 				</div>
 			</div>
+			<Footer />
 		</>
 
 	);

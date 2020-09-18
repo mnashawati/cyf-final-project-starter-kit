@@ -4,6 +4,7 @@ import StudentCard from "../StudentCard/index.js";
 import Pagination from "../Pagination/index.js";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
+import Footer from "../Footer/index";
 
 const StudentsGrid = ( ) => {
 
@@ -34,7 +35,8 @@ const StudentsGrid = ( ) => {
 					))}
 				</div>
 			</div>
-			<Pagination itemsPerPage={studentsPerPage} totalItems={students.length} setCurrentPage={setCurrentPage} />
+			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} setCurrentPage={setCurrentPage} />
+			<Footer />
 		</>
 	);
 };

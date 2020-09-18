@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import modules from "../../db/modules.json";
 import "../FeedbackForm/styles.css";
 import uuid from "react-uuid";
 import PropTypes from "prop-types";
+import { AuthContext } from "../../authentication/Auth";
 
 const FeedbackForm = ({ student, updateFeedback }) => {
+
+	const { currentUser } = useContext(AuthContext);
 
 	const [feedback, setFeedback] = useState({
 		id: "",
@@ -16,6 +19,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	});
 	feedback.id = uuid();
 	feedback.time = Date.now();
+	feedback.mentor = (currentUser.displayName || currentUser.email);
 
 	const options = {
 		method: "POST",
@@ -66,35 +70,39 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 				onSubmit={handleSubmit}
 			>
 				<div className="add-feedback-heading-container">
-					<h3>Add Feedback</h3>
+					<h3>Write Feedback</h3>
+					<input className="post-feedback-button-div"
+						type="submit" value="Submit" />
+				</div>
+
+				<div className="feedback-module-title-container">
+					<div className="add-title-container">
+						<h6 className="feedback-input-heading">Add a headline <b>*</b></h6>
+						<input className="feedback-title-input"
+							type="text"
+							name="title"
+							value={feedback.title}
+							onChange={handleChange}
+							maxLength={45}
+							placeholder="">
+						</input>
+					</div>
+					<div className="add-module-container">
+						<h6 className="feedback-input-heading">Module <b>*</b></h6>
+						<select
+							className="select-module"
+							value={feedback.module}
+							name="module"
+							onChange={handleChange}
+						>
+							<option value="" defaultValue disabled hidden>Select a module</option>
+							{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
+						</select>
+					</div>
 				</div>
 
 				<div>
-					<h3 className="feedback-input-heading">Module <b>*</b></h3>
-					<select
-						className="select-module"
-						value={feedback.module}
-						name="module"
-						onChange={handleChange}
-					>
-						<option value="" defaultValue disabled hidden>Select a module</option>
-						{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
-					</select>
-				</div>
-
-				<div>
-					<h3 className="feedback-input-heading">Feedback title <b>*</b></h3>
-					<input className="feedback-title-input"
-						type="text"
-						name="title"
-						value={feedback.title}
-						onChange={handleChange}
-						placeholder="">
-					</input>
-				</div>
-
-				<div>
-					<h3 className="feedback-input-heading">Add some feedback <b>*</b></h3>
+					<h6 className="feedback-input-heading">Write your feedback <b>*</b></h6>
 					<textarea
 						className="feedback-message-input"
 						name="text"
@@ -102,22 +110,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						onChange={handleChange}
 						placeholder=""
 					></textarea>
-				</div>
-
-				<div>
-					<h3 className="feedback-input-heading">Your name:</h3>
-					<div className="feedback-form-bottom-section">
-						<input
-							className="mentor-name-input"
-							type="text"
-							name="mentor"
-							value={feedback.mentor}
-							onChange={handleChange}
-							placeholder=""
-						/>
-						<input className="post-feedback-button-div"
-							type="submit" value="POST FEEDBACK" />
-					</div>
 				</div>
 			</form>
 		</div>

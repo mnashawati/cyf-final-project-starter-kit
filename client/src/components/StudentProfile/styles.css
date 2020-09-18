@@ -124,7 +124,6 @@
 
     .student-profile-container {
         flex-direction: column;
-        flex-wrap: wrap;
         margin: 20px;
     }
 
