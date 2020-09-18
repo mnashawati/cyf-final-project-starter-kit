@@ -111,21 +111,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						placeholder=""
 					></textarea>
 				</div>
-
-				{/* <div> */}
-				{/* <h3 className="feedback-input-heading">Your name:</h3> */}
-				{/* <div className="feedback-form-bottom-section"> */}
-				{/* <input
-							className="mentor-name-input"
-							type="text"
-							name="mentor"
-							value={feedback.mentor}
-							onChange={handleChange}
-							placeholder=""
-						/> */}
-
-				{/* </div> */}
-				{/* </div> */}
 			</form>
 		</div>
 	);
