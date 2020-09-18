@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 import "./styles.css";
 
-const Pagination = ({ totalStudents, studentsPerPage, setCurrentPage }) => {
+const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
 	const pageNumbers = [];
+	const [currentNumber, setCurrentNumber] = useState(1)
 
-	const numberOfPages = totalStudents / studentsPerPage;
+	const numberOfPages = totalItems / itemsPerPage;
 	for (let i = 1; i <= Math.ceil(numberOfPages) ;i++) {
 		pageNumbers.push(i);
 	}
@@ -18,9 +19,12 @@ const Pagination = ({ totalStudents, studentsPerPage, setCurrentPage }) => {
 					<a onClick={(e) => {
 						e.preventDefault(),
 						setCurrentPage(number);
+						setCurrentNumber(number);
 					}}
 					href='!#'
-					className="page-link">
+					className="page-link"
+					style={{ fontWeight: currentNumber == number ? "bolder" : "normal", 
+							 color: currentNumber == number ? "red" : "black"  }}>
 						{number}
 					</a>
 				</li>
@@ -31,8 +35,8 @@ const Pagination = ({ totalStudents, studentsPerPage, setCurrentPage }) => {
 };
 
 Pagination.propTypes = {
-	totalStudents: PropTypes.number.isRequired,
-	studentsPerPage: PropTypes.number.isRequired,
+	totalItems: PropTypes.number.isRequired,
+	itemsPerPage: PropTypes.number.isRequired,
 	setCurrentPage: PropTypes.func.isRequired,
 };
 
