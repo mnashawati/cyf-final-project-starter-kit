@@ -2,32 +2,53 @@
 import React, { useState } from "react";
 import FeedbackObject from "../FeedbackObject";
 import PropTypes from "prop-types";
+import Pagination from "../Pagination/index";
+
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+	const [selectedModule, setSelectedModule] = useState("All modules");
+	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
-	const [selectedModule, setSelectedModule] = useState ("All modules");
-	const [selectedMentor, setSelectedMentor] = useState ("All mentors");
+	const [currentPage, setCurrentPage] = useState(1);
+	const [feedbackPerPage] = useState(6);
+
 
 	function getFilteringData(array, field) {
 		const existingFieldNames = [];
-		array.forEach((fb) => !existingFieldNames.includes(fb[field]) && existingFieldNames.push(fb[field]));
+		array.forEach(
+			(fb) =>
+				!existingFieldNames.includes(fb[field])
+          && existingFieldNames.push(fb[field])
+		);
 		return existingFieldNames;
 	}
 
 	const filteredFeedback = [...allFeedback.reverse()]
-		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
-		.filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
+		.filter((feedback) =>
+			selectedModule === "All modules"
+				? true
+				: selectedModule === feedback.module
+		)
+		.filter((feedback) =>
+			selectedMentor === "All mentors"
+				? true
+				: selectedMentor === feedback.mentor
+		);
 
 	const modules = getFilteringData(filteredFeedback, "module").sort();
 	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (a, b) {
+	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (a,b) {
 		return a.toLowerCase().localeCompare(b.toLowerCase());
 	});
 
-	return filteredFeedback ? (
+	const indexOfLastFeedback = currentPage * feedbackPerPage; // 5
+	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage; // 5-5=0
+	const currentFeedbacks = filteredFeedback.slice(indexOfFirstFeedback, indexOfLastFeedback); // filteredFeedback.slice(0,5)
+
+	return currentFeedbacks ? (
 		<div className="previous-feedback-section-container">
 			<div className="previous-feedback-section">
-				<h3>Previous Feedback</h3>
+				<h3 className="previous-feedback-title">Previous Feedback</h3>
 				<div className="module-mentor-filters-container">
 					<div className="filter-by-module-container">
 						<h6>Filter by Module:</h6>
@@ -57,15 +78,18 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				<br />
 				<hr />
 				<div className="feedback-pages-section">
-					{filteredFeedback.map((feedback, index) => (
+					{currentFeedbacks.map((feedback, index) => (
 						<div className="feedback-object-section" key={index}>
 							<FeedbackObject feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
 						</div>
 					))}
 				</div>
 			</div>
+			<Pagination itemsPerPage={feedbackPerPage} totalItems={filteredFeedback.length} setCurrentPage={setCurrentPage} />
 		</div>
-	) : <p className="no-feedback-found-warning"> No feedback found! </p>;
+	) : (
+		<p className="no-feedback-found-warning"> No feedback found! </p>
+	);
 };
 
 PreviousFeedback.propTypes = {
