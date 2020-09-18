@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { AuthContext } from "../../authentication/Auth";
+import SignOut from "../../authentication/SignOut";
 
 const Navbar = () => {
+
+	const { currentUser } = useContext(AuthContext);
+
 	return (
 		<div className="navbar-container">
 			<div className="navbar-links">
@@ -26,20 +31,7 @@ const Navbar = () => {
 					<p>Regions</p>
 				</Link>
 			</div>
-			<div className="navbar-buttons">
-				<Link
-					className="register-route-link"
-					to={{ pathname: "/register" }}
-				>
-					<p>Register</p>
-				</Link>
-				<Link
-					className="login-route-link"
-					to={{ pathname: "/login" }}
-				>
-					<p>Log In</p>
-				</Link>
-			</div>
+			{currentUser && <SignOut />}
 		</div>
 	);
 };
