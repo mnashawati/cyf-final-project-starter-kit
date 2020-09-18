@@ -1,0 +1,36 @@
+.footer-horizontal-line {
+    height: 2px;
+    width: 80%;
+    border-width:0;
+    color:gray;
+    background-color:gray;
+    margin: 16px auto;
+}
+
+.footer-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3f3f3f;
+    font-family: "Raleway",sans-serif;
+    color: #ececec;
+    font-weight: 300;
+    font-size: .85rem;
+    height: 80px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links > a {
+    text-decoration: none;
+    color: #ececec;
+}
+
+.footer-links > a:hover {
+    color: #D4D4D4;
+}
