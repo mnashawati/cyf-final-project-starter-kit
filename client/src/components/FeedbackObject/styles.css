@@ -8,6 +8,26 @@
     overflow-y: auto;
 }
 
+.feedback-title-module,
+.feedback-mentor-time{
+    display: flex;
+    justify-content: space-between;
+}
+
+h5 {
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+.feedback-title-module{
+    height: 3rem;
+}
+
+.modules-dropdown{
+    font-size: small;
+    padding-top: 4px;
+}
+
 .previous-feedback-module,
 .previous-feedback-title
 {
@@ -20,8 +40,8 @@
 
 .feedback-title-input{
     width: 250px;
+    padding-left: 0px;
 }
-
 
 .previous-feedback-text
 {
@@ -48,16 +68,10 @@
 }
 
 .previous-feedback-mentor-input,
+.feedback-input-mentor-name,
 .previous-feedback-time-input{
     padding: 5px;
     font-size: small;
-}
-
-.feedback-input-head {
-    margin: 0px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 5px;
 }
 
 input{
