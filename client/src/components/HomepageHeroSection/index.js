@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import img from "./05.jpg";
 import TechnologiesGrid from "../TechnologiesGrid";
-
+import Login from "../../authentication/Login";
 
 const HomepageHeroSection = () => {
 	return (
@@ -20,9 +20,13 @@ const HomepageHeroSection = () => {
 							<li>Check students progress</li>
 						</ul>
 					</div>
-					<TechnologiesGrid />
+					<div className="sign-in-section-container">
+						<h2>Please sign in to see students:</h2>
+						<Login />
+					</div>
 				</div>
 			</div>
+			<TechnologiesGrid />
 		</div>
 	);
 };
