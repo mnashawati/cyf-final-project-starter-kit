@@ -23,24 +23,23 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 		return existingFieldNames;
 	}
 
-	const filteredFeedback = [...allFeedback.sort((a,b) => b.time - a.time)]
-		.filter((feedback) =>
-			selectedModule === "All modules"
-				? true
-				: selectedModule === feedback.module
-		)
-		.filter((feedback) =>
-			selectedMentor === "All mentors"
-				? true
-				: selectedMentor === feedback.mentor
-		);
+	const filteredFeedback = [
+    ...allFeedback.sort((a, b) => (b.time > a.time ? 1 : -1)),
+  ]
+    .filter((feedback) =>
+      selectedModule === "All modules"
+        ? true
+        : selectedModule === feedback.module
+    )
+    .filter((feedback) =>
+      selectedMentor === "All mentors"
+        ? true
+        : selectedMentor === feedback.mentor
+    );
 
 	const modules = getFilteringData(filteredFeedback, "module").sort();
 	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (
-		a,
-		b
-	) {
+	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (a,b) {
 		return a.toLowerCase().localeCompare(b.toLowerCase());
 	});
 
