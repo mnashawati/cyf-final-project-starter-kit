@@ -63,6 +63,18 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					if (property === "module" ) {
 						return (
 							<div className="feedback-title-module">
+							<div className="previous-feedback-title" key={index}>
+								<div>
+									<h5>Title</h5>
+									<textarea
+										className="feedback-title-input"
+										name="title"
+										value={currentFeedback.title}
+										onChange={handleEdit}
+										disabled={!isEditing}
+									/>
+								</div>
+							</div>
 							<div className="previous-feedback-module" key={index}>
 								<div>
 									<h5>Module</h5>
@@ -78,18 +90,6 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 										</select>}
 								</div>
 							</div>
-							<div className="previous-feedback-title" key={index}>
-								<div>
-									<h5>Title</h5>
-									<textarea
-										className="feedback-title-input"
-										name="title"
-										value={currentFeedback.title}
-										onChange={handleEdit}
-										disabled={!isEditing}
-									/>
-								</div>
-							</div>
 							</div>
 						);
 					}
@@ -102,7 +102,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 									value={currentFeedback.text}
 									onChange={handleEdit}
 									disabled={!isEditing}
-								/>
+									/>
 							</div>
 						);
 					}

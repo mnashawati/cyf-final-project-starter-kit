@@ -43,7 +43,6 @@
     border: none
 }
 
-
 .previous-feedback-text
 {
     margin: 0px 5px;
@@ -54,13 +53,13 @@
 .previous-feedback-text-input{
     border:none;
     margin: 1px;
-	width: 98%;
+    max-width: 20em;
+    min-width: 99%;
 	word-wrap: break-word;
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
-    height: 6em;
-    max-height: 8em;
+    min-height: 7em;
 }
 
 .previous-feedback-mentor,
@@ -125,12 +124,13 @@ input{
     border-radius: 5px;
 	background-color: rgb(5, 21, 236);
     margin-bottom: 5px;
+    margin-right: 0px;
     padding: 5px 10px;
 
 }
 
 .save-button {
-    background-color: rgb(223, 54, 54);
+    background-color: rgb(241, 1, 1);
 }
 
 .edit-button:hover,
@@ -149,9 +149,9 @@ input{
     color: white;
     border: none;
     border-radius: 5px;
-	background-color: rgb(223, 54, 54);
-	padding: 5px;
-    margin: 0px 0px 5px 10px;
+	background-color: rgb(241, 1, 1);
+	padding: 5px 5px;
+    margin: 0px 0px 5px 20px;
 }
 
 .delete-button:hover {

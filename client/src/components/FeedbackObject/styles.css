@@ -41,6 +41,8 @@ h5 {
 .feedback-title-input{
     width: 250px;
     padding-left: 0px;
+    font-weight: 900; 
+    background-color: white;
 }
 
 .previous-feedback-text
@@ -58,8 +60,6 @@ h5 {
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
-    height: 6em;
-    max-height: 8em;
 }
 
 .previous-feedback-mentor,
@@ -115,22 +115,3 @@ span{
     margin-bottom: 5%; 
 }
 
-.edit-button{
-background-color: rgb(7, 5, 48);
-color:white;
-margin-right: 15px;
-}
-
-.delete-button{
-background-color: red;
-color:white
-}
-
-.buttons{
-    display: flex;
-    justify-content: flex-end;
-    margin: 5px 5px ;
-    border-radius: 5px;
-    padding: 5px 0px 5px 10px ;
-    font-size: 12px;
-}
