@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
+import { Link } from "react-router-dom";
 import AreasOfFocus from "../AreasOfFocus/index.js";
 import AllFeedback from "../AllFeedback/index.js";
 
@@ -20,6 +21,12 @@ const StudentProfile = () => {
 	return  Object.keys(student).length ? (
 		<>
 			<Navbar />
+			<Link
+				className="students-route-link"
+				to={{ pathname: `/regions/${student.city}/students` }}
+			>
+				<p className="back-to-students">...Back to students</p>
+			</Link>
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">

@@ -34,7 +34,7 @@ const StudentsGrid = ( ) => {
 					))}
 				</div>
 			</div>
-			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} setCurrentPage={setCurrentPage} />
+			<Pagination itemsPerPage={studentsPerPage} totalItems={students.length} setCurrentPage={setCurrentPage} />
 		</>
 	);
 };

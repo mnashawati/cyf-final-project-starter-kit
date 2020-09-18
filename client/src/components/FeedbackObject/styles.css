@@ -20,6 +20,7 @@
 
 .feedback-title-input{
     width: 250px;
+    border: none
 }
 
 
@@ -75,13 +76,9 @@ input{
     color: rgb(160, 20, 20);
 }
 
-span{
-    color: red;
-}
-
 .edit-delete-buttons {
     display: flex;
-    margin: 10px;
+    margin: 0px 10px 3px;
     justify-content: flex-end;
 }
 
@@ -101,22 +98,49 @@ span{
     margin-bottom: 5%; 
 }
 
-.edit-button{
-background-color: rgb(7, 5, 48);
-color:white;
-margin-right: 15px;
-}
-
-.delete-button{
-background-color: red;
-color:white
-}
-
-.buttons{
-    display: flex;
-    justify-content: flex-end;
-    margin: 5px 5px ;
+.edit-button,
+.save-button {
+	color: white;
+    border: none;
     border-radius: 5px;
-    padding: 5px 0px 5px 10px ;
-    font-size: 12px;
+	background-color: rgb(5, 21, 236);
+    margin-bottom: 5px;
+    padding: 5px 10px;
+
+}
+
+.save-button {
+    background-color: rgb(223, 54, 54);
+    border: 1px solid black;
+}
+
+.edit-button:hover,
+.save-button:hover  {
+	cursor: pointer;
+    opacity: 0.5;
+}
+
+.edit-button:active,
+.save-button:active {
+	position:relative;
+	top:1px;
+}
+
+.delete-button {
+    color: white;
+    border: none;
+    border-radius: 5px;
+	background-color: rgb(223, 54, 54);
+	padding: 5px;
+    margin: 0px 0px 5px 10px;
+}
+
+.delete-button:hover {
+	cursor: pointer;
+    opacity: 0.5;
+}
+
+.delete-button:active {
+	position:relative;
+	top:1px;
 }
