@@ -1,13 +1,3 @@
-.previous-feedback-list{
-    margin-top: 15px;
-    margin-left: 6px;
-    margin-right: 6px;
-    border: 0.5px solid rgb(0, 0, 0);
-    border-radius: 3px;
-    box-shadow: 0 0 3px;
-    overflow-y: auto;
-}
-
 .feedback-title-module,
 .feedback-mentor-time{
     display: flex;
@@ -26,21 +16,13 @@
 .modules-dropdown{
     font-size: small;
     padding-top: 4px;
-}
-
-.previous-feedback-module,
-.previous-feedback-title
-{
-    display: flex;
-    margin: 5px 10px 5px;
-    padding: 5px;
-    border:none
+    font-weight: 700;
 }
 
 .feedback-title-input{
     max-width: 250px;
     padding-left: 0px;
-    font-weight: 900; 
+    font-weight: bolder; 
     background-color: white;
 }
 
@@ -54,12 +36,13 @@
 .previous-feedback-text-input{
     border:none;
     margin: 1px;
-	width: 98%;
+    max-width: 20em;
+    min-width: 99%;
 	word-wrap: break-word;
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
-    background-color: white;
+    min-height: 7em;
 }
 
 .previous-feedback-mentor,
@@ -67,6 +50,11 @@
     display: flex;
     margin-left: 10px;
     font-weight: bold;
+}
+
+.previous-feedback-mentor-buttons{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .previous-feedback-mentor-input,
@@ -88,25 +76,15 @@
     color: rgb(160, 20, 20);
 }
 
+.feedback-input-mentor-name{
+    display: flex;
+}
+
 .edit-delete-buttons {
     display: flex;
     margin: 10px;
     justify-content: flex-end;
 }
 
-.date-mentor{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 3px;
-    font-weight: bolder;
-    font-size: 12px;
-}
 
-.line{
-    border: 1px dashed rgb(75, 72, 72); 
-    width: 80%; 
-    margin: auto; 
-    margin-top: 5%; 
-    margin-bottom: 5%; 
-}
 
