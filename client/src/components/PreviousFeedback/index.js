@@ -32,12 +32,6 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
     return a.toLowerCase().localeCompare(b.toLowerCase());
   });
 
-	const modules = getFilteringData(filteredFeedback, "module").sort();
-	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(filteredFeedback, "mentor").sort(function (a,b) {
-		return a.toLowerCase().localeCompare(b.toLowerCase());
-	});
-
 	const indexOfLastFeedback = currentPage * feedbackPerPage; // 5
 	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage; // 5-5=0
 	const currentFeedbacks = filteredFeedback.slice(indexOfFirstFeedback, indexOfLastFeedback); // filteredFeedback.slice(0,5)
