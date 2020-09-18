@@ -5,6 +5,9 @@ const Footer = () => {
 	return (
 		<div className="footer-content-container">
 			<div className="footer-links">
+				<a href="https://codeyourfuture.io/" rel="noreferrer" target="_blank">
+					CodeYourFuture
+				</a>
 				<a href="https://syllabus.codeyourfuture.io/" rel="noreferrer" target="_blank">
 					Syllabus
 				</a>
