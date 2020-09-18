@@ -8,7 +8,6 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 		message: "",
 		level: "",
 	});
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (!area.message) {
@@ -18,7 +17,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 		}
 		addNewArea(area);
 		e.target.reset();
-		setArea({});
+		setArea({ message: "", level: "" });
 	};
 
 	const handleChange = (e) => {
@@ -30,13 +29,13 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 			<form onSubmit={handleSubmit} id="add-area-of-focus">
 				<div>
 					<p className="areas-input-label">
-          Type a topic to highlight:
+            Type a topic to highlight:
 					</p>
 				</div>
 				<div className="input-lights-add-button-container">
 					<div className="area-input-section">
 						<input
-							className="areas-input"
+							className={"areas-input"}
 							type="text"
 							name="message"
 							maxLength={15}
@@ -45,7 +44,10 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 					</div>
 					<div className="lights-section">
 						<div>
-							<label className="radio-circle-section-red" htmlFor="red-radio-button" >
+							<label
+								className="radio-circle-section-red"
+								htmlFor="red-radio-button"
+							>
 								<input
 									className="send-input-red"
 									type="radio"
@@ -53,12 +55,22 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 									name="level"
 									value="To work on"
 									onChange={handleChange}
+									checked=""
 								></input>
-								<span className="circle-red"></span>
+								<span
+									className={
+										area.level === "To work on"
+											? "circle-red-border"
+											: "circle-red"
+									}
+								></span>
 							</label>
 						</div>
 						<div>
-							<label className="radio-circle-section-yellow" htmlFor="yellow-radio-button">
+							<label
+								className="radio-circle-section-yellow"
+								htmlFor="yellow-radio-button"
+							>
 								<input
 									className="send-input-red"
 									type="radio"
@@ -66,12 +78,22 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 									name="level"
 									value="Okay at"
 									onChange={handleChange}
+									checked=""
 								></input>
-								<span className="circle-yellow"></span>
+								<span
+									className={
+										area.level === "Okay at"
+											? "circle-yellow-border"
+											: "circle-yellow"
+									}
+								></span>
 							</label>
 						</div>
 						<div>
-							<label className="radio-circle-section-green" htmlFor="green-radio-button">
+							<label
+								className="radio-circle-section-green"
+								htmlFor="green-radio-button"
+							>
 								<input
 									className="send-input-green"
 									type="radio"
@@ -79,17 +101,26 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 									name="level"
 									value="Good at"
 									onChange={handleChange}
+									checked=""
 								></input>
-								<span className="circle-green"></span>
+								<span
+									className={
+										area.level === "Good at"
+											? "circle-green-border"
+											: "circle-green"
+									}
+								></span>
 							</label>
 						</div>
 					</div>
 					<div className="add-area-button-section">
 						<div className="area-display">{area.level}</div>
-						<div className="add-area-button-wrapper">
-							<button className="add-area-button">Add</button>
-						</div>
 					</div>
+				</div>
+				<div className="add-area-button-wrapper">
+					<button className="btn-danger add-button">
+            Add
+					</button>
 				</div>
 			</form>
 		</div>
