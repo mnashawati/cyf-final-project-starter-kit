@@ -1,6 +1,5 @@
 .feedback-form-container {
     border: 1px solid black;
-    height: 440px;
     margin: 20px auto;
     padding: 20px auto;
 }
@@ -12,37 +11,43 @@
 .add-feedback-heading-container {
     font-weight: bold;
     margin: 10px 0 10px -10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .feedback-input-heading {
-    margin-left: 5px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .feedback-input-heading b {
     color: rgb(160, 20, 20);
 }
 
+.feedback-module-title-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
 .select-module, 
-.feedback-title-input, 
-.mentor-name-input {
+.feedback-title-input {
     width: 50%;
     height: 30px;
 }
 
 .feedback-message-input {
     width: 100%;
-    min-height: 150px;
+    height: 70px;
 }
 
 .select-module, 
 .feedback-title-input, 
-.feedback-message-input, 
-.mentor-name-input, 
+.feedback-message-input,
 .post-feedback-button-div {
     padding: 5px;
-    margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
 }
@@ -58,6 +63,7 @@
     border: none;
     border-radius: 5px;
     background-color: #ed4343;
+    height: 30px;
 }
 
 .post-feedback-button-div:hover{
