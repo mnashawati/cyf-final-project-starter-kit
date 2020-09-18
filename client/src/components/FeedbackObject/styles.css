@@ -1,28 +1,30 @@
-.previous-feedback-list{
-    margin-top: 15px;
-    margin-left: 6px;
-    margin-right: 6px;
-    border: 0.5px solid rgb(0, 0, 0);
-    border-radius: 3px;
-    box-shadow: 0 0 3px;
-    overflow-y: auto;
+.feedback-title-module,
+.feedback-mentor-time{
+    display: flex;
+    justify-content: space-between;
 }
 
-.previous-feedback-module,
-.previous-feedback-title
-{
-    display: flex;
-    width: 300px;
-    margin: 0px 5px 5px;
-    padding: 5px;
-    border:none
+.title-module-title {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.feedback-title-module{
+    height: 3rem;
+}
+
+.modules-dropdown{
+    font-size: small;
+    padding-top: 4px;
+    font-weight: 700;
 }
 
 .feedback-title-input{
-    width: 250px;
-    border: none
+    max-width: 250px;
+    padding-left: 0px;
+    font-weight: bolder; 
+    background-color: white;
 }
-
 
 .previous-feedback-text
 {
@@ -34,36 +36,34 @@
 .previous-feedback-text-input{
     border:none;
     margin: 1px;
-	width: 98%;
+    max-width: 20em;
+    min-width: 99%;
 	word-wrap: break-word;
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
-    height: 6em;
-    max-height: 8em;
+    min-height: 7em;
 }
 
 .previous-feedback-mentor,
 .previous-feedback-time{
     display: flex;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.previous-feedback-mentor-buttons{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .previous-feedback-mentor-input,
+.feedback-input-mentor-name,
 .previous-feedback-time-input{
     padding: 5px;
     font-size: small;
-}
-
-.feedback-input-head {
-    margin: 0px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 5px;
-}
-
-input{
-    border: none;
-    width: 200px
+    background-color: white;
+    font-weight: bolder;
 }
 
 .feedback-filter-heading {
@@ -76,71 +76,12 @@ input{
     color: rgb(160, 20, 20);
 }
 
+.feedback-input-mentor-name{
+    display: flex;
+}
+
 .edit-delete-buttons {
     display: flex;
-    margin: 0px 10px 3px;
+    margin: 10px;
     justify-content: flex-end;
-}
-
-.date-mentor{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 3px;
-    font-weight: bolder;
-    font-size: 12px;
-}
-
-.line{
-    border: 1px dashed rgb(75, 72, 72); 
-    width: 80%; 
-    margin: auto; 
-    margin-top: 5%; 
-    margin-bottom: 5%; 
-}
-
-.edit-button,
-.save-button {
-	color: white;
-    border: none;
-    border-radius: 5px;
-	background-color: rgb(5, 21, 236);
-    margin-bottom: 5px;
-    padding: 5px 10px;
-
-}
-
-.save-button {
-    background-color: rgb(223, 54, 54);
-    border: 1px solid black;
-}
-
-.edit-button:hover,
-.save-button:hover  {
-	cursor: pointer;
-    opacity: 0.5;
-}
-
-.edit-button:active,
-.save-button:active {
-	position:relative;
-	top:1px;
-}
-
-.delete-button {
-    color: white;
-    border: none;
-    border-radius: 5px;
-	background-color: rgb(223, 54, 54);
-	padding: 5px;
-    margin: 0px 0px 5px 10px;
-}
-
-.delete-button:hover {
-	cursor: pointer;
-    opacity: 0.5;
-}
-
-.delete-button:active {
-	position:relative;
-	top:1px;
 }

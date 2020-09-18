@@ -62,20 +62,25 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 				.map((property, index) => {
 					if (property === "module") {
 						return (
-							<div className="previous-feedback-module" key={index}>
-								<p className="feedback-input-head">Module:</p>
-								{!isEditing
-									? <p>{currentFeedback[property]}</p>
-									: <select
-										name={property}
-										value={currentFeedback[property]}
-										onChange={handleEdit}>
-										{modules.map((module, index) =>
-											<option key={index} value={module.name}>{module.name}</option>
-										)}
-									</select>}
-							</div>
-						);
+              <div className="previous-feedback-module" key={index}>
+                <p className="feedback-input-head">Module:</p>
+                {!isEditing ? (
+                  <p>{currentFeedback.module}</p>
+                ) : (
+                  <select
+                    name={property}
+                    value={currentFeedback.module}
+                    onChange={handleEdit}
+                  >
+                    {modules.map((module, index) => (
+                      <option key={index} value={module.name}>
+                        {module.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
+            );
 					}
 					if (property === "title") {
 						return (
@@ -84,7 +89,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 								<textarea
 									className="feedback-title-input"
 									name={property}
-									value={currentFeedback[property]}
+									value={currentFeedback.title}
 									onChange={handleEdit}
 									disabled={!isEditing}
 								/>
@@ -98,7 +103,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 								<textarea
 									className="previous-feedback-text-input"
 									name={property}
-									value={currentFeedback[property]}
+									value={currentFeedback.text}
 									onChange={handleEdit}
 									disabled={!isEditing}
 								/>
@@ -107,17 +112,17 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					}
 					if (property === "mentor") {
 						return (
-							<div className="previous-feedback-mentor" key={index}>
-								<p className="feedback-input-head">Given by:</p>
-								<input
-									className="previous-feedback-mentor-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
+              <div className="previous-feedback-mentor" key={index}>
+                <p className="feedback-input-head">Given by:</p>
+                <input
+                  className="previous-feedback-mentor-input"
+                  name={property}
+                  value={currentFeedback.mentor}
+                  onChange={handleEdit}
+                  disabled
+                />
+              </div>
+            );
 					}
 					if (property === "time") {
 						return (

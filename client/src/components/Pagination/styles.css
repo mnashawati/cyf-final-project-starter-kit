@@ -13,3 +13,7 @@
 .page-item {
      list-style-type: none;
 }
+
+.pagination a:hover:not(.active) {
+    background-color: rgb(224, 219, 219)
+}
