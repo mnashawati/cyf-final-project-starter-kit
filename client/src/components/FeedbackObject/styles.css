@@ -86,7 +86,8 @@
     width: 45%;
 }
 
-.feedback-mentor-time > p{
+.prev-feedback-time > p,
+.prev-feedback-mentor > p{
     padding: 5px;
     font-size: small;
 }
