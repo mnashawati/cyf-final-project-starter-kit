@@ -37,17 +37,30 @@ const Login = ({ history }) => {
 	const { currentUser } = useContext(AuthContext);
 
 	if (currentUser) {
-		return <Redirect to="/regions" />;
+		return <Redirect to="/" />;
 	}
 
-	return (
+	return  (
 		<div>
 			<StyledFirebaseAuth
 				uiConfig={uiConfig}
 				firebaseAuth={firebase.auth()}
 			/>
 		</div>
+
 	);
 };
 
 export default withRouter(Login);
+
+// return !currentUser ? (
+// 		<div>
+// 			<Redirect to="/" />
+// 			<StyledFirebaseAuth
+// 				uiConfig={uiConfig}
+// 				firebaseAuth={firebase.auth()}
+// 			/>
+// 		</div>
+
+// 	) : null;
+// };
