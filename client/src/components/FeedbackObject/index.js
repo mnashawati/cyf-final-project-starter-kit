@@ -53,6 +53,11 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
     setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
   };
 
+  const handleCancel = () =>{
+       setCurrentFeedback(feedbackToShow);
+       setIsEditing(!isEditing)
+  }
+
   return (
     currentFeedback && (
       <div className="prev-feedback-list">
@@ -119,14 +124,22 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
               isEditing && saveFeedback(currentFeedback.id);
             }}
           />
-          <Button
-            content="Delete"
-            handleClick={() => {
-              alert("DELETE");
-              handleDelete(currentFeedback.id);
-              updateFeedback();
-            }}
-          />
+          {isEditing ? (
+            <Button
+              content="Cancel"
+              handleClick={handleCancel}
+            />
+          ) : null}
+          {!isEditing ? (
+            <Button
+              content="Delete"
+              handleClick={() => {
+                alert("DELETE");
+                handleDelete(currentFeedback.id);
+                updateFeedback();
+              }}
+            />
+          ) : null}
         </div>
       </div>
     )
