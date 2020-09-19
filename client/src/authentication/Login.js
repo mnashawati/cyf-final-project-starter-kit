@@ -20,6 +20,18 @@ const Login = ({ history }) => {
 		[history]
 	);
 
+	const uiConfig = {
+		signInFlow: "popup",
+		signInOptions: [
+			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+			firebase.auth.GithubAuthProvider.PROVIDER_ID,
+			// firebase.auth.EmailAuthProvider.PROVIDER_ID,
+		],
+		callbacks: {
+			signInSuccessWithAuthResult: () => false,
+		},
+	};
+
 	const { currentUser } = useContext(AuthContext);
 
 	if (currentUser) {
@@ -40,6 +52,10 @@ const Login = ({ history }) => {
 				</label>
 				<button type="submit">Log in</button>
 			</form>
+			<StyledFirebaseAuth
+				uiConfig={uiConfig}
+				firebaseAuth={firebase.auth()}
+			/>
 		</div>
 	);
 };
