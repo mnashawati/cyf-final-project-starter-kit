@@ -16,11 +16,22 @@
 .feedback-title,
 .feedback-module{
     display: flex;
-    padding: 5px 7px;
+    padding: 5px 0;
 }
+
+.module-select-p{
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.module-select{
+    padding: 5px;
+    height: 30px;
+}
+
 .feedback-input-heading{
-    margin-right: 4px;
-    float: left;
+    margin-top: 7px;
+    margin-right: 5px;
 }
 
 .feedback-title-textarea{
@@ -39,19 +50,6 @@
     padding-left: 0;
 }
 
-.title-module{
-    margin-right: 10px;
-    font-size: 1200;
-    padding: 7px 0px 3px;
-    /* font-weight: 700; */
-}
-
-.modules-dropdown{
-    font-size: medium;
-    padding-top: 4px;
-    font-weight: 700;
-}
-
 .feedback-text-textarea{
     border:none;
     max-width: 100%;
@@ -62,6 +60,7 @@
     font-weight: bold;
     min-height: 7em; 
     background-color: white;
+    margin-bottom: 10px;
 }
 
 .feedback-time-and-mentor{
@@ -72,19 +71,18 @@
     flex-wrap: wrap;
 }
 
-.prev-feedback-time{
-    align-self: center;
-    width: 35%;
-    margin-right: 1rem;
-    background-color: white;
-}
-
 .prev-feedback-mentor{
     width: 45%;
     display: flex;
     background-color: white;
 }
 
+.prev-feedback-time{
+    align-self: center;
+    width: 35%;
+    margin-right: 1rem;
+    background-color: white;
+}
 .prev-feedback-time > p,
 .prev-feedback-mentor > p{
     font-size: small;
@@ -95,6 +93,8 @@
     padding-left: 5px;
     background-color: white;
     font-size: smaller;
+    padding: 5px;
+    height: 30px;
 }
 
 input{
@@ -109,6 +109,7 @@ input{
 }
 
 .save-button {
-    background-color: rgb(241, 1, 1);
+    background-color: rgb(1, 9, 241);
+    color: white;
 }
 

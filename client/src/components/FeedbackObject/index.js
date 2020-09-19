@@ -53,16 +53,30 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
     setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
   };
 
+  const handleCancel = () =>{
+       setCurrentFeedback(feedbackToShow);
+       setIsEditing(!isEditing)
+  }
+
   return (
     currentFeedback && (
       <div className="prev-feedback-list">
         <div className="feedback-title-and-module">
+          <div className="feedback-title">
+            <input
+              name={"title"}
+              value={currentFeedback.title}
+              onChange={handleEdit}
+              disabled={!isEditing}
+            />
+          </div>
           <div className="feedback-module">
             <p className="feedback-input-heading">Module:</p>
             {!isEditing ? (
-              <p>{currentFeedback.module}</p>
+              <p className="module-select-p">{currentFeedback.module}</p>
             ) : (
               <select
+                className="module-select"
                 name={"module"}
                 value={currentFeedback.module}
                 onChange={handleEdit}
@@ -74,15 +88,6 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
                 ))}
               </select>
             )}
-          </div>
-          <div className="feedback-title">
-            <p className="feedback-input-heading">Title:</p>
-            <input
-              name={"title"}
-              value={currentFeedback.title}
-              onChange={handleEdit}
-              disabled={!isEditing}
-            />
           </div>
         </div>
         <div className="previous-feedback-text">
@@ -106,13 +111,9 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             />
           </div>
           <div className="prev-feedback-time">
-            <input
-              className="prev-feedback-time-input"
-              name={"time"}
-              value={timeDifference(Date.now(), currentFeedback.time)}
-              onChange={handleEdit}
-              disabled
-            />
+            <p className="prev-feedback-time-input">
+              {timeDifference(Date.now(), currentFeedback.time)}
+            </p>
           </div>
         </div>
         <div className="edit-delete-buttons">
@@ -123,14 +124,19 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
               isEditing && saveFeedback(currentFeedback.id);
             }}
           />
-          <Button
-            content="Delete"
-            handleClick={() => {
-              alert("DELETE");
-              handleDelete(currentFeedback.id);
-              updateFeedback();
-            }}
-          />
+          {isEditing ? (
+            <Button content="Cancel" handleClick={handleCancel} />
+          ) : null}
+          {!isEditing ? (
+            <Button
+              content="Delete"
+              handleClick={() => {
+                alert("DELETE");
+                handleDelete(currentFeedback.id);
+                updateFeedback();
+              }}
+            />
+          ) : null}
         </div>
       </div>
     )
