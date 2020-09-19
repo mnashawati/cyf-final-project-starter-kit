@@ -106,13 +106,9 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             />
           </div>
           <div className="prev-feedback-time">
-            <input
-              className="prev-feedback-time-input"
-              name={"time"}
-              value={timeDifference(Date.now(), currentFeedback.time)}
-              onChange={handleEdit}
-              disabled
-            />
+            <p className="prev-feedback-time-input">
+              {timeDifference(Date.now(), currentFeedback.time)}
+            </p>
           </div>
         </div>
         <div className="edit-delete-buttons">
