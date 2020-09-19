@@ -1,3 +1,7 @@
+.areas-of-focus-section {
+    /* min-height: 80vh; */
+}
+
 .area-of-focus-title {
     font-weight: bold;
     margin-bottom: 10px;
@@ -5,52 +9,98 @@
 }
 
 .area-text-section-red {
-    border: 1.5px solid #dc3545;
+    border: 1.5px solid red;
     margin-bottom: 10px;
-    min-height: 58px;
+    min-height: 100px;
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
-    overflow-y: auto;
 }
 
 .area-text-section-yellow {
-    border: 1.5px solid #ffc107;
+    border: 1.5px solid rgb(245, 190, 8);
     margin-bottom: 10px;
-    min-height: 58px;
+    min-height: 100px;
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
-    overflow-y: auto;
 }
 
 .area-text-section-green {
-    border: 1.5px solid #28a745;
+    border: 1.5px solid rgb(19, 91, 5);
     margin-bottom: 10px;
+    min-height: 100px;
     display: flex;
-    min-height: 58px;
     flex-wrap: wrap;
     padding: 5px;
-    overflow-y: auto;
 }
 
-.high-button {
+.areas-button-red {
+    list-style: none;
+    background-color: rgb(237, 67, 67);
+    margin: 2px; 
+    min-width: 140px;
+    max-width: 140px;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    height: 29px;
+    font-size: 14px;
+    color: white;
+}
+
+.areas-button-yellow {
+     list-style: none;
+     background-color: rgb(255, 183, 0);
+     margin: 2px;
      min-width: 140px;
      max-width: 140px;
-     border: none;
-     margin: 8px 5px;
-     font-size: 14px;
-     border-radius: 5px 5px 5px 5px;
+     padding: 5px;
+     border-radius: 15px;
+     text-align: center;
      height: 29px;
+     font-size: 14px;
+     color: white;
+}
+
+.areas-button-green {
+    list-style: none;
+    background-color: rgb(19, 91, 5);
+    margin: 2px;
+    min-width: 140px;
+    max-width: 140px;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    height: 29px;
+    font-size: 14px;
+    color: white;
 
 }
 
-.x-button {
-    margin:0px 5px;
+.x-button-red {
     float: right;
+    float: right;
+    background-color: rgb(237, 67, 67);
     border: none;
+    color: white;
 }
 
+.x-button-yellow {
+    float: right;
+    float: right;
+    background-color: rgb(255, 183, 0);
+    border: none;
+    color: white;
+}
+
+.x-button-green {
+    float: right;
+    float: right;
+    background-color: rgb(19, 91, 5);
+    border: none;
+    color: white;
+}
 
 .key-button {
     margin-right: 0;
@@ -77,6 +127,29 @@
     margin-top: 10px;
 }
 
+.send-input-red {
+    border: none;
+    background-color:rgb(237, 67, 67);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.send-input-yellow {
+    border: none;
+    background-color: rgb(255, 183, 0);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.send-input-green {
+    border: none;
+    background-color:rgb(19, 91, 5);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
 
 .input-lights-add-button-container {
     display: flex;
@@ -93,16 +166,5 @@
 .add-area-button-section{
     display: flex;
     flex:1;
-}
-
-
-@media (min-width:300px) and (max-width:757px) {
-
-    .area-text-section-red,
-    .area-text-section-yellow,
-    .area-text-section-green {
-        justify-content: center;
-    }
-
 }
 

@@ -20,7 +20,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    /* border: 0.5px solid grey; */
+    border: 0.5px solid grey;
     flex: 1;
     height: 65vh;
     margin-right: 15px;
@@ -37,6 +37,7 @@
 }
 
 .student-profile-container-right {
+    border: 0.5px solid grey;
     flex: 2;
 }
 
@@ -49,6 +50,7 @@
 }
 
 .area-of-focus-section {
+    border: 0.5px solid grey;
     height: 65vh;
 }
 

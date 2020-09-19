@@ -45,68 +45,68 @@ const AreasOfFocus = ({ student }) => {
 
 	return areasOfFocus ? (
 		<div className="areas-of-focus-section">
-			<h3 className="area-of-focus-title">Highlights:</h3>
+			<h3 className="area-of-focus-title">
+        Highlights:
+			</h3>
 			<div className="need-to-work-on-section">
-				<h6 className="subtitle-text">
+				<h3 className="subtitle-text">
           Need to work on...
-				</h6>
+				</h3>
 				<div className="area-text-section-red">
 					{areasOfFocus.toWorkOn.map((item, index) => (
 						<div key={index}>
-							<button className="btn-danger high-button">
+							<li
+								className="areas-button-red"
+							>
 								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeAnArea(item.id, "toWorkOn")
-									}
+								<button
+									className="x-button-red"
+									onClick={() => removeAnArea(item.id, "toWorkOn")}
 								>
-                  X
-								</span>
-							</button>
+									X
+								</button>
+							</li>
 						</div>
 					))}
 				</div>
 			</div>
 			<div className="okay-at-section">
-				<h6 className="subtitle-text">Okay at...</h6>
+				<h3 className="subtitle-text">Okay at...</h3>
 				<div className="area-text-section-yellow">
 					{areasOfFocus.okayAt.map((item, index) => (
 						<div key={index}>
-							<button className="btn-warning high-button">
+							<li
+								className="areas-button-yellow"
+							>
 								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeAnArea(item.id, "okayAt")
-									}
+								<button
+									className="x-button-yellow"
+									onClick={() => removeAnArea(item.id, "okayAt")}
 								>
-                  X
-								</span>
-							</button>
+               					X
+								</button>
+							</li>
 						</div>
 					))}
 				</div>
 			</div>
 			<div className="good-at-section">
-				<h6 className="subtitle-text">Good at...</h6>
+				<h3 className="subtitle-text">Good at...</h3>
 				<div className="area-text-section-green">
 					{areasOfFocus.goodAt.map((item, index) => (
 						<div key={index}>
-							<button
-								className="btn-success high-button"
+							<li
+								className="areas-button-green"
 								key={index}
 							>
 								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeAnArea(item.id, "goodAt")
-									}
+								<button
+									className="x-button-green"
+									onClick={() => removeAnArea(item.id, "goodAt")}
 								>
-                  X
-								</span>
-							</button>
+                				X
+								</button>
+							</li>
 						</div>
 					))}
 				</div>

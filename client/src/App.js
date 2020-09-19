@@ -10,7 +10,6 @@ import { AuthProvider } from "./authentication/Auth";
 import PrivateRoute from "./authentication/PrivateRoute";
 // import SignUp from "./authentication/SignUp";
 
-
 export function App() {
 	return (
 		<AuthProvider>
