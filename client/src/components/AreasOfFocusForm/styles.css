@@ -1,4 +1,19 @@
 /* circle red */
+.add-button {
+    padding: 5px;
+    margin-bottom: 15px;
+    min-width: 140px;
+    max-width: 140px;
+    border: none;
+    margin: 8px 5px;
+    font-size: 14px;
+    border-radius: 5px 5px 5px 5px;
+    height: 29px;
+
+}
+.circle-border {
+    border: 1.5px solid black;
+}
 .radio-circle-section-red {
     cursor: pointer;
     font-family: sans-serif;
@@ -12,13 +27,25 @@
 
 .radio-circle-section-red .circle-red {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: rgb(237, 67, 67);
+    width: 30px;
+    height: 30px;
+    background-color: #dc3545;
     margin-right: 5px;
     left: 0;
     top: 0;
     border-radius: 50%;
+}
+
+.radio-circle-section-red .circle-red-border{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #dc3545;
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    border: 2px solid black;
 }
 
 /* circle yellow  */
@@ -37,15 +64,26 @@
 
  .radio-circle-section-yellow .circle-yellow {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: rgb(255, 204, 0);
+    width: 30px;
+    height: 30px;
+    background-color: #ffc107;
     margin-right: 5px;
     left: 0;
     top: 0;
     border-radius: 50%;
 }
 
+.radio-circle-section-yellow .circle-yellow-border {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #ffc107;
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    border: 2px solid black;
+}
 /* circle green */
  .radio-circle-section-green {
     display: inline-block;
@@ -62,14 +100,26 @@
 
 .radio-circle-section-green .circle-green {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: rgb(19, 91, 5);
+    width: 30px;
+    height: 30px;
+    background-color: #28a745;
     margin-right: 5px;
     left: 0;
     top: 0;
     border-radius: 50%;
 } 
+
+.radio-circle-section-green .circle-green-border {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: #28a745;
+    margin-right: 5px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    border: 2px solid black;
+}
 
 .add-area-button-section {
     display: flex;
@@ -82,9 +132,7 @@
     padding: auto;
     color: white;
     border: none;
-    border-radius: 5px;
     background-color: rgb(223, 54, 54);
-    text-transform: uppercase;
     padding: 5px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -103,6 +151,7 @@
 .area-display {
     flex: 1;
     text-align: center;
+    border-bottom: 1px solid black;
 }
 
 .lights-section {
@@ -119,6 +168,23 @@
 }
 
 .area-form-section{
-    padding: 5px;
+    border: 1px solid black;
+}
 
+.add-buton-title-section{
+    display: flex;
+}
+
+.add-area-of-focus {
+    margin: 12px;
+}
+
+.add-highlights-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.add-highlights-form > div {
+    margin: 5px 15px;
 }
