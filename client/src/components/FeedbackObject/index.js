@@ -62,12 +62,21 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
     currentFeedback && (
       <div className="prev-feedback-list">
         <div className="feedback-title-and-module">
+          <div className="feedback-title">
+            <input
+              name={"title"}
+              value={currentFeedback.title}
+              onChange={handleEdit}
+              disabled={!isEditing}
+            />
+          </div>
           <div className="feedback-module">
             <p className="feedback-input-heading">Module:</p>
             {!isEditing ? (
-              <p>{currentFeedback.module}</p>
+              <p className="module-select-p">{currentFeedback.module}</p>
             ) : (
               <select
+                className="module-select"
                 name={"module"}
                 value={currentFeedback.module}
                 onChange={handleEdit}
@@ -79,15 +88,6 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
                 ))}
               </select>
             )}
-          </div>
-          <div className="feedback-title">
-            <p className="feedback-input-heading">Title:</p>
-            <input
-              name={"title"}
-              value={currentFeedback.title}
-              onChange={handleEdit}
-              disabled={!isEditing}
-            />
           </div>
         </div>
         <div className="previous-feedback-text">
@@ -125,10 +125,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             }}
           />
           {isEditing ? (
-            <Button
-              content="Cancel"
-              handleClick={handleCancel}
-            />
+            <Button content="Cancel" handleClick={handleCancel} />
           ) : null}
           {!isEditing ? (
             <Button
