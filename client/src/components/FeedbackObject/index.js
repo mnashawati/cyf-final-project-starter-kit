@@ -48,14 +48,20 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
       .catch((error) => console.log(error));
   };
 
+  console.log(storeCurentFeedback)
   // Populate new object with edited data editable
   const handleEdit = (e) => {
     setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
   };
 
+  const handleCancel = (e) =>{
+    setCurrentFeedback(storeCurentFeedback)
+  }
+
   return (
     <div className="prev-feedback-list">
-      {Object.keys(currentFeedback).length && Object.keys(currentFeedback).map((property, index) => {
+      {Object.keys(currentFeedback).length &&
+        Object.keys(currentFeedback).map((property, index) => {
           if (property === "module") {
             return (
               <div className="feedback-title-and-module">
@@ -75,8 +81,8 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
                     <p className="modules-dropdown">{currentFeedback.module}</p>
                   ) : (
                     <select
-                      name={property}
-                      value={currentFeedback[property]}
+                      name="module"
+                      value={currentFeedback.module}
                       onChange={handleEdit}
                     >
                       {modules.map((module, index) => (
@@ -99,7 +105,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
               <div className="prev-feedback-text" key={index}>
                 <textarea
                   className="feedback-text-textarea"
-                  name={property}
+                  name="text"
                   value={currentFeedback.text}
                   onChange={handleEdit}
                   disabled={!isEditing}
@@ -108,22 +114,22 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             );
           }
           if (property === "mentor") {
-           return (
-             <div className="feedback-time-and-mentor">
-               <div className="prev-feedback-time" key={index}>
-                 <p>{timeDifference(Date.now(), currentFeedback.time)}</p>
-               </div>
-               <div className="prev-feedback-mentor" key={index}>
-                 <p className="feedback-input-mentor-name">Mentor:</p>
-                 <input
-                   className="prev-feedback-mentor-name-input"
-                   name="mentor"
-                   value={currentFeedback.mentor}
-                   disabled
-                 />
-               </div>
-             </div>
-           );
+            return (
+              <div className="feedback-time-and-mentor">
+                <div className="prev-feedback-time" key={index}>
+                  <p>{timeDifference(Date.now(), currentFeedback.time)}</p>
+                </div>
+                <div className="prev-feedback-mentor" key={index}>
+                  <p className="feedback-input-mentor-name">Mentor: </p>
+                  <input
+                    className="prev-feedback-mentor-name-input"
+                    name="mentor"
+                    value={currentFeedback.mentor}
+                    disabled
+                  />
+                </div>
+              </div>
+            );
           }
         })}
       <div className="edit-delete-buttons">
@@ -134,6 +140,13 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             isEditing && saveFeedback(currentFeedback.id);
           }}
         />
+        {isEditing ?
+        <div>
+          <Button
+            content="Cancel"
+            handleClick={() => {setCurrentFeedback(storeCurentFeedback);}}
+          />
+        </div> : null}
         <div>
           <Button
             content="Delete"
