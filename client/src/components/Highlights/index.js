@@ -1,57 +1,74 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import AreasOfFocusForm from "../AreasOfFocusForm/index.js";
+import HighlightsForm from "../HighlightsForm/index.js";
 import uuid from "react-uuid";
 import PropTypes from "prop-types";
 
-const AreasOfFocus = ({ student }) => {
+const Highlights = ({ student }) => {
+	const [highlights, setHighlights] = useState(
+		student.highlights
+	);
 
-	const [areasOfFocus, setAreaOfFocus] = useState(student.areasOfFocus);
-
+	console.log("highlights", highlights);
 	useEffect(() => {
-		fetch(`/api/students/${student._id}/areas-of-focus`, {
+		fetch(`/api/students/${student._id}/highlights`, {
 			method: "PUT",
 			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(areasOfFocus),
+			body: JSON.stringify(highlights),
 		})
 			.then((res) => res.json())
 			.catch((error) => console.log(error));
-	}, [areasOfFocus, student._id]);
+	}, [highlights, student._id]);
 
-	const addNewArea = (area) => {
-		area.level === "To work on"
-			? setAreaOfFocus({
-				...areasOfFocus,
-				toWorkOn: [...areasOfFocus.toWorkOn, { message: area.message, id: uuid() }],
+	const addHighlight = (highlight) => {
+		highlight.level === "To work on"
+			? setHighlights({
+				...highlights,
+				toWorkOn: [
+					...highlights.toWorkOn,
+					{ message: highlight.message, id: uuid() },
+				],
 			})
-			: area.level === "Okay at"
-				? setAreaOfFocus({
-					...areasOfFocus,
-					okayAt: [...areasOfFocus.okayAt, { message: area.message, id: uuid() }],
+			: highlight.level === "Okay at"
+				? setHighlights({
+					...highlights,
+					okayAt: [
+						...highlights.okayAt,
+						{ message: highlight.message, id: uuid() },
+					],
 				})
-				: area.level === "Good at"
-					? setAreaOfFocus({
-						...areasOfFocus,
-						goodAt: [...areasOfFocus.goodAt, { message: area.message, id: uuid() }],
+				: highlight.level === "Good at"
+					? setHighlights({
+						...highlights,
+						goodAt: [
+							...highlights.goodAt,
+							{ message: highlight.message, id: uuid() },
+						],
 					})
 					: null;
 	};
 
-	const removeAnArea = (areaId, level) => {
-		const updatedAreas = areasOfFocus[level].filter((area) => area.id !== areaId);
-		setAreaOfFocus({ ...areasOfFocus, [level]: updatedAreas });
+	const removeAnArea = (highlightId, level) => {
+		const updatedHighlights = highlights[level].filter(
+			(highlight) => highlight.id !== highlightId
+		);
+		setHighlights({
+			...highlights,
+			[level]: updatedHighlights,
+		});
 	};
 
-	return areasOfFocus ? (
-		<div className="areas-of-focus-section">
-			<h3 className="area-of-focus-title">Highlights:</h3>
-			<div className="need-to-work-on-section">
-				<h6 className="subtitle-text">
+	// return(<div>return</div>);
+	return highlights ? (
+		<div>
+			<h3 className="highlights-title">Highlights:</h3>
+			<div>
+				<h6 className="highlights-subtitles">
           Need to work on...
 				</h6>
 				<div className="area-text-section-red">
-					{areasOfFocus.toWorkOn.map((item, index) => (
+					{highlights.toWorkOn.map((item, index) => (
 						<div key={index}>
 							<button className="btn-danger high-button">
 								{item.message}
@@ -69,9 +86,9 @@ const AreasOfFocus = ({ student }) => {
 				</div>
 			</div>
 			<div className="okay-at-section">
-				<h6 className="subtitle-text">Okay at...</h6>
+				<h6 className="highlights-subtitles">Okay at...</h6>
 				<div className="area-text-section-yellow">
-					{areasOfFocus.okayAt.map((item, index) => (
+					{highlights.okayAt.map((item, index) => (
 						<div key={index}>
 							<button className="btn-warning high-button">
 								{item.message}
@@ -89,9 +106,9 @@ const AreasOfFocus = ({ student }) => {
 				</div>
 			</div>
 			<div className="good-at-section">
-				<h6 className="subtitle-text">Good at...</h6>
+				<h6 className="highlights-subtitles">Good at...</h6>
 				<div className="area-text-section-green">
-					{areasOfFocus.goodAt.map((item, index) => (
+					{highlights.goodAt.map((item, index) => (
 						<div key={index}>
 							<button
 								className="btn-success high-button"
@@ -111,13 +128,13 @@ const AreasOfFocus = ({ student }) => {
 					))}
 				</div>
 			</div>
-			<AreasOfFocusForm addNewArea={addNewArea} />
+			<HighlightsForm addHighlight={addHighlight} />
 		</div>
 	) : null;
 };
 
-AreasOfFocus.propTypes = {
+Highlights.propTypes = {
 	student: PropTypes.object.isRequired,
 };
 
-export default AreasOfFocus;
+export default Highlights;

@@ -1,4 +1,5 @@
-.area-of-focus-title {
+
+.highlights-title {
     font-weight: bold;
     margin-bottom: 10px;
     font-size: 20px;
@@ -35,18 +36,18 @@
 }
 
 .high-button {
-     min-width: 140px;
-     max-width: 140px;
-     border: none;
-     margin: 8px 5px;
-     font-size: 14px;
-     border-radius: 5px 5px 5px 5px;
-     height: 29px;
+    min-width: 140px;
+    max-width: 140px;
+    border: none;
+    margin: 8px 5px;
+    font-size: 14px;
+    border-radius: 5px 5px 5px 5px;
+    height: 29px;
 
 }
 
 .x-button {
-    margin:0px 5px;
+    margin: 0px 5px;
     float: right;
     border: none;
 }
@@ -62,13 +63,13 @@
     font-size: 10px;
 }
 
-.subtitle-text {
+.highlights-subtitles {
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 
-.areas-input{
+.areas-input {
     border: 1px solid black;
     width: 100%;
     height: 25px;
@@ -82,17 +83,17 @@
     display: flex;
 }
 
-.area-input-section{
-    flex:1;
+.area-input-section {
+    flex: 1;
 }
 
-.lights-section{
-    flex:1;
+.lights-section {
+    flex: 1;
 }
 
-.add-area-button-section{
+.add-area-button-section {
     display: flex;
-    flex:1;
+    flex: 1;
 }
 
 
@@ -105,4 +106,3 @@
     }
 
 }
-
