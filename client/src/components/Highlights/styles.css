@@ -49,14 +49,14 @@
   border: 1.5px solid #28a745;
 }
 
-.high-button {
+.highlights-button {
   min-width: 140px;
   max-width: 140px;
   border: none;
   margin: 8px 5px;
   font-size: 14px;
-  border-radius: 5px 5px 5px 5px;
   height: 29px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 .x-button {
