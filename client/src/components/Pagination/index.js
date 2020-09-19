@@ -14,7 +14,6 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
 
   return (
     <ul className="pagination">
-      <a>&laquo;</a>
       {pageNumbers.map((number) => (
         <div className="page-numbers">
           <li key={number} className="page-item">
@@ -35,7 +34,6 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
           </li>
         </div>
       ))}
-      <a>&raquo;</a>
     </ul>
   );
 };
