@@ -25,6 +25,7 @@ const StudentsGrid = ( ) => {
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
 	const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
 
+
 	return (
 		<>
 			<Navbar />
@@ -35,7 +36,7 @@ const StudentsGrid = ( ) => {
 					))}
 				</div>
 			</div>
-			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} setCurrentPage={setCurrentPage} />
+			<Pagination itemsPerPage={studentsPerPage} totalItems={students.length} setCurrentPage={setCurrentPage} />
 			<Footer />
 		</>
 	);
