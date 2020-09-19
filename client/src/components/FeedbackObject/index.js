@@ -7,53 +7,53 @@ import Button from "../Button/Button";
 import timeDifference from "../../helperFunctions/timeDifference";
 
 const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [currentFeedback, setCurrentFeedback] = useState({});
+	const [isEditing, setIsEditing] = useState(false);
+	const [currentFeedback, setCurrentFeedback] = useState({});
 
-  useEffect(() => {
-    setCurrentFeedback(feedbackToShow);
-  }, [feedbackToShow]);
+	useEffect(() => {
+		setCurrentFeedback(feedbackToShow);
+	}, [feedbackToShow]);
 
-  //POST updated feedback to DB
-  //When clicked SAVE; UPDATE the data
-  const updateData = (id) => {
-    fetch(`/api/students/${student._id}/feedback/${id}`, {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(currentFeedback),
-    })
-      .then((res) => res.json())
-      .catch((error) => console.log(error));
-  };
+	//POST updated feedback to DB
+	//When clicked SAVE; UPDATE the data
+	const updateData = (id) => {
+		fetch(`/api/students/${student._id}/feedback/${id}`, {
+			method: "PUT",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(currentFeedback),
+		})
+			.then((res) => res.json())
+			.catch((error) => console.log(error));
+	};
 
-  //When clicked SAVE, CHECK if field is empty
-  const saveFeedback = (id) => {
-    if (!currentFeedback.title) {
-      return alert("Please add a title");
-    } else if (!currentFeedback.text) {
-      return alert("Please add your feedback");
-    } else if (!currentFeedback.mentor) {
-      return alert("Please add your name");
-    }
-    updateData(id);
-  };
+	//When clicked SAVE, CHECK if field is empty
+	const saveFeedback = (id) => {
+		if (!currentFeedback.title) {
+			return alert("Please add a title");
+		} else if (!currentFeedback.text) {
+			return alert("Please add your feedback");
+		} else if (!currentFeedback.mentor) {
+			return alert("Please add your name");
+		}
+		updateData(id);
+	};
 
-  //DELETE selected feedback and update data
-  const handleDelete = (feedbackId) => {
-    fetch(`/api/students/${student._id}/${feedbackId}`, {
-      method: "DELETE",
-      headers: { "Content-type": "application/json" },
-    })
-      .then((res) => res.json())
-      .catch((error) => console.log(error));
-  };
+	//DELETE selected feedback and update data
+	const handleDelete = (feedbackId) => {
+		fetch(`/api/students/${student._id}/${feedbackId}`, {
+			method: "DELETE",
+			headers: { "Content-type": "application/json" },
+		})
+			.then((res) => res.json())
+			.catch((error) => console.log(error));
+	};
 
-  // Populate new object with edited data editable
-  const handleEdit = (e) => {
-    setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
-  };
+	// Populate new object with edited data editable
+	const handleEdit = (e) => {
+		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
+	};
 
-  return ( currentFeedback
+	return ( currentFeedback
 	&& <div className="previous-feedback-list">
 		<div className="previous-feedback-module">
 			<p className="feedback-input-head">Module:</p>
@@ -125,12 +125,13 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 			/>
 		</div>
 	</div>
-);
+	);
+};
 
 FeedbackObject.propTypes = {
-  student: PropTypes.object.isRequired,
-  feedbackToShow: PropTypes.object.isRequired,
-  updateFeedback: PropTypes.func.isRequired,
+	student: PropTypes.object.isRequired,
+	feedbackToShow: PropTypes.object.isRequired,
+	updateFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackObject;
