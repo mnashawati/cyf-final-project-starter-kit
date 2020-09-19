@@ -37,12 +37,9 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				: selectedMentor === feedback.mentor
 		);
 
-	
-
 	function sortThings(a, b) {
-    a = a.toLowerCase();
+    a = a.toLowerCase(); 
     b = b.toLowerCase();
-
       return a > b ? 1 : b > a ? -1 : 0;
     }
 
