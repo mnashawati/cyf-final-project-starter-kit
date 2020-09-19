@@ -55,8 +55,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 
   return (
     <div className="prev-feedback-list">
-      {Object.keys(currentFeedback).length &&
-        Object.keys(currentFeedback).map((property, index) => {
+      {Object.keys(currentFeedback).length && Object.keys(currentFeedback).map((property, index) => {
           if (property === "module") {
             return (
               <div className="feedback-title-and-module">
@@ -110,16 +109,26 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             );
           }
           if (property === "mentor") {
-            return (
-              <div className="feedback-mentor-time">
-                <div className="prev-feedback-time" key={index}>
-                  <p >{timeDifference(Date.now(), currentFeedback.time)}</p>
-                </div>
-                <div className="prev-feedback-mentor" key={index}>
-                  <p>Given by: {currentFeedback.mentor} </p>
-                </div>
-              </div>
-            );
+           return (
+             <div className="feedback-mentor-time">
+               <div className="prev-feedback-time" key={index}>
+                 <input
+                   className="prev-feedback-time-input"
+                   name="time"
+                   value={timeDifference(Date.now(), currentFeedback.time)}
+                 />
+               </div>
+               <div className="prev-feedback-mentor" key={index}>
+                 <p className="feedback-input-mentor-name">Given by:</p>
+                 <input
+                   className="prev-feedback-mentor-input"
+                   name="mentor"
+                   value={currentFeedback.mentor}
+                   disabled
+                 />
+               </div>
+             </div>
+           );
           }
         })}
       <div className="edit-delete-buttons">
