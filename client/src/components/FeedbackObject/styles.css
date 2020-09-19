@@ -5,6 +5,18 @@
     overflow-y: auto;
 }
 
+.feedback-title-and-module{
+    display: flex;
+    padding: 0px 20px 0px 0px;
+    flex-wrap: wrap;
+}  
+
+.feedback-title,
+.feedback-module{
+    display: flex;
+    padding: 5px 7px;
+}
+
 .feedback-title-textarea{
     background-color: white;
     border: none;
@@ -16,45 +28,15 @@
     overflow-y: hidden;
 }
 
-.feedback-title-and-module{
-    display: flex;
-}
-
 .feedback-module{
     margin-top: 3px;
-
-}
-.feedback-mentor-time{
-    display: flex;
-    justify-content: space-between;
-}
-
-.feedback-title,
-.feedback-module{
-    display: flex;
-    padding: 5px 7px;
 }
 
 .title-module{
     margin-right: 10px;
     font-size: 1200;
     padding: 7px 0px 3px;
-    font-weight: 700;
-}
-
-.feedback-title-and-module{
-    display: flex;
-    padding: 0px 20px 0px 0px;
-}
-
-.prev-feedback-module,
-.prev-feedback-title
-{
-    display: flex;
-    width: 30%;
-    margin: 0px 5px 5px;
-    padding: 5px 20px 0 0;
-    border:none
+    /* font-weight: 700; */
 }
 
 .modules-dropdown{
@@ -76,20 +58,32 @@
     background-color: white;
 }
 
-.feedback-mentor-time{
+.feedback-time-and-mentor{
     display: flex;
-    padding-left: 10px;
-} 
+    padding-left: 5px;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
 
-.prev-feedback-time,
+.prev-feedback-time{
+    align-self: center;
+    width: 35%;
+    margin-right: 5rem;
+}
+
 .prev-feedback-mentor{
     width: 45%;
+    display: flex;
 }
 
 .prev-feedback-time > p,
 .prev-feedback-mentor > p{
-    padding: 5px;
     font-size: small;
+}
+
+.prev-feedback-mentor-name-input{
+padding-left: 5px;
+font-size: smaller;
 }
 
 input{

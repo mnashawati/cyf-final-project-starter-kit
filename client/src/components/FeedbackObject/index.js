@@ -60,38 +60,37 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             return (
               <div className="feedback-title-and-module">
                 <div className="feedback-title" key={index}>
-                    <textarea
-                      className="feedback-title-textarea"
-                      name="title"
-                      value={currentFeedback.title}
-                      onChange={handleEdit}
-                      disabled={!isEditing}
-                    />
+                  <h6 className="title-module">Title:</h6>
+                  <textarea
+                    className="feedback-title-textarea"
+                    name="title"
+                    value={currentFeedback.title}
+                    onChange={handleEdit}
+                    disabled={!isEditing}
+                  />
                 </div>
                 <div className="feedback-module" key={index}>
-                    <h6 className="title-module">Module:</h6>
-                    {!isEditing ? (
-                      <p className="modules-dropdown">
-                        {currentFeedback.module}
-                      </p>
-                    ) : (
-                      <select
-                        name={property}
-                        value={currentFeedback[property]}
-                        onChange={handleEdit}
-                      >
-                        {modules.map((module, index) => (
-                          <option
-                            className="modules-dropdown"
-                            key={index}
-                            value={module.name}
-                          >
-                            {module.name}
-                          </option>
-                        ))}
-                      </select>
-                    )}
-                  </div>
+                  <h6 className="title-module">Module:</h6>
+                  {!isEditing ? (
+                    <p className="modules-dropdown">{currentFeedback.module}</p>
+                  ) : (
+                    <select
+                      name={property}
+                      value={currentFeedback[property]}
+                      onChange={handleEdit}
+                    >
+                      {modules.map((module, index) => (
+                        <option
+                          className="modules-dropdown"
+                          key={index}
+                          value={module.name}
+                        >
+                          {module.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                </div>
               </div>
             );
           }
@@ -110,18 +109,14 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
           }
           if (property === "mentor") {
            return (
-             <div className="feedback-mentor-time">
+             <div className="feedback-time-and-mentor">
                <div className="prev-feedback-time" key={index}>
-                 <input
-                   className="prev-feedback-time-input"
-                   name="time"
-                   value={timeDifference(Date.now(), currentFeedback.time)}
-                 />
+                 <p>{timeDifference(Date.now(), currentFeedback.time)}</p>
                </div>
                <div className="prev-feedback-mentor" key={index}>
-                 <p className="feedback-input-mentor-name">Given by:</p>
+                 <p className="feedback-input-mentor-name">Mentor:</p>
                  <input
-                   className="prev-feedback-mentor-input"
+                   className="prev-feedback-mentor-name-input"
                    name="mentor"
                    value={currentFeedback.mentor}
                    disabled
