@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import FeedbackObject from "../FeedbackObject";
 import PropTypes from "prop-types";
-import "./styles.css";
 import Pagination from "../Pagination/index";
 
 
@@ -52,71 +51,48 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	const currentFeedbacks = filteredFeedback.slice(indexOfFirstFeedback, indexOfLastFeedback); // filteredFeedback.slice(0,5)
 
 	return currentFeedbacks.length ? (
-    <div className="previous-feedback-section-container">
-      <div className="previous-feedback-section">
-        <h3 className="previous-feedback-title">Previous Feedback</h3>
-        <div>
-          <div className="module-mentor-filters-container">
-            <div className="filter-by-module-container">
-              <h6>Filter by Module:</h6>
-              <select
-                className="select-module"
-                name="filter-by-module"
-                value={selectedModule}
-                onChange={(e) => setSelectedModule(e.target.value)}
-              >
-                <option>All modules</option>
-                {modules.map((module, index) => (
-                  <option key={index} value={module}>
-                    {module}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="filter-by-mentor-container">
-              <h6>Filter by Mentor:</h6>
-              <select
-                className="select-mentor"
-                name="filter-by-mentor"
-                value={selectedMentor}
-                onChange={(e) => setSelectedMentor(e.target.value)}
-              >
-                <option>All mentors</option>
-                {mentors.map((mentor, index) => (
-                  <option key={index} value={mentor}>
-                    {mentor}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div className="filtered-feedback-counter-div">
-            <p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>
-            <p className="filtered-feedback-counter-text">feedbacks</p>
-          </div>
-        </div>
-        <br />
-        <div className="feedback-pages-section">
-          {currentFeedbacks.map((feedback, index) => (
-            <div className="feedback-object-section" key={index}>
-              <FeedbackObject
-                feedbackToShow={feedback}
-                student={student}
-                updateFeedback={updateFeedback}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-      <Pagination
-        itemsPerPage={feedbackPerPage}
-        totalItems={filteredFeedback.length}
-        setCurrentPage={setCurrentPage}
-      />
-    </div>
-  ) : (
-    <p className="no-feedback-found-warning"> No feedback found! </p>
-  );
+		<div className="previous-feedback-section-container">
+			<div className="previous-feedback-section">
+				<h3 className="previous-feedback-title">Previous Feedback</h3>
+				<div className="module-mentor-filters-container">
+					<div className="filter-by-module-container">
+						<h6>Filter by Module:</h6>
+						<select className="select-module"
+							name="filter-by-module"
+							value={selectedModule}
+							onChange={(e) => setSelectedModule(e.target.value)}>
+							<option>All modules</option>
+							{modules.map((module, index) =>
+								<option key={index} value={module}>{module}</option>
+							)}
+						</select>
+					</div>
+					<div className="filter-by-mentor-container">
+						<h6>Filter by Mentor:</h6>
+						<select className="select-mentor"
+							name="filter-by-mentor"
+							value={selectedMentor}
+							onChange={(e) => setSelectedMentor(e.target.value)}>
+							<option>All mentors</option>
+							{mentors.map((mentor, index) =>
+								<option key={index} value={mentor}>{mentor}</option>
+							)}
+						</select>
+					</div>
+				</div>
+				<br />
+				<hr />
+				<div className="feedback-pages-section">
+					{currentFeedbacks.map((feedback, index) => (
+						<div className="feedback-object-section" key={index}>
+							<FeedbackObject feedbackToShow={feedback} student={student} updateFeedback={updateFeedback} />
+						</div>
+					))}
+				</div>
+			</div>
+			<Pagination itemsPerPage={feedbackPerPage} totalItems={filteredFeedback.length} setCurrentPage={setCurrentPage} />
+		</div>
+	) : <p className="no-feedback-found-warning"> No feedback found! </p>
 	
 };
 
