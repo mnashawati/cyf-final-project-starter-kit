@@ -64,7 +64,7 @@ const Highlights = ({ student }) => {
 				<h6 className="highlights-subtitles">
           Need to work on...
 				</h6>
-				<div className="area-text-section-red">
+				<div className="highlights-section-red">
 					{highlights.toWorkOn.map((item, index) => (
 						<div key={index}>
 							<button className="btn-danger high-button">
@@ -84,7 +84,7 @@ const Highlights = ({ student }) => {
 			</div>
 			<div className="okay-at-section">
 				<h6 className="highlights-subtitles">Okay at...</h6>
-				<div className="area-text-section-yellow">
+				<div className="highlights-section-yellow">
 					{highlights.okayAt.map((item, index) => (
 						<div key={index}>
 							<button className="btn-warning high-button">
@@ -104,7 +104,7 @@ const Highlights = ({ student }) => {
 			</div>
 			<div className="good-at-section">
 				<h6 className="highlights-subtitles">Good at...</h6>
-				<div className="area-text-section-green">
+				<div className="highlights-section-green">
 					{highlights.goodAt.map((item, index) => (
 						<div key={index}>
 							<button

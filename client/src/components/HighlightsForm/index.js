@@ -128,6 +128,7 @@ const HighlightsForm = ({ addHighlight }) => {
 				</div>
 			</form>
 		</div>
+
 	);
 };
 
