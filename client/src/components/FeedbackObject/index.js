@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./styles.css";
 import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import timeDifference from "../../helperFunctions/timeDifference";
+import { AuthContext } from "../../authentication/Auth";
 
 const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentFeedback, setCurrentFeedback] = useState({});
-
+  const { currentUser } = useContext(AuthContext);
+  const mentorName= currentUser.displayName
+  
   useEffect(() => {
     setCurrentFeedback(feedbackToShow);
   }, [feedbackToShow]);
@@ -116,6 +119,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             </p>
           </div>
         </div>
+        { mentorName == currentFeedback.mentor ? (
         <div className="edit-delete-buttons">
           <Button
             content={isEditing ? "Save" : "Edit"}
@@ -137,7 +141,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
               }}
             />
           ) : null}
-        </div>
+        </div> ): null}
       </div>
     )
   );
