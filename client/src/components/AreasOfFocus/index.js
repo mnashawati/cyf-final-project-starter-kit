@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 const AreasOfFocus = ({ student }) => {
 
-	const [areasOfFocus, setAreaOfFocus] = useState(student.areasOfFocus);
+	const [areasOfFocus, setAreaOfFocus] = useState(student.highlights);
 
 	useEffect(() => {
 		fetch(`/api/students/${student._id}/areas-of-focus`, {
