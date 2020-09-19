@@ -48,7 +48,7 @@ const Highlights = ({ student }) => {
 					: null;
 	};
 
-	const removeAnArea = (highlightId, level) => {
+	const removeHighlight = (highlightId, level) => {
 		const updatedHighlights = highlights[level].filter(
 			(highlight) => highlight.id !== highlightId
 		);
@@ -64,15 +64,15 @@ const Highlights = ({ student }) => {
 				<h6 className="highlights-subtitles">
           Need to work on...
 				</h6>
-				<div className="area-text-section-red">
+				<div className="highlights-section-red">
 					{highlights.toWorkOn.map((item, index) => (
 						<div key={index}>
-							<button className="btn-danger high-button">
+							<button className="btn-danger highlights-button">
 								{item.message}
 								<span
 									className="x-button"
 									onClick={() =>
-										removeAnArea(item.id, "toWorkOn")
+										removeHighlight(item.id, "toWorkOn")
 									}
 								>
                   X
@@ -84,15 +84,15 @@ const Highlights = ({ student }) => {
 			</div>
 			<div className="okay-at-section">
 				<h6 className="highlights-subtitles">Okay at...</h6>
-				<div className="area-text-section-yellow">
+				<div className="highlights-section-yellow">
 					{highlights.okayAt.map((item, index) => (
 						<div key={index}>
-							<button className="btn-warning high-button">
+							<button className="btn-warning highlights-button">
 								{item.message}
 								<span
 									className="x-button"
 									onClick={() =>
-										removeAnArea(item.id, "okayAt")
+										removeHighlight(item.id, "okayAt")
 									}
 								>
                   X
@@ -104,18 +104,18 @@ const Highlights = ({ student }) => {
 			</div>
 			<div className="good-at-section">
 				<h6 className="highlights-subtitles">Good at...</h6>
-				<div className="area-text-section-green">
+				<div className="highlights-section-green">
 					{highlights.goodAt.map((item, index) => (
 						<div key={index}>
 							<button
-								className="btn-success high-button"
+								className="btn-success highlights-button"
 								key={index}
 							>
 								{item.message}
 								<span
 									className="x-button"
 									onClick={() =>
-										removeAnArea(item.id, "goodAt")
+										removeHighlight(item.id, "goodAt")
 									}
 								>
                   X

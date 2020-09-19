@@ -11,7 +11,8 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
 	const [currentPage, setCurrentPage] = useState(1);
-	const [feedbackPerPage] = useState(6);
+
+	const [feedbackPerPage] = useState(4);
 
 
 	function getFilteringData(array, field) {

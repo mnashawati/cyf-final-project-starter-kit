@@ -1,3 +1,20 @@
+// $redToWorkOnButton: #dc3545;
+// $amberOkayAtButton: #ffc107;
+// $greenGoodAtButton: #28a745;
+
+$redBorder: #dc3545;
+$amberBorder: #ffc107;
+$greenBorder: #28a745;
+
+@mixin highlightsSections($borderColor) {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 58px;
+    padding: 5px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1.5px solid $borderColor;
+}
 
 .highlights-title {
     font-weight: bold;
@@ -5,45 +22,32 @@
     font-size: 20px;
 }
 
-.area-text-section-red {
-    border: 1.5px solid #dc3545;
-    margin-bottom: 10px;
-    min-height: 58px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    overflow-y: auto;
+.highlights-subtitles {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
-.area-text-section-yellow {
-    border: 1.5px solid #ffc107;
-    margin-bottom: 10px;
-    min-height: 58px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    overflow-y: auto;
+.highlights-section-red {
+    @include highlightsSections($redBorder);
 }
 
-.area-text-section-green {
-    border: 1.5px solid #28a745;
-    margin-bottom: 10px;
-    display: flex;
-    min-height: 58px;
-    flex-wrap: wrap;
-    padding: 5px;
-    overflow-y: auto;
+.highlights-section-yellow {
+    @include highlightsSections($amberBorder);
 }
 
-.high-button {
+.highlights-section-green {
+    @include highlightsSections($greenBorder);
+}
+
+.highlights-button {
     min-width: 140px;
     max-width: 140px;
     border: none;
     margin: 8px 5px;
     font-size: 14px;
-    border-radius: 5px 5px 5px 5px;
     height: 29px;
-
+    border-radius: 5px 5px 5px 5px;
 }
 
 .x-button {
@@ -63,12 +67,6 @@
     font-size: 10px;
 }
 
-.highlights-subtitles {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 0;
-}
-
 .areas-input {
     border: 1px solid black;
     width: 100%;
@@ -83,7 +81,7 @@
     display: flex;
 }
 
-.area-input-section {
+.highlights-message-section {
     flex: 1;
 }
 
