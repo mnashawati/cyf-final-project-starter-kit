@@ -7,159 +7,140 @@ import Button from "../Button/Button";
 import timeDifference from "../../helperFunctions/timeDifference";
 
 const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentFeedback, setCurrentFeedback] = useState({});
 
-	const [isEditing, setIsEditing] = useState(false);
-	const [currentFeedback, setCurrentFeedback] = useState({});
+  useEffect(() => {
+    setCurrentFeedback(feedbackToShow);
+  }, [feedbackToShow]);
 
-	useEffect(() => {
-		setCurrentFeedback(feedbackToShow);
-	}, [feedbackToShow]);
+  //POST updated feedback to DB
+  //When clicked SAVE; UPDATE the data
+  const updateData = (id) => {
+    fetch(`/api/students/${student._id}/feedback/${id}`, {
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(currentFeedback),
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
+  };
 
-	//POST updated feedback to DB
-	//When clicked SAVE; UPDATE the data
-	const updateData = (id) => {
-		fetch(`/api/students/${student._id}/feedback/${id}`,
-			{
-				method: "PUT",
-				headers: { "Content-type": "application/json" },
-				body: JSON.stringify(currentFeedback),
-			})
-			.then( (res) => res.json())
-			.catch((error) => console.log(error));
-	};
+  //When clicked SAVE, CHECK if field is empty
+  const saveFeedback = (id) => {
+    if (!currentFeedback.title) {
+      return alert("Please add a title");
+    } else if (!currentFeedback.text) {
+      return alert("Please add your feedback");
+    } else if (!currentFeedback.mentor) {
+      return alert("Please add your name");
+    }
+    updateData(id);
+  };
 
-	//When clicked SAVE, CHECK if field is empty
-	const saveFeedback = (id) => {
-		if (!currentFeedback.title) {
-			return alert("Please add a title");
-		} else if (!currentFeedback.text) {
-			return alert("Please add your feedback");
-		} else if (!currentFeedback.mentor) {
-			return alert("Please add your name");
-		}
-		updateData(id);
-	};
+  //DELETE selected feedback and update data
+  const handleDelete = (feedbackId) => {
+    fetch(`/api/students/${student._id}/${feedbackId}`, {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
+  };
 
-	//DELETE selected feedback and update data
-	const handleDelete = (feedbackId) => {
-		fetch(`/api/students/${student._id}/${feedbackId}`,
-			{
-				method: "DELETE",
-				headers: { "Content-type": "application/json" },
-			})
-			.then((res) => res.json())
-			.catch((error) => console.log(error));
-	};
+  // Populate new object with edited data editable
+  const handleEdit = (e) => {
+    setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
+  };
 
-	// Populate new object with edited data editable
-	const handleEdit = (e) => {
-		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
-	};
-
-	return (
-		<div className="previous-feedback-list">
-			{Object.keys(currentFeedback).length && Object.keys(currentFeedback)
-				.map((property, index) => {
-					if (property === "module") {
-						return (
-							<div className="previous-feedback-module" key={index}>
-								<p className="feedback-input-head">Module:</p>
-								{!isEditing
-									? <p>{currentFeedback[property]}</p>
-									: <select
-										name={property}
-										value={currentFeedback[property]}
-										onChange={handleEdit}>
-										{modules.map((module, index) =>
-											<option key={index} value={module.name}>{module.name}</option>
-										)}
-									</select>}
-							</div>
-						);
-					}
-					if (property === "title") {
-						return (
-							<div className="previous-feedback-title" key={index}>
-								<p className="feedback-input-head">Title:</p>
-								<textarea
-									className="feedback-title-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled={!isEditing}
-								/>
-							</div>
-						);
-					}
-					if (property === "text") {
-						return (
-							<div className="previous-feedback-text" key={index}>
-								<p className="feedback-input-head">Feedback:</p>
-								<textarea
-									className="previous-feedback-text-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled={!isEditing}
-								/>
-							</div>
-						);
-					}
-					if (property === "mentor") {
-						return (
-							<div className="previous-feedback-mentor" key={index}>
-								<p className="feedback-input-head">Given by:</p>
-								<input
-									className="previous-feedback-mentor-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
-					}
-					if (property === "time") {
-						return (
-							<div className="previous-feedback-time" key={index}>
-								<input
-									className="previous-feedback-time-input"
-									name={property}
-									value={timeDifference(Date.now(), currentFeedback[property])}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
-					}
-				})}
-			<div className="edit-delete-buttons">
-				<Button
-					content={isEditing ? "Save" : "Edit"}
-					handleClick={() => {
-						setIsEditing(!isEditing);
-						isEditing && saveFeedback(currentFeedback.id);
-					}}
-				/>
-				<div>
-					<Button
-						content="Delete"
-						handleClick={() => {
-							alert("DELETE");
-							handleDelete(currentFeedback.id);
-							updateFeedback();
-						}}
-					/>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    currentFeedback && (
+      <div className="prev-feedback-list">
+        <div className="feedback-title-and-module">
+          <div className="feedback-module">
+            <p className="feedback-input-heading">Module:</p>
+            {!isEditing ? (
+              <p>{currentFeedback.module}</p>
+            ) : (
+              <select
+                name={"module"}
+                value={currentFeedback.module}
+                onChange={handleEdit}
+              >
+                {modules.map((module, index) => (
+                  <option key={index} value={module.name}>
+                    {module.name}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+          <div className="feedback-title">
+            <p className="feedback-input-heading">Title:</p>
+            <input
+              name={"title"}
+              value={currentFeedback.title}
+              onChange={handleEdit}
+              disabled={!isEditing}
+            />
+          </div>
+        </div>
+        <div className="previous-feedback-text">
+          <textarea
+            className="feedback-text-textarea"
+            name={"text"}
+            value={currentFeedback.text}
+            onChange={handleEdit}
+            disabled={!isEditing}
+          />
+        </div>
+        <div className="feedback-time-and-mentor">
+          <div className="prev-feedback-mentor">
+            <p className="feedback-input-heading">Mentor:</p>
+            <input
+              className="prev-feedback-mentor-input"
+              name={"mentor"}
+              value={currentFeedback.mentor}
+              onChange={handleEdit}
+              disabled
+            />
+          </div>
+          <div className="prev-feedback-time">
+            <input
+              className="prev-feedback-time-input"
+              name={"time"}
+              value={timeDifference(Date.now(), currentFeedback.time)}
+              onChange={handleEdit}
+              disabled
+            />
+          </div>
+        </div>
+        <div className="edit-delete-buttons">
+          <Button
+            content={isEditing ? "Save" : "Edit"}
+            handleClick={() => {
+              setIsEditing(!isEditing);
+              isEditing && saveFeedback(currentFeedback.id);
+            }}
+          />
+          <Button
+            content="Delete"
+            handleClick={() => {
+              alert("DELETE");
+              handleDelete(currentFeedback.id);
+              updateFeedback();
+            }}
+          />
+        </div>
+      </div>
+    )
+  );
 };
 
 FeedbackObject.propTypes = {
-	student: PropTypes.object.isRequired,
-	feedbackToShow: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func.isRequired,
+  student: PropTypes.object.isRequired,
+  feedbackToShow: PropTypes.object.isRequired,
+  updateFeedback: PropTypes.func.isRequired,
 };
 
 export default FeedbackObject;
