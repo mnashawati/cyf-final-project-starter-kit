@@ -10,7 +10,6 @@ const Highlights = ({ student }) => {
 		student.highlights
 	);
 
-	console.log("highlights", highlights);
 	useEffect(() => {
 		fetch(`/api/students/${student._id}/highlights`, {
 			method: "PUT",
@@ -58,8 +57,6 @@ const Highlights = ({ student }) => {
 			[level]: updatedHighlights,
 		});
 	};
-
-	// return(<div>return</div>);
 	return highlights ? (
 		<div>
 			<h3 className="highlights-title">Highlights:</h3>

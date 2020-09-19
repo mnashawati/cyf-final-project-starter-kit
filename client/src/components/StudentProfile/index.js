@@ -19,7 +19,7 @@ const StudentProfile = () => {
 			.then((data) => setStudent(data.find((student) => student.name == params.studentName)))
 			.catch((err) => console.log(err));
 	},[]);
-	console.log("student", student);
+
 	return Object.keys(student).length ? (
 		<>
 			<Navbar />
