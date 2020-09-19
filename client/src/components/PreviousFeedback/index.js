@@ -23,7 +23,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
     return existingFieldNames;
   }
 
- const filteredFeedback = [...allFeedback.reverse()]
+ const filteredFeedback = [...allFeedback.sort((a,b)=> {return (a.time > b.time ? -1 : b.time > a.time ? 1 : 0)})]
    .filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
    .filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
 
