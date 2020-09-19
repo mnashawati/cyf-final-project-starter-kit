@@ -54,27 +54,23 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
   };
 
   return (
-    <div className="previous-feedback-list">
+    <div className="prev-feedback-list">
       {Object.keys(currentFeedback).length &&
         Object.keys(currentFeedback).map((property, index) => {
           if (property === "module") {
             return (
-              <div className="feedback-title-module">
-                <div className="previous-feedback-title" key={index}>
-                  <div>
-                    <h5 className="title-module-title">Title</h5>
+              <div className="feedback-title-and-module">
+                <div className="feedback-title" key={index}>
                     <textarea
-                      className="feedback-title-input"
+                      className="feedback-title-textarea"
                       name="title"
                       value={currentFeedback.title}
                       onChange={handleEdit}
                       disabled={!isEditing}
                     />
-                  </div>
                 </div>
-                <div className="previous-feedback-module" key={index}>
-                  <div>
-                    <h5 className="title-module-title">Module</h5>
+                <div className="feedback-module" key={index}>
+                    <h6 className="title-module">Module:</h6>
                     {!isEditing ? (
                       <p className="modules-dropdown">
                         {currentFeedback.module}
@@ -97,15 +93,14 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
                       </select>
                     )}
                   </div>
-                </div>
               </div>
             );
           }
           if (property === "text") {
             return (
-              <div className="previous-feedback-text" key={index}>
+              <div className="prev-feedback-text" key={index}>
                 <textarea
-                  className="previous-feedback-text-input"
+                  className="feedback-text-textarea"
                   name={property}
                   value={currentFeedback.text}
                   onChange={handleEdit}
@@ -117,24 +112,11 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
           if (property === "mentor") {
             return (
               <div className="feedback-mentor-time">
-                <div className="previous-feedback-time" key={index}>
-                  <input
-                    className="previous-feedback-time-input"
-                    name="time"
-                    value={timeDifference(Date.now(), currentFeedback.time)}
-                    onChange={handleEdit}
-                    disabled
-                  />
+                <div className="prev-feedback-time" key={index}>
+                  <p >{timeDifference(Date.now(), currentFeedback.time)}</p>
                 </div>
-                <div className="previous-feedback-mentor" key={index}>
-                  <p className="feedback-input-mentor-name">Given by:</p>
-                  <input
-                    className="previous-feedback-mentor-input"
-                    name="mentor"
-                    value={currentFeedback.mentor}
-                    onChange={handleEdit}
-                    disabled
-                  />
+                <div className="prev-feedback-mentor" key={index}>
+                  <p>Given by: {currentFeedback.mentor} </p>
                 </div>
               </div>
             );

@@ -1,39 +1,69 @@
-.feedback-title-module,
+.prev-feedback-list{
+    margin: 12px 5px;
+    border: 0.5px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    overflow-y: auto;
+}
+
+.feedback-title-textarea{
+    background-color: white;
+    border: none;
+    font-size: medium;
+    padding: 6px 0px 3px;
+    font-weight:  bolder;
+    height: 2rem;
+    width: 15rem;
+    overflow-y: hidden;
+}
+
+.feedback-title-and-module{
+    display: flex;
+}
+
+.feedback-module{
+    margin-top: 3px;
+
+}
 .feedback-mentor-time{
     display: flex;
     justify-content: space-between;
 }
 
-.title-module-title {
-    text-decoration: underline;
+.feedback-title,
+.feedback-module{
+    display: flex;
+    padding: 5px 7px;
+}
+
+.title-module{
+    margin-right: 10px;
+    font-size: 1200;
+    padding: 7px 0px 3px;
     font-weight: 700;
 }
 
-.feedback-title-module{
-    height: 3rem;
+.feedback-title-and-module{
+    display: flex;
+    padding: 0px 20px 0px 0px;
+}
+
+.prev-feedback-module,
+.prev-feedback-title
+{
+    display: flex;
+    width: 30%;
+    margin: 0px 5px 5px;
+    padding: 5px 20px 0 0;
+    border:none
 }
 
 .modules-dropdown{
-    font-size: small;
+    font-size: medium;
     padding-top: 4px;
     font-weight: 700;
 }
 
-.feedback-title-input{
-    max-width: 250px;
-    padding-left: 0px;
-    font-weight: bolder; 
-    background-color: white;
-}
-
-.previous-feedback-text
-{
-    margin: 0px 5px;
-    padding: 5px;
-    border:none
-}
-
-.previous-feedback-text-input{
+.feedback-text-textarea{
     border:none;
     margin: 1px;
     max-width: 20em;
@@ -42,42 +72,28 @@
 	padding: 7px;
     font-size: 0.8rem;
     font-weight: bold;
-    min-height: 7em;
+    min-height: 7em; 
+    background-color: white;
 }
 
-.previous-feedback-mentor,
-.previous-feedback-time{
+.feedback-mentor-time{
     display: flex;
-    margin-left: 10px;
-    font-weight: bold;
+    padding-left: 10px;
+} 
+
+.prev-feedback-time,
+.prev-feedback-mentor{
+    width: 45%;
 }
 
-.previous-feedback-mentor-buttons{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.previous-feedback-mentor-input,
-.feedback-input-mentor-name,
-.previous-feedback-time-input{
+.feedback-mentor-time > p{
     padding: 5px;
     font-size: small;
-    background-color: white;
-    font-weight: bolder;
 }
 
-.feedback-filter-heading {
-    margin-left: 5px;
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.feedback-filter-heading b {
-    color: rgb(160, 20, 20);
-}
-
-.feedback-input-mentor-name{
-    display: flex;
+input{
+    border: none;
+    width: 200px
 }
 
 .edit-delete-buttons {
@@ -85,3 +101,8 @@
     margin: 10px;
     justify-content: flex-end;
 }
+
+.save-button {
+    background-color: rgb(241, 1, 1);
+}
+
