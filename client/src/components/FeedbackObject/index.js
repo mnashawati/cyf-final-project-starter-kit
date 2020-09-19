@@ -48,15 +48,10 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
       .catch((error) => console.log(error));
   };
 
-  console.log(storeCurentFeedback)
   // Populate new object with edited data editable
   const handleEdit = (e) => {
     setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
   };
-
-  const handleCancel = (e) =>{
-    setCurrentFeedback(storeCurentFeedback)
-  }
 
   return (
     <div className="prev-feedback-list">
