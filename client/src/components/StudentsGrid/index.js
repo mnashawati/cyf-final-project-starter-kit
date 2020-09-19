@@ -13,7 +13,6 @@ const StudentsGrid = ( ) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [studentsPerPage] = useState(6);
 
-
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
@@ -25,6 +24,7 @@ const StudentsGrid = ( ) => {
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
 	const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
 
+
 	return (
 		<>
 			<Navbar />
@@ -35,7 +35,7 @@ const StudentsGrid = ( ) => {
 					))}
 				</div>
 			</div>
-			<Pagination studentsPerPage={studentsPerPage} totalStudents={students.length} setCurrentPage={setCurrentPage} />
+			<Pagination itemsPerPage={studentsPerPage} totalItems={students.length} setCurrentPage={setCurrentPage} />
 			<Footer />
 		</>
 	);
