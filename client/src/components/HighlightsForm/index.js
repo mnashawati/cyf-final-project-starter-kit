@@ -3,7 +3,7 @@ import "./styles.css";
 import PropTypes from "prop-types";
 
 
-const AreasOfFocusForm = ({ addNewArea }) => {
+const HighlightsForm = ({ addHighlight }) => {
 	const [area, setArea] = useState({
 		message: "",
 		level: "",
@@ -15,13 +15,13 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 		} else if (!area.level) {
 			return alert("Please select a level");
 		}
-		addNewArea(area);
+		addHighlight(area);
 		e.target.reset();
 		setArea({ message: "", level: "" });
 	};
 
 	const handleChange = (e) => {
-		setArea({ ...area, [e.target.name] : e.target.value });
+		setArea({ ...area, [e.target.name]: e.target.value });
 	};
 
 	return (
@@ -33,7 +33,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 			>
 				<div className="area-input-section">
 					<h6 className="feedback-input-heading">
-              Type a topic to highlight:
+            Type a topic to highlight:
 					</h6>
 					<input
 						className="feedback-title-input"
@@ -123,7 +123,7 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 				</div>
 				<div className="add-feedback-heading-container">
 					<button className="btn-danger add-button">
-              Add
+            Add
 					</button>
 				</div>
 			</form>
@@ -131,8 +131,8 @@ const AreasOfFocusForm = ({ addNewArea }) => {
 	);
 };
 
-AreasOfFocusForm.propTypes = {
-	addNewArea: PropTypes.func.isRequired,
+HighlightsForm.propTypes = {
+	addHighlight: PropTypes.func.isRequired,
 };
 
-export default AreasOfFocusForm;
+export default HighlightsForm;

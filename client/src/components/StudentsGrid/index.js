@@ -13,7 +13,6 @@ const StudentsGrid = ( ) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [studentsPerPage] = useState(6);
 
-
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
