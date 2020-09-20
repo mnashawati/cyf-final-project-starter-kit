@@ -1,15 +1,16 @@
 import React, { useState, useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth.js";
 import app from "./base";
 import "bootstrap/dist/css/bootstrap.min.css";
+const firebase = require("firebase");
+
 
 const SignOut = () => {
 
 	const [showModal, setShowModal] = useState(false);
 	const { currentUser } = useContext(AuthContext);
-	const history = useHistory();
 
 	const handleClose = () => setShowModal(false);
 	const handleShow = () => setShowModal(true);
@@ -34,7 +35,8 @@ const SignOut = () => {
 					<Button variant="primary" onClick={() => {
 						handleClose();
 						app.auth().signOut();
-						history.push("/");
+						firebase.auth().signOut();
+						window.location="/";
 					}}>
 						Yes
 					</Button>
