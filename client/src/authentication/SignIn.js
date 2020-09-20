@@ -1,7 +1,6 @@
 import React from "react";
-// import { withRouter, Redirect } from "react-router";
-// import { AuthContext } from "./Auth.js";
-// import app from "./base";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+
 const firebase = require("firebase");
 const firebaseui = require("firebaseui");
 
@@ -41,7 +40,7 @@ const SignIn = () => {
 		<>
 			<div id="firebaseui-auth-container" className="sign-in-section-container" >
 				<p className="start-here">Start here</p>
-				<div></div>
+				<StyledFirebaseAuth />
 			</div>
 			<div id="loader">Loading...</div>
 		</>
