@@ -103,7 +103,6 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             disabled={!isEditing}
           />
         </div>
-        {/* <div className="feedback-time-and-mentor"> */}
         <div className="feedback-mentor-time-buttons">
           <div className="feedback-mentor-and-time">
             <div className="prev-feedback-mentor">
@@ -123,7 +122,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             </div>
           </div>
           <div>
-            { mentorsEmail === currentFeedback.mentorEmail ? ( 
+            { mentorsEmail === currentFeedback.mentorEmail ? (
             <div className="edit-delete-buttons">
               <Button
                 content={isEditing ? "Save" : "Edit"}

@@ -101,10 +101,6 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
               </select>
             </div>
           </div>
-          {/* <div className="filtered-feedback-counter-div">
-            <p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>
-            <p className="filtered-feedback-counter-text">feedbacks</p>
-          </div> */}
         </div>
         <br />
         <div className="feedback-pages-section">

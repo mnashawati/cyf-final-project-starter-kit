@@ -4,15 +4,16 @@ import { Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth.js";
 import app from "./base";
 import "bootstrap/dist/css/bootstrap.min.css";
+const firebase = require("firebase");
+
 
 const SignOut = () => {
 
 	const [showModal, setShowModal] = useState(false);
+	const { currentUser } = useContext(AuthContext);
 
 	const handleClose = () => setShowModal(false);
 	const handleShow = () => setShowModal(true);
-
-	const { currentUser } = useContext(AuthContext);
 
 	if (!currentUser) {
 		return <Redirect to="/" />;
@@ -34,6 +35,8 @@ const SignOut = () => {
 					<Button variant="primary" onClick={() => {
 						handleClose();
 						app.auth().signOut();
+						firebase.auth().signOut();
+						window.location="/";
 					}}>
 						Yes
 					</Button>
