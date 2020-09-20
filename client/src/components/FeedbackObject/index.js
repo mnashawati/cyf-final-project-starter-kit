@@ -123,7 +123,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             </div>
           </div>
           <div>
-            {/* { mentorsEmail === currentFeedback.mentorEmail ? (  */}
+            { mentorsEmail === currentFeedback.mentorEmail ? ( 
             <div className="edit-delete-buttons">
               <Button
                 content={isEditing ? "Save" : "Edit"}
@@ -145,11 +145,10 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
                   }}
                 />
               ) : null}
-              {/* </div> ): null} */}
+              </div> ): null}
             </div>
           </div>
         </div>
-      </div>
     )
   );
 };
