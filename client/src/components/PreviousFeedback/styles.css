@@ -5,11 +5,16 @@ justify-content: flex-end;
 
 .filtered-feedback-counter{
     text-align: right;
-    margin: 15px 0 0;
+    margin: 2px 0 0 5px;    
     font-weight: bolder;
     font-size: large;
 }
 
 .filtered-feedback-counter-text{
-    margin: 17px 0 0 5px;
+    margin: 3px 3px 0 5px;
+}
+
+.previous-feedback-title-and-counter{
+    display: flex;
+    justify-content: space-between;
 }

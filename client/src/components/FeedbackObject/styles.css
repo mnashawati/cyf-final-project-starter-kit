@@ -1,5 +1,5 @@
 .prev-feedback-list{
-    margin: 12px 5px;
+    margin: 5px 0;
     border: 0.5px solid rgb(0, 0, 0);
     border-radius: 3px;
     overflow-y: auto;
@@ -11,6 +11,7 @@
     padding-right: 20px ;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: 50px;
 }  
 
 .feedback-title,
@@ -58,17 +59,9 @@
 	padding: 0 3px;
     font-size: 0.8rem;
     font-weight: bold;
-    min-height: 7em; 
+    min-height: 6em; 
     background-color: white;
-    margin-bottom: 10px;
-}
-
-.feedback-time-and-mentor{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 5px;
-    /* justify-content: space-between; */
-    flex-wrap: wrap;
+    margin-bottom: 0;
 }
 
 .prev-feedback-mentor{
@@ -90,16 +83,24 @@
 
 .prev-feedback-mentor-input,
 .prev-feedback-time-input{
-    padding-left: 5px;
+    margin-bottom: 3px;
+    padding-left: 0px;    
     background-color: white;
     font-size: smaller;
-    padding: 5px;
     height: 30px;
+    width: max-content;
 }
 
 input{
     border: none;
-    width: 200px
+    width: 200px;
+    background-color: white;
+}
+
+.feedback-mentor-time-buttons{
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
 }
 
 .edit-delete-buttons {
@@ -112,4 +113,5 @@ input{
     background-color: rgb(1, 9, 241);
     color: white;
 }
+
 
