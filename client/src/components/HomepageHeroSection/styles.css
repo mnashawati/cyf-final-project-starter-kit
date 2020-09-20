@@ -51,7 +51,7 @@ min-width: max-content;
 align-self: center;
 margin: 0;
 font-weight: bold;
-color: rgb(196, 62, 62);
+color: black;
 }
 
 @media (min-width: 576px) { 
