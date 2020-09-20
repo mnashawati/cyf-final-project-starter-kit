@@ -5,26 +5,31 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
 const Login = ({ history }) => {
-	const handleLogin = useCallback(
-		async (event) => {
-			event.preventDefault();
-			const { email, password } = event.target.elements;
-			try {
-				await app
-					.auth()
-					.signInWithEmailAndPassword(email.value, password.value);
-				history.push("/");
-			} catch (error) {
-				alert(error);
-			}
-		},
-		[history]
-	);
+	// const handleLogin = useCallback(
+	// 	async (event) => {
+	// 		event.preventDefault();
+	// 		const { email, password } = event.target.elements;
+	// 		try {
+	// 			await app
+	// 				.auth()
+	// 				.signInWithEmailAndPassword(email.value, password.value);
+	// 			history.push("/");
+	// 		} catch (error) {
+	// 			alert(error);
+	// 		}
+	// 	},
+	// 	[history]
+	// );
+
+	// 	const provider = new firebase.auth.GoogleAuthProvider();
+	// export const signInWithGoogle = () => {
+	//   auth.signInWithPopup(provider);
+	// };
 
 	const uiConfig = {
 		signInFlow: "popup",
 		signInOptions: [
-			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+			// firebase.auth.GoogleAuthProvider.PROVIDER_ID,
 			firebase.auth.GithubAuthProvider.PROVIDER_ID,
 			// firebase.auth.EmailAuthProvider.PROVIDER_ID,
 		],
@@ -41,7 +46,7 @@ const Login = ({ history }) => {
 
 	return (
 		<div>
-			<h1>Log in</h1>
+			{/* <h1>Log in</h1>
 			<form onSubmit={handleLogin}>
 				<label>
           Email
@@ -52,7 +57,7 @@ const Login = ({ history }) => {
 					<input name="password" type="password" placeholder="Password" />
 				</label>
 				<button type="submit">Log in</button>
-			</form>
+			</form> */}
 			<StyledFirebaseAuth
 				uiConfig={uiConfig}
 				firebaseAuth={firebase.auth()}
