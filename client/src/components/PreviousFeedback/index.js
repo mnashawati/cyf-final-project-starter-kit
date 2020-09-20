@@ -23,9 +23,21 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
     return existingFieldNames;
   }
 
- const filteredFeedback = [...allFeedback.sort((a,b)=> {return (a.time > b.time ? -1 : b.time > a.time ? 1 : 0)})]
-   .filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module)
-   .filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor);
+  const filteredFeedback = [
+    ...allFeedback.sort((a, b) => {
+      return a.time > b.time ? -1 : b.time > a.time ? 1 : 0;
+    }),
+  ]
+    .filter((feedback) =>
+      selectedModule === "All modules"
+        ? true
+        : selectedModule === feedback.module
+    )
+    .filter((feedback) =>
+      selectedMentor === "All mentors"
+        ? true
+        : selectedMentor === feedback.mentor
+    );
 
   function sortThings(a, b) {
     a = a.toLowerCase();
@@ -47,7 +59,13 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
   return currentFeedbacks.length ? (
     <div className="previous-feedback-section-container">
       <div className="previous-feedback-section">
-        <h3 className="previous-feedback-title">Previous Feedback</h3>
+        <div className="previous-feedback-title-and-counter">
+          <h3 className="previous-feedback-title">Previous Feedback</h3>
+          <div className="filtered-feedback-counter-div">
+            <p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>
+            <p className="filtered-feedback-counter-text">feedbacks</p>
+          </div>
+        </div>
         <div>
           <div className="module-mentor-filters-container">
             <div className="filter-by-module-container">
@@ -83,10 +101,10 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
               </select>
             </div>
           </div>
-          <div className="filtered-feedback-counter-div">
+          {/* <div className="filtered-feedback-counter-div">
             <p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>
             <p className="filtered-feedback-counter-text">feedbacks</p>
-          </div>
+          </div> */}
         </div>
         <br />
         <div className="feedback-pages-section">

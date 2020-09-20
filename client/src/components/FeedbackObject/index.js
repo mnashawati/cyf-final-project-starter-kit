@@ -11,8 +11,9 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentFeedback, setCurrentFeedback] = useState({});
   const { currentUser } = useContext(AuthContext);
-  const mentorName= currentUser.displayName
-  
+
+  const mentorsEmail = currentUser.email;
+
   useEffect(() => {
     setCurrentFeedback(feedbackToShow);
   }, [feedbackToShow]);
@@ -56,10 +57,10 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
     setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
   };
 
-  const handleCancel = () =>{
-       setCurrentFeedback(feedbackToShow);
-       setIsEditing(!isEditing)
-  }
+  const handleCancel = () => {
+    setCurrentFeedback(feedbackToShow);
+    setIsEditing(!isEditing);
+  };
 
   return (
     currentFeedback && (
@@ -102,46 +103,52 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             disabled={!isEditing}
           />
         </div>
-        <div className="feedback-time-and-mentor">
-          <div className="prev-feedback-mentor">
-            <p className="feedback-input-heading">Mentor:</p>
-            <input
-              className="prev-feedback-mentor-input"
-              name={"mentor"}
-              value={currentFeedback.mentor}
-              onChange={handleEdit}
-              disabled
-            />
+        {/* <div className="feedback-time-and-mentor"> */}
+        <div className="feedback-mentor-time-buttons">
+          <div className="feedback-mentor-and-time">
+            <div className="prev-feedback-mentor">
+              <p className="feedback-input-heading">Mentor:</p>
+              <input
+                className="prev-feedback-mentor-input"
+                name={"mentor"}
+                value={currentFeedback.mentor}
+                onChange={handleEdit}
+                disabled
+              />
+            </div>
+            <div className="prev-feedback-time">
+              <p className="prev-feedback-time-input">
+                {timeDifference(Date.now(), currentFeedback.time)}
+              </p>
+            </div>
           </div>
-          <div className="prev-feedback-time">
-            <p className="prev-feedback-time-input">
-              {timeDifference(Date.now(), currentFeedback.time)}
-            </p>
+          <div>
+            {/* { mentorsEmail === currentFeedback.mentorEmail ? (  */}
+            <div className="edit-delete-buttons">
+              <Button
+                content={isEditing ? "Save" : "Edit"}
+                handleClick={() => {
+                  setIsEditing(!isEditing);
+                  isEditing && saveFeedback(currentFeedback.id);
+                }}
+              />
+              {isEditing ? (
+                <Button content="Cancel" handleClick={handleCancel} />
+              ) : null}
+              {!isEditing ? (
+                <Button
+                  content="Delete"
+                  handleClick={() => {
+                    alert("DELETE");
+                    handleDelete(currentFeedback.id);
+                    updateFeedback();
+                  }}
+                />
+              ) : null}
+              {/* </div> ): null} */}
+            </div>
           </div>
         </div>
-        { mentorName == currentFeedback.mentor ? (
-        <div className="edit-delete-buttons">
-          <Button
-            content={isEditing ? "Save" : "Edit"}
-            handleClick={() => {
-              setIsEditing(!isEditing);
-              isEditing && saveFeedback(currentFeedback.id);
-            }}
-          />
-          {isEditing ? (
-            <Button content="Cancel" handleClick={handleCancel} />
-          ) : null}
-          {!isEditing ? (
-            <Button
-              content="Delete"
-              handleClick={() => {
-                alert("DELETE");
-                handleDelete(currentFeedback.id);
-                updateFeedback();
-              }}
-            />
-          ) : null}
-        </div> ): null}
       </div>
     )
   );
