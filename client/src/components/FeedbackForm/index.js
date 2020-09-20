@@ -16,10 +16,14 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 		title: "",
 		text: "",
 		mentor: "",
+		mentorEmail: "",
 	});
 	feedback.id = uuid();
 	feedback.time = Date.now();
-	feedback.mentor = (currentUser.displayName || currentUser.email);
+
+	feedback.mentor = (currentUser.displayName);
+	feedback.mentorEmail = (currentUser.email);
+
 
 	const options = {
 		method: "POST",
@@ -54,6 +58,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			title: "",
 			text: "",
 			mentor: "",
+			mentorEmail: "",
 		});
 	};
 

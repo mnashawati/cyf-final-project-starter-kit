@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { AuthContext } from "./Auth.js";
 import app from "./base";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,11 +8,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const SignOut = () => {
 
 	const [showModal, setShowModal] = useState(false);
+	const { currentUser } = useContext(AuthContext);
+	const history = useHistory();
 
 	const handleClose = () => setShowModal(false);
 	const handleShow = () => setShowModal(true);
-
-	const { currentUser } = useContext(AuthContext);
 
 	if (!currentUser) {
 		return <Redirect to="/" />;
@@ -34,6 +34,7 @@ const SignOut = () => {
 					<Button variant="primary" onClick={() => {
 						handleClose();
 						app.auth().signOut();
+						history.push("/");
 					}}>
 						Yes
 					</Button>
