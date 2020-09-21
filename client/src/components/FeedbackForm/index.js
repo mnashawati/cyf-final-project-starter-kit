@@ -5,6 +5,7 @@ import "../FeedbackForm/styles.css";
 import uuid from "react-uuid";
 import PropTypes from "prop-types";
 import { AuthContext } from "../../authentication/Auth";
+import { Button } from "react-bootstrap";
 
 const FeedbackForm = ({ student, updateFeedback }) => {
 
@@ -20,7 +21,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	});
 	feedback.id = uuid();
 	feedback.time = Date.now();
-
 	feedback.mentor = (currentUser.displayName);
 	feedback.mentorEmail = (currentUser.email);
 
@@ -34,11 +34,8 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	const postFeedback = () => {
 		fetch(`/api/students/${student._id}`, options)
 			.then( (res) => res.json())
-			.then((data) => {
-				console.log(data);
-				updateFeedback();
-			})
-			.catch((error) => console.log(error));
+			.catch((error) => console.log(error))
+			.then(() => updateFeedback());
 	};
 
 	const handleSubmit = (e) => {
@@ -51,7 +48,6 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			return alert("Please add your feedback in the box");
 		}
 		postFeedback();
-		e.target.reset();
 		setFeedback({
 			id: "",
 			module: "",
@@ -60,6 +56,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			mentor: "",
 			mentorEmail: "",
 		});
+		updateFeedback();
 	};
 
 	// Re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
@@ -76,10 +73,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			>
 				<div className="add-feedback-heading-container">
 					<h3>Write Feedback</h3>
-					<input className="post-feedback-button-div"
-						type="submit" value="Submit" />
 				</div>
-
 				<div className="feedback-module-title-container">
 					<div className="add-title-container">
 						<h6 className="feedback-input-heading">Add a headline <b>*</b></h6>
@@ -89,7 +83,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 							value={feedback.title}
 							onChange={handleChange}
 							maxLength={45}
-							placeholder="">
+							placeholder="Add a headline">
 						</input>
 					</div>
 					<div className="add-module-container">
@@ -113,9 +107,15 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 						name="text"
 						value={feedback.text}
 						onChange={handleChange}
-						placeholder=""
+						placeholder="Write your feedback"
 					></textarea>
 				</div>
+
+				<Button variant="primary" value="Submit" onClick={handleSubmit}
+					className="feedback-form-submit-button" >
+					Submit
+				</Button>
+
 			</form>
 		</div>
 	);
