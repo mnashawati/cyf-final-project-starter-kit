@@ -11,9 +11,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
 			{...rest}
 			render={(routeProps) => currentUser ? (
 				<RouteComponent {...routeProps} />
-			)
-				: <h2>Loading................................</h2>
-				// : <Redirect to={"/"} />
+			): <div className="loading-component">Loading...</div>
 			}
 		/>
 	);

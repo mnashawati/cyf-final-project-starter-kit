@@ -11,9 +11,6 @@ export const AuthProvider = ({ children }) => {
 		app.auth().onAuthStateChanged(setCurrentUser);
 	}, []);
 
-	currentUser
-	&& console.log("user", currentUser.displayName);
-
 	return (
 		<AuthContext.Provider
 			value={{ currentUser }}
