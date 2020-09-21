@@ -8,6 +8,7 @@ import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
 const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
+  
   const [isEditing, setIsEditing] = useState(false);
   const [currentFeedback, setCurrentFeedback] = useState({});
   const { currentUser } = useContext(AuthContext);
@@ -70,28 +71,30 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             <input
               className="prev-feedback-title-input"
               name={"title"}
-              value={currentFeedback.title}
+              value={currentFeedback.title || ""}
               onChange={handleEdit}
               disabled={!isEditing}
             />
           </div>
           <div className="feedback-module">
-            <p className="feedback-input-heading">Module:</p>
             {!isEditing ? (
-              <p className="module-select-p">{currentFeedback.module}</p>
+              <p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
             ) : (
-              <select
-                className="module-select"
-                name={"module"}
-                value={currentFeedback.module}
-                onChange={handleEdit}
-              >
-                {modules.map((module, index) => (
-                  <option key={index} value={module.name}>
-                    {module.name}
-                  </option>
-                ))}
-              </select>
+              <>
+                <p className="feedback-input-heading">Module:</p>
+                <select
+                  className="module-select"
+                  name={"module"}
+                  value={currentFeedback.module || ""}
+                  onChange={handleEdit}
+                >
+                  {modules.map((module, index) => (
+                    <option key={index} value={module.name}>
+                      {module.name}
+                    </option>
+                  ))}
+                </select>
+              </>
             )}
           </div>
         </div>
@@ -99,7 +102,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
           <textarea
             className="feedback-text-textarea"
             name={"text"}
-            value={currentFeedback.text}
+            value={currentFeedback.text || ""}
             onChange={handleEdit}
             disabled={!isEditing}
           />
@@ -107,11 +110,10 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
         <div className="feedback-mentor-time-buttons">
           <div className="feedback-mentor-and-time">
             <div className="prev-feedback-mentor">
-              {/* <p className="feedback-mentor-heading-given-by">Given_by:</p> */}
               <input
                 className="prev-feedback-mentor-input"
                 name={"mentor"}
-                value={`Given by: ${currentFeedback.mentor}`}
+                value={`Given by: ${currentFeedback.mentor || ""}`}
                 onChange={handleEdit}
                 disabled
               />
