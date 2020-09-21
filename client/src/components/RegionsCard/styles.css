@@ -7,6 +7,10 @@
     margin: 15px;
 }
 
+.regions-card:hover {
+    text-decoration: none;   
+}
+
 .region-name {
     font-size: 1.5rem;
     color: black;
@@ -14,7 +18,7 @@
 }
 
 .region-image {
-    width: 240px;
+    width: 250px;
     height: 280px;
     margin: 20px;
     padding: 0;
@@ -23,4 +27,5 @@
 
 .region-image:hover {
     border: 6px solid red;
+    text-decoration: none;
 }

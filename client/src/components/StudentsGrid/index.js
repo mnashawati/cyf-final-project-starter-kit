@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StudentCard from "../StudentCard/index.js";
 import Pagination from "../Pagination/index.js";
-import "./styles.css";
 import Navbar from "../Navbar/index.js";
 import Footer from "../Footer/index";
 

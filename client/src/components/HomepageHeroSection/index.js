@@ -21,7 +21,6 @@ const HomepageHeroSection = () => {
 						</ul>
 					</div>
 					<div className="sign-in-section-container">
-						<h2>Please sign in to see students:</h2>
 						<Login />
 					</div>
 				</div>
