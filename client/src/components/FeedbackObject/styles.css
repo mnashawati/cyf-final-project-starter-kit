@@ -103,15 +103,14 @@ input{
     height: 4rem;
 }
 
-.edit-delete-buttons {
-    display: flex;
-    margin: 10px;
-    justify-content: flex-end;
+.cancel-sign-out-btn, 
+.confirm-sign-out-btn, 
+.edit-save-feedback-btn, 
+.cancel-edit-feedback-btn, 
+.delete-feedback-btn, 
+.cancel-delete-feedback-btn, 
+.confirm-delete-feedback-btn {
+    width: 78px;
+    margin: 4px;
 }
-
-.save-button {
-    background-color: rgb(1, 9, 241);
-    color: white;
-}
-
 
