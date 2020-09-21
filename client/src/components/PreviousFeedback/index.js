@@ -4,24 +4,14 @@ import FeedbackObject from "../FeedbackObject";
 import PropTypes from "prop-types";
 import "./styles.css";
 import Pagination from "../Pagination/index";
+import getFilteringData from "../../helperFunctions/getFilteringData";
 
 const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
 	const [currentPage, setCurrentPage] = useState(1);
-
 	const [feedbackPerPage] = useState(4);
-
-	function getFilteringData(array, field) {
-		const existingFieldNames = [];
-		array.forEach(
-			(fb) =>
-				!existingFieldNames.includes(fb[field])
-        && existingFieldNames.push(fb[field])
-		);
-		return existingFieldNames;
-	}
 
 	const filteredFeedback = [
 		...allFeedback.sort((a, b) => {
