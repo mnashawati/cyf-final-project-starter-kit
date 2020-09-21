@@ -15,8 +15,8 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
   return (
     <ul className="pagination">
       {pageNumbers.map((number) => (
-        <div className="page-numbers">
-          <li key={number} className="page-item">
+        <div key={number} className="page-numbers">
+          <li className="page-item">
             <a
               onClick={(e) => {
                 e.preventDefault(), setCurrentPage(number);
