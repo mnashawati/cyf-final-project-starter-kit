@@ -68,6 +68,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
         <div className="feedback-title-and-module">
           <div className="feedback-title">
             <input
+              className="prev-feedback-title-input"
               name={"title"}
               value={currentFeedback.title}
               onChange={handleEdit}
@@ -106,11 +107,11 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
         <div className="feedback-mentor-time-buttons">
           <div className="feedback-mentor-and-time">
             <div className="prev-feedback-mentor">
-              <p className="feedback-input-heading">Mentor:</p>
+              {/* <p className="feedback-mentor-heading-given-by">Given_by:</p> */}
               <input
                 className="prev-feedback-mentor-input"
                 name={"mentor"}
-                value={currentFeedback.mentor}
+                value={`Given by: ${currentFeedback.mentor}`}
                 onChange={handleEdit}
                 disabled
               />
@@ -122,32 +123,33 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
             </div>
           </div>
           <div>
-            { mentorsEmail === currentFeedback.mentorEmail ? (
-            <div className="edit-delete-buttons">
-              <Button
-                content={isEditing ? "Save" : "Edit"}
-                handleClick={() => {
-                  setIsEditing(!isEditing);
-                  isEditing && saveFeedback(currentFeedback.id);
-                }}
-              />
-              {isEditing ? (
-                <Button content="Cancel" handleClick={handleCancel} />
-              ) : null}
-              {!isEditing ? (
+            {mentorsEmail === currentFeedback.mentorEmail ? (
+              <div className="edit-delete-buttons">
                 <Button
-                  content="Delete"
+                  content={isEditing ? "Save" : "Edit"}
                   handleClick={() => {
-                    alert("DELETE");
-                    handleDelete(currentFeedback.id);
-                    updateFeedback();
+                    setIsEditing(!isEditing);
+                    isEditing && saveFeedback(currentFeedback.id);
                   }}
                 />
-              ) : null}
-              </div> ): null}
-            </div>
+                {isEditing ? (
+                  <Button content="Cancel" handleClick={handleCancel} />
+                ) : null}
+                {!isEditing ? (
+                  <Button
+                    content="Delete"
+                    handleClick={() => {
+                      alert("DELETE");
+                      handleDelete(currentFeedback.id);
+                      updateFeedback();
+                    }}
+                  />
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
+      </div>
     )
   );
 };
