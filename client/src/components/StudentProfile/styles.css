@@ -122,30 +122,12 @@
     display: flex;
 }
 
-/* @media (min-width:300px) and (max-width:757px) {
+@media (min-width:300px) and (max-width:757px) {
 
-    .student-profile-container {
-        flex-direction: column;
-        margin: 20px;
+    .student-highlights-feedback-section{
+        flex-wrap: wrap; 
     }
-
-    .full-profile-picture {
-        width: 150px;
-        height: 150px;
-        margin-top: -50px;
-    }
-
-    .student-profile-section-left {
-        margin-top: 65px;
+    .student-profile-container div.student-profile-container-left{
         margin-right: 0px;
     }
-    .student-profile-container-right {
-        margin-top: 10px;
-    }
-    .student-image-section {
-        margin-bottom: -50px;
-    }
 }
-
-@media (min-width:758px) and (max-width:1200px) {
-} */
