@@ -5,7 +5,7 @@ import Footer from "../Footer/index";
 
 const HomePage = () => {
 	return (
-		<div>
+		<div className="homepage-container">
 			<Navbar />
 			<HomepageHeroSection />
 			<Footer />

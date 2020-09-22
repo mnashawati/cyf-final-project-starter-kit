@@ -1,15 +1,21 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import modules from "../../db/modules.json";
 import PropTypes from "prop-types";
-import Button from "../Button/Button";
+import { Modal, Button } from "react-bootstrap";
 import timeDifference from "../../helperFunctions/timeDifference";
+import { AuthContext } from "../../authentication/Auth";
 
 const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 
 	const [isEditing, setIsEditing] = useState(false);
 	const [currentFeedback, setCurrentFeedback] = useState({});
+	const [showModal, setShowModal] = useState(false);
+
+	const { currentUser } = useContext(AuthContext);
+	const mentorsEmail = currentUser.email;
 
 	useEffect(() => {
 		setCurrentFeedback(feedbackToShow);
@@ -18,13 +24,12 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 	//POST updated feedback to DB
 	//When clicked SAVE; UPDATE the data
 	const updateData = (id) => {
-		fetch(`/api/students/${student._id}/feedback/${id}`,
-			{
-				method: "PUT",
-				headers: { "Content-type": "application/json" },
-				body: JSON.stringify(currentFeedback),
-			})
-			.then( (res) => res.json())
+		fetch(`/api/students/${student._id}/feedback/${id}`, {
+			method: "PUT",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(currentFeedback),
+		})
+			.then((res) => res.json())
 			.catch((error) => console.log(error));
 	};
 
@@ -42,13 +47,13 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 
 	//DELETE selected feedback and update data
 	const handleDelete = (feedbackId) => {
-		fetch(`/api/students/${student._id}/${feedbackId}`,
-			{
-				method: "DELETE",
-				headers: { "Content-type": "application/json" },
-			})
-			.then((res) => res.json())
-			.catch((error) => console.log(error));
+		fetch(`/api/students/${student._id}/${feedbackId}`, {
+			method: "DELETE",
+			headers: { "Content-type": "application/json" },
+		})
+			.then((res) => res.json()).then()
+			.catch((error) => console.log(error))
+			.then(() => updateFeedback());
 	};
 
 	// Populate new object with edited data editable
@@ -56,103 +61,124 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
 	};
 
-	return (
-		<div className="previous-feedback-list">
-			{Object.keys(currentFeedback).length && Object.keys(currentFeedback)
-				.map((property, index) => {
-					if (property === "module") {
-						return (
-							<div className="previous-feedback-module" key={index}>
-								<p className="feedback-input-head">Module:</p>
-								{!isEditing
-									? <p>{currentFeedback[property]}</p>
-									: <select
-										name={property}
-										value={currentFeedback[property]}
-										onChange={handleEdit}>
-										{modules.map((module, index) =>
-											<option key={index} value={module.name}>{module.name}</option>
-										)}
-									</select>}
-							</div>
-						);
-					}
-					if (property === "title") {
-						return (
-							<div className="previous-feedback-title" key={index}>
-								<p className="feedback-input-head">Title:</p>
-								<textarea
-									className="feedback-title-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled={!isEditing}
-								/>
-							</div>
-						);
-					}
-					if (property === "text") {
-						return (
-							<div className="previous-feedback-text" key={index}>
-								<p className="feedback-input-head">Feedback:</p>
-								<textarea
-									className="previous-feedback-text-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled={!isEditing}
-								/>
-							</div>
-						);
-					}
-					if (property === "mentor") {
-						return (
-							<div className="previous-feedback-mentor" key={index}>
-								<p className="feedback-input-head">Given by:</p>
-								<input
-									className="previous-feedback-mentor-input"
-									name={property}
-									value={currentFeedback[property]}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
-					}
-					if (property === "time") {
-						return (
-							<div className="previous-feedback-time" key={index}>
-								<input
-									className="previous-feedback-time-input"
-									name={property}
-									value={timeDifference(Date.now(), currentFeedback[property])}
-									onChange={handleEdit}
-									disabled
-								/>
-							</div>
-						);
-					}
-				})}
-			<div className="edit-delete-buttons">
-				<Button
-					content={isEditing ? "Save" : "Edit"}
-					handleClick={() => {
-						setIsEditing(!isEditing);
-						isEditing && saveFeedback(currentFeedback.id);
-					}}
-				/>
-				<div>
-					<Button
-						content="Delete"
-						handleClick={() => {
-							alert("DELETE");
-							handleDelete(currentFeedback.id);
-							updateFeedback();
-						}}
-					/>
+  const handleCancel = () => {
+		setCurrentFeedback(feedbackToShow);
+		setIsEditing(!isEditing);
+	};
+
+  return (
+    currentFeedback && (
+      <div className="prev-feedback-list">
+        <div className="feedback-title-and-module">
+          <div className="feedback-title">
+            <input
+              className="prev-feedback-title-input"
+              name={"title"}
+              value={currentFeedback.title || ""}
+              onChange={handleEdit}
+              disabled={!isEditing}
+            />
+          </div>
+          <div className="feedback-module">
+            {!isEditing ? (
+              <p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
+            ) : (
+              <>
+                <p className="feedback-input-heading">Module:</p>
+                <select
+                  className="module-select"
+                  name={"module"}
+                  value={currentFeedback.module || ""}
+                  onChange={handleEdit}
+                >
+                  {modules.map((module, index) => (
+                    <option key={index} value={module.name}>
+                      {module.name}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+          </div>
+        </div>
+        <div className="previous-feedback-text">
+          <textarea
+            className="feedback-text-textarea"
+            name={"text"}
+            value={currentFeedback.text || ""}
+            onChange={handleEdit}
+            disabled={!isEditing}
+          />
+        </div>
+        <div className="feedback-mentor-time-buttons">
+          <div className="feedback-mentor-and-time">
+            <div className="prev-feedback-mentor">
+              <input
+                className="prev-feedback-mentor-input"
+                name={"mentor"}
+                value={`Given by: ${currentFeedback.mentor || ""}`}
+                onChange={handleEdit}
+                disabled
+              />
+            </div>
+            <div className="prev-feedback-time">
+              <p className="prev-feedback-time-input">
+                {timeDifference(Date.now(), currentFeedback.time)}
+              </p>
+            </div>
+          </div>
+          	<div>
+						{ mentorsEmail === currentFeedback.mentorEmail ? (
+							<div className="edit-delete-buttons">
+								<Button
+									variant="success"
+									onClick={() => {
+										setIsEditing(!isEditing);
+										isEditing && saveFeedback(currentFeedback.id);
+									}}
+									className="edit-save-feedback-btn">
+									{!isEditing ? "Edit" : "Save"}</Button>
+
+								{isEditing ? (
+									<Button variant="secondary" onClick={handleCancel}
+										className="cancel-edit-feedback-btn">Cancel</Button>
+								) : (
+									<>
+										<Button variant="danger" onClick={()=>{
+											setShowModal(true);
+										}}
+										className="delete-feedback-btn">
+				              Delete
+										</Button>
+										<Modal show={showModal} onHide={()=>{
+											setShowModal(false);
+										}}>
+											<Modal.Header closeButton>
+												<Modal.Title>Delete feedback?</Modal.Title>
+											</Modal.Header>
+											<Modal.Footer>
+												<Button variant="secondary" onClick={()=>{
+													setShowModal(false);
+												}}
+												className="cancel-delete-feedback-btn">
+						              Cancel
+												</Button>
+												<Button variant="danger" onClick={() => {
+													handleDelete(currentFeedback.id);
+													setShowModal(false);
+												}}
+												className="confirm-delete-feedback-btn">
+						              Delete
+												</Button>
+											</Modal.Footer>
+										</Modal>
+									</>
+								)}
+							</div> ) : null}
+					</div>
 				</div>
 			</div>
-		</div>
+		)
 	);
 };
 

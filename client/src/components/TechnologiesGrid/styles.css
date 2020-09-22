@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 20px;
+    margin: 40px auto;
 }
 
 .html-card, .css-card, .js-card, .react-card, .nodejs-card, .mongo-card {

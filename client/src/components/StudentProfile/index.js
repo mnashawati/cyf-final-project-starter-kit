@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import Navbar from "../Navbar/index.js";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Highlights from "../Highlights/index.js";
 import AllFeedback from "../AllFeedback/index.js";
 import Footer from "../Footer/index";

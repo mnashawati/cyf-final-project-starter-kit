@@ -1,0 +1,31 @@
+.filtered-feedback-counter-div{
+display: flex;
+justify-content: flex-end;
+}
+
+.filtered-feedback-counter{
+    text-align: right;
+    margin: 2px 0 0 5px;    
+    font-weight: bolder;
+    font-size: large;
+}
+
+.filtered-feedback-counter-text{
+    margin: 3px 3px 0 5px;
+}
+
+.previous-feedback-title-and-counter{
+    display: flex;
+    justify-content: space-between;
+}
+
+.no-feedback-found-warning{
+    border: none;
+    display: block;
+    width: 100%;
+    background-color: black;
+    border-radius: 3px;
+    color: white;
+    font-weight:bolder;
+    padding: 5px;
+}

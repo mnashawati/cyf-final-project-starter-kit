@@ -2,27 +2,26 @@ import React from "react";
 import "./styles.css";
 import img from "./05.jpg";
 import TechnologiesGrid from "../TechnologiesGrid";
-import Login from "../../authentication/Login";
+import SignIn from "../../authentication/SignIn";
 
 const HomepageHeroSection = () => {
 	return (
 		<div className="container">
-			<div className="hero-section row">
-				<div className="cover-image-div col-12 lg-col-6">
+			<div className="row">
+				<div className="cover-image-container">
 					<img className="cover-image" src={img} alt="students-and-mentor-cover" />
 				</div>
-				<div className="home-page-right-section col-12 lg-col-6">
-					<div className="app-info">
-						<h3>Introducing Feedback Tracker</h3>
-						<ul>
-							<li>Access students information</li>
-							<li>Provide students feedback</li>
-							<li>Check students progress</li>
-						</ul>
-					</div>
-					<div className="sign-in-section-container">
-						<h2>Please sign in to see students:</h2>
-						<Login />
+				<div className="app-info-sign-in-container">
+					<div className="app-info-sign-in">
+						<div className="app-info">
+							<h4>Feedback Tracker</h4>
+							<ul>
+								<li>Access students information</li>
+								<li>Provide students feedback</li>
+								<li>Check students progress</li>
+							</ul>
+						</div>
+						<SignIn />
 					</div>
 				</div>
 			</div>

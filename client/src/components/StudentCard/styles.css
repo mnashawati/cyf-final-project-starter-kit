@@ -1,0 +1,46 @@
+.student-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    height: 320px;
+    margin: 20px;
+    padding: 0;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    background-color: #f0eeee;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.student-card-wrapper:hover {
+    text-decoration: none;
+    color: black;
+    transform: scale(1.02);
+    border: 1px solid gray;
+}
+
+.profile-picture {
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.student-card-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 24px 0;
+    padding: 0;
+}
+
+.student-card-details > p {
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+.student-card-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
