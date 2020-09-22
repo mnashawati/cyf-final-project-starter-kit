@@ -67,7 +67,7 @@ const Highlights = ({ student }) => {
 					<div className="highlights-section-red">
 						{highlights.toWorkOn.map((item, index) => (
 							<div key={index}>
-								<button className="btn-danger highlights-button">
+								<button className="btn-danger highlights-button to-work-on-btn">
 									{item.message}
 									<span
 										className="x-button"
@@ -89,7 +89,7 @@ const Highlights = ({ student }) => {
 					<div className="highlights-section-yellow">
 						{highlights.okayAt.map((item, index) => (
 							<div key={index}>
-								<button className="btn-warning highlights-button">
+								<button className="btn-warning highlights-button okay-at-btn">
 									{item.message}
 									<span
 										className="x-button"
@@ -112,7 +112,7 @@ const Highlights = ({ student }) => {
 						{highlights.goodAt.map((item, index) => (
 							<div key={index}>
 								<button
-									className="btn-success highlights-button"
+									className="btn-success highlights-button good-at-btn"
 									key={index}
 								>
 									{item.message}

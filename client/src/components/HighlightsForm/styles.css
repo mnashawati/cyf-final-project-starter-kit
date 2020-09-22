@@ -161,6 +161,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 10px;
+  margin-top: 25px;
+  margin-bottom: 0;
 }
 
 .highlights-form-input {

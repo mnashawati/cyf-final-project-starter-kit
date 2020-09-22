@@ -130,4 +130,24 @@
             justify-content: center;
   }
 }
+
+.highlights-button:hover {
+  cursor: auto !important;
+}
+
+.to-work-on-btn:hover {
+  background-color: #dc3545;
+}
+
+.okay-at-btn:hover {
+  background-color: #ffc107;
+}
+
+.good-at-btn:hover {
+  background-color: #28a745;
+}
+
+.x-button:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=styles.css.map */
