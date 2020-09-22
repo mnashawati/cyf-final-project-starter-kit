@@ -1,7 +1,10 @@
+.highlights-section {
+  background-color: #f6f6f6;
+}
+
 .highlights-title {
-  font-weight: bold;
   margin-bottom: 10px;
-  font-size: 20px;
+  margin-top: 12px;
 }
 
 .highlights-subtitles {
@@ -50,10 +53,19 @@
 }
 
 .highlights-button {
+  min-width: 135px;
+  max-width: 135px;
+  border: none;
+  margin: 4px 2px;
+  font-size: 14px;
+  height: 29px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.add-highlights-button {
   min-width: 140px;
   max-width: 140px;
   border: none;
-  margin: 8px 5px;
   font-size: 14px;
   height: 29px;
   border-radius: 5px 5px 5px 5px;
@@ -102,12 +114,17 @@
 }
 
 .add-area-button-section {
+  border-bottom: 1px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.highlights-wrapper {
+  margin: 12px;
 }
 
 @media (min-width: 300px) and (max-width: 757px) {

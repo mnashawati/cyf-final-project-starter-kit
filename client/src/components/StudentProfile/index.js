@@ -47,7 +47,7 @@ const StudentProfile = () => {
 							alt="Student-profile"
 						/>
 					</div>
-					<div className="student-info-section">
+					<div className="email-github-section">
 						<div className="student-name-city">
 							<p className="student-profile-name">
 								{student.name}
@@ -56,32 +56,32 @@ const StudentProfile = () => {
 								{student.city}
 							</p> */}
 						</div>
-						{/* <div className="email-github-section"> */}
-						<div className="email-icon-section">
-							<span>
-								<img
-									src="https://img.icons8.com/material-rounded/24/000000/important-mail.png"
-									alt="email-icon"
-								/>
-							</span>
-							<span className="student-profile-email">
-								{" "}
-								{student.email}
-							</span>
+						<div>
+							<div className="github-icon-section">
+								<span>
+									<img
+										src="https://img.icons8.com/material-outlined/24/000000/github.png"
+										alt="github-icon"
+									/>
+								</span>
+								<span className="student-profile-github">
+									{student.gitHub_username}
+								</span>
+							</div>
+							<div className="email-icon-section">
+								<span>
+									<img
+										src="https://img.icons8.com/material-rounded/24/000000/important-mail.png"
+										alt="email-icon"
+									/>
+								</span>
+								<span className="student-profile-email">
+									{student.email}
+								</span>
+							</div>
 						</div>
-						<div className="github-icon-section">
-							<span>
-								<img
-									src="https://img.icons8.com/material-outlined/24/000000/github.png"
-									alt="github-icon"
-								/>
-							</span>
-							<span className="student-profile-github">
-								{student.gitHub_username}
-							</span>
-						</div>
-						{/* </div> */}
 					</div>
+					<div className="student-info-section"></div>
 				</div>
 				<div className="student-highlights-feedback-section">
 					<div className="student-profile-container-left">

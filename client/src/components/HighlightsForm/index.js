@@ -28,21 +28,26 @@ const HighlightsForm = ({ addHighlight }) => {
 			<form
 				onSubmit={handleSubmit}
 				className="add-highlights-form"
-				id="add-area-of-focus"
+				id="add-are-focus"
 			>
-				<div className="area-input-section">
-					<h6 className="feedback-input-heading">
-            Type a topic to highlight:
-					</h6>
-					<input
-						className="feedback-title-input"
-						type="text"
-						name="message"
-						maxLength={15}
-						onChange={handleChange}
-					/>
-				</div>
 				<div className="lights-text-section">
+					<div>
+						<div className="area-input-section">
+							<h6 className="feedback-input-heading">
+                Type a topic to highlight:
+							</h6>
+							<input
+								className="highlights-form-input"
+								type="text"
+								name="message"
+								maxLength={12}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="add-area-button-section">
+							<p className="area-display">{area.level}</p>
+						</div>
+					</div>
 					<div className="lights-section">
 						<label
 							className="radio-circle-section-red"
@@ -108,14 +113,13 @@ const HighlightsForm = ({ addHighlight }) => {
 							></span>
 						</label>
 					</div>
-					<div className="add-area-button-section">
-						<p className="area-display">{area.level}</p>
-					</div>
 				</div>
-				<div className="">
-					<button className="btn-primary add-button">
-            Add
-					</button>
+				<div className="highlights-add-display-section">
+					<div className="">
+						<button className="btn-primary add-button">
+              Add
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>
