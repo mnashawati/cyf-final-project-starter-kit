@@ -55,13 +55,13 @@ $circleBorder: 1.5px solid black;
 }
 
 .radio-circle-section {
-    @include highlights-form-radio-circle-section()
+    @include highlights-form-radio-circle-section();
+    input {
+        display: none;
+    }
 }
 /* circle red */
 
-.radio-circle-section input {
-    display: none;
-}
 
 .radio-circle-section .circle-red {
     @include trafficLightCircles($redColor)
@@ -73,11 +73,6 @@ $circleBorder: 1.5px solid black;
 
 /* circle yellow  */
 
-
-.radio-circle-section input {
-    display: none;
-}
-
 .radio-circle-section .circle-yellow {
     @include trafficLightCircles($amberColor)
 }
@@ -87,19 +82,6 @@ $circleBorder: 1.5px solid black;
 }
 
 /* circle green */
-.radio-circle-section {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-size: 22px;
-    user-select: none;
-    margin: auto;
-}
-
-.radio-circle-section input {
-    display: none;
-}
 
 .radio-circle-section .circle-green {
    @include trafficLightCircles($greenColor)
@@ -133,16 +115,6 @@ $circleBorder: 1.5px solid black;
     padding: 5px;
     margin-bottom: 15px;
     border-bottom: 1px solid black;
-}
-
-.add-area-button {
-    padding: auto;
-    color: white;
-    border: none;
-    background-color: rgb(223, 54, 54);
-    padding: 5px;
-    margin-bottom: 15px;
-    border-radius: 5px;
 }
 
 .highlights-display {
