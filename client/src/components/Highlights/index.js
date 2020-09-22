@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 import HighlightsForm from "../HighlightsForm/index.js";
@@ -58,74 +57,80 @@ const Highlights = ({ student }) => {
 		});
 	};
 	return highlights ? (
-		<div>
-			<h3 className="highlights-title">Highlights:</h3>
-			<div>
-				<h6 className="highlights-subtitles">
-          Need to work on...
-				</h6>
-				<div className="highlights-section-red">
-					{highlights.toWorkOn.map((item, index) => (
-						<div key={index}>
-							<button className="btn-danger highlights-button">
-								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeHighlight(item.id, "toWorkOn")
-									}
-								>
-                  X
-								</span>
-							</button>
-						</div>
-					))}
-				</div>
-			</div>
-			<div className="okay-at-section">
-				<h6 className="highlights-subtitles">Okay at...</h6>
-				<div className="highlights-section-yellow">
-					{highlights.okayAt.map((item, index) => (
-						<div key={index}>
-							<button className="btn-warning highlights-button">
-								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeHighlight(item.id, "okayAt")
-									}
-								>
-                  X
-								</span>
-							</button>
-						</div>
-					))}
-				</div>
-			</div>
-			<div className="good-at-section">
-				<h6 className="highlights-subtitles">Good at...</h6>
-				<div className="highlights-section-green">
-					{highlights.goodAt.map((item, index) => (
-						<div key={index}>
-							<button
-								className="btn-success highlights-button"
-								key={index}
-							>
-								{item.message}
-								<span
-									className="x-button"
-									onClick={() =>
-										removeHighlight(item.id, "goodAt")
-									}
-								>
-                  X
-								</span>
-							</button>
-						</div>
-					))}
-				</div>
-			</div>
+		<div className="highlights-section">
+			<h3 className="highlights-title">Highlights</h3>
 			<HighlightsForm addHighlight={addHighlight} />
+			<div className="highlights-wrapper">
+				<div>
+					<h6 className="highlights-subtitles">
+            Need to work on...
+					</h6>
+					<div className="highlights-section-red">
+						{highlights.toWorkOn.map((item, index) => (
+							<div key={index}>
+								<button className="btn-danger highlights-button">
+									{item.message}
+									<span
+										className="x-button"
+										onClick={() =>
+											removeHighlight(item.id, "toWorkOn")
+										}
+									>
+                    X
+									</span>
+								</button>
+							</div>
+						))}
+					</div>
+				</div>
+				<div className="okay-at-section">
+					<h6 className="highlights-subtitles">
+            Okay at...
+					</h6>
+					<div className="highlights-section-yellow">
+						{highlights.okayAt.map((item, index) => (
+							<div key={index}>
+								<button className="btn-warning highlights-button">
+									{item.message}
+									<span
+										className="x-button"
+										onClick={() =>
+											removeHighlight(item.id, "okayAt")
+										}
+									>
+                    X
+									</span>
+								</button>
+							</div>
+						))}
+					</div>
+				</div>
+				<div className="good-at-section">
+					<h6 className="highlights-subtitles">
+            Good at...
+					</h6>
+					<div className="highlights-section-green">
+						{highlights.goodAt.map((item, index) => (
+							<div key={index}>
+								<button
+									className="btn-success highlights-button"
+									key={index}
+								>
+									{item.message}
+									<span
+										className="x-button"
+										onClick={() =>
+											removeHighlight(item.id, "goodAt")
+										}
+									>
+                    X
+									</span>
+								</button>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
 		</div>
 	) : null;
 };

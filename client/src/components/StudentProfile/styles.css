@@ -1,56 +1,80 @@
 .student-profile-container {
-    min-height: calc(100vh - 100px);
-    display: flex;
+    /* min-height: calc(100vh - 100px); */
+    /* display: flex; */
     max-width: 960px;
-    margin: 50px auto;
+    /* margin: 50px auto; */
+    margin: 0 auto;
 }
 
-.students-route-link{
+.student-hero-section {
+    display: flex;
+    background-color: #f6f6f6;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    /* justify-content: flex-end; */
+}
+
+.student-highlights-feedback-section {
+    display: flex;
+}
+
+.student-profile-container div.student-profile-container-left {
+    /* background-color: hsl(0, 0%, 96%); */
+    /* margin-right: 20px; */
+    /* margin-top: 20px; */
+    flex: 1;
+}
+
+.student-profile-container div.student-profile-container-right {
+    flex: 2;
+}
+
+.students-route-link {
     /* align-self: flex-start; */
-    position: sticky;
+    /* position: sticky; */
     top: 5px;
 }
 
-.back-to-students{
+.back-to-students {
     margin: 5px 20px;
     color: rgb(58, 57, 57);
 }
 
-.student-profile-section-left {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+.student-profile-container-left {
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* flex-direction: column; */
     /* border: 0.5px solid grey; */
-    flex: 1;
-    height: 65vh;
-    margin-right: 15px;
-    top: 5px;
-    position: sticky;
-    padding: 5px;
+    /* flex: 1; */
+    /* height: 65vh; */
+    /* margin-right: 15px; */
+    /* top: 5px; */
+    /* position: sticky; */
+    /* padding: 5px; */
 }
 
 .full-profile-picture {
-    width: 250px;
-    height: 250px;
-    border: 2px solid grey;
+    width: 125px;
+    height: 125px;
+    border: 1px solid grey;
     border-radius: 50%;
 }
 
-.student-profile-container-right {
-    flex: 2;
-}
-
 .student-image-section {
-    flex: 1;
+    /* flex: 1; */
+    text-align: center;
 }
 
 .student-info-section {
-    flex: 2;
+    /* margin-bottom: 20px; */
+    display: flex;
 }
 
-.area-of-focus-section {
+.student-name-cit {}
+
+/* .area-of-focus-section {
     height: 65vh;
-}
+} */
 
 .area-of-focus-title {
     font-size: 36px;
@@ -86,39 +110,46 @@
 }
 
 .student-profile-name {
-    font-size: 40px;
-    font-weight:700;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .student-profile-city {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
+    margin-bottom: 5px;
 }
+
 .student-profile-github {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
     margin-left: 5px;
 }
 
 .student-profile-email {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
     margin-left: 5px;
 }
 
-.email-github-section {
+/* .email-github-section {
     margin-top: 20px;
+} */
+
+.email-icon-section {
+    display: flex;
+    /* padding-top: 91px;
+    padding-left: 20px; */
 }
 
-.email-icon-section{
-    display:flex;
+.github-icon-section {
+    display: flex;
+    /* padding-top: 91px;
+    padding-left: 20px; */
 }
 
-.github-icon-section{
-    display:flex;
-}
-
-@media (min-width:300px) and (max-width:757px) {
+/* @media (min-width:300px) and (max-width:757px) {
 
     .student-profile-container {
         flex-direction: column;
@@ -144,11 +175,4 @@
 }
 
 @media (min-width:758px) and (max-width:1200px) {
-
-    .student-profile-section-left {
-   
-        position: sticky;
-
-    }
-
-}
+} */

@@ -17,9 +17,8 @@ $greenBorder: #28a745;
 }
 
 .highlights-title {
-    font-weight: bold;
     margin-bottom: 10px;
-    font-size: 20px;
+    margin-top: 12px
 }
 
 .highlights-subtitles {
@@ -45,6 +44,15 @@ $greenBorder: #28a745;
     max-width: 140px;
     border: none;
     margin: 8px 5px;
+    font-size: 14px;
+    height: 29px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.add-highlights-button {
+    min-width: 140px;
+    max-width: 140px;
+    border: none;
     font-size: 14px;
     height: 29px;
     border-radius: 5px 5px 5px 5px;
@@ -90,10 +98,20 @@ $greenBorder: #28a745;
 }
 
 .add-area-button-section {
+    border-bottom: 1px solid black;
     display: flex;
     flex: 1;
 }
 
+.highlights-section {
+    // background-color: #f6f6f6;
+    border: 1px solid gray;
+    margin-right: 15px;
+}
+
+.highlights-wrapper {
+    margin: 12px;
+}
 
 @media (min-width:300px) and (max-width:757px) {
 

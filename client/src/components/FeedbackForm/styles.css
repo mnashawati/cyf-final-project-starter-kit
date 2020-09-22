@@ -1,14 +1,16 @@
-.feedback-form-container, .previous-feedback-section-container {
+.feedback-form-container,
+.previous-feedback-section-container {
     border: 1px solid black;
-    margin: 20px auto;
+    margin: auto;
     padding: 20px auto;
 }
 
-.feedback-form, .previous-feedback-section {
+.feedback-form,
+.previous-feedback-section {
     margin: 12px;
 }
 
-.previous-feedback-section > h3 {
+.previous-feedback-section>h3 {
     margin: 10px 0 10px -10px;
 }
 
@@ -28,7 +30,7 @@
     height: 30px;
 }
 
-.post-feedback-button-div:hover{
+.post-feedback-button-div:hover {
     cursor: pointer;
     opacity: 0.5;
 }
@@ -49,8 +51,10 @@
     justify-content: space-between;
 }
 
-.select-module, .select-mentor,
+.select-module,
+.select-mentor,
 .feedback-title-input {
+    background-color: hsl(0, 0%, 96%);
     height: 30px;
 }
 
@@ -59,8 +63,9 @@
     height: 70px;
 }
 
-.select-module, .select-mentor,
-.feedback-title-input, 
+.select-module,
+.select-mentor,
+.feedback-title-input,
 .feedback-message-input,
 .post-feedback-button-div {
     padding: 5px;
@@ -68,7 +73,8 @@
     border-radius: 5px;
 }
 
-.select-module, .select-mentor {
+.select-module,
+.select-mentor {
     width: 200px;
 }
 
@@ -77,11 +83,12 @@
     justify-content: space-between;
 }
 
-.feedback-pages-section, .feedback-object-section {
+.feedback-pages-section,
+.feedback-object-section {
     overflow-y: auto;
-} 
+}
 
-.no-feedback-found-warning{
+.no-feedback-found-warning {
     display: flex;
     color: red;
     margin: 20px auto;
