@@ -123,13 +123,13 @@
 .highlights-form-add-button {
   padding: 5px;
   margin-bottom: 15px;
-  max-width: 180px;
-  min-width: 180px;
+  width: 180px;
   border: none;
   margin: 8px 0px;
-  font-size: 14px;
-  border-radius: 5px 5px 5px 5px;
-  height: 29px;
+  border-radius: 5px;
+  height: 34px;
+  margin: 4px;
+  font-size: 15px;
 }
 
 .highlights-form-description-display {

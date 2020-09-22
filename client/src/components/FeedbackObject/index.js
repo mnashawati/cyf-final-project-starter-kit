@@ -61,72 +61,72 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
 	};
 
-  const handleCancel = () => {
+	const handleCancel = () => {
 		setCurrentFeedback(feedbackToShow);
 		setIsEditing(!isEditing);
 	};
 
-  return (
-    currentFeedback && (
-      <div className="prev-feedback-list">
-        <div className="feedback-title-and-module">
-          <div className="feedback-title">
-            <input
-              className="prev-feedback-title-input"
-              name={"title"}
-              value={currentFeedback.title || ""}
-              onChange={handleEdit}
-              disabled={!isEditing}
-            />
-          </div>
-          <div className="feedback-module">
-            {!isEditing ? (
-              <p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
-            ) : (
-              <>
-                <p className="feedback-input-heading">Module:</p>
-                <select
-                  className="module-select"
-                  name={"module"}
-                  value={currentFeedback.module || ""}
-                  onChange={handleEdit}
-                >
-                  {modules.map((module, index) => (
-                    <option key={index} value={module.name}>
-                      {module.name}
-                    </option>
-                  ))}
-                </select>
-              </>
-            )}
-          </div>
-        </div>
-        <div className="previous-feedback-text">
-          <textarea
-            className="feedback-text-textarea"
-            name={"text"}
-            value={currentFeedback.text || ""}
-            onChange={handleEdit}
-            disabled={!isEditing}
-          />
-        </div>
-        <div className="feedback-mentor-time-buttons">
-          <div className="feedback-mentor-and-time">
-            <div className="prev-feedback-mentor">
-              <input
-                className="prev-feedback-mentor-input"
-                name={"mentor"}
-                value={`Given by: ${currentFeedback.mentor || ""}`}
-                onChange={handleEdit}
-                disabled
-              />
-            </div>
-            <div className="prev-feedback-time">
-              <p className="prev-feedback-time-input">
-                {timeDifference(Date.now(), currentFeedback.time)}
-              </p>
-            </div>
-          </div>
+	return (
+		currentFeedback && (
+			<div className="prev-feedback-list">
+				<div className="feedback-title-and-module">
+					<div className="feedback-title">
+						<input
+							className="prev-feedback-title-input"
+							name={"title"}
+							value={currentFeedback.title || ""}
+							onChange={handleEdit}
+							disabled={!isEditing}
+						/>
+					</div>
+					<div className="feedback-module">
+						{!isEditing ? (
+							<p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
+						) : (
+							<>
+								<p className="feedback-input-heading">Module:</p>
+								<select
+									className="module-select"
+									name={"module"}
+									value={currentFeedback.module || ""}
+									onChange={handleEdit}
+								>
+									{modules.map((module, index) => (
+										<option key={index} value={module.name}>
+											{module.name}
+										</option>
+									))}
+								</select>
+							</>
+						)}
+					</div>
+				</div>
+				<div className="previous-feedback-text">
+					<textarea
+						className="feedback-text-textarea"
+						name={"text"}
+						value={currentFeedback.text || ""}
+						onChange={handleEdit}
+						disabled={!isEditing}
+					/>
+				</div>
+				<div className="feedback-mentor-time-buttons">
+					<div className="feedback-mentor-and-time">
+						<div className="prev-feedback-mentor">
+							<input
+								className="prev-feedback-mentor-input"
+								name={"mentor"}
+								value={`Given by: ${currentFeedback.mentor || ""}`}
+								onChange={handleEdit}
+								disabled
+							/>
+						</div>
+						<div className="prev-feedback-time">
+							<p className="prev-feedback-time-input">
+								{timeDifference(Date.now(), currentFeedback.time)}
+							</p>
+						</div>
+					</div>
           	<div>
 						{ mentorsEmail === currentFeedback.mentorEmail ? (
 							<div className="edit-delete-buttons">
@@ -137,10 +137,10 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 										isEditing && saveFeedback(currentFeedback.id);
 									}}
 									className="edit-save-feedback-btn">
-									{!isEditing ? "Edit" : "Save"}</Button>
+									{!isEditing ? "Edit" : "Update"}</Button>
 
 								{isEditing ? (
-									<Button variant="secondary" onClick={handleCancel}
+									<Button variant="outline-danger" onClick={handleCancel}
 										className="cancel-edit-feedback-btn">Cancel</Button>
 								) : (
 									<>
@@ -148,7 +148,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 											setShowModal(true);
 										}}
 										className="delete-feedback-btn">
-				              Delete
+				              			Delete
 										</Button>
 										<Modal show={showModal} onHide={()=>{
 											setShowModal(false);
@@ -161,14 +161,14 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 													setShowModal(false);
 												}}
 												className="cancel-delete-feedback-btn">
-						              Cancel
+						              			Cancel
 												</Button>
 												<Button variant="danger" onClick={() => {
 													handleDelete(currentFeedback.id);
 													setShowModal(false);
 												}}
 												className="confirm-delete-feedback-btn">
-						              Delete
+						              			Delete
 												</Button>
 											</Modal.Footer>
 										</Modal>

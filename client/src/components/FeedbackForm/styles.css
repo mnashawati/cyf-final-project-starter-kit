@@ -7,6 +7,10 @@
     background-color: #f6f6f6;
 }
 
+.feedback-form-container {
+    margin-bottom: 15px;
+}
+
 .feedback-form,
 .previous-feedback-section {
     margin: 12px;
@@ -25,13 +29,9 @@
     flex-direction: column;
 }
 
-.previous-feedback-section > h3 {
-    margin: 10px 0 10px -10px;
-}
-
 .add-feedback-heading-container {
     font-weight: bold;
-    margin: 10px 0 10px -10px;
+    margin: -10px 0 10px -10px;
     display: flex;
     justify-content: space-between;
 }
@@ -69,15 +69,16 @@
 
 .select-module,
 .select-mentor,
-.feedback-title-input {
-    background-color: hsl(0, 0%, 96%);
+.feedback-title-input,
+.highlights-form-input {
+    background-color: white;
     height: 30px;
-    /* margin: 10px auto; */
+    margin-bottom: 15px;
 }
 
 .feedback-message-input {
     width: 100%;
-    height: 70px;
+    height: 68px;
 }
 
 .select-module,
@@ -104,9 +105,14 @@
 .feedback-object-section {
     overflow-y: auto;
 }
-s
+
 .feedback-form-submit-button {
     align-self: flex-end;
+    height: 34px;
+    width: 200px;
+    margin-left: auto;
+    padding-bottom: 5px;
+    font-size: 15px;
 }
 
 .no-feedback-found-warning {
@@ -119,4 +125,8 @@ s
 .feedback-wrapper {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+h6 {
+    margin-bottom: 0;
 }

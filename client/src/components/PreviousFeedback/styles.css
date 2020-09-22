@@ -14,7 +14,9 @@ justify-content: flex-end;
     margin: 3px 3px 0 5px;
 }
 
-.previous-feedback-title-and-counter{
+.previous-feedback-title-and-container {
+    font-weight: bold;
+    margin: -10px 0 10px -10px;
     display: flex;
     justify-content: space-between;
 }
