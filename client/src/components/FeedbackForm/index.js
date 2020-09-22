@@ -72,7 +72,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 				onSubmit={handleSubmit}
 			>
 				<div className="add-feedback-heading-container">
-					<h3>Write Feedback</h3>
+					<h3 className="write-feedback-title">Write Feedback</h3>
 				</div>
 				<div className="feedback-module-title-container">
 					<div className="add-title-container">
@@ -83,7 +83,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 							value={feedback.title}
 							onChange={handleChange}
 							maxLength={45}
-							placeholder="Add a headline">
+							placeholder="">
 						</input>
 					</div>
 					<div className="add-module-container">
@@ -101,7 +101,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 				</div>
 
 				<div>
-					<h6 className="feedback-input-heading">Write your feedback <b>*</b></h6>
+					{/* <h6 className="feedback-input-heading">Write your feedback <b>*</b></h6> */}
 					<textarea
 						className="feedback-message-input"
 						name="text"

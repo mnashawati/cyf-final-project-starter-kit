@@ -1,13 +1,24 @@
-.feedback-form-container, .previous-feedback-section-container {
-    border: 1px solid black;
-    margin: 20px auto;
+.feedback-form-container,
+.previous-feedback-section-container {
+    border: 1px solid grey;
+    margin: auto;
     padding: 20px auto;
+    border-radius:2px;
+    background-color: #f6f6f6;
+}
+
+.feedback-form-container {
+    margin-bottom: 15px;
+}
+
+.feedback-form,
+.previous-feedback-section {
+    margin: 12px;
 }
 
 .previous-feedback-section-container {
     background-color: #F6F6F6;
 }
-
 
 .feedback-form, .previous-feedback-section {
     margin: 12px;
@@ -18,15 +29,25 @@
     flex-direction: column;
 }
 
-.previous-feedback-section > h3 {
-    margin: 10px 0 10px -10px;
-}
-
 .add-feedback-heading-container {
     font-weight: bold;
-    margin: 10px 0 10px -10px;
+    margin: -10px 0 10px -10px;
     display: flex;
     justify-content: space-between;
+}
+
+.post-feedback-button-div {
+    padding: auto;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #ed4343;
+    height: 30px;
+}
+
+.post-feedback-button-div:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .feedback-input-heading {
@@ -46,19 +67,23 @@
     justify-content: space-between;
 }
 
-.select-module, .select-mentor,
-.feedback-title-input {
+.select-module,
+.select-mentor,
+.feedback-title-input,
+.highlights-form-input {
+    background-color: white;
     height: 30px;
-    /* margin: 10px auto; */
+    margin-bottom: 15px;
 }
 
 .feedback-message-input {
     width: 100%;
-    height: 70px;
+    height: 68px;
 }
 
-.select-module, .select-mentor,
-.feedback-title-input, 
+.select-module,
+.select-mentor,
+.feedback-title-input,
 .feedback-message-input,
 .post-feedback-button-div {
     padding: 5px;
@@ -66,7 +91,8 @@
     border-radius: 5px;
 }
 
-.select-module, .select-mentor {
+.select-module,
+.select-mentor {
     width: 200px;
 }
 
@@ -75,13 +101,32 @@
     justify-content: space-between;
 }
 
-.feedback-form-submit-button {
-    align-self: flex-end;
+.feedback-pages-section,
+.feedback-object-section {
+    overflow-y: auto;
 }
 
-.no-feedback-found-warning{
+.feedback-form-submit-button {
+    align-self: flex-end;
+    height: 34px;
+    width: 200px;
+    margin-left: auto;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.no-feedback-found-warning {
     display: flex;
     color: red;
     margin: 20px auto;
     text-align: center;
+}
+
+.feedback-wrapper {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+h6 {
+    margin-bottom: 0;
 }

@@ -1,55 +1,53 @@
 .student-profile-container {
-    min-height: calc(100vh - 100px);
-    display: flex;
     max-width: 960px;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
-.students-route-link{
-    /* align-self: flex-start; */
-    position: sticky;
+.student-hero-section {
+    display: flex;
+    background-color: #f6f6f6;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.student-highlights-feedback-section {
+    display: flex;
+}
+
+.student-profile-container div.student-profile-container-left {
+    margin-right: 15px;
+    flex: 1;
+}
+
+.student-profile-container div.student-profile-container-right {
+    flex: 2;
+}
+
+.students-route-link {
     top: 5px;
 }
 
-.back-to-students{
+.back-to-students {
     margin: 5px 20px;
     color: rgb(58, 57, 57);
 }
 
-.student-profile-section-left {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    /* border: 0.5px solid grey; */
-    flex: 1;
-    height: 65vh;
-    margin-right: 15px;
-    top: 5px;
-    position: sticky;
-    padding: 5px;
-}
 
 .full-profile-picture {
-    width: 250px;
-    height: 250px;
-    border: 2px solid grey;
-    border-radius: 50%;
-}
-
-.student-profile-container-right {
-    flex: 2;
+    width: 125px;
+    height: 125px;
+    border-radius: 2px 0px 0px 2px;
 }
 
 .student-image-section {
-    flex: 1;
+    text-align: center;
 }
 
 .student-info-section {
-    flex: 2;
-}
-
-.area-of-focus-section {
-    height: 65vh;
+    display: flex;
 }
 
 .area-of-focus-title {
@@ -86,69 +84,50 @@
 }
 
 .student-profile-name {
-    font-size: 40px;
-    font-weight:700;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 10px;
 }
 
 .student-profile-city {
-    font-size: 32px;
+    font-size: 20px;
     font-weight: 600;
+    margin-bottom: 5px;
 }
+
 .student-profile-github {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
     margin-left: 5px;
 }
 
 .student-profile-email {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
     margin-left: 5px;
 }
 
 .email-github-section {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
 }
 
-.email-icon-section{
-    display:flex;
+.email-icon-section {
+    display: flex;
 }
 
-.github-icon-section{
-    display:flex;
+.github-icon-section {
+    display: flex;
 }
 
 @media (min-width:300px) and (max-width:757px) {
 
-    .student-profile-container {
-        flex-direction: column;
-        margin: 20px;
+    .student-highlights-feedback-section{
+        flex-wrap: wrap; 
     }
-
-    .full-profile-picture {
-        width: 150px;
-        height: 150px;
-        margin-top: -50px;
-    }
-
-    .student-profile-section-left {
-        margin-top: 65px;
+    .student-profile-container div.student-profile-container-left{
         margin-right: 0px;
     }
-    .student-profile-container-right {
-        margin-top: 10px;
-    }
-    .student-image-section {
-        margin-bottom: -50px;
-    }
-}
-
-@media (min-width:758px) and (max-width:1200px) {
-
-    .student-profile-section-left {
-   
-        position: sticky;
-
-    }
-
 }

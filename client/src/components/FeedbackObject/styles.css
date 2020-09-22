@@ -34,10 +34,6 @@
   height: 30px;
 }
 
-.feedback-input-heading {
-    margin: 3px 5px 16px;
-}
-
 .feedback-title-textarea {
   background-color: rgb(250, 250, 250);
   border: none;
@@ -117,14 +113,10 @@
 .cancel-edit-feedback-btn, 
 .delete-feedback-btn, 
 .cancel-delete-feedback-btn, 
-.confirm-delete-feedback-btn {
-    width: 78px;
+.confirm-delete-feedback-btn
+{
+    width: 74px;
+    height: 34px;
     margin: 4px;
+    font-size: 15px;
 }
-/* .edit-delete-buttons {
-  display: flex;
-  margin: 10px;
-  justify-content: flex-end;
-}
- */
-

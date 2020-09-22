@@ -49,7 +49,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	return currentFeedbacks.length ? (
 		<div className="previous-feedback-section-container">
 			<div className="previous-feedback-section">
-				<div className="previous-feedback-title-and-counter">
+				<div className="previous-feedback-title-and-container">
 					<h3 className="previous-feedback-title">Previous Feedback</h3>
 					<div className="filtered-feedback-counter-div">
 						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>

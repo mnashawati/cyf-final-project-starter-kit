@@ -3,16 +3,16 @@
   align-items: center;
   justify-content: space-between;
   background-color: #efefef;
-  font-family: "Raleway",sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #ececec;
   font-weight: 300;
   font-size: .85rem;
   height: 80px;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
-.navbar-container > div {
+.navbar-container>div {
   position: sticky;
 }
 
@@ -41,30 +41,35 @@
   margin-bottom: 0;
 }
 
-.homepage-route-link > h3,
-.syllabus-link, 
+.homepage-route-link>h3,
+.syllabus-link,
 .regions-route-link {
   padding-bottom: 10px;
   border-bottom: 5px solid transparent;
 }
 
-.homepage-route-link > h3 {
-  font-weight: 900;  
+.homepage-route-link>h3 {
+  font-weight: 900;
   font-size: 20px;
   text-align: center;
   margin: 0 30px 10px 20px;
   padding: 0;
 }
 
-.syllabus-link > a:link, .syllabus-link > a:visited, 
-.regions-route-link:link, .regions-route-link:visited {
+.syllabus-link>a:link,
+.syllabus-link>a:visited,
+.regions-route-link:link,
+.regions-route-link:visited {
   text-decoration: none;
   color: black;
 }
-  
-.syllabus-link:hover, .syllabus-link:active,
-.regions-route-link:hover, .regions-route-link:active,
-.homepage-route-link>h3:hover, .homepage-route-link>h3:active {
+
+.syllabus-link:hover,
+.syllabus-link:active,
+.regions-route-link:hover,
+.regions-route-link:active,
+.homepage-route-link>h3:hover,
+.homepage-route-link>h3:active {
   border-bottom: 5px solid red;
 }
 
@@ -74,35 +79,40 @@
 
 .syllabus-link,
 .regions-route-link,
-.login-route-link, 
-.register-route-link
-{
+.login-route-link,
+.register-route-link {
   margin: 20px;
   font-size: 24px;
   font-weight: bold;
 }
 
-.login-route-link:link, .login-route-link:visited, 
-.register-route-link:link, .register-route-link:visited { 
+.login-route-link:link,
+.login-route-link:visited,
+.register-route-link:link,
+.register-route-link:visited {
   color: white;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  }
-  
-.login-route-link:link, .login-route-link:visited {
+}
+
+.login-route-link:link,
+.login-route-link:visited {
   background-color: #ed4343;
-  }
+}
 
-.login-route-link:hover, .login-route-link:active {
-  background-color: rgb(255,0,0);
-  }
+.login-route-link:hover,
+.login-route-link:active {
+  background-color: rgb(255, 0, 0);
+}
 
-.register-route-link:link, .register-route-link:visited {
-  background-color: rgb(145,145,145);
-  }
-  
-.register-route-link:hover, .register-route-link:active {
-  background-color: rgb(107,107,107);
-  }
+.register-route-link:link,
+.register-route-link:visited {
+  background-color: rgb(145, 145, 145);
+}
+
+.register-route-link:hover,
+.register-route-link:active {
+  background-color: rgb(107, 107, 107);
+}
