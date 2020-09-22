@@ -49,11 +49,10 @@ const HighlightsForm = ({ addHighlight }) => {
 				</div>
 				<div className="lights-section">
 					<label
-						className="radio-circle-section-red"
+						className="radio-circle-section"
 						htmlFor="red-radio-button"
 					>
 						<input
-							className="send-input-red"
 							type="radio"
 							id="red-radio-button"
 							name="level"
@@ -70,11 +69,10 @@ const HighlightsForm = ({ addHighlight }) => {
 						></span>
 					</label>
 					<label
-						className="radio-circle-section-yellow"
+						className="radio-circle-section"
 						htmlFor="yellow-radio-button"
 					>
 						<input
-							className="send-input-red"
 							type="radio"
 							id="yellow-radio-button"
 							name="level"
@@ -91,11 +89,10 @@ const HighlightsForm = ({ addHighlight }) => {
 						></span>
 					</label>
 					<label
-						className="radio-circle-section-green"
+						className="radio-circle-section"
 						htmlFor="green-radio-button"
 					>
 						<input
-							className="send-input-green"
 							type="radio"
 							id="green-radio-button"
 							name="level"
@@ -115,7 +112,7 @@ const HighlightsForm = ({ addHighlight }) => {
 			</div>
 			<div className="highlights-add-display-section">
 				<div className="">
-					<button className="btn-primary add-button">
+					<button className="btn-primary highlights-form-add-button">
             Add
 					</button>
 				</div>

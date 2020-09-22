@@ -1,4 +1,7 @@
-
+$redColor: #dc3545;
+$amberColor: #ffc107;
+$greenColor: #28a745;
+$circleBorder: 1.5px solid black;
 
 @mixin highlights-form-radio-circle-section{
     cursor: pointer;
@@ -8,6 +11,29 @@
     margin: auto;
 }
 
+@mixin trafficLightCircles($color){
+    display: inline-block;
+    min-width: 30px;
+    height: 30px;
+    background-color: $color;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    margin: auto;
+}
+
+@mixin trafficLightCirclesWithBorder($color) {
+    display: inline-block;
+    min-width: 30px;
+    height: 30px;
+    background-color: $color;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    margin: auto;
+    border: 1.5px solid black;
+
+}
 .highlights-form {
     flex-direction: column;
     justify-content: center;
@@ -28,99 +54,40 @@
     margin-top: 12px
 }
 
-
-
+.radio-circle-section {
+    @include highlights-form-radio-circle-section()
+}
 /* circle red */
-.add-button {
-    padding: 5px;
-    margin-bottom: 15px;
-    min-width: 140px;
-    max-width: 140px;
-    border: none;
-    margin: 8px 5px;
-    font-size: 14px;
-    border-radius: 5px 5px 5px 5px;
-    height: 29px;
 
-}
-
-.circle-border {
-    border: 1.5px solid black;
-}
-
-.radio-circle-section-red {
-     @include highlights-form-radio-circle-section()
-}
-
-.radio-circle-section-yellow {
-    @include highlights-form-radio-circle-section()
-}
-
-.radio-circle-section-green {
-    @include highlights-form-radio-circle-section()
-}
-
-
-.radio-circle-section-red input {
+.radio-circle-section input {
     display: none;
 }
 
-.radio-circle-section-red .circle-red {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #dc3545;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
+.radio-circle-section .circle-red {
+    @include trafficLightCircles($redColor)
 }
 
-.radio-circle-section-red .circle-red-border {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: #dc3545;
-    margin-right: 5px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    border: 1.5px solid black;
-    margin: auto;
+.radio-circle-section .circle-red-border {
+   @include trafficLightCirclesWithBorder($redColor)
 }
 
 /* circle yellow  */
 
 
-.radio-circle-section-yellow input {
+.radio-circle-section input {
     display: none;
 }
 
-.radio-circle-section-yellow .circle-yellow {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #ffc107;
-    margin-right: 5px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    margin: auto;
+.radio-circle-section .circle-yellow {
+    @include trafficLightCircles($amberColor)
 }
 
-.radio-circle-section-yellow .circle-yellow-border {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #ffc107;
-    margin-right: 5px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    border: 1.5px solid black;
+.radio-circle-section .circle-yellow-border {
+    @include trafficLightCirclesWithBorder($amberColor)
 }
 
 /* circle green */
-.radio-circle-section-green {
+.radio-circle-section {
     display: inline-block;
     position: relative;
     cursor: pointer;
@@ -130,33 +97,35 @@
     margin: auto;
 }
 
-.radio-circle-section-green input {
+.radio-circle-section input {
     display: none;
 }
 
-.radio-circle-section-green .circle-green {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #28a745;
-    margin-right: 5px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    margin: auto;
+.radio-circle-section .circle-green {
+   @include trafficLightCircles($greenColor)
 }
 
-.radio-circle-section-green .circle-green-border {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-color: #28a745;
-    margin-right: 5px;
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    border: 1.5px solid black;
+.radio-circle-section .circle-green-border {
+    @include trafficLightCirclesWithBorder($greenColor)
 }
+
+
+.highlights-form-add-button {
+    padding: 5px;
+    margin-bottom: 15px;
+    min-width: 140px;
+    max-width: 140px;
+    border: none;
+    margin: 8px 5px;
+    font-size: 14px;
+    border-radius: 5px 5px 5px 5px;
+    height: 29px;
+}
+
+
+
+
+
 
 .highlights-form-button-section {
     display: flex;

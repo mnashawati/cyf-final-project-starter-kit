@@ -26,114 +26,75 @@
   margin-top: 12px;
 }
 
+.radio-circle-section {
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 22px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin: auto;
+}
+
 /* circle red */
-.add-button {
-  padding: 5px;
-  margin-bottom: 15px;
-  min-width: 140px;
-  max-width: 140px;
-  border: none;
-  margin: 8px 5px;
-  font-size: 14px;
-  border-radius: 5px 5px 5px 5px;
-  height: 29px;
-}
-
-.circle-border {
-  border: 1.5px solid black;
-}
-
-.radio-circle-section-red {
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 22px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  margin: auto;
-}
-
-.radio-circle-section-yellow {
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 22px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  margin: auto;
-}
-
-.radio-circle-section-green {
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 22px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  margin: auto;
-}
-
-.radio-circle-section-red input {
+.radio-circle-section input {
   display: none;
 }
 
-.radio-circle-section-red .circle-red {
+.radio-circle-section .circle-red {
   display: inline-block;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background-color: #dc3545;
   left: 0;
   top: 0;
   border-radius: 50%;
+  margin: auto;
 }
 
-.radio-circle-section-red .circle-red-border {
+.radio-circle-section .circle-red-border {
   display: inline-block;
-  width: 35px;
-  height: 35px;
+  min-width: 30px;
+  height: 30px;
   background-color: #dc3545;
-  margin-right: 5px;
   left: 0;
   top: 0;
   border-radius: 50%;
-  border: 1.5px solid black;
   margin: auto;
+  border: 1.5px solid black;
 }
 
 /* circle yellow  */
-.radio-circle-section-yellow input {
+.radio-circle-section input {
   display: none;
 }
 
-.radio-circle-section-yellow .circle-yellow {
+.radio-circle-section .circle-yellow {
   display: inline-block;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background-color: #ffc107;
-  margin-right: 5px;
   left: 0;
   top: 0;
   border-radius: 50%;
   margin: auto;
 }
 
-.radio-circle-section-yellow .circle-yellow-border {
+.radio-circle-section .circle-yellow-border {
   display: inline-block;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background-color: #ffc107;
-  margin-right: 5px;
   left: 0;
   top: 0;
   border-radius: 50%;
+  margin: auto;
   border: 1.5px solid black;
 }
 
 /* circle green */
-.radio-circle-section-green {
+.radio-circle-section {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -146,32 +107,43 @@
   margin: auto;
 }
 
-.radio-circle-section-green input {
+.radio-circle-section input {
   display: none;
 }
 
-.radio-circle-section-green .circle-green {
+.radio-circle-section .circle-green {
   display: inline-block;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background-color: #28a745;
-  margin-right: 5px;
   left: 0;
   top: 0;
   border-radius: 50%;
   margin: auto;
 }
 
-.radio-circle-section-green .circle-green-border {
+.radio-circle-section .circle-green-border {
   display: inline-block;
-  width: 35px;
-  height: 35px;
+  min-width: 30px;
+  height: 30px;
   background-color: #28a745;
-  margin-right: 5px;
   left: 0;
   top: 0;
   border-radius: 50%;
+  margin: auto;
   border: 1.5px solid black;
+}
+
+.highlights-form-add-button {
+  padding: 5px;
+  margin-bottom: 15px;
+  min-width: 140px;
+  max-width: 140px;
+  border: none;
+  margin: 8px 5px;
+  font-size: 14px;
+  border-radius: 5px 5px 5px 5px;
+  height: 29px;
 }
 
 .highlights-form-button-section {
