@@ -52,6 +52,13 @@ const HighlightsForm = ({ addHighlight }) => {
 							{highlight.level}
 						</p>
 					</div>
+					<div className="highlights-add-display-section">
+						<div className="">
+							<button className="btn-primary highlights-form-add-button">
+                Add
+							</button>
+						</div>
+					</div>
 				</div>
 				<div className="lights-section">
 					<label
@@ -114,13 +121,6 @@ const HighlightsForm = ({ addHighlight }) => {
 							}
 						></span>
 					</label>
-				</div>
-			</div>
-			<div className="highlights-add-display-section">
-				<div className="">
-					<button className="btn-primary highlights-form-add-button">
-            Add
-					</button>
 				</div>
 			</div>
 		</form>
