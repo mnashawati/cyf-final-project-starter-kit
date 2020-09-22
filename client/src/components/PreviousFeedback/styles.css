@@ -18,3 +18,14 @@ justify-content: flex-end;
     display: flex;
     justify-content: space-between;
 }
+
+.no-feedback-found-warning{
+    border: none;
+    display: block;
+    width: 100%;
+    background-color: black;
+    border-radius: 3px;
+    color: white;
+    font-weight:bolder;
+    padding: 5px;
+}

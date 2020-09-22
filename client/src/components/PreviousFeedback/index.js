@@ -122,7 +122,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
       />
     </div>
   ) : (
-	  <div className="">
+	  <div>
 		  <p className="no-feedback-found-warning"> No feedback given! Please write a feedback... </p>
 	  </div>
   );
