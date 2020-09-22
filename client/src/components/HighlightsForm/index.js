@@ -42,7 +42,9 @@ const HighlightsForm = ({ addHighlight }) => {
 						onChange={handleChange}
 					/>
 					<div className="highlights-form-button-section">
-						<p className="area-display">{area.level}</p>
+						<p className="highlights-display">
+							{area.level}
+						</p>
 					</div>
 				</div>
 				<div className="lights-section">

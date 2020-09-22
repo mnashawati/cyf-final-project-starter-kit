@@ -1,4 +1,13 @@
 
+
+@mixin highlights-form-radio-circle-section{
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 22px;
+    user-select: none;
+    margin: auto;
+}
+
 .highlights-form {
     flex-direction: column;
     justify-content: center;
@@ -40,12 +49,17 @@
 }
 
 .radio-circle-section-red {
-    cursor: pointer;
-    font-family: sans-serif;
-    font-size: 22px;
-    user-select: none;
-    margin: auto;
+     @include highlights-form-radio-circle-section()
 }
+
+.radio-circle-section-yellow {
+    @include highlights-form-radio-circle-section()
+}
+
+.radio-circle-section-green {
+    @include highlights-form-radio-circle-section()
+}
+
 
 .radio-circle-section-red input {
     display: none;
@@ -75,15 +89,7 @@
 }
 
 /* circle yellow  */
-.radio-circle-section-yellow {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    font-family: sans-serif;
-    font-size: 22px;
-    user-select: none;
-    margin: auto;
-}
+
 
 .radio-circle-section-yellow input {
     display: none;
@@ -170,7 +176,7 @@
     border-radius: 5px;
 }
 
-.area-display {
+.highlights-display {
     padding-top: 11px;
     min-height: 35px;
     max-width: 200px;
