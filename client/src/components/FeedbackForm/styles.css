@@ -13,6 +13,11 @@
     margin: 12px;
 }
 
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+}
+
 .previous-feedback-section > h3 {
     margin: 10px 0 10px -10px;
 }
@@ -22,20 +27,6 @@
     margin: 10px 0 10px -10px;
     display: flex;
     justify-content: space-between;
-}
-
-.post-feedback-button-div {
-    padding: auto;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    background-color: #ed4343;
-    height: 30px;
-}
-
-.post-feedback-button-div:hover{
-    cursor: pointer;
-    opacity: 0.5;
 }
 
 .feedback-input-heading {
@@ -50,6 +41,7 @@
 
 .feedback-module-title-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
 }
@@ -57,6 +49,7 @@
 .select-module, .select-mentor,
 .feedback-title-input {
     height: 30px;
+    /* margin: 10px auto; */
 }
 
 .feedback-message-input {
@@ -82,9 +75,9 @@
     justify-content: space-between;
 }
 
-.feedback-pages-section, .feedback-object-section {
-    overflow-y: auto;
-} 
+.feedback-form-submit-button {
+    align-self: flex-end;
+}
 
 .no-feedback-found-warning{
     display: flex;

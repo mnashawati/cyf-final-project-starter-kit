@@ -23,16 +23,6 @@ const StudentProfile = () => {
 	return Object.keys(student).length ? (
 		<>
 			<Navbar />
-			<Link
-				className="students-route-link"
-				to={{
-					pathname: `/regions/${student.city}/students`,
-				}}
-			>
-				<p className="back-to-students">
-          ...Back to students
-				</p>
-			</Link>
 			<div className="student-profile-container">
 				<div className="student-profile-section-left">
 					<div className="student-image-section">

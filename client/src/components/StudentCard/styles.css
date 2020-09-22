@@ -9,7 +9,6 @@
     text-decoration: none;
     color: black;
     background-color: #f0eeee;
-    /* box-shadow: 0 0 5px 5px rgba(87, 84, 84, 0.4); */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
@@ -26,10 +25,6 @@
     border: 1px solid black;
     border-radius: 50%;
     margin: 10px;
-}
-
-.student-card-name-container {
-    /* background-color: rgb(176, 213, 237); */
 }
 
 .student-card-name {
