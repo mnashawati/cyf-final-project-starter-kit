@@ -24,7 +24,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: 58px;
-  padding: 5px;
+  padding: 4px;
   overflow-y: auto;
   margin-bottom: 10px;
   border: 1.5px solid #dc3545;
@@ -37,7 +37,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: 58px;
-  padding: 5px;
+  padding: 4px;
   overflow-y: auto;
   margin-bottom: 10px;
   border: 1.5px solid #ffc107;
@@ -50,7 +50,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   min-height: 58px;
-  padding: 5px;
+  padding: 4px;
   overflow-y: auto;
   margin-bottom: 10px;
   border: 1.5px solid #28a745;
