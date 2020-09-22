@@ -125,7 +125,7 @@
   height: 29px;
 }
 
-.highlights-form-button-section {
+.highlights-form-description-display {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,7 +137,7 @@
   border-bottom: 1px solid black;
 }
 
-.highlights-display {
+.highlights-form-display {
   padding-top: 11px;
   min-height: 35px;
   max-width: 200px;
@@ -148,22 +148,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /* flex-wrap: wrap; */
   min-height: 55px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.add-buton-title-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.add-area-of-focus {
-  margin: 12px;
 }
 
 .highlights-form-input {
@@ -174,9 +163,5 @@
   max-width: 180px;
   min-width: 180px;
   background-color: #f6f6f6;
-}
-
-.highlights-form-heading {
-  margin-bottom: 0px;
 }
 /*# sourceMappingURL=styles.css.map */

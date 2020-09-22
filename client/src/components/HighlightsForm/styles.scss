@@ -62,7 +62,6 @@ $circleBorder: 1.5px solid black;
 }
 /* circle red */
 
-
 .radio-circle-section .circle-red {
     @include trafficLightCircles($redColor)
 }
@@ -70,7 +69,6 @@ $circleBorder: 1.5px solid black;
 .radio-circle-section .circle-red-border {
    @include trafficLightCirclesWithBorder($redColor)
 }
-
 /* circle yellow  */
 
 .radio-circle-section .circle-yellow {
@@ -80,7 +78,6 @@ $circleBorder: 1.5px solid black;
 .radio-circle-section .circle-yellow-border {
     @include trafficLightCirclesWithBorder($amberColor)
 }
-
 /* circle green */
 
 .radio-circle-section .circle-green {
@@ -90,7 +87,6 @@ $circleBorder: 1.5px solid black;
 .radio-circle-section .circle-green-border {
     @include trafficLightCirclesWithBorder($greenColor)
 }
-
 
 .highlights-form-add-button {
     padding: 5px;
@@ -104,12 +100,7 @@ $circleBorder: 1.5px solid black;
     height: 29px;
 }
 
-
-
-
-
-
-.highlights-form-button-section {
+.highlights-form-description-display {
     display: flex;
     flex: 1;
     padding: 5px;
@@ -117,30 +108,18 @@ $circleBorder: 1.5px solid black;
     border-bottom: 1px solid black;
 }
 
-.highlights-display {
+.highlights-form-display {
     padding-top: 11px;
     min-height: 35px;
     max-width: 200px;
     margin-bottom: 0px;
-
 }
 
 .lights-section {
     display: flex;
-    /* flex-wrap: wrap; */
     min-height: 55px;
     flex-direction: column;
 }
-
-.add-buton-title-section {
-    display: flex;
-}
-
-.add-area-of-focus {
-    margin: 12px;
-}
-
-
 
 .highlights-form-input {
     padding: 5px;
@@ -151,8 +130,3 @@ $circleBorder: 1.5px solid black;
     min-width: 180px;
     background-color: #f6f6f6;
 }
-
-.highlights-form-heading {
-    margin-bottom: 0px;
-}
-

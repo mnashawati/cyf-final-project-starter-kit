@@ -41,8 +41,8 @@ const HighlightsForm = ({ addHighlight }) => {
 						maxLength={12}
 						onChange={handleChange}
 					/>
-					<div className="highlights-form-button-section">
-						<p className="highlights-display">
+					<div className="highlights-form-description-display">
+						<p className="highlights-form-display">
 							{area.level}
 						</p>
 					</div>
