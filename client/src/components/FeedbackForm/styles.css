@@ -4,6 +4,11 @@
     padding: 20px auto;
 }
 
+.previous-feedback-section-container {
+    background-color: #F6F6F6;
+}
+
+
 .feedback-form, .previous-feedback-section {
     margin: 12px;
 }

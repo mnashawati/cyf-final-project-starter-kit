@@ -61,71 +61,73 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
 	};
 
-	const handleCancel = () => {
+  const handleCancel = () => {
 		setCurrentFeedback(feedbackToShow);
 		setIsEditing(!isEditing);
 	};
 
-	return (
-		currentFeedback && (
-			<div className="prev-feedback-list">
-				<div className="feedback-title-and-module">
-					<div className="feedback-title">
-						<input
-							name={"title"}
-							value={currentFeedback.title}
-							onChange={handleEdit}
-							disabled={!isEditing}
-						/>
-					</div>
-					<div className="feedback-module">
-						<p className="feedback-input-heading">Module:</p>
-						{!isEditing ? (
-							<p className="module-select-p">{currentFeedback.module}</p>
-						) : (
-							<select
-								className="module-select"
-								name={"module"}
-								value={currentFeedback.module}
-								onChange={handleEdit}
-							>
-								{modules.map((module, index) => (
-									<option key={index} value={module.name}>
-										{module.name}
-									</option>
-								))}
-							</select>
-						)}
-					</div>
-				</div>
-				<div className="previous-feedback-text">
-					<textarea
-						className="feedback-text-textarea"
-						name={"text"}
-						value={currentFeedback.text}
-						onChange={handleEdit}
-						disabled={!isEditing}
-					/>
-				</div>
-				<div className="feedback-mentor-time-buttons">
-					<div className="feedback-mentor-and-time">
-						<div className="prev-feedback-mentor">
-							<p className="feedback-input-heading">Mentor:</p>
-							<input
-								className="prev-feedback-mentor-input"
-								name={"mentor"}
-								value={currentFeedback.mentor}
-								onChange={handleEdit}
-								disabled
-							/>
-						</div>
-						<div className="prev-feedback-time">
-							<p className="prev-feedback-time-input">
-								{timeDifference(Date.now(), currentFeedback.time)}
-							</p>
-						</div>
-					</div>
-					<div>
+  return (
+    currentFeedback && (
+      <div className="prev-feedback-list">
+        <div className="feedback-title-and-module">
+          <div className="feedback-title">
+            <input
+              className="prev-feedback-title-input"
+              name={"title"}
+              value={currentFeedback.title || ""}
+              onChange={handleEdit}
+              disabled={!isEditing}
+            />
+          </div>
+          <div className="feedback-module">
+            {!isEditing ? (
+              <p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
+            ) : (
+              <>
+                <p className="feedback-input-heading">Module:</p>
+                <select
+                  className="module-select"
+                  name={"module"}
+                  value={currentFeedback.module || ""}
+                  onChange={handleEdit}
+                >
+                  {modules.map((module, index) => (
+                    <option key={index} value={module.name}>
+                      {module.name}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+          </div>
+        </div>
+        <div className="previous-feedback-text">
+          <textarea
+            className="feedback-text-textarea"
+            name={"text"}
+            value={currentFeedback.text || ""}
+            onChange={handleEdit}
+            disabled={!isEditing}
+          />
+        </div>
+        <div className="feedback-mentor-time-buttons">
+          <div className="feedback-mentor-and-time">
+            <div className="prev-feedback-mentor">
+              <input
+                className="prev-feedback-mentor-input"
+                name={"mentor"}
+                value={`Given by: ${currentFeedback.mentor || ""}`}
+                onChange={handleEdit}
+                disabled
+              />
+            </div>
+            <div className="prev-feedback-time">
+              <p className="prev-feedback-time-input">
+                {timeDifference(Date.now(), currentFeedback.time)}
+              </p>
+            </div>
+          </div>
+          	<div>
 						{ mentorsEmail === currentFeedback.mentorEmail ? (
 							<div className="edit-delete-buttons">
 								<Button
