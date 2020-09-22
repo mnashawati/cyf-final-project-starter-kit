@@ -30,8 +30,11 @@ const HighlightsForm = ({ addHighlight }) => {
 		<form
 			onSubmit={handleSubmit}
 			className="highlights-form"
-			id="add-are-focus"
+			id="add-are-us"
 		>
+			<div className="add-feedback-heading-container">
+				<h3 className="highlights-title">Highlights</h3>
+			</div>
 			<div className="highlights-form-lights-text-section">
 				<div>
 					<h6 className="highlights-form-input-heading">

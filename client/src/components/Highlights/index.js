@@ -58,12 +58,11 @@ const Highlights = ({ student }) => {
 	};
 	return highlights ? (
 		<div className="highlights-section">
-			<h3 className="highlights-title">Highlights</h3>
 			<HighlightsForm addHighlight={addHighlight} />
 			<div className="highlights-wrapper">
 				<div>
 					<h6 className="highlights-subtitles">
-            Need to work on...
+              Need to work on...
 					</h6>
 					<div className="highlights-section-red">
 						{highlights.toWorkOn.map((item, index) => (

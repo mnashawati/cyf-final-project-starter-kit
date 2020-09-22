@@ -1,3 +1,10 @@
+.highlights-form-heading-container {
+  margin: 10px 0 10px -10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .highlights-form {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -116,8 +123,8 @@
 .highlights-form-add-button {
   padding: 5px;
   margin-bottom: 15px;
-  min-width: 140px;
-  max-width: 140px;
+  max-width: 180px;
+  min-width: 180px;
   border: none;
   margin: 8px 0px;
   font-size: 14px;

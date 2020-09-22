@@ -16,7 +16,7 @@ const AllFeedback = ({ student }) => {
 	};
 
 	return (
-		<div>
+		<div className="feedback-wrapper">
 			<FeedbackForm student={student} updateFeedback={updateFeedback} />
 			<PreviousFeedback student={student} allFeedback={allFeedback} updateFeedback={updateFeedback} />
 		</div>

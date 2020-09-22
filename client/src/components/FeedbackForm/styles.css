@@ -1,8 +1,10 @@
 .feedback-form-container,
 .previous-feedback-section-container {
-    border: 1px solid black;
+    border: 1px solid grey;
     margin: auto;
     padding: 20px auto;
+    border-radius:2px;
+    background-color: #f6f6f6;
 }
 
 .feedback-form,
@@ -112,4 +114,9 @@ s
     color: red;
     margin: 20px auto;
     text-align: center;
+}
+
+.feedback-wrapper {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
