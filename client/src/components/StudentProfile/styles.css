@@ -108,10 +108,10 @@
 }
 
 .email-github-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
 }
 
 .email-icon-section {
