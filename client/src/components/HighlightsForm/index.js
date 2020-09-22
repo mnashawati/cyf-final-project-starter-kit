@@ -3,24 +3,27 @@ import "./styles.css";
 import PropTypes from "prop-types";
 
 const HighlightsForm = ({ addHighlight }) => {
-	const [area, setArea] = useState({
+	const [highlight, setHighlight] = useState({
 		message: "",
 		level: "",
 	});
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (!area.message) {
+		if (!highlight.message) {
 			return alert("Please add an area");
-		} else if (!area.level) {
+		} else if (!highlight.level) {
 			return alert("Please select a level");
 		}
-		addHighlight(area);
+		addHighlight(highlight);
 		e.target.reset();
-		setArea({ message: "", level: "" });
+		setHighlight({ message: "", level: "" });
 	};
 
 	const handleChange = (e) => {
-		setArea({ ...area, [e.target.name]: e.target.value });
+		setHighlight({
+			...highlight,
+			[e.target.name]: e.target.value,
+		});
 	};
 
 	return (
@@ -43,7 +46,7 @@ const HighlightsForm = ({ addHighlight }) => {
 					/>
 					<div className="highlights-form-description-display">
 						<p className="highlights-form-display">
-							{area.level}
+							{highlight.level}
 						</p>
 					</div>
 				</div>
@@ -62,7 +65,7 @@ const HighlightsForm = ({ addHighlight }) => {
 						></input>
 						<span
 							className={
-								area.level === "To work on"
+								highlight.level === "To work on"
 									? "circle-red-border"
 									: "circle-red"
 							}
@@ -82,7 +85,7 @@ const HighlightsForm = ({ addHighlight }) => {
 						></input>
 						<span
 							className={
-								area.level === "Okay at"
+								highlight.level === "Okay at"
 									? "circle-yellow-border"
 									: "circle-yellow"
 							}
@@ -102,7 +105,7 @@ const HighlightsForm = ({ addHighlight }) => {
 						></input>
 						<span
 							className={
-								area.level === "Good at"
+								highlight.level === "Good at"
 									? "circle-green-border"
 									: "circle-green"
 							}
