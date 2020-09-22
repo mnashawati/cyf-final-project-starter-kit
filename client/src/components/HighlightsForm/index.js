@@ -24,105 +24,101 @@ const HighlightsForm = ({ addHighlight }) => {
 	};
 
 	return (
-		<div className="area-form-section">
-			<form
-				onSubmit={handleSubmit}
-				className="add-highlights-form"
-				id="add-are-focus"
-			>
-				<div className="lights-text-section">
-					<div>
-						<div className="area-input-section">
-							<h6 className="feedback-input-heading">
-                Type a topic to highlight:
-							</h6>
-							<input
-								className="highlights-form-input"
-								type="text"
-								name="message"
-								maxLength={12}
-								onChange={handleChange}
-							/>
-						</div>
-						<div className="add-area-button-section">
-							<p className="area-display">{area.level}</p>
-						</div>
-					</div>
-					<div className="lights-section">
-						<label
-							className="radio-circle-section-red"
-							htmlFor="red-radio-button"
-						>
-							<input
-								className="send-input-red"
-								type="radio"
-								id="red-radio-button"
-								name="level"
-								value="To work on"
-								onChange={handleChange}
-								checked=""
-							></input>
-							<span
-								className={
-									area.level === "To work on"
-										? "circle-red-border"
-										: "circle-red"
-								}
-							></span>
-						</label>
-						<label
-							className="radio-circle-section-yellow"
-							htmlFor="yellow-radio-button"
-						>
-							<input
-								className="send-input-red"
-								type="radio"
-								id="yellow-radio-button"
-								name="level"
-								value="Okay at"
-								onChange={handleChange}
-								checked=""
-							></input>
-							<span
-								className={
-									area.level === "Okay at"
-										? "circle-yellow-border"
-										: "circle-yellow"
-								}
-							></span>
-						</label>
-						<label
-							className="radio-circle-section-green"
-							htmlFor="green-radio-button"
-						>
-							<input
-								className="send-input-green"
-								type="radio"
-								id="green-radio-button"
-								name="level"
-								value="Good at"
-								onChange={handleChange}
-								checked=""
-							></input>
-							<span
-								className={
-									area.level === "Good at"
-										? "circle-green-border"
-										: "circle-green"
-								}
-							></span>
-						</label>
+		<form
+			onSubmit={handleSubmit}
+			className="highlights-form"
+			id="add-are-focus"
+		>
+			<div className="highlights-form-lights-text-section">
+				<div>
+					<h6 className="highlights-form-input-heading">
+            Type a topic to highlight:
+					</h6>
+					<input
+						className="highlights-form-input"
+						type="text"
+						name="message"
+						maxLength={12}
+						onChange={handleChange}
+					/>
+					<div className="add-area-button-section">
+						<p className="area-display">{area.level}</p>
 					</div>
 				</div>
-				<div className="highlights-add-display-section">
-					<div className="">
-						<button className="btn-primary add-button">
-              Add
-						</button>
-					</div>
+				<div className="lights-section">
+					<label
+						className="radio-circle-section-red"
+						htmlFor="red-radio-button"
+					>
+						<input
+							className="send-input-red"
+							type="radio"
+							id="red-radio-button"
+							name="level"
+							value="To work on"
+							onChange={handleChange}
+							checked=""
+						></input>
+						<span
+							className={
+								area.level === "To work on"
+									? "circle-red-border"
+									: "circle-red"
+							}
+						></span>
+					</label>
+					<label
+						className="radio-circle-section-yellow"
+						htmlFor="yellow-radio-button"
+					>
+						<input
+							className="send-input-red"
+							type="radio"
+							id="yellow-radio-button"
+							name="level"
+							value="Okay at"
+							onChange={handleChange}
+							checked=""
+						></input>
+						<span
+							className={
+								area.level === "Okay at"
+									? "circle-yellow-border"
+									: "circle-yellow"
+							}
+						></span>
+					</label>
+					<label
+						className="radio-circle-section-green"
+						htmlFor="green-radio-button"
+					>
+						<input
+							className="send-input-green"
+							type="radio"
+							id="green-radio-button"
+							name="level"
+							value="Good at"
+							onChange={handleChange}
+							checked=""
+						></input>
+						<span
+							className={
+								area.level === "Good at"
+									? "circle-green-border"
+									: "circle-green"
+							}
+						></span>
+					</label>
 				</div>
-			</form>
-		</div>
+			</div>
+			<div className="highlights-add-display-section">
+				<div className="">
+					<button className="btn-primary add-button">
+            Add
+					</button>
+				</div>
+			</div>
+		</form>
 	);
 };
 
