@@ -12,7 +12,11 @@ const Footer = () => {
 					Syllabus
 				</a>
 			</div>
-			<p>©All rights reserved | Developed by team MoTo-London Class 6 for Code Your Future</p>
+			<div className="footer-text">
+				<p>© 2020 Code Your Future</p>|
+				<p>Team MoTO</p>|
+				<p>London Class 6</p>
+			</div>
 		</div>
 	);
 };
