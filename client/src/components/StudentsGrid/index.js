@@ -30,7 +30,6 @@ const StudentsGrid = ( ) => {
 	const indexOfLastStudent = currentPage * studentsPerPage; // 6
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
 	const currentStudents = students.filter((student) => student.class == currentClass).slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
-	console.log(currentStudents)
 
 	return (
     <>
