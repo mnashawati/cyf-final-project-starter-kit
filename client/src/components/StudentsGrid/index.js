@@ -13,8 +13,7 @@ const StudentsGrid = ( ) => {
 	const [students, setStudents] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [studentsPerPage] = useState(6);
-	const [currentClass, setCurrentClass] = useState("6");
-	const [noStudents, setNoStudents] = useState(false);
+	const [currentClass, setCurrentClass] = useState(6);
 
 	useEffect(() => {
 		fetch("/api/students")
