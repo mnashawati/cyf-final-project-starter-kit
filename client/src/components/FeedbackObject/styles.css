@@ -56,12 +56,8 @@
   min-height: 6em;
   background-color: rgb(250, 250, 250);
   margin-bottom: 0;
-}
-
-@media (min-width: 300px) and (max-width: 757px){
-  .feedback-text-textarea {
-    margin-top: 10px;
-  }
+  margin-top: 10px;
+  max-height: max-content;
 }
 
 .prev-feedback-mentor {
@@ -95,7 +91,7 @@
 
 .prev-feedback-title-input {
   border: none;
-  width: 200px;
+  width: 160px;
   background-color: rgb(250, 250, 250);
   height: 30px;
   font-weight: bolder;
@@ -119,4 +115,21 @@
     height: 34px;
     margin: 4px;
     font-size: 15px;
+}
+
+@media (max-width:420px) {
+  .edit-save-feedback-btn, 
+  .cancel-edit-feedback-btn, 
+  .delete-feedback-btn {
+    width: 70px;
+    height: 30px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    float: right;    
+  }
+  .feedback-mentor-time-buttons {
+    margin-bottom: 10px;
+  }
+
 }

@@ -127,55 +127,53 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 							</p>
 						</div>
 					</div>
-          	<div>
-						{ mentorsEmail === currentFeedback.mentorEmail ? (
-							<div className="edit-delete-buttons">
-								<Button
-									variant="success"
-									onClick={() => {
-										setIsEditing(!isEditing);
-										isEditing && saveFeedback(currentFeedback.id);
-									}}
-									className="edit-save-feedback-btn">
-									{!isEditing ? "Edit" : "Update"}</Button>
+					{ mentorsEmail === currentFeedback.mentorEmail ? (
+						<div className="edit-delete-buttons">
+							<Button
+								variant="success"
+								onClick={() => {
+									setIsEditing(!isEditing);
+									isEditing && saveFeedback(currentFeedback.id);
+								}}
+								className="edit-save-feedback-btn">
+								{!isEditing ? "Edit" : "Update"}</Button>
 
-								{isEditing ? (
-									<Button variant="outline-danger" onClick={handleCancel}
-										className="cancel-edit-feedback-btn">Cancel</Button>
-								) : (
-									<>
-										<Button variant="danger" onClick={()=>{
-											setShowModal(true);
-										}}
-										className="delete-feedback-btn">
+							{isEditing ? (
+								<Button variant="outline-danger" onClick={handleCancel}
+									className="cancel-edit-feedback-btn">Cancel</Button>
+							) : (
+								<>
+									<Button variant="danger" onClick={()=>{
+										setShowModal(true);
+									}}
+									className="delete-feedback-btn">
 				              			Delete
-										</Button>
-										<Modal show={showModal} onHide={()=>{
-											setShowModal(false);
-										}}>
-											<Modal.Header closeButton>
-												<Modal.Title>Delete feedback?</Modal.Title>
-											</Modal.Header>
-											<Modal.Footer>
-												<Button variant="secondary" onClick={()=>{
-													setShowModal(false);
-												}}
-												className="cancel-delete-feedback-btn">
+									</Button>
+									<Modal show={showModal} onHide={()=>{
+										setShowModal(false);
+									}}>
+										<Modal.Header closeButton>
+											<Modal.Title>Delete feedback?</Modal.Title>
+										</Modal.Header>
+										<Modal.Footer>
+											<Button variant="secondary" onClick={()=>{
+												setShowModal(false);
+											}}
+											className="cancel-delete-feedback-btn">
 						              			Cancel
-												</Button>
-												<Button variant="danger" onClick={() => {
-													handleDelete(currentFeedback.id);
-													setShowModal(false);
-												}}
-												className="confirm-delete-feedback-btn">
+											</Button>
+											<Button variant="danger" onClick={() => {
+												handleDelete(currentFeedback.id);
+												setShowModal(false);
+											}}
+											className="confirm-delete-feedback-btn">
 						              			Delete
-												</Button>
-											</Modal.Footer>
-										</Modal>
-									</>
-								)}
-							</div> ) : null}
-					</div>
+											</Button>
+										</Modal.Footer>
+									</Modal>
+								</>
+							)}
+						</div> ) : null}
 				</div>
 			</div>
 		)
