@@ -13,6 +13,7 @@ const StudentsGrid = ( ) => {
 	const [students, setStudents] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [studentsPerPage] = useState(6);
+	const [currentClass, setCurrentClass] = useState(6)
 
 	useEffect(() => {
 		fetch("/api/students")
@@ -28,7 +29,7 @@ const StudentsGrid = ( ) => {
 
 	const indexOfLastStudent = currentPage * studentsPerPage; // 6
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
-	const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
+	const currentStudents = students.filter((student) => student.class == currentClass).slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
 
 	return (
 		<>
