@@ -47,7 +47,7 @@ const StudentsGrid = ( ) => {
             onChange={(e) => setCurrentClass(e.target.value)}
           >
             {getFilteringData(students, "class")
-              .sort()
+              .sort().reverse()
               .map((el, index) => (
                 <option key={index} value={el}>
                   Class: {el}
