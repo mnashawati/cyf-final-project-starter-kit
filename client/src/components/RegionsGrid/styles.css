@@ -8,3 +8,11 @@
     margin: 20px;
 }
 
+.loading-component {
+    text-align: center;
+    margin: 100px auto;
+}
+
+.loading-component > img {
+    max-height: 300px;
+}

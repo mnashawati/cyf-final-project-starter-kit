@@ -4,10 +4,11 @@ import "./styles.css";
 import { AuthContext } from "../../authentication/Auth";
 import SignOut from "../../authentication/SignOut";
 
-const Navbar = (linkClassName, linkPathName, linkContent) => {
+const Navbar = ({ linkClassName, linkPathName, linkContent }) => {
 
 	const { currentUser } = useContext(AuthContext);
 
+	console.log("link stuff", linkClassName, linkPathName, linkContent );
 	return (
 		<div className="navbar-container">
 			<div className="navbar-links">
@@ -21,9 +22,9 @@ const Navbar = (linkClassName, linkPathName, linkContent) => {
 				</Link>
 				{currentUser && linkPathName && <Link
 					className={linkClassName}
-					to={{ pathname: { linkPathName } }}
+					to={{ pathname: linkPathName }}
 				>
-				Back
+					{linkContent}
 				</Link>}
 			</div>
 			<div className="sign-out-btn-div">

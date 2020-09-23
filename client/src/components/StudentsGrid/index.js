@@ -14,6 +14,7 @@ const StudentsGrid = ( ) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [studentsPerPage] = useState(6);
 	const [currentClass, setCurrentClass] = useState("6");
+	const [noStudents, setNoStudents] = useState(false);
 
 	useEffect(() => {
 		fetch("/api/students")
@@ -27,15 +28,14 @@ const StudentsGrid = ( ) => {
 			.catch((err) => console.log(err));
 	}, []);
 
-
-	const indexOfLastStudent = currentPage * studentsPerPage; // 6
-	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
+	const indexOfLastStudent = currentPage * studentsPerPage; //6
+	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; //6-6=0
 	const filteredStudents = students.filter((student) => student.class == currentClass);
-	const currentStudents = filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
+	const currentStudents = filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent); //students.slice(0,6)
 
 	return (
 		<>
-			<Navbar linkClassName={"back-to-all-regions"} linkPathName="/regions" linkContent={"Back to all regions"} />
+			<Navbar linkClassName={"back-to-all-regions"} linkPathName={"/regions"} linkContent={"<Back to regions"} />
 			<div className="students-grid-wrapper">
 				{students.length > 0
 					? <div className="container students-grid-container">
@@ -60,7 +60,7 @@ const StudentsGrid = ( ) => {
 						</div>
 						<Pagination itemsPerPage={studentsPerPage} totalItems={filteredStudents.length} setCurrentPage={setCurrentPage} />
 					</div>
-					: <h1>No students found for this region</h1>}
+					: <h1>No students found</h1>}
 			</div>
 			<Footer />
 		</>

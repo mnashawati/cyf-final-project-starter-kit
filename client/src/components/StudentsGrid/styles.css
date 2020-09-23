@@ -17,3 +17,9 @@
 .students-grid-container {
     margin: 20px auto;
 }
+
+.back-to-all-regions {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
