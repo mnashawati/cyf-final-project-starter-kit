@@ -1,6 +1,18 @@
+.regions-grids-container {
+    height: 100vh;
+}
+
 .regions-cards-container {
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
 }
 
+.loading-component {
+    text-align: center;
+    margin: 100px auto;
+}
+
+.loading-component > img {
+    max-height: 300px;
+}

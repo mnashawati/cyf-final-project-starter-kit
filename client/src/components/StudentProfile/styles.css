@@ -1,3 +1,12 @@
+.back-to-students {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+.student-profile-wrapper {
+    min-height: 100vh;
+}
+
 .student-hero-section {
     display: flex;
     background-color: #f6f6f6;
@@ -43,39 +52,6 @@
 .student-info-section {
     display: flex;
 }
-
-/* .area-of-focus-title {
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.area-text-section-red {
-    border-top: 1.5px solid red;
-}
-
-.area-text-section-yellow {
-    border-top: 1.5px solid rgb(255, 204, 0);
-}
-
-.area-text-section-green {
-    border-top: 1.5px solid rgb(19, 91, 5);
-}
-
-.dummy-button {
-    background-color: red;
-    border-radius: 10px;
-    width: 60px;
-    height: 23px;
-    border: none;
-    margin: 10px;
-}
-
-.subtitle-text {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 15px;
-} */
 
 .student-profile-name {
     font-size: 26px;

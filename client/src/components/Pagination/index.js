@@ -26,8 +26,9 @@ const Pagination = ({ totalItems, itemsPerPage, setCurrentPage }) => {
 							href="!#"
 							className="page-link"
 							style={{
-								fontWeight: currentNumber == number ? "bolder" : "normal",
-								color: currentNumber == number ? "red" : "black",
+								fontWeight: currentNumber == number ? "900" : "100",
+								color: currentNumber == number ? "black" : "gray",
+								backgroundColor: currentNumber == number ? "#f6f6f6" : "white",
 							}}
 						>
 							{number}
