@@ -29,7 +29,8 @@ const StudentsGrid = ( ) => {
 
 	const indexOfLastStudent = currentPage * studentsPerPage; // 6
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; // 6-6=0
-	const currentStudents = students.filter((student) => student.class === currentClass).slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
+	const currentStudents = students.filter((student) => student.class == currentClass).slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
+	console.log(currentStudents)
 
 	return (
     <>
@@ -42,11 +43,10 @@ const StudentsGrid = ( ) => {
         <div className="filter-by-class-container row">
           <h2>Filter by class number: </h2>
           <select
-            value={`Class:" ${currentClass}`}
+            value={currentClass}
             className="select-class-number"
             onChange={(e) => setCurrentClass(e.target.value)}
           >
-            <option>Select a class</option>
             {getFilteringData(students, "class")
               .sort()
               .map((el, index) => (
