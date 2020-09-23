@@ -25,9 +25,10 @@ const StudentProfile = () => {
 			.catch((err) => console.log(err));
 	}, []);
 
-	return Object.keys(student).length ? (
+	return Object.keys(student).length && (
 		<>
 			<Navbar />
+			{/* <div className="student-profile-wrapper container"> */}
 			{/* <Link
 				className="students-route-link"
 				to={{
@@ -38,7 +39,7 @@ const StudentProfile = () => {
           ...Back to students
 				</p>
 			</Link> */}
-			<div className="student-profile-container">
+			<div className="container">
 				<div className="student-hero-section">
 					<div className="student-image-section">
 						<img
@@ -81,7 +82,7 @@ const StudentProfile = () => {
 							</div>
 						</div>
 					</div>
-					<div className="student-info-section"></div>
+					{/* <div className="student-info-section"></div> */}
 				</div>
 				<div className="student-highlights-feedback-section">
 					<div className="student-profile-container-left">
@@ -94,7 +95,7 @@ const StudentProfile = () => {
 			</div>
 			<Footer />
 		</>
-	) : null;
+	);
 };
 
 export default StudentProfile;

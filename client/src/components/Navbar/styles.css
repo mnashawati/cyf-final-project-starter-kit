@@ -8,7 +8,7 @@
   font-weight: 300;
   font-size: .85rem;
   height: 80px;
-  width: 100%;
+  width: 100vw;
   margin-bottom: 10px;
 }
 
@@ -23,8 +23,8 @@
   margin-top: 20px;
 }
 
-.sign-out-btn-div {
-  margin-right: 10px;
+.sign-out-btn-div > :only-child {
+  margin-right: 20px;
 }
 
 .homepage-route-link {

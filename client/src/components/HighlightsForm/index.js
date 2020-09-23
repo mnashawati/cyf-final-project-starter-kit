@@ -38,7 +38,7 @@ const HighlightsForm = ({ addHighlight }) => {
 			<div className="highlights-form-lights-text-section">
 				<div>
 					<h6 className="highlights-form-input-heading">
-            Type a topic to highlight:
+            Write a topic:
 					</h6>
 					<input
 						className="highlights-form-input"

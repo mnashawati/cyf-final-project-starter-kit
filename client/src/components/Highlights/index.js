@@ -62,7 +62,7 @@ const Highlights = ({ student }) => {
 			<div className="highlights-wrapper">
 				<div>
 					<h6 className="highlights-subtitles">
-              Need to work on...
+              To work on...
 					</h6>
 					<div className="highlights-section-red">
 						{highlights.toWorkOn.map((item, index) => (

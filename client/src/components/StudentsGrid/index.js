@@ -32,44 +32,29 @@ const StudentsGrid = ( ) => {
 	const currentStudents = students.filter((student) => student.class == currentClass).slice(indexOfFirstStudent, indexOfLastStudent);// students.slice(0,6)
 
 	return (
-    <>
-      <Navbar
-        linkClassName={"back-to-all-regions"}
-        linkPathName="/regions"
-        linkContent={"Back to all regions"}
-      />
-      <div className="container students-grid-container">
-        <div className="filter-by-class-container row">
-          <h2>Filter by class number: </h2>
-          <select
-            value={currentClass}
-            className="select-class-number"
-            onChange={(e) => setCurrentClass(e.target.value)}
-          >
-            {getFilteringData(students, "class")
-              .sort().reverse()
-              .map((el, index) => (
-                <option key={index} value={el}>
-                  Class: {el}
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="students-cards-container row">
-          {currentStudents &&
-            currentStudents.map((student, index) => (
-              <StudentCard student={student} key={index} />
-            ))}
-        </div>
-      </div>
-      <Pagination
-        itemsPerPage={studentsPerPage}
-        totalItems={students.length}
-        setCurrentPage={setCurrentPage}
-      />
-      <Footer />
-    </>
-  );
+		<>
+			<Navbar linkClassName={"back-to-all-regions"} linkPathName="/regions" linkContent={"Back to all regions"} />
+			<div className="students-grid-wrapper">
+				<div className="container students-grid-container">
+					<div className="filter-by-class-container row">
+						<h2>Filter by class number: </h2>
+						<select className="select-class-number">
+							<option>Select a class</option>
+							{getFilteringData(students, "class")
+								.map((el, index) => <option key={index}>Class: {el}</option>)}
+						</select>
+					</div>
+					<div className="students-cards-container row">
+						{currentStudents && currentStudents.map((student, index) => (
+							<StudentCard student={student} key={index} />
+						))}
+					</div>
+				</div>
+				<Pagination itemsPerPage={studentsPerPage} totalItems={students.length} setCurrentPage={setCurrentPage} />
+			</div>
+			<Footer />
+		</>
+	);
 };
 
 export default StudentsGrid;
