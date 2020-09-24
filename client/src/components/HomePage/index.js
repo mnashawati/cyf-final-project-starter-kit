@@ -4,12 +4,13 @@ import HomepageHeroSection from "../HomepageHeroSection";
 import Footer from "../Footer/index";
 
 const HomePage = () => {
-	return (
+	return ( <>
+		<Navbar />
 		<div className="homepage-container">
-			<Navbar />
 			<HomepageHeroSection />
-			<Footer />
 		</div>
+		<Footer />
+	</>
 	);
 };
 

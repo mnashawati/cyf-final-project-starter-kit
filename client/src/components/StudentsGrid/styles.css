@@ -9,3 +9,17 @@
     border: 1px solid black;
     border-radius: 5px;
 }
+
+.students-grid-wrapper {
+    height: 100vh;
+}
+
+.students-grid-container {
+    margin: 20px auto;
+}
+
+.back-to-all-regions {
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}

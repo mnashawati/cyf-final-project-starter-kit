@@ -1,5 +1,6 @@
 .homepage-container {
-    height: auto;
+    height: 100vh;
+    margin: auto;
 }
 
 .cover-image-container, .app-info-sign-in-container {

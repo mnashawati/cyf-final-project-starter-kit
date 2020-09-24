@@ -8,8 +8,8 @@ import AllFeedback from "../AllFeedback/index.js";
 import Footer from "../Footer/index";
 
 const StudentProfile = () => {
-	const params = useParams();
 
+	const params = useParams();
 	const [student, setStudent] = useState({});
 
 	useEffect(() => {
@@ -25,20 +25,10 @@ const StudentProfile = () => {
 			.catch((err) => console.log(err));
 	}, []);
 
-	return Object.keys(student).length ? (
+	return Object.keys(student).length && (
 		<>
-			<Navbar />
-			{/* <Link
-				className="students-route-link"
-				to={{
-					pathname: `/regions/${student.city}/students`,
-				}}
-			>
-				<p className="back-to-students">
-          ...Back to students
-				</p>
-			</Link> */}
-			<div className="student-profile-container">
+			<Navbar linkClassName={"back-to-students"} linkPathName={`/regions/${student.city}/students`} linkContent={"Back to students"} />
+			<div className="container student-profile-wrapper">
 				<div className="student-hero-section">
 					<div className="student-image-section">
 						<img
@@ -52,9 +42,6 @@ const StudentProfile = () => {
 							<p className="student-profile-name">
 								{student.name}
 							</p>
-							{/* <p className="student-profile-city">
-								{student.city}
-							</p> */}
 						</div>
 						<div>
 							<div className="github-icon-section">
@@ -81,7 +68,7 @@ const StudentProfile = () => {
 							</div>
 						</div>
 					</div>
-					<div className="student-info-section"></div>
+					{/* <div className="student-info-section"></div> */}
 				</div>
 				<div className="student-highlights-feedback-section">
 					<div className="student-profile-container-left">
@@ -94,7 +81,7 @@ const StudentProfile = () => {
 			</div>
 			<Footer />
 		</>
-	) : null;
+	);
 };
 
 export default StudentProfile;

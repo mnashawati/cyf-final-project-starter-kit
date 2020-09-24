@@ -29,11 +29,11 @@ const SignOut = () => {
 					<Modal.Title>Sign out?</Modal.Title>
 				</Modal.Header>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}
+					<Button variant="outline-secondary" onClick={handleClose}
 						className="cancel-sign-out-btn">
 						Cancel
 					</Button>
-					<Button variant="primary" onClick={() => {
+					<Button variant="dark" onClick={() => {
 						handleClose();
 						app.auth().signOut();
 						firebase.auth().signOut();
