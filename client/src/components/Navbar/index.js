@@ -10,7 +10,7 @@ const Navbar = () => {
 	const { currentUser } = useContext(AuthContext);
 	const history = useHistory();
 	let location = useLocation();
-
+	console.log("history", history);
 	return (
 		<div className='navbar-container'>
 			<div className='navbar-links'>
@@ -30,11 +30,23 @@ const Navbar = () => {
 					<p>Feedback Tracker</p>
 				</Link>
 			</div>
-			<div className='navigation-btn-container'>
-				{(currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
-					<Navigation history={history} />
-				) : null)}
-			</div>
+			{location.pathname == "/regions/London/students" ? (
+				<div className='navigation-btn-container'>
+					{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
+						<Navigation
+							history={history}
+							title={"Go back to regions..."}
+						/>
+					) : null}
+				</div>
+			) : <div className='navigation-btn-container'>
+				{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
+					<Navigation
+						history={history}
+						title={"Go back to students..."}
+					/>
+				) : null}
+			</div>}
 			<div className='sign-out-btn-div'>
 				{currentUser && <SignOut />}
 			</div>

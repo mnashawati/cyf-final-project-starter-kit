@@ -2,7 +2,8 @@ import React from "react";
 import backArrow from "../../assets/image-two.png";
 import PropTypes from "prop-types";
 
-const Navigation = ({ history }) => {
+const Navigation = ({ history, title }) => {
+	console.log("title", title);
 	return (
 		<button
 			onClick={() => history.goBack()}
@@ -14,8 +15,9 @@ const Navigation = ({ history }) => {
 				alt='back-arrow'
 				className='back-arrow-icon'
 			/>
-        Go back...
+        		{title}
 		</button>
+
 	);
 };
 
@@ -23,4 +25,5 @@ export default Navigation;
 
 Navigation.propTypes = {
 	history: PropTypes.object.isRequired,
+	title: PropTypes.string.isRequired,
 };
