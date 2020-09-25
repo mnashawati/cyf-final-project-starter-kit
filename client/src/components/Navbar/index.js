@@ -35,7 +35,7 @@ const Navbar = () => {
 					{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
 						<Navigation
 							history={history}
-							title={"Go back to regions..."}
+							title={"Go back to regions"}
 						/>
 					) : null}
 				</div>
@@ -43,7 +43,7 @@ const Navbar = () => {
 				{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
 					<Navigation
 						history={history}
-						title={"Go back to students..."}
+						title={"Go back to students"}
 					/>
 				) : null}
 			</div>}
