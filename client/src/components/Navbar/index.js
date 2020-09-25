@@ -31,7 +31,9 @@ const Navbar = () => {
 				</Link>
 			</div>
 			<div className='navigation-btn-container'>
-				{currentUser && location.pathname !== "/" ? <Navigation history={history} /> : null}
+				{(currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
+					<Navigation history={history} />
+				) : null)}
 			</div>
 			<div className='sign-out-btn-div'>
 				{currentUser && <SignOut />}
