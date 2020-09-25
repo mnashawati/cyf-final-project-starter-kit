@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import backArrow from "../../assets/image-two.png";
 import Highlights from "../Highlights/index.js";
 import AllFeedback from "../AllFeedback/index.js";
 import "./styles.css";
