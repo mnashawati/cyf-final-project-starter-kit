@@ -37,13 +37,6 @@ const StudentsGrid = ( ) => {
 			<div className='students-grid-wrapper'>
 				{students.length > 0 ? (
 					<div className='container students-grid-container'>
-						<Link
-							to='/regions'
-							className='back-to-all-regions'
-						>
-							<img src={backArrow} alt="back-arrow" className="back-arrow-icon" />
-              Back to regions...
-						</Link>
 						<div className='filter-by-class-container row'>
 							<h2>
                 Filter by {params.regionName} classes:{" "}

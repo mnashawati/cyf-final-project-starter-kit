@@ -28,17 +28,6 @@ const StudentProfile = () => {
 		Object.keys(student).length && (
 			<>
 				<div className='container student-profile-wrapper'>
-					<Link
-						to={`/regions/${student.city}/students`}
-						className='back-to-students'
-					>
-						<img
-							src={backArrow}
-							alt='back-arrow'
-							className='back-arrow-icon'
-						/>
-            		Back to students...
-					</Link>
 					<div className='student-hero-section'>
 						<div className='student-image-section'>
 							<img

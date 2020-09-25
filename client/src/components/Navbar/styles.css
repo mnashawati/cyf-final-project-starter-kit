@@ -18,6 +18,7 @@
 
 .navbar-links {
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
@@ -25,6 +26,8 @@
 
 .sign-out-btn-div > :only-child {
   margin-right: 20px;
+  flex: 0;
+  min-width: 110px;
 }
 
 .homepage-route-link {
@@ -115,4 +118,13 @@
 .register-route-link:hover,
 .register-route-link:active {
   background-color: rgb(107, 107, 107);
+}
+
+.navigation-btn-container{
+  flex: 5;
+}
+
+.go-back-btn{
+    color: black;
+    border: 1px solid black;
 }

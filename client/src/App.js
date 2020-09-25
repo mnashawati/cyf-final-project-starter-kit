@@ -31,5 +31,3 @@ export function App() {
 }
 
 export default App;
-
-//linkClassName={"back-to-students"} linkPathName={`/regions/${student.city}/students`} linkContent={"Back to students"}
