@@ -10,9 +10,6 @@
     border-radius: 5px;
 }
 
-.students-grid-wrapper {
-    height: 100vh;
-}
 
 .students-grid-container {
     margin: 20px auto;
@@ -20,6 +17,13 @@
 
 .back-to-all-regions {
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
+}
+
+.back-to-all-regions:hover {
+    color: grey;
+}
+.back-arrow-icon {
+    height: 20px;
 }
