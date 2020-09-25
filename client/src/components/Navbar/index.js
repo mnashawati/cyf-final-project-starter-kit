@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
-import "./styles.css";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../../authentication/Auth";
 import SignOut from "../../authentication/SignOut";
 import Navigation from "../Navigation/index";
+import "./styles.css";
 
 const Navbar = () => {
 
 	const { currentUser } = useContext(AuthContext);
 	const history = useHistory();
+	let location = useLocation();
+
 	return (
 		<div className='navbar-container'>
 			<div className='navbar-links'>
@@ -28,8 +30,8 @@ const Navbar = () => {
 					<p>Feedback Tracker</p>
 				</Link>
 			</div>
-			<div className="navigation-btn-container">
-				<Navigation history={history} />
+			<div className='navigation-btn-container'>
+				{currentUser && location.pathname !== "/" ? <Navigation history={history} /> : null}
 			</div>
 			<div className='sign-out-btn-div'>
 				{currentUser && <SignOut />}
