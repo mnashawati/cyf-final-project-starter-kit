@@ -9,18 +9,22 @@ import StudentProfile from "./components/StudentProfile";
 import { AuthProvider } from "./authentication/Auth";
 import PrivateRoute from "./authentication/PrivateRoute";
 import SignUp from "./authentication/SignUp";
-
+import Footer from "./components/Footer/index.js";
+import Navbar from "./components/Navbar/index.js";
 
 export function App() {
+
 	return (
 		<AuthProvider>
 			<Router>
+				<Navbar />
 				<Route exact path="/" component={() => <HomePage />} />
 				<Route exact path="/sign-in" component={() => <SignIn />} />
 				<Route exact path="/register" component={() => <SignUp />} />
 				<PrivateRoute exact path="/regions" component={() => <RegionsGrid />} />
 				<PrivateRoute exact path="/regions/:regionName/students" component={() => <StudentsGrid />} />
 				<PrivateRoute exact path="/regions/:regionName/students/:studentName" component={() => <StudentProfile />} />
+				<Footer />
 			</Router>
 		</AuthProvider>
 	);

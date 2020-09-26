@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import img from "./05.jpg";
+import img from "../../assets/image-one.jpg";
 import TechnologiesGrid from "../TechnologiesGrid";
 import SignIn from "../../authentication/SignIn";
 

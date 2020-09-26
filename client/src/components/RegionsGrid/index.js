@@ -3,14 +3,11 @@ import RegionsCard from "../RegionsCard/index.js";
 import "./styles.css";
 import "./grid.css";
 import regions from "../../db/regions.json";
-import Navbar from "../Navbar/index.js";
-import Footer from "../Footer/index";
 
 const RegionsGrid = ( ) => {
 
 	return  (
 		<>
-			<Navbar />
 			<div>
 				<div className="container regions-grids-container">
 					<div className="row">
@@ -20,7 +17,6 @@ const RegionsGrid = ( ) => {
 					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 
 	);
