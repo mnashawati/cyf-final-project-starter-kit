@@ -1,3 +1,7 @@
+.student-profile-wrapper {
+    height: 100vh;
+}
+
 .student-hero-section {
     display: flex;
     background-color: #f6f6f6;
