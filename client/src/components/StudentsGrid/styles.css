@@ -13,6 +13,7 @@
 
 .students-grid-container {
     margin: 20px auto;
+    height: 100vh;
 }
 
 .back-to-all-regions {
