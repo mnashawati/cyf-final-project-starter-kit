@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import StudentCard from "../StudentCard/index.js";
 import Pagination from "../Pagination/index.js";
 import getFilteringData from "../../helperFunctions/getFilteringData";
-import backArrow from "../../assets/image-two.png";
+// import backArrow from "../../assets/image-two.png";
 import "./styles.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const StudentsGrid = ( ) => {
 
@@ -75,9 +75,9 @@ const StudentsGrid = ( ) => {
 							/>
 						</div>
 					</div>
-				) : (
-					<h1>No students found</h1>
-				)}
+				) : null
+				// (<h1>No students found</h1>)
+				}
 			</div>
 		</>
 	);
