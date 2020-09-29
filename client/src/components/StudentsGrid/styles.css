@@ -2,6 +2,9 @@
     align-items: flex-end;
 }
 
+.filter-by-class-container > h2{
+    font-size: 28px;
+}
 .select-class-number {
     height: 30px;    
     padding: 5px;
@@ -27,3 +30,7 @@
 .back-arrow-icon {
     height: 17px;
 }
+
+/* .students-grid-wrapper {
+    height: 100vh;
+} */

@@ -38,3 +38,9 @@
 .footer-text > p {
     margin: 0 5px;
 }
+
+@media (max-width:420px) {
+    .footer-content-container {
+        font-size: 11px;
+    }
+}

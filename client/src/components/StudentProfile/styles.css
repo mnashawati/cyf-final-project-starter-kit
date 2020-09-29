@@ -112,4 +112,35 @@
     .student-profile-email {
         font-size: 14px;
     }
+    .student-hero-section {
+        flex-direction: column;
+    }
+    .student-image-section{
+        text-align: left;
+    }
+    .email-github-section{
+        margin-left: 0px;
+    }
+    .student-profile-name{
+        margin-bottom: 0px;
+        margin-top: 0px;
+        font-size: 18px;
+    }
+    .full-profile-picture {
+        height:80px;
+        width: 80px;
+    }
+    .write-feedback-title{
+        font-size: 20px;
+    }
+    .highlights-title{
+        font-size: 20px; 
+    }
+}
+
+@media (min-height:1079px) {
+.student-profile-wrapper{
+    height: 100vh
+}
+   
 }
