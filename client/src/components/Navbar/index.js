@@ -32,7 +32,7 @@ const Navbar = () => {
 			</div>
 			{location.pathname == "/regions/London/students" ? (
 				<div className='navigation-btn-container'>
-					{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
+					{currentUser && location.pathname !== "/" && location.pathname !== "/regions" ? (
 						<Navigation
 							history={history}
 							title={"Back to regions"}
@@ -40,7 +40,7 @@ const Navbar = () => {
 					) : null}
 				</div>
 			) : <div className='navigation-btn-container'>
-				{currentUser && location.pathname !== "/" && currentUser && location.pathname !== "/regions" ? (
+				{currentUser && location.pathname !== "/" && location.pathname !== "/regions" ? (
 					<Navigation
 						history={history}
 						title={"Back to students"}
