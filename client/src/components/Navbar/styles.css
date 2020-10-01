@@ -132,3 +132,11 @@
 .go-back-btn:hover {
   background-color:#343A40;
 }
+
+@media (max-width:420px) {
+    .go-back-btn {
+        font-size: 12px;
+        min-height: 39px;
+        padding: 0px;
+    }
+}

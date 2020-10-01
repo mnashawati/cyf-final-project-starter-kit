@@ -2,6 +2,9 @@
     text-align:center ;
 }
 
+.card-container > p{
+    margin-bottom: 0.8rem;
+} 
 .regions-card {
     text-decoration: none;   
     margin: 15px;

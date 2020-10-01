@@ -8,7 +8,6 @@ const RegionsGrid = ( ) => {
 
 	return  (
 		<>
-			<div>
 				<div className="container regions-grids-container">
 					<div className="row">
 						{ regions && regions.map((region, index) => (
@@ -16,7 +15,6 @@ const RegionsGrid = ( ) => {
 						))}
 					</div>
 				</div>
-			</div>
 		</>
 
 	);

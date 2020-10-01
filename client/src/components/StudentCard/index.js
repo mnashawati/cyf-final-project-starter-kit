@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import "./styles.css";
 
 const StudentCard = ({ student }) => {
+
 	return (
 		<Link
 			className="student-card-wrapper"
