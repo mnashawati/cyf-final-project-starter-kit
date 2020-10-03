@@ -10,8 +10,9 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
+	//PAGINATION settings
 	const [currentPage, setCurrentPage] = useState(1);
-	const [feedbackPerPage] = useState(4);
+	const feedbackPerPage = 4;
 
 	const filteredFeedback = [
 		...allFeedback.sort((a, b) => {
@@ -39,7 +40,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	// All mentors assigned to mentors and sorted alphabetically
 	const mentors = getFilteringData(filteredFeedback, "mentor").sort(sortThings);
 
-	const indexOfLastFeedback = currentPage * feedbackPerPage; // 5
+	const indexOfLastFeedback = currentPage * feedbackPerPage; // 
 	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage; // 5-5=0
 	const currentFeedbacks = filteredFeedback.slice(
 		indexOfFirstFeedback,
