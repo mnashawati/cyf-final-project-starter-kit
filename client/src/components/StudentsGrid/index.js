@@ -12,9 +12,9 @@ const StudentsGrid = ( ) => {
 	const params = useParams();
 	const [students, setStudents] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [studentsPerPage] = useState(6);
 	const [currentClass, setCurrentClass] = useState(6);
-
+	const studentsPerPage = 6;
+	
 	useEffect(() => {
 		fetch("/api/students")
 			.then((res) => res.json())
