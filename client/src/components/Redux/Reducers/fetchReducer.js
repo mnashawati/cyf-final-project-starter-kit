@@ -1,16 +1,17 @@
 
-const fetchDataReducer = (state =  {} , action) => {
+const initialSate = { students : [] };
+
+const getStudentDataReducer = (state =  { ...initialSate } , action) => {
 	switch (action.type) {
-	case "FETCH_DATA":
+	case "GET_STUDENTS_DATA":
 		console.log({ action });
-		return { ...state,
-			students: action.payload };
+		return { ...state, students: action.payload };
 	default:
 		return state;
 	}
 };
 
-export default fetchDataReducer;
+export default getStudentDataReducer;
 
 
 

@@ -1,10 +1,10 @@
 
-import fetchDataReducer from "./fetchReducer";
+import getStudentDataReducer from "./fetchReducer";
 import postDataReducer from "./postReducer";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
-	allData: fetchDataReducer,
+	allData: getStudentDataReducer,
 	postData: postDataReducer,
 });
 
