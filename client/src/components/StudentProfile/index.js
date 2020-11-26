@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Highlights from "../Highlights/index.js";
 import AllFeedback from "../AllFeedback/index.js";
+
 import "./styles.css";
 
 const StudentProfile = () => {
