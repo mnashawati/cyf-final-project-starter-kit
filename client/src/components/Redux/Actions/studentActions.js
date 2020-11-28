@@ -1,8 +1,5 @@
 
-import {
-	GET_STUDENTS_DATA,
-	UPDATE_STUDENT_DATA,
-} from "./types";
+import { GET_STUDENTS_DATA, UPDATE_STUDENT_DATA } from "./types";
 
 export const getStudentData = () => {
 
