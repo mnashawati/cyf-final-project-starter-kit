@@ -8,7 +8,7 @@ import getFilteringData from "../../helperFunctions/getFilteringData";
 // import { getStudentData } from "../Redux/Actions/studentActions";
 // import { connect } from "react-redux";
 
-const PreviousFeedback = ({ student, updateFeedback }) => {
+const PreviousFeedback = ({ student, updateStudentData }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
@@ -40,7 +40,9 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 
 	const modules = getFilteringData(filteredFeedback, "module").sort();
 	// All mentors assigned to mentors and sorted alphabetically
-	const mentors = getFilteringData(filteredFeedback, "mentor").sort(sortThings);
+	const mentors = getFilteringData(filteredFeedback, "mentor").sort(
+		sortThings
+	);
 
 	// PAGINATION feedback per page calculation
 	const indexOfLastFeedback = currentPage * feedbackPerPage;
@@ -111,7 +113,7 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 							<FeedbackItem
 								feedbackItem={feedback}
 								student={student}
-								updateFeedback={updateFeedback}
+								updateStudentData={updateStudentData}
 							/>
 						</div>
 					))}
@@ -135,7 +137,7 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 
 PreviousFeedback.propTypes = {
 	student: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func.isRequired,
+	updateStudentData: PropTypes.func.isRequired,
 };
 
 export default PreviousFeedback;

@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const AllFeedback = ({ student }) => {
 	const [studentData, setStudentData] = useState(student);
 	// Call data after feedback submitted
-	const updateFeedback = () => {
+	const updateStudentData = () => {
 		fetch(`/api/students/${student._id}`)
 			.then((res) => res.json())
 			.then((data) => setStudentData(data))
@@ -18,12 +18,11 @@ const AllFeedback = ({ student }) => {
 		<div className="feedback-wrapper">
 			<FeedbackForm
 				student={studentData}
-				updateFeedback={updateFeedback}
+				updateStudentData={updateStudentData}
 			/>
 			<PreviousFeedback
 				student={studentData}
-				// allFeedback={allFeedback}
-				updateFeedback={updateFeedback}
+				updateStudentData={updateStudentData}
 			/>
 		</div>
 	);

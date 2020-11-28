@@ -8,40 +8,41 @@ import { Modal, Button } from "react-bootstrap";
 import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
-const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
+const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
+	// Toggle textarea disabled Attribute
 	const [isEditing, setIsEditing] = useState(false);
-	const [currentFeedback, setCurrentFeedback] = useState({});
+	const [feedback, setFeedback] = useState({});
 	const [showModal, setShowModal] = useState(false);
 
 	const { currentUser } = useContext(AuthContext);
+	//GET EDIT - DELETE buttons for the actual mentor
 	const mentorsEmail = currentUser.email;
 
 	useEffect(() => {
-		setCurrentFeedback(feedbackItem);
+		setFeedback(feedbackItem);
 	}, [feedbackItem]);
 
-	//POST updated feedback to DB
-	//When clicked SAVE; UPDATE the data
-	const updateData = (id) => {
+	//SAVE clicked, CHECK if field is empty
+	const saveFeedback = (id) => {
+		if (!feedback.title) {
+			return alert("Please add a title");
+		} else if (!feedback.text) {
+			return alert("Please add your feedback");
+		} else if (!feedback.mentor) {
+			return alert("Please add your name");
+		}
+		updateFeedbackData(id);
+	};
+
+	//UPDATE feedback at dataBase
+	const updateFeedbackData = (id) => {
 		fetch(`/api/students/${student._id}/feedback/${id}`, {
 			method: "PUT",
 			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(currentFeedback),
+			body: JSON.stringify(feedback),
 		})
 			.then((res) => res.json())
 			.catch((error) => console.log(error));
-	};
-
-	//When clicked SAVE, CHECK if field is empty
-	const saveFeedback = (id) => {
-		if (!currentFeedback.title) {
-			return alert("Please add a title");
-		} else if (!currentFeedback.text) {
-			return alert("Please add your feedback");
-		} else if (!currentFeedback.mentor) {
-			return alert("Please add your name");
-		}
-		updateData(id);
 	};
 
 	//DELETE selected feedback and update data
@@ -51,40 +52,40 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 			headers: { "Content-type": "application/json" },
 		})
 			.then((res) => res.json())
-			.then()
 			.catch((error) => console.log(error))
-			.then(() => updateFeedback());
+			.then(() => updateStudentData());
 	};
 
-	// Populate new object with edited data editable
+	// Update object with edited data editable
 	const handleEdit = (e) => {
-		setCurrentFeedback({
-			...currentFeedback,
+		setFeedback({
+			...feedback,
 			[e.target.name]: e.target.value,
 		});
 	};
 
 	const handleCancel = () => {
-		setCurrentFeedback(feedbackItem);
+		setFeedback(feedbackItem);
 		setIsEditing(!isEditing);
 	};
 
 	return (
-		currentFeedback && (
+		feedback && (
 			<div className="prev-feedback-list">
 				<div className="feedback-title-and-module">
 					<div className="feedback-title">
 						<input
 							className="prev-feedback-title-input"
 							name={"title"}
-							value={currentFeedback.title || ""}
+							//A component is changing an uncontrolled input of type text to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa)
+							value={feedback.title || ""}
 							onChange={handleEdit}
 							disabled={!isEditing}
 						/>
 					</div>
 					<div className="feedback-module">
 						{!isEditing ? (
-							<p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
+							<p className="module-select-p">{`Module: ${feedback.module}`}</p>
 						) : (
 							<>
 								<p className="feedback-input-heading">
@@ -93,7 +94,7 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 								<select
 									className="module-select"
 									name={"module"}
-									value={currentFeedback.module || ""}
+									value={feedback.module || ""}
 									onChange={handleEdit}
 								>
 									{modules.map((module, index) => (
@@ -110,7 +111,7 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 					<textarea
 						className="feedback-text-textarea"
 						name={"text"}
-						value={currentFeedback.text || ""}
+						value={feedback.text || ""}
 						onChange={handleEdit}
 						disabled={!isEditing}
 					/>
@@ -121,45 +122,31 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 							<input
 								className="prev-feedback-mentor-input"
 								name={"mentor"}
-								value={`Given by: ${
-									currentFeedback.mentor || ""
-								}`}
+								value={`Given by: ${feedback.mentor || ""}`}
 								onChange={handleEdit}
 								disabled
 							/>
 						</div>
 						<div className="prev-feedback-time">
 							<p className="prev-feedback-time-input">
-								{timeDifference(
-									Date.now(),
-									currentFeedback.time
-								)}
+								{timeDifference(Date.now(), feedback.time)}
 							</p>
 						</div>
 					</div>
-					{mentorsEmail === currentFeedback.mentorEmail ? (
+					{mentorsEmail === feedback.mentorEmail ? (
 						<div className="edit-delete-buttons">
 							<Button
 								variant="success"
 								onClick={() => {
 									setIsEditing(!isEditing);
-									isEditing
-                                        && saveFeedback(currentFeedback.id);
+									isEditing && saveFeedback(feedback.id);
 								}}
 								className="edit-save-feedback-btn"
 							>
-								{!isEditing ? "Edit" : "Update"}
+								{!isEditing ? "Edit" : "Save"}
 							</Button>
 
-							{isEditing ? (
-								<Button
-									variant="outline-danger"
-									onClick={handleCancel}
-									className="cancel-edit-feedback-btn"
-								>
-                                    Cancel
-								</Button>
-							) : (
+							{!isEditing ? (
 								<>
 									<Button
 										variant="danger"
@@ -181,6 +168,9 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
                                                 Delete feedback?
 											</Modal.Title>
 										</Modal.Header>
+										<Modal.Body>
+											<p>Select cancel if you dont want to delete the feedback!</p>
+										</Modal.Body>
 										<Modal.Footer>
 											<Button
 												variant="secondary"
@@ -194,9 +184,7 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 											<Button
 												variant="danger"
 												onClick={() => {
-													handleDelete(
-														currentFeedback.id
-													);
+													handleDelete(feedback.id);
 													setShowModal(false);
 												}}
 												className="confirm-delete-feedback-btn"
@@ -206,6 +194,14 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 										</Modal.Footer>
 									</Modal>
 								</>
+							) : (
+								<Button
+									variant="outline-danger"
+									onClick={handleCancel}
+									className="cancel-edit-feedback-btn"
+								>
+                                    Cancel
+								</Button>
 							)}
 						</div>
 					) : null}
@@ -218,7 +214,7 @@ const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 FeedbackItem.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedbackItem: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func,
+	updateStudentData: PropTypes.func,
 };
 
 export default FeedbackItem;

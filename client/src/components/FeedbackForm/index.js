@@ -7,8 +7,7 @@ import PropTypes from "prop-types";
 import { AuthContext } from "../../authentication/Auth";
 import { Button } from "react-bootstrap";
 
-const FeedbackForm = ({ student, updateFeedback }) => {
-
+const FeedbackForm = ({ student, updateStudentData }) => {
 	const { currentUser } = useContext(AuthContext);
 
 	const [feedback, setFeedback] = useState({
@@ -21,9 +20,8 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 	});
 	feedback.id = uuid();
 	feedback.time = Date.now();
-	feedback.mentor = (currentUser.displayName);
-	feedback.mentorEmail = (currentUser.email);
-
+	feedback.mentor = currentUser.displayName;
+	feedback.mentorEmail = currentUser.email;
 
 	const options = {
 		method: "POST",
@@ -33,9 +31,9 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 
 	const postFeedback = () => {
 		fetch(`/api/students/${student._id}`, options)
-			.then( (res) => res.json())
+			.then((res) => res.json())
 			.catch((error) => console.log(error))
-			.then(() => updateFeedback());
+			.then(() => updateStudentData());
 	};
 
 	const handleSubmit = (e) => {
@@ -56,7 +54,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 			mentor: "",
 			mentorEmail: "",
 		});
-		updateFeedback();
+		updateStudentData();
 	};
 
 	// Re-usable handle change function, it takes the current feedback state object and changes only the property with the key of the event's name
@@ -66,36 +64,43 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 
 	return (
 		<div className="feedback-form-container">
-			<form
-				action=""
-				className="feedback-form"
-				onSubmit={handleSubmit}
-			>
+			<form action="" className="feedback-form" onSubmit={handleSubmit}>
 				<div className="add-feedback-heading-container">
 					<h3 className="write-feedback-title">Write Feedback</h3>
 				</div>
 				<div className="feedback-module-title-container">
 					<div className="add-title-container">
-						<h6 className="feedback-input-heading">Add a headline <b>*</b></h6>
-						<input className="feedback-title-input"
+						<h6 className="feedback-input-heading">
+                            Add a headline <b>*</b>
+						</h6>
+						<input
+							className="feedback-title-input"
 							type="text"
 							name="title"
 							value={feedback.title}
 							onChange={handleChange}
 							maxLength={45}
-							placeholder="">
-						</input>
+							placeholder=""
+						></input>
 					</div>
 					<div className="add-module-container">
-						<h6 className="feedback-input-heading">Module <b>*</b></h6>
+						<h6 className="feedback-input-heading">
+                            Module <b>*</b>
+						</h6>
 						<select
 							className="select-module"
 							value={feedback.module}
 							name="module"
 							onChange={handleChange}
 						>
-							<option value="" defaultValue disabled hidden>Select a module</option>
-							{modules.map((module,index) => <option value={module.name} key={index}>{module.name}</option>)}
+							<option value="" defaultValue disabled hidden>
+                                Select a module
+							</option>
+							{modules.map((module, index) => (
+								<option value={module.name} key={index}>
+									{module.name}
+								</option>
+							))}
 						</select>
 					</div>
 				</div>
@@ -111,11 +116,14 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 					></textarea>
 				</div>
 
-				<Button variant="primary" value="Submit" onClick={handleSubmit}
-					className="feedback-form-submit-button" >
-					Submit
+				<Button
+					variant="primary"
+					value="Submit"
+					onClick={handleSubmit}
+					className="feedback-form-submit-button"
+				>
+                    Submit
 				</Button>
-
 			</form>
 		</div>
 	);
@@ -123,7 +131,7 @@ const FeedbackForm = ({ student, updateFeedback }) => {
 
 FeedbackForm.propTypes = {
 	student: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func.isRequired,
+	updateStudentData: PropTypes.func.isRequired,
 };
 
 export default FeedbackForm;
