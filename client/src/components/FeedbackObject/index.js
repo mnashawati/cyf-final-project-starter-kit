@@ -8,7 +8,7 @@ import { Modal, Button } from "react-bootstrap";
 import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
-const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
+const FeedbackObject = ({ feedbackItem, student, updateFeedback }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [currentFeedback, setCurrentFeedback] = useState({});
 	const [showModal, setShowModal] = useState(false);
@@ -17,8 +17,8 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 	const mentorsEmail = currentUser.email;
 
 	useEffect(() => {
-		setCurrentFeedback(feedbackToShow);
-	}, [feedbackToShow]);
+		setCurrentFeedback(feedbackItem);
+	}, [feedbackItem]);
 
 	//POST updated feedback to DB
 	//When clicked SAVE; UPDATE the data
@@ -65,7 +65,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 	};
 
 	const handleCancel = () => {
-		setCurrentFeedback(feedbackToShow);
+		setCurrentFeedback(feedbackItem);
 		setIsEditing(!isEditing);
 	};
 
@@ -217,7 +217,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 
 FeedbackObject.propTypes = {
 	student: PropTypes.object.isRequired,
-	feedbackToShow: PropTypes.object.isRequired,
+	feedbackItem: PropTypes.object.isRequired,
 	updateFeedback: PropTypes.func,
 };
 
