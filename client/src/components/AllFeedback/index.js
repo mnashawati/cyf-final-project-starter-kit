@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FeedbackForm from "../FeedbackForm";
 import PreviousFeedback from "../PreviousFeedback";
 import PropTypes from "prop-types";
-// import { updateStudentData } from "../Redux/Actions/studentActions";
+// import { getStudentData } from "../Redux/Actions/studentActions";
 // import { connect } from "react-redux";
 
 const AllFeedback = ({ student }) => {
@@ -28,7 +28,25 @@ const AllFeedback = ({ student }) => {
 		</div>
 	);
 };
+
 AllFeedback.propTypes = {
 	student: PropTypes.object.isRequired,
 };
 export default AllFeedback;
+
+// const mapStateToProps = (state) => {
+// 	const { students } = state.studentsData;
+// 	console.log(students);
+// 	return { students };
+// };
+
+// const mapDispatchToProps = {
+// 	getStudentData,
+// };
+
+// AllFeedback.propTypes = {
+// 	student: PropTypes.object.isRequired,
+// 	getStudentData: PropTypes.func,
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(AllFeedback);

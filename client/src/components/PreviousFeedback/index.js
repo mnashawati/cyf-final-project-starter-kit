@@ -1,10 +1,12 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import React, { useState } from "react";
-import FeedbackObject from "../FeedbackObject";
+import FeedbackItem from "../FeedbackItem";
 import PropTypes from "prop-types";
 import "./styles.css";
 import Pagination from "../Pagination/index";
 import getFilteringData from "../../helperFunctions/getFilteringData";
+// import { getStudentData } from "../Redux/Actions/studentActions";
+// import { connect } from "react-redux";
 
 const PreviousFeedback = ({ student, updateFeedback }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
@@ -52,10 +54,14 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 		<div className="previous-feedback-section-container">
 			<div className="previous-feedback-section">
 				<div className="previous-feedback-title-and-container">
-					<h3 className="previous-feedback-title">Previous Feedback</h3>
+					<h3 className="previous-feedback-title">
+                        Previous Feedback
+					</h3>
 					<div className="filtered-feedback-counter-div">
 						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${student.allFeedback.length}`}</p>
-						<p className="filtered-feedback-counter-text">feedbacks</p>
+						<p className="filtered-feedback-counter-text">
+                            feedbacks
+						</p>
 					</div>
 				</div>
 				<div>
@@ -66,7 +72,9 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 								className="select-module"
 								name="filter-by-module"
 								value={selectedModule}
-								onChange={(e) => setSelectedModule(e.target.value)}
+								onChange={(e) =>
+									setSelectedModule(e.target.value)
+								}
 							>
 								<option>All modules</option>
 								{modules.map((module, index) => (
@@ -82,7 +90,9 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 								className="select-mentor"
 								name="filter-by-mentor"
 								value={selectedMentor}
-								onChange={(e) => setSelectedMentor(e.target.value)}
+								onChange={(e) =>
+									setSelectedMentor(e.target.value)
+								}
 							>
 								<option>All mentors</option>
 								{mentors.map((mentor, index) => (
@@ -98,8 +108,8 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 				<div className="feedback-pages-section">
 					{currentFeedbacks.map((feedback, index) => (
 						<div className="feedback-object-section" key={index}>
-							<FeedbackObject
-								feedbackToShow={feedback}
+							<FeedbackItem
+								feedbackItem={feedback}
 								student={student}
 								updateFeedback={updateFeedback}
 							/>
@@ -117,7 +127,7 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 		<div className="no-feedback-found-warning-container">
 			<p className="no-feedback-found-warning">
 				{" "}
-        No feedback given! Please write a feedback...{" "}
+                No feedback given! Please leave a feedback...{" "}
 			</p>
 		</div>
 	);
@@ -125,8 +135,25 @@ const PreviousFeedback = ({ student, updateFeedback }) => {
 
 PreviousFeedback.propTypes = {
 	student: PropTypes.object.isRequired,
-	// allFeedback: PropTypes.array.isRequired,
 	updateFeedback: PropTypes.func.isRequired,
 };
 
 export default PreviousFeedback;
+
+// const mapStateToProps = (state) => {
+// 	const { student } = state.studentsData.student;
+// 	console.log(student);
+// 	return { student };
+// };
+
+// const mapDispatchToProps = {
+// 	getStudentData,
+// };
+
+// PreviousFeedback.propTypes = {
+// 	student: PropTypes.object.isRequired,
+// 	getStudentData: PropTypes.func,
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(PreviousFeedback);
+
