@@ -8,7 +8,7 @@ import { Modal, Button } from "react-bootstrap";
 import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
-const FeedbackObject = ({ feedbackItem, student, updateFeedback }) => {
+const FeedbackItem = ({ feedbackItem, student, updateFeedback }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [currentFeedback, setCurrentFeedback] = useState({});
 	const [showModal, setShowModal] = useState(false);
@@ -215,10 +215,10 @@ const FeedbackObject = ({ feedbackItem, student, updateFeedback }) => {
 	);
 };
 
-FeedbackObject.propTypes = {
+FeedbackItem.propTypes = {
 	student: PropTypes.object.isRequired,
 	feedbackItem: PropTypes.object.isRequired,
 	updateFeedback: PropTypes.func,
 };
 
-export default FeedbackObject;
+export default FeedbackItem;
