@@ -6,7 +6,7 @@ import "./styles.css";
 import Pagination from "../Pagination/index";
 import getFilteringData from "../../helperFunctions/getFilteringData";
 
-const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
+const PreviousFeedback = ({ student, updateFeedback }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
@@ -15,7 +15,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 	const feedbackPerPage = 4;
 
 	const filteredFeedback = [
-		...allFeedback.sort((a, b) => {
+		...student.allFeedback.sort((a, b) => {
 			return a.time > b.time ? -1 : b.time > a.time ? 1 : 0;
 		}),
 	]
@@ -54,7 +54,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 				<div className="previous-feedback-title-and-container">
 					<h3 className="previous-feedback-title">Previous Feedback</h3>
 					<div className="filtered-feedback-counter-div">
-						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${allFeedback.length}`}</p>
+						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${student.allFeedback.length}`}</p>
 						<p className="filtered-feedback-counter-text">feedbacks</p>
 					</div>
 				</div>
@@ -125,7 +125,7 @@ const PreviousFeedback = ({ student, allFeedback, updateFeedback }) => {
 
 PreviousFeedback.propTypes = {
 	student: PropTypes.object.isRequired,
-	allFeedback: PropTypes.array.isRequired,
+	// allFeedback: PropTypes.array.isRequired,
 	updateFeedback: PropTypes.func.isRequired,
 };
 

@@ -8,13 +8,13 @@ const RegionsGrid = ( ) => {
 
 	return  (
 		<>
-				<div className="container regions-grids-container">
-					<div className="row">
-						{ regions && regions.map((region, index) => (
-							<RegionsCard region={region} key={index} />
-						))}
-					</div>
+			<div className="container regions-grids-container">
+				<div className="row">
+					{ regions && regions.map((region, index) => (
+						<RegionsCard region={region} key={index} />
+					))}
 				</div>
+			</div>
 		</>
 
 	);

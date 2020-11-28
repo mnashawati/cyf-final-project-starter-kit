@@ -1,11 +1,11 @@
 
-import getStudentDataReducer from "./fetchReducer";
-import postDataReducer from "./postReducer";
+import getStudentDataReducer from "./getStudentDataReducer";
+import updateStudentDataReducer from "./updateStudentDataReducer";
 import { combineReducers } from "redux";
 
-const allReducers = combineReducers({
+const reducers = combineReducers({
 	allData: getStudentDataReducer,
-	postData: postDataReducer,
+	updatedData: updateStudentDataReducer,
 });
 
-export default allReducers;
+export default reducers;

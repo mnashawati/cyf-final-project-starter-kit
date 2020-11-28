@@ -11,7 +11,6 @@ export const getStudentData = () => {
 		fetch("/api/students")
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				dispatch({
 					type: GET_STUDENTS_DATA,
 					payload: data,
@@ -21,14 +20,14 @@ export const getStudentData = () => {
 	};
 };
 
-export const updateStudentData = () => {
+export const updateStudentData = (studentID) => {
 	return (dispatch) => {
-		fetch("/api/students")
-			.then((response) => response.json())
+		fetch(`/api/students/${studentID}`)
+			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
 				dispatch({
-					type: GET_STUDENTS_DATA,
+					type: UPDATE_STUDENT_DATA,
 					payload: data,
 				});
 			})

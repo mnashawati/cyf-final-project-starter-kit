@@ -13,6 +13,7 @@ const StudentProfile = ({ students, getStudentData }) => {
 
 	useEffect(() => {
 		getStudentData();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const student

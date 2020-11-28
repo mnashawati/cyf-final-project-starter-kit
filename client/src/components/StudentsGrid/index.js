@@ -9,8 +9,6 @@ import getFilteringData from "../../helperFunctions/getFilteringData";
 import "./styles.css";
 
 const StudentsGrid = ({ students, getStudentData }) => {
-	// const allStudents = props.students;
-	console.log(allStudents);
 
 	useEffect(() => {
 		getStudentData();
@@ -23,29 +21,16 @@ const StudentsGrid = ({ students, getStudentData }) => {
 	const [currentClass, setCurrentClass] = useState(6);
 	const studentsPerPage = 6;
 
-	const allStudents
-        = students
-        && students.length
-        && students
-        	.filter((student) => student.city == params.regionName)
-        	.sort((a, b) => {
-        		let firstName = a.name.toLowerCase();
-        		let secondName = b.name.toLowerCase();
-        		return firstName > secondName
-        			? 1
-        			: firstName < secondName
-        				? -1
-        				: 0;
-        	});
+	const allStudents = students && students.length && students.filter((student) => student.city == params.regionName).sort((a, b) => {
+		let firstName = a.name.toLowerCase();
+		let secondName = b.name.toLowerCase();
+		return firstName > secondName ? 1 : firstName < secondName ? -1 : 0;
+	});
 
 	const indexOfLastStudent = currentPage * studentsPerPage; //6
 	const indexOfFirstStudent = indexOfLastStudent - studentsPerPage; //6-6=0
-	const filteredStudents
-        = allStudents
-        && allStudents.filter((student) => student.class == currentClass);
-	const currentStudents
-        = allStudents
-        && filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent); //students.slice(0,6)
+	const filteredStudents = allStudents && allStudents.filter((student) => student.class == currentClass);
+	const currentStudents = allStudents && filteredStudents.slice(indexOfFirstStudent, indexOfLastStudent); //students.slice(0,6)
 
 	return (
 		<>
@@ -75,12 +60,7 @@ const StudentsGrid = ({ students, getStudentData }) => {
 							</div>
 							<div className="students-cards-container row">
 								{allStudents
-                                    && currentStudents.map((student, index) => (
-                                    	<StudentCard
-                                    		student={student}
-                                    		key={index}
-                                    	/>
-                                    ))}
+                                    && currentStudents.map((student, index) => (<StudentCard student={student} key={index} />))}
 							</div>
 							<div>
 								<Pagination
