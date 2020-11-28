@@ -1,7 +1,7 @@
 
-import { GET_STUDENTS_DATA, UPDATE_STUDENT_DATA } from "./types";
+import { GET_STUDENTS_DATA, GET_STUDENT_DATA } from "./types";
 
-export const getStudentData = () => {
+export const getStudentsData = () => {
 
 	return (dispatch) => {
 
@@ -17,14 +17,14 @@ export const getStudentData = () => {
 	};
 };
 
-export const updateStudentData = (studentID) => {
+export const getStudentData = (studentID) => {
 	return (dispatch) => {
 		fetch(`/api/students/${studentID}`)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
 				dispatch({
-					type: UPDATE_STUDENT_DATA,
+					type: GET_STUDENT_DATA,
 					payload: data,
 				});
 			})

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StudentCard from "../StudentCard/index.js";
 import Pagination from "../Pagination/index.js";
-import { getStudentData } from "../Redux/Actions/studentActions";
+import { getStudentsData } from "../Redux/Actions/studentActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import getFilteringData from "../../helperFunctions/getFilteringData";
 import "./styles.css";
 
-const StudentsGrid = ({ students, getStudentData }) => {
+const StudentsGrid = ({ students, getStudentsData }) => {
 
 	useEffect(() => {
-		getStudentData();
+		getStudentsData();
 	}, []);
 
 	const params = useParams();
@@ -78,18 +78,18 @@ const StudentsGrid = ({ students, getStudentData }) => {
 };
 
 const mapStateToProps = (state) => {
-	const { students } = state.allData;
+	const { students } = state.studentsData;
 	console.log(students);
 	return { students };
 };
 
 const mapDispatchToProps = {
-	getStudentData,
+	getStudentsData,
 };
 
 StudentsGrid.propTypes = {
 	students: PropTypes.array,
-	getStudentData: PropTypes.func,
+	getStudentsData: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentsGrid);
