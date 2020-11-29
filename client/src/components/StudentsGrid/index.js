@@ -15,8 +15,6 @@ const StudentsGrid = ({ students, getStudentsData }) => {
 	}, []);
 
 	const params = useParams();
-
-	// // const [students, setStudents] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [currentClass, setCurrentClass] = useState(6);
 	const studentsPerPage = 6;
