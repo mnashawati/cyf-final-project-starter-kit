@@ -1,6 +1,5 @@
 
-const initialState = { students : [],
-	student : {} };
+const initialState = { students : [] };
 
 
 const studentsReducer = (state = { ...initialState }, action) => {

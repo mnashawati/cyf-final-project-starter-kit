@@ -10,7 +10,6 @@ const Navbar = () => {
 	const { currentUser } = useContext(AuthContext);
 	const history = useHistory();
 	let location = useLocation();
-	console.log("history", history);
 	return (
 		<div className='navbar-container'>
 			<div className='navbar-links'>
