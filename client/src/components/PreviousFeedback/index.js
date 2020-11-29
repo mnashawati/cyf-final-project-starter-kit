@@ -14,7 +14,7 @@ const PreviousFeedback = ({ student, updateStudentData }) => {
 
 	//PAGINATION settings
 	const [currentPage, setCurrentPage] = useState(1);
-	const feedbackPerPage = 4;
+	const feedbackPerPage = 3;
 
 	const filteredFeedback = [
 		...student.allFeedback.sort((a, b) => {
