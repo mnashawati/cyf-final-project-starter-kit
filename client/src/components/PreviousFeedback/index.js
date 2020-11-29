@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 import "./styles.css";
 import Pagination from "../Pagination/index";
 import getFilteringData from "../../helperFunctions/getFilteringData";
-// import { getStudentData } from "../Redux/Actions/studentActions";
-// import { connect } from "react-redux";
+
 
 const PreviousFeedback = ({ student, updateStudentData }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
@@ -142,20 +141,4 @@ PreviousFeedback.propTypes = {
 
 export default PreviousFeedback;
 
-// const mapStateToProps = (state) => {
-// 	const { student } = state.studentsData.student;
-// 	console.log(student);
-// 	return { student };
-// };
-
-// const mapDispatchToProps = {
-// 	getStudentData,
-// };
-
-// PreviousFeedback.propTypes = {
-// 	student: PropTypes.object.isRequired,
-// 	getStudentData: PropTypes.func,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(PreviousFeedback);
 

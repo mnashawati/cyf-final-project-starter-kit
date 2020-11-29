@@ -4,7 +4,8 @@ import { getStudentsData } from "../Redux/Actions/studentActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Highlights from "../Highlights/index.js";
-import AllFeedback from "../AllFeedback/index.js";
+import FeedbackForm from "../FeedbackForm";
+import PreviousFeedback from "../PreviousFeedback";
 
 import "./styles.css";
 
@@ -13,13 +14,9 @@ const StudentProfile = ({ students, getStudentsData }) => {
 
 	useEffect(() => {
 		getStudentsData();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const student
-        = students
-        && students.length
-        && students.find((student) => student.name == params.studentName);
+	const student = students && students.length && students.find((student) => student.name == params.studentName);
 
 	return (
 		Object.keys(student).length && (
@@ -70,7 +67,16 @@ const StudentProfile = ({ students, getStudentsData }) => {
 							<Highlights student={student} />
 						</div>
 						<div className="student-profile-container-right">
-							<AllFeedback student={student} />
+							<div className="feedback-wrapper">
+								<FeedbackForm
+									student={student}
+									updateStudentData={getStudentsData}
+								/>
+								<PreviousFeedback
+									student={student}
+									updateStudentData={getStudentsData}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
