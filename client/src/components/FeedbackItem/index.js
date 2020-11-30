@@ -9,20 +9,19 @@ import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
 const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
-	// Toggle textarea disabled Attribute
-	const [isEditing, setIsEditing] = useState(false);
+	const [isEditing, setIsEditing] = useState(false); // Toggle disabled attribute
 	const [feedback, setFeedback] = useState({});
 	const [showModal, setShowModal] = useState(false);
 
+	// User object from FIREBASE
 	const { currentUser } = useContext(AuthContext);
-	//GET EDIT - DELETE buttons for the actual mentor
 	const mentorsEmail = currentUser.email;
 
 	useEffect(() => {
 		setFeedback(feedbackItem);
 	}, [feedbackItem]);
 
-	//SAVE clicked, CHECK if field is empty
+	//We don't allow the user to submit the form with empty fields and display a notification denebilur
 	const saveFeedback = (id) => {
 		if (!feedback.title) {
 			return alert("Please add a title");
@@ -34,7 +33,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 		updateFeedbackData(id);
 	};
 
-	//UPDATE feedback at dataBase
+	//UPDATE feedback at DB
 	const updateFeedbackData = (id) => {
 		fetch(`/api/students/${student._id}/feedback/${id}`, {
 			method: "PUT",
@@ -45,7 +44,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 			.catch((error) => console.log(error));
 	};
 
-	//DELETE selected feedback and update data
+	//DELETE selected feedback
 	const handleDelete = (feedbackId) => {
 		fetch(`/api/students/${student._id}/${feedbackId}`, {
 			method: "DELETE",
@@ -77,7 +76,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 						<input
 							className="prev-feedback-title-input"
 							name={"title"}
-							//A component is changing an uncontrolled input of type text to be controlled. Input elements should not switch from uncontrolled to controlled (or vice versa)
+							//A component is changing an uncontrolled input of type text to be controlled. Input elements should not switch from uncontrolled to controlled
 							value={feedback.title || ""}
 							onChange={handleEdit}
 							disabled={!isEditing}
@@ -88,9 +87,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 							<p className="module-select-p">{`Module: ${feedback.module}`}</p>
 						) : (
 							<>
-								<p className="feedback-input-heading">
-                                    Module:
-								</p>
+								<p className="feedback-input-heading">Module:</p>
 								<select
 									className="module-select"
 									name={"module"}
@@ -155,7 +152,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 										}}
 										className="delete-feedback-btn"
 									>
-                                        Delete
+                    Delete
 									</Button>
 									<Modal
 										show={showModal}
@@ -164,12 +161,12 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 										}}
 									>
 										<Modal.Header closeButton>
-											<Modal.Title>
-                                                Delete feedback?
-											</Modal.Title>
+											<Modal.Title>Delete feedback?</Modal.Title>
 										</Modal.Header>
 										<Modal.Body>
-											<p>Select cancel if you dont want to delete the feedback!</p>
+											<p>
+                        Select cancel if you dont want to delete the feedback!
+											</p>
 										</Modal.Body>
 										<Modal.Footer>
 											<Button
@@ -179,7 +176,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 												}}
 												className="cancel-delete-feedback-btn"
 											>
-                                                Cancel
+                        Cancel
 											</Button>
 											<Button
 												variant="danger"
@@ -189,7 +186,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 												}}
 												className="confirm-delete-feedback-btn"
 											>
-                                                Delete
+                        Delete
 											</Button>
 										</Modal.Footer>
 									</Modal>
@@ -200,7 +197,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 									onClick={handleCancel}
 									className="cancel-edit-feedback-btn"
 								>
-                                    Cancel
+                  Cancel
 								</Button>
 							)}
 						</div>
