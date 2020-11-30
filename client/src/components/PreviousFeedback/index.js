@@ -11,7 +11,7 @@ const PreviousFeedback = ({ student, updateStudentData }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
-	//PAGINATION settings
+	//PAGINATION
 	const [currentPage, setCurrentPage] = useState(1);
 	const feedbackPerPage = 3;
 
@@ -43,13 +43,13 @@ const PreviousFeedback = ({ student, updateStudentData }) => {
 		sortThings
 	);
 
-	// PAGINATION feedback per page calculation
-	const indexOfLastFeedback = currentPage * feedbackPerPage;
-	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage;
+	// PAGINATION settings per page
+	const indexOfLastFeedback = currentPage * feedbackPerPage; //3
+	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage; //3-3
 	const currentFeedbacks = filteredFeedback.slice(
 		indexOfFirstFeedback,
 		indexOfLastFeedback
-	);
+	); //(0,3)
 
 	return currentFeedbacks.length ? (
 		<div className="previous-feedback-section-container">

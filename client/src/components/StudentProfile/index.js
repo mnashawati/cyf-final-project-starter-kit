@@ -10,6 +10,7 @@ import PreviousFeedback from "../PreviousFeedback";
 import "./styles.css";
 
 const StudentProfile = ({ students, getStudentsData }) => {
+
 	const params = useParams();
 
 	useEffect(() => {
