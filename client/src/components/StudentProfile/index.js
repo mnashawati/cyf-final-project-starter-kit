@@ -14,7 +14,7 @@ const StudentProfile = ({ students, getStudentsData }) => {
 
 	useEffect(() => {
 		getStudentsData();
-	}, []);
+	}, [getStudentsData]);
 
 	const student = students && students.length && students.find((student) => student.name == params.studentName);
 

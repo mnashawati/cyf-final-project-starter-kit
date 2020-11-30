@@ -23,7 +23,8 @@ export function App() {
 				<Route exact path="/register" component={() => <SignUp />} />
 				<PrivateRoute exact path="/regions" component={() => <RegionsGrid />} />
 				<PrivateRoute exact path="/regions/:regionName/students" component={() => <StudentsGrid />} />
-				<PrivateRoute exact path="/regions/:regionName/students/:studentName" component={() => <StudentProfile />} />
+				<PrivateRoute exact path="/regions/:regionName/students/:studentName"
+					component={() => <StudentProfile />} />
 				<Footer />
 			</Router>
 		</AuthProvider>

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StudentCard from "../StudentCard/index.js";
@@ -57,8 +58,11 @@ const StudentsGrid = ({ students, getStudentsData }) => {
 								</select>
 							</div>
 							<div className="students-cards-container row">
-								{allStudents
-                                    && currentStudents.map((student, index) => (<StudentCard student={student} key={index} />))}
+								{allStudents && currentStudents.map((student, index) => (
+									<StudentCard
+										student={student}
+										key={index} />
+								))}
 							</div>
 							<div>
 								<Pagination
