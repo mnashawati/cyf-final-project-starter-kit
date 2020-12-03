@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Highlights from "../Highlights/index.js";
 import FeedbackForm from "../FeedbackForm";
-import PreviousFeedback from "../PreviousFeedback";
+import FeedbackList from "../FeedbackList";
 
 import "./styles.css";
 
@@ -73,7 +73,7 @@ const StudentProfile = ({ students, getStudentsData }) => {
 									student={student}
 									updateStudentData={getStudentsData}
 								/>
-								<PreviousFeedback
+								<FeedbackList
 									student={student}
 									updateStudentData={getStudentsData}
 								/>

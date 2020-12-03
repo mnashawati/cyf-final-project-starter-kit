@@ -76,7 +76,6 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 						<input
 							className="prev-feedback-title-input"
 							name={"title"}
-							//A component is changing an uncontrolled input of type text to be controlled. Input elements should not switch from uncontrolled to controlled
 							value={feedback.title || ""}
 							onChange={handleEdit}
 							disabled={!isEditing}

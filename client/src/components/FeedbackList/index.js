@@ -7,7 +7,7 @@ import Pagination from "../Pagination/index";
 import getFilteringData from "../../helperFunctions/getFilteringData";
 
 
-const PreviousFeedback = ({ student, updateStudentData }) => {
+const FeedbackList = ({ student, updateStudentData }) => {
 	const [selectedModule, setSelectedModule] = useState("All modules");
 	const [selectedMentor, setSelectedMentor] = useState("All mentors");
 
@@ -134,11 +134,11 @@ const PreviousFeedback = ({ student, updateStudentData }) => {
 	);
 };
 
-PreviousFeedback.propTypes = {
+FeedbackList.propTypes = {
 	student: PropTypes.object.isRequired,
 	updateStudentData: PropTypes.func.isRequired,
 };
 
-export default PreviousFeedback;
+export default FeedbackList;
 
 
