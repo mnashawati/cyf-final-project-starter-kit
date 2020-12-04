@@ -56,7 +56,7 @@ const FeedbackList = ({ student, updateStudentData }) => {
 			<div className="previous-feedback-section">
 				<div className="previous-feedback-title-and-container">
 					<h3 className="previous-feedback-title">
-                        Previous Feedback
+                        Feedbacks
 					</h3>
 					<div className="filtered-feedback-counter-div">
 						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${student.allFeedback.length}`}</p>
