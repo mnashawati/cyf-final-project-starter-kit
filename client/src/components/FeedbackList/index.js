@@ -15,30 +15,20 @@ const FeedbackList = ({ student, updateStudentData }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const feedbackPerPage = 3;
 
-	const filteredFeedback = [
-		...student.allFeedback.sort((a, b) => {
-			return a.time > b.time ? -1 : b.time > a.time ? 1 : 0;
-		}),
+	const filteredFeedback = [ ...student.allFeedback.sort((a, b) => {
+		return a.time > b.time ? -1 : b.time > a.time ? 1 : 0;
+	}),
 	]
-		.filter((feedback) =>
-			selectedModule === "All modules"
-				? true
-				: selectedModule === feedback.module
-		)
-		.filter((feedback) =>
-			selectedMentor === "All mentors"
-				? true
-				: selectedMentor === feedback.mentor
-		);
+		.filter((feedback) => selectedModule === "All modules" ? true : selectedModule === feedback.module )
+		.filter((feedback) => selectedMentor === "All mentors" ? true : selectedMentor === feedback.mentor );
 
 	function sortThings(a, b) {
 		a = a.toLowerCase();
 		b = b.toLowerCase();
 		return a > b ? 1 : b > a ? -1 : 0;
 	}
-
+	//	All mentors/modules sorted alphabetically, repetition removed
 	const modules = getFilteringData(filteredFeedback, "module").sort();
-	// All mentors assigned to mentors and sorted alphabetically
 	const mentors = getFilteringData(filteredFeedback, "mentor").sort(
 		sortThings
 	);
@@ -46,17 +36,14 @@ const FeedbackList = ({ student, updateStudentData }) => {
 	// PAGINATION settings per page
 	const indexOfLastFeedback = currentPage * feedbackPerPage; //3
 	const indexOfFirstFeedback = indexOfLastFeedback - feedbackPerPage; //3-3
-	const currentFeedbacks = filteredFeedback.slice(
-		indexOfFirstFeedback,
-		indexOfLastFeedback
-	); //(0,3)
+	const currentFeedbacks = filteredFeedback.slice(indexOfFirstFeedback, indexOfLastFeedback ); //(0,3)
 
 	return currentFeedbacks.length ? (
 		<div className="previous-feedback-section-container">
 			<div className="previous-feedback-section">
 				<div className="previous-feedback-title-and-container">
 					<h3 className="previous-feedback-title">
-                        Feedbacks
+                        Feedback List
 					</h3>
 					<div className="filtered-feedback-counter-div">
 						<p className="filtered-feedback-counter">{`${filteredFeedback.length}/${student.allFeedback.length}`}</p>

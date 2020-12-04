@@ -21,7 +21,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 		setFeedback(feedbackItem);
 	}, [feedbackItem]);
 
-	//We don't allow the user to submit the form with empty fields and display a notification denebilur
+	//DON'T allow form submit with empty fields
 	const saveFeedback = (id) => {
 		if (!feedback.title) {
 			return alert("Please add a title");
@@ -55,7 +55,7 @@ const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
 			.then(() => updateStudentData());
 	};
 
-	// Update object with edited data editable
+	// Update object with edited data
 	const handleEdit = (e) => {
 		setFeedback({
 			...feedback,
