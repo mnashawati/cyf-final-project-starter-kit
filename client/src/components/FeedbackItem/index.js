@@ -8,87 +8,89 @@ import { Modal, Button } from "react-bootstrap";
 import timeDifference from "../../helperFunctions/timeDifference";
 import { AuthContext } from "../../authentication/Auth";
 
-const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
-
-	const [isEditing, setIsEditing] = useState(false);
-	const [currentFeedback, setCurrentFeedback] = useState({});
+const FeedbackItem = ({ feedbackItem, student, updateStudentData }) => {
+	const [isEditing, setIsEditing] = useState(false); // Toggle disabled attribute
+	const [feedback, setFeedback] = useState({});
 	const [showModal, setShowModal] = useState(false);
 
+	// User object from FIREBASE
 	const { currentUser } = useContext(AuthContext);
 	const mentorsEmail = currentUser.email;
 
 	useEffect(() => {
-		setCurrentFeedback(feedbackToShow);
-	}, [feedbackToShow]);
+		setFeedback(feedbackItem);
+	}, [feedbackItem]);
 
-	//POST updated feedback to DB
-	//When clicked SAVE; UPDATE the data
-	const updateData = (id) => {
+	//DON'T allow form submit with empty fields
+	const saveFeedback = (id) => {
+		if (!feedback.title) {
+			return alert("Please add a title");
+		} else if (!feedback.text) {
+			return alert("Please add your feedback");
+		} else if (!feedback.mentor) {
+			return alert("Please add your name");
+		}
+		updateFeedbackData(id);
+	};
+
+	//UPDATE feedback at DB
+	const updateFeedbackData = (id) => {
 		fetch(`/api/students/${student._id}/feedback/${id}`, {
 			method: "PUT",
 			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(currentFeedback),
+			body: JSON.stringify(feedback),
 		})
 			.then((res) => res.json())
 			.catch((error) => console.log(error));
 	};
 
-	//When clicked SAVE, CHECK if field is empty
-	const saveFeedback = (id) => {
-		if (!currentFeedback.title) {
-			return alert("Please add a title");
-		} else if (!currentFeedback.text) {
-			return alert("Please add your feedback");
-		} else if (!currentFeedback.mentor) {
-			return alert("Please add your name");
-		}
-		updateData(id);
-	};
-
-	//DELETE selected feedback and update data
+	//DELETE selected feedback
 	const handleDelete = (feedbackId) => {
 		fetch(`/api/students/${student._id}/${feedbackId}`, {
 			method: "DELETE",
 			headers: { "Content-type": "application/json" },
 		})
-			.then((res) => res.json()).then()
+			.then((res) => res.json())
 			.catch((error) => console.log(error))
-			.then(() => updateFeedback());
+			.then(() => updateStudentData());
 	};
 
-	// Populate new object with edited data editable
+	// Update object with edited data
 	const handleEdit = (e) => {
-		setCurrentFeedback({ ...currentFeedback, [e.target.name]: e.target.value });
+		setFeedback({
+			...feedback,
+			[e.target.name]: e.target.value,
+		});
 	};
 
 	const handleCancel = () => {
-		setCurrentFeedback(feedbackToShow);
+		setFeedback(feedbackItem);
 		setIsEditing(!isEditing);
 	};
 
 	return (
-		currentFeedback && (
+		feedback && (
 			<div className="prev-feedback-list">
 				<div className="feedback-title-and-module">
 					<div className="feedback-title">
 						<input
 							className="prev-feedback-title-input"
 							name={"title"}
-							value={currentFeedback.title || ""}
+							value={feedback.title || ""}
 							onChange={handleEdit}
 							disabled={!isEditing}
 						/>
 					</div>
 					<div className="feedback-module">
 						{!isEditing ? (
-							<p className="module-select-p">{`Module: ${currentFeedback.module}`}</p>
+							<p className="module-select-p">{`Module: ${feedback.module}`}</p>
 						) : (
 							<>
 								<p className="feedback-input-heading">Module:</p>
 								<select
 									className="module-select"
 									name={"module"}
-									value={currentFeedback.module || ""}
+									value={feedback.module || ""}
 									onChange={handleEdit}
 								>
 									{modules.map((module, index) => (
@@ -105,7 +107,7 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 					<textarea
 						className="feedback-text-textarea"
 						name={"text"}
-						value={currentFeedback.text || ""}
+						value={feedback.text || ""}
 						onChange={handleEdit}
 						disabled={!isEditing}
 					/>
@@ -116,74 +118,99 @@ const FeedbackObject = ({ feedbackToShow, student, updateFeedback }) => {
 							<input
 								className="prev-feedback-mentor-input"
 								name={"mentor"}
-								value={`Given by: ${currentFeedback.mentor || ""}`}
+								value={`Given by: ${feedback.mentor || ""}`}
 								onChange={handleEdit}
 								disabled
 							/>
 						</div>
 						<div className="prev-feedback-time">
 							<p className="prev-feedback-time-input">
-								{timeDifference(Date.now(), currentFeedback.time)}
+								{timeDifference(Date.now(), feedback.time)}
 							</p>
 						</div>
 					</div>
-					{ mentorsEmail === currentFeedback.mentorEmail ? (
+					{mentorsEmail === feedback.mentorEmail ? (
 						<div className="edit-delete-buttons">
 							<Button
 								variant="success"
 								onClick={() => {
 									setIsEditing(!isEditing);
-									isEditing && saveFeedback(currentFeedback.id);
+									isEditing && saveFeedback(feedback.id);
 								}}
-								className="edit-save-feedback-btn">
-								{!isEditing ? "Edit" : "Update"}</Button>
+								className="edit-save-feedback-btn"
+							>
+								{!isEditing ? "Edit" : "Save"}
+							</Button>
 
-							{isEditing ? (
-								<Button variant="outline-danger" onClick={handleCancel}
-									className="cancel-edit-feedback-btn">Cancel</Button>
-							) : (
+							{!isEditing ? (
 								<>
-									<Button variant="danger" onClick={()=>{
-										setShowModal(true);
-									}}
-									className="delete-feedback-btn">
-				              			Delete
+									<Button
+										variant="danger"
+										onClick={() => {
+											setShowModal(true);
+										}}
+										className="delete-feedback-btn"
+									>
+                    Delete
 									</Button>
-									<Modal show={showModal} onHide={()=>{
-										setShowModal(false);
-									}}>
+									<Modal
+										show={showModal}
+										onHide={() => {
+											setShowModal(false);
+										}}
+									>
 										<Modal.Header closeButton>
 											<Modal.Title>Delete feedback?</Modal.Title>
 										</Modal.Header>
+										<Modal.Body>
+											<p>
+                        Select cancel if you dont want to delete the feedback!
+											</p>
+										</Modal.Body>
 										<Modal.Footer>
-											<Button variant="secondary" onClick={()=>{
-												setShowModal(false);
-											}}
-											className="cancel-delete-feedback-btn">
-						              			Cancel
+											<Button
+												variant="secondary"
+												onClick={() => {
+													setShowModal(false);
+												}}
+												className="cancel-delete-feedback-btn"
+											>
+                        Cancel
 											</Button>
-											<Button variant="danger" onClick={() => {
-												handleDelete(currentFeedback.id);
-												setShowModal(false);
-											}}
-											className="confirm-delete-feedback-btn">
-						              			Delete
+											<Button
+												variant="danger"
+												onClick={() => {
+													handleDelete(feedback.id);
+													setShowModal(false);
+												}}
+												className="confirm-delete-feedback-btn"
+											>
+                        Delete
 											</Button>
 										</Modal.Footer>
 									</Modal>
 								</>
+							) : (
+								<Button
+									variant="outline-danger"
+									onClick={handleCancel}
+									className="cancel-edit-feedback-btn"
+								>
+                  Cancel
+								</Button>
 							)}
-						</div> ) : null}
+						</div>
+					) : null}
 				</div>
 			</div>
 		)
 	);
 };
 
-FeedbackObject.propTypes = {
+FeedbackItem.propTypes = {
 	student: PropTypes.object.isRequired,
-	feedbackToShow: PropTypes.object.isRequired,
-	updateFeedback: PropTypes.func.isRequired,
+	feedbackItem: PropTypes.object.isRequired,
+	updateStudentData: PropTypes.func,
 };
 
-export default FeedbackObject;
+export default FeedbackItem;
